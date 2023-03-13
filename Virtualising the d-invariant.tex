@@ -1,0 +1,151 @@
+\documentclass{report}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% General Packages
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{titling}
+\usepackage{geometry}
+% \usepackage{hyperref}
+
+
+%%% Font and Text Packages
+\usepackage{newpxtext}
+\usepackage{newpxmath}
+
+\usepackage[dvipsnames]{xcolor}
+
+
+%%% Graphics, Figure and Listing Packages
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{calc}
+\usepackage{caption}
+
+
+%%% Listings
+\usepackage{listings}
+\usepackage{lstfiracode}
+
+
+%%% Bibliography Packages
+\usepackage{biblatex}
+\bibliography{references}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Page Formatting Options
+\geometry{left = 2.5cm}
+\geometry{right = 2.5cm}
+\geometry{top = 3cm}
+\geometry{bottom = 3cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Graphics and Figure Options
+% Graphics path (necessary for .svg images).
+\graphicspath{{graphics/}}
+\counterwithout{figure}{chapter}
+
+% Caption setup
+\captionsetup{margin=1.5cm}
+
+
+%%% Listings Options
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codeback}{rgb}{0.95,0.95,0.92}
+\lstset{
+	language=Python,
+	backgroundcolor=\color{codeback},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	style=FiraCodeStyle,   % Use predefined FiraCodeStyle
+	basicstyle=\ttfamily,   % Use \ttfamily for source code listings
+	numbers=left
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Personal Macros
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+
+%%% Drafting Macros
+\newcommand{\notered}[1]{{\color{Red} \textbf{#1}}}
+\newcommand{\notegreen}[1]{{\color{Green} \textbf{#1}}}
+\newcommand{\noteblue}[1]{{\color{Blue} \textbf{#1}}}
+
+%%% Theorem Options
+\newtheorem*{proposition}{Proposition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	
+%%% Make titlepage.
+
+% Titlepage Options
+\author{Damian Lin}
+\title{Virtualising the $d$-invariant}
+
+\cleardoublepage \thispagestyle{empty}
+\null \vfil
+\begingroup
+\LARGE \bfseries \centering
+\openup \medskipamount
+\thetitle \par \vspace{30pt}
+\centering \mdseries \theauthor \par \bigskip
+\endgroup
+\vfil \vfil \vfil
+\begin{center}
+	An essay submitted in partial fulfilment of\\
+	the requirements for the degree of\\
+	Bachelor of Science/Bachelor of Advanced Studies (Honours)
+	\vfil\vfil
+	{\large Pure Mathematics\\[5pt]
+		University of Sydney}\\
+	\vskip6mm
+	\includegraphics[width=25mm]{graphics/USY_MB1_CMYK_Stacked_Logo}
+	\vfil
+	\normalsize\today
+\end{center}
+\vfil
+\cleardoublepage
+
+\tableofcontents
+
+
+\chapter{Introduction}
+
+Introduction goes here.
+
+\chapter{Preliminaries}
+
+
+
+\section{1}
+
+\chapter{Virtual Knots}
+
+\chapter{Gordon-Litherland Linking Form}
+
+\chapter{Gauss Codes and Knot Algorithms}
+
+
+\chapter{Computing Mock Seifert Matrices}
+
+\newpage
+\section*{References}
+\printbibliography
+
+
+\appendix
+
+\chapter{Algorithm}
+
+
+\end{document}
+
