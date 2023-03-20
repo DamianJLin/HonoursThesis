@@ -1,4 +1,4 @@
-\documentclass{report}
+\documentclass[12pt]{report}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -29,7 +29,7 @@
 
 
 %%% Bibliography Packages
-\usepackage{biblatex}
+\usepackage[style=draft]{biblatex}
 \bibliography{references}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -37,8 +37,8 @@
 %%% Page Formatting Options
 \geometry{left = 2.5cm}
 \geometry{right = 2.5cm}
-\geometry{top = 3cm}
-\geometry{bottom = 3cm}
+\geometry{top = 2.5cm}
+\geometry{bottom = 2.5cm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -72,6 +72,8 @@
 %%% Personal Macros
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ip}[2]{\langle #1, #2 \rangle}
 
 %%% Drafting Macros
 \newcommand{\notered}[1]{{\color{Red} \textbf{#1}}}
@@ -124,9 +126,23 @@ Introduction goes here.
 
 \chapter{Preliminaries}
 
+\section{Lattice of Integer Flows}
+A lattice is a finitely generated abelian group $L$, equipped with an inner product 
+\(\ip{\cdot}{\cdot}: L \times L \longrightarrow \R\). We are primarily interested in integral lattices, for which the inner product's image is contained within $\Z$, and for the rest of this work we assume that all lattices are integral. An isomorphism of lattices is a bijection $\psi: L_{1} \longrightarrow L_{2}$ that preserves the inner product, that is $\ip{x}{y} = \ip{\psi(x)}{\psi(y)}$ for all $x, y \in L$.
 
+Throughout, we let $G = (E, V)$ be a finite, directed, connected graph (in which loops and multiple edges are allowed) with vertex set $V$ and edge set $E$. The boundary map $\partial:  C_{0}(G) \longrightarrow C_{1}(G)$ defines a $|V|\times|E|$ incidence matrix $D : \Z^{E} \longrightarrow \Z^{V}$ with entries given by
+\[D_{ij} = \begin{cases}
+	+1 & \text{if $e_{i}$ is oriented into $v_{j}$}   \\
+	-1 & \text{if $e_{i}$ is oriented out of $v_{j}$} \\
+	0  & \text{otherwise.}
+\end{cases}\]
+The lattice of integer flows of $G$ is the group $\Lambda(G) = \ker D$, along with the inner product induced by the Euclidean inner product on $\Z^{E}$. Equivalently, $\Lambda(G)$ is the first homology group of $G$, with inner products taken in $C_{1}(G)$. While the lattice $\Lambda(G)$ may depend on the orientation of the edges in $G$, its isomorphism class does not, as the isomorphism class of the homology group is independent of orientation, and the Euclidean inner product is preserved by sending an edge to its negation, since in the Euclidean inner product, $\ip{e_{i}}{e_{i}} =  \ip{-e_{i}}{-e_{i}} = 1$, and $\ip{e_{i}}{e_{j}} = \ip{-e_{i}}{e_{j}} = 0$.
 
-\section{1}
+\section{Graph $2$-isomorphism}
+
+A $2$-isomorphism between two graphs $G = (E, V)$ and $G' = (E', V')$ is a bijection \({\psi: E \longrightarrow E'}\) that preserves cycles, i.e. $\partial(e_{i} + \cdots + e_{j}) = 0$ if and only if $\partial\left(\psi(e_{i}) + \cdots + \psi(e_{j})\right) = 0$.
+
+It is well established that the the lattice of integer flows is a $2$-isomorphism invariant \parencite{lattice-of-flows-cuts}.
 
 \chapter{Virtual Knots}
 
