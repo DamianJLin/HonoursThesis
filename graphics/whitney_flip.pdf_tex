@@ -55,6 +55,7 @@
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{whitney_flip.pdf}}%
     \put(0.07154694,0.33457843){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Gamma_{1}$\end{tabular}}}}%
+    \put(0.3813356,0.19859414){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Whitney flip\end{tabular}}}}%
     \put(0.2397287,0.0056302){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Gamma_{2}$\end{tabular}}}}%
     \put(0.6547737,0.1886789){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Gamma_{1}$\end{tabular}}}}%
     \put(0.90780856,0.00563005){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Gamma_{2}$\end{tabular}}}}%

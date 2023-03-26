@@ -28,36 +28,54 @@
      inkscape:document-units="mm"
      showgrid="false"
      showguides="true"
-     inkscape:zoom="0.95875069"
-     inkscape:cx="671.70747"
-     inkscape:cy="379.66074"
+     inkscape:zoom="5.4235129"
+     inkscape:cx="489.53511"
+     inkscape:cy="311.69835"
      inkscape:window-width="1920"
-     inkscape:window-height="1080"
+     inkscape:window-height="1006"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="g1775" />
   <defs
      id="defs2">
     <marker
        style="overflow:visible"
-       id="Arrow3"
+       id="marker1205"
        refX="0"
        refY="0"
        orient="auto-start-reverse"
-       inkscape:stockid="Arrow3"
-       markerWidth="4.2071066"
-       markerHeight="6.9999995"
-       viewBox="0 0 4.2071068 7"
+       inkscape:stockid="Arrow2"
+       markerWidth="4.6999998"
+       markerHeight="3.4181819"
+       viewBox="0 0 7.7 5.6"
        inkscape:isstock="true"
        inkscape:collect="always"
        preserveAspectRatio="xMidYMid">
       <path
-         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:round"
-         d="M 3,-3 0,0 3,3"
-         id="arrow3"
-         transform="rotate(180,0.125,0)"
-         sodipodi:nodetypes="ccc" />
+         transform="scale(0.7)"
+         d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path1203" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow2"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Arrow2"
+       markerWidth="4.7"
+       markerHeight="3.41818185"
+       viewBox="0 0 7.7 5.6"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="arrow2L" />
     </marker>
   </defs>
   <g
@@ -477,7 +495,7 @@
       </g>
     </g>
     <path
-       style="fill:none;stroke:#000000;stroke-width:1.38111;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow3);marker-end:url(#Arrow3)"
+       style="fill:none;stroke:#000000;stroke-width:1.381;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow2);marker-end:url(#marker1205)"
        d="m 114.78836,84.460216 h 43.09467"
        id="path3444" />
     <text
@@ -491,6 +509,21 @@
          style="stroke-width:0.264583"
          x="21.249441"
          y="37.802055">$\Gamma_{1}$</tspan></text>
+    <g
+       id="g1775"
+       transform="translate(92.015648,39.337321)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="21.241024"
+         y="38.85207"
+         id="text4015-3"><tspan
+           sodipodi:role="line"
+           id="tspan4013-6"
+           style="stroke-width:0.264583"
+           x="21.241024"
+           y="38.85207">Whitney flip</tspan></text>
+    </g>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -521,12 +554,12 @@
        id="text4027"><tspan
          x="269.61954"
          y="135.49973"
-         id="tspan6839">$</tspan><tspan
+         id="tspan4579">$</tspan><tspan
          x="269.61954"
          y="100009.63"
-         id="tspan6843"><tspan
+         id="tspan4583"><tspan
            dx="0 3.9369848 7.704649 5.9372387 9.89538 9.89538 5.9372368 4.6989899 4.0216446 6.0536537 4.0216446"
-           id="tspan6841">\Gamma_{2}$</tspan></tspan></text>
+           id="tspan4581">\Gamma_{2}$</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
