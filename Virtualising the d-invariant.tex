@@ -103,6 +103,7 @@
 %%% Theorem Options
 \newtheorem*{theorem}{Theorem}
 \newtheorem*{proposition}{Proposition}
+\newtheorem*{conjecture}{Conjecture}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -149,11 +150,17 @@
 \notered{very draft}
 In order to keep this text relatively self-contained, we begin in Chapter 1 with the study of knots, for without the bread and butter of knot theory, knot invariants. This provides some motivation for the rest of this chapter in which we slowly build our way up to a a specific invariant, the lattice of integer flows, closely following the work of Greene \cite{lattices-graphs-mutation}. We then look at the formulation given by Greene, the $d$-invariant and how that relates to Heegard-Floer homology and another formulation of the $d$-invariant. In Chapter 2, we examine virtual knots, a generalisation of knots with a multitude of equivalent formulations that allows knots to have diagrams on an orientable surface of any genus. The aim of this is to extend the lattice of integer flows to the virtual setting, and examine what properties it is able maintain in this new environment. We suspect the virtual $d$-invariant is less powerful than another invariant known as the Gordon-Litherland Linking Form, and we examine their relationship in Chapter $3$ with the hope in chapter $4$ of finding an example to prove this. In Chapter $5$ we examine an algorithm to compute these invariants, and present a proof that indeed, the virtual $d$-invariant is not as strong as the Gordon-Litherland Linking Form, and therefore not a complete mutation invariant of alternating knots.
 
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+
+Thanks to ...
+
+
 \chapter{Knots and the Lattice of Integer Flows}
 
 \section{Knots and Knot Invariants}
 
-We begin with a swift introduction to the rich and marvellous study of tangled-up pieces of string; the theory of knots. Despite being a complex and intricate field of study, any child can intuitively grasp the concept of a knot as a closed loop of string sitting in space. To formalise this and remove any pathological examples that are inconsistent with our intuition of our inner child, we define a \textit{knot} to be an injective embedding of the circle into $3$-space, $K: \S^{1} \lhook\joinrel\longrightarrow \R^{3}$. The requirement that the embedding be injective ensures that our string does not intersect itself anywhere, and we know it must be closed as an embedding of $\S^{1}$.
+We begin with a swift introduction to the rich and marvellous study of tangled-up pieces of string; the theory of knots. Despite being a complex and intricate field, any child can intuitively grasp the concept of a knot as a closed loop of string sitting in space. To formalise this and remove any pathological examples that are inconsistent with the intuition of our inner child, we define a \textit{knot} to be an injective embedding of the circle into $3$-space, $K: \S^{1} \lhook\joinrel\longrightarrow \R^{3}$. The requirement that the embedding be injective ensures that our string does not intersect itself anywhere, and we know it must be closed as an embedding of $\S^{1}$.
 
 \begin{figure}[hbt]
 	\centering
@@ -178,12 +185,12 @@ We begin with a swift introduction to the rich and marvellous study of tangled-u
 		\input{graphics/trefoil.pdf_tex}
 		\caption{\notered{a different knot}}
 	\end{subfigure}
-	\caption{Some examples of knots.}
-	\label{knot-examples}
+	\caption{Some examples of knots, presented through knot diagrams.}
+	\label{fig:knot-examples}
 	\hfill \phantom{1}
 \end{figure}
 
-The natural question that arises as soon as we see something such as in Fig. \ref{fig:unknot_twisted} is when do we consider two knots to be the `same'? We want two knots to be the same if there is some way to deform one, without breaking the circle or passing it through itself, into the other. Hence we say two knots $K_{1}$ and $K_{2}$ are \textit{equivalent} or equal if there is some homeomorphism of the ambient space $\R^{3}$ that restricts to a homeomorphism of the two knots. We call this notion of equivalence ambient isotopy.
+The natural question that arises as soon as we see something such as in Fig. \ref{fig:unknot_twisted} is when do we consider two knots to be the `same'? We want two knots to be the same if there is some way to deform one, without breaking the circle or passing it through itself, into the other. Hence we say two knots $K_{1}$ and $K_{2}$ are \textit{equivalent} or equal if there is some homeomorphism of the ambient space $\R^{3}$ that restricts to a homeomorphism of the knots. We call this notion of equivalence ambient isotopy.
 
 \begin{figure}[hbt]
 	\centering
@@ -192,25 +199,67 @@ The natural question that arises as soon as we see something such as in Fig. \re
 	\label{fig:unknot_twisted}
 \end{figure}
 
-Though the central objective of knot theory it to classify knots up to ambient isotopy, as one might imagine, it can be very hard to write down explicit ambient isotopies directly, and in practice we find ourselves using other tools to get the job done. Though it was claimed that the objects in Fig. \ref{knot-examples} were knots, they are really projections of knots onto the plane with markings we call \textit{crossings} to make clear that some \textit{strand} of the knot has gone over another strand when we would have otherwise lost that information in the projection. One might call this distinction pedantry, but it does precisely introduce the distinction between knots and the \textit{knot diagrams} given in Fig. \ref{knot-examples}. There are many diagrams for the same knot, in fact infinitely many. For brevity we may say `knot' when we should more strictly have said `knot diagram', but if it is not clear from context, we shall be precise.
+Though the central objective of knot theory it to classify knots up to ambient isotopy, as one might imagine, it can be very hard to write down explicit ambient isotopies directly. In practice we find ourselves using other tools to get the job done. Though it was claimed that the objects in Fig. \ref{fig:knot-examples} were knots, they are really projections of knots onto the plane with markings we call \textit{crossings} to make clear that some \textit{strand} of the knot has gone over another strand when we would have otherwise lost that information in the projection. One might call this distinction pedantry, but it does precisely introduce the distinction between knots and the \textit{knot diagrams} given in Fig. \ref{fig:knot-examples}. There are many diagrams for the same knot, in fact infinitely many. For brevity we may say `knot' when we should more strictly have said `knot diagram', but if it is not clear from context, we shall be precise.
 
 Diagrams are much easier to work with than embeddings, and we have the following foundational theorem due to Kurt Reidemeister.
 \begin{theorem}(The Reidemeister Theorem)
 Two knot diagrams $D_{1}$ and $D_{2}$ represent equivalent knots if and only if there is some sequence of moves of the following four types that transform $D_{1}$ into $D_{2}$:
-\begin{enumerate}[(1)]
-	\item \notered{RI (insert image)},
-	\item \notered{RII},
-	\item \notered{RIII},
+\begin{itemize}
+	\item any of the three Reidemeister move given in Fig. \ref{fig:reidemeister_moves},
 	\item planar isotopy.
-\end{enumerate}
+\end{itemize}
 \end{theorem}
 
-The early study of knot theory by pioneers such as P.G. Tait, C.N. Little and T. Kirkman involved trying to find, by hand, some way to show two knots were equivalent. But Tait himself noted that is was impossible by these means to ever prove that two knots were distinct. The modern way that we deal with knots is through invariants. If we define some map from knots to some other class of objects, perhaps a truth value, an polynomial, or a group, and can show that none of the Reidemeister moves, not planar isotopy changes the value of this map, then we have a \textit{knot invariant}. Finally we have a way to prove that two knots are different, for if they take on different invariants there can't be a way to get between them with the invariant-preserving Reidemeister moves, so by Reidemeister's theorem, they must be distinct. However invariants are one-sided in nature -- having different invariants can tell us that two knots are different, but two knots talking on the same value of some invariant doesn't necessitate that they be equivalent knots. Such an invariant would be called a \textit{complete} invariant, and while we now know of a whole zoo of different invariants, we have yet to find what is perhaps the Holy Grail of knot theory: a complete invariant that is also easy to compute.
+\begin{figure}[H]
+	\centering
+	\hfill
+	\begin{subfigure}[b]{0.3 \textwidth}
+		\centering
+		\includegraphics[width=0.7\linewidth]{graphics/reidemeister_1}
+		\caption{RI}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.3 \textwidth}
+		\centering
+		\includegraphics[width=0.7\linewidth]{graphics/reidemeister_2}
+		\caption{RII}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.3 \textwidth}
+		\centering
+		\includegraphics[width=0.7\linewidth]{graphics/reidemeister_3}
+		\caption{RIII}
+	\end{subfigure}
+	\caption{The Reidemeister moves.}
+	\label{fig:reidemeister_moves}
+	\hfill \phantom{1}
+\end{figure}
+
+The early study of knot theory by pioneers such as P.G. Tait, C.N. Little and T. Kirkman involved trying to find, by hand, some way to show two knots were equivalent. But Tait himself noted that is was impossible by these means alone to ever prove that two knots were distinct. The modern way that we deal with knots is through invariants. If we define some map from knots to some other class of objects, perhaps a truth value, an polynomial, or a group, and can show that none of the Reidemeister moves, not planar isotopy changes the value of this map, then we have a \textit{knot invariant}. Finally we have a way to prove that two knots are different, for if they take on different invariants there can't be a way to get between them with the invariant-preserving Reidemeister moves, so by Reidemeister's theorem, they must be distinct. However invariants are one-sided in nature -- having different invariants can tell us that two knots are different, but two knots talking on the same value of some invariant doesn't necessitate that they be equivalent knots. Such an invariant would be called a \textit{complete} invariant, and while we now know of a whole zoo of different invariants, we have yet to find what is perhaps the Holy Grail of knot theory: a complete invariant that is also easy to compute.
 
 \section{Alternating Knots, Knot Mutation and the Tait Graphs}
-We call a knot diagram \textit{alternating} if, traversing the diagram, the crossings alternate under and over. Clearly, for every diagram that is alternating, it is possible to construct a non-alternating diagram of an equivalent knot, simply apply one instance of RI. Hence we define an \textit{alternating knot} as a knot that has some alternating diagram. \notered{Alternating knots are interesting. Possibility to talk about the Tait conjectures here. Need at least the following.} Any two equivalent alternating knots is related by a sequence of flype moves. \notered{Expand on this including find the reference to a proof of the flyping theorem.}
+We call a knot diagram \textit{alternating} if, traversing the diagram, the crossings alternate under and over. Clearly, for every diagram that is alternating, it is possible to construct a non-alternating diagram of an equivalent knot, one simply needs to apply one instance of RI appropriately to any strand of the knot. Hence we define an \textit{alternating knot} as a knot that \textit{has} as alternating diagram. Alternating knots are a particularly interesting class of knots. For low crossing-number, many of the knots are alternating, but this trend quickly reverses as crossing number is increased. Alternating knots have a special connection with a series of conjectures made by Tait in his early attempts to tabulate knots. The most important of these conjectures, in the sense that is implies the others, is known as the flyping conjecture and relates alternating diagrams by moves known as flype moves. A \textit{tangle} in a knot diagram is a region of the plane that is homeomorphic to a disc, such that the knot crosses the boundary of the disc exactly four times, as in Fig. \ref{fig:tangle}. A \textit{flype} move is a diagrammatic move that flips a tangle but does not change the knot presented, as in Fig. \ref{fig:flype}.
 
-We also have ways of constructing new knots from existing ones. A \textit{tangle} in a knot diagram is a region of the plane, surrounded by a circle such that the knot crosses that circle exactly four times. If we take a diagram, choose a tangle, and then perform some reflection (up to planar isotopy) of that tangle, either reflecting it left-right or up-down, or across one of the diagonals, the corresponding operation on the knot is known as \textit{mutation}, and the two knots known as mutants. Mutants are some of the hardest knots to distinguish in knot theory, as a number of the key invariants are the same on mutants. An example of this is the Conway Knot and the Kinoshita-Terasaka knot (Fig. \ref{fig:kinoshita-terasaka-mutants}).
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.4\linewidth]{graphics/tangle}
+	\caption{A tangle.}
+	\label{fig:tangle}
+\end{figure}
+
+We present the conjecture, which was proven by Menasco and Thistlethwaite in \cite{classification-alternating-links} as the following theorem.
+\begin{theorem}(Tait Flyping Conjecture)
+	Any two reduced alternating diagrams which present the same knot are related by a sequence of flypes.
+\end{theorem}
+
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=0.7\linewidth]{graphics/flype}
+	\caption{A general flype move.}
+	\label{fig:flype}
+\end{figure}
+
+We also have ways of constructing new knots from existing ones. If we take a diagram, choose a tangle, and then perform some reflection (up to planar isotopy) of that tangle, either reflecting it left-right or up-down, or across one of the diagonals, the corresponding operation on the knot is known as \textit{mutation}, and the two knots known as \textit{mutants}. Mutants are some of the hardest knots to distinguish, as a number of the key invariants are the same. An example of this is the Conway Knot and the Kinoshita-Terasaka knot (Fig. \ref{fig:kinoshita-terasaka-mutants}).
 
 \begin{figure}[h]
 	\centering
@@ -219,12 +268,12 @@ We also have ways of constructing new knots from existing ones. A \textit{tangle
 	\label{fig:kinoshita-terasaka-mutants}
 \end{figure}
 
-For every knot diagram, we can associate a pair of graphs known as the \textit{Tait graphs}. We take the knot diagram, which divides the plane into regions. It is an application of the Jordan curve theorem that it is possible to colour these regions two colours, black and white, such that adjacent regions are never the same colour. Such a colouring is called a \textit{checkerboard colouring}. In such a colouring, regions that are diagonal to each other at crossings are necessarily the same colour. One Tait graph corresponds to the black colouring and has vertices inside each black region, and for each crossing, an edge connecting black regions diagonal to each other at that crossing. Similarly, another Tait graph, the planar dual of the first, can be constructed replacing with the white regions. \notegreen{Red and green regions may work better for diagrams.} \notered{Add figures.}
+For every knot diagram, we can associate a pair of graphs known as the \textit{Tait graphs}. We take the knot diagram, which divides the plane into regions. It is an application of the Jordan curve theorem that it is possible to colour these regions two colours, black and white, such that adjacent regions are never the same colour. Such a colouring is called a \textit{checkerboard colouring}. In such a colouring, regions that are diagonal to each other at crossings are necessarily the same colour. One Tait graph corresponds to the black colouring and has vertices inside each black region, and for each crossing, an edge connecting black regions diagonal to each other at that crossing. Similarly, another Tait graph, the planar dual of the first, can be constructed with the white regions as vertices. \notegreen{Red and green regions may work better for diagrams.} \notered{Add figures.}
 
 
 \section{The Lattice of Integer Flows}
 
-For the rest of this chapter, we largely follow the work of \cite{lattices-graphs-mutation} to introduce the lattice of integer flows and show that it is a complete mutation invariant of alternating knots. This means that it is both an invariant of virtual knots, and among virtual knots, it takes on equivalent values on exactly those virtual knots that are of the same mutation class. We then talk about the equivalent formulation given in \cite{lattices-graphs-mutation} as the $d$-invariant.
+For the rest of this chapter, we largely follow the work of \cite{lattices-graphs-mutation} to introduce the lattice of integer flows and show that it is a complete mutation invariant of alternating knots. This means that it is both an invariant of virtual knots, and among virtual knots, it is both an invariant of mutation, and distinguished knots that are not mutants. We then talk about the equivalent formulation given in \cite{lattices-graphs-mutation} as the $d$-invariant.
 
 A \textit{lattice} is a finitely generated abelian group $L$, equipped with an inner product 
 \({\ip{\cdot}{\cdot}: L \times L \longrightarrow \R}\). We are primarily interested in \textit{integral lattices}, for which the inner product's image is contained within $\Z$, and for the rest of this text we assume that all lattices are integral. An \textit{isomorphism of lattices} is a bijection $\psi: L_{1} \longrightarrow L_{2}$ that preserves the inner product, that is ${\ip{x}{y} = \ip{\psi(x)}{\psi(y)}}$ for all $x, y \in L$.
@@ -284,6 +333,30 @@ For a knot $K$, the pair $\Lambda(G_{1}), \Lambda(G_{2})$ of lattices of integer
 \notegreen{Show that can be compressed into the $d$-invariant, and nothing is lost.}
 
 \chapter{Virtual Knots}
+We now introduce the exciting and relatively new theory of virtual knots. Virtual knots are a generalisation of knots that have many different equivalent formulations. \textit{Classical} knots, a term which refers specifically to the kind of knots we have introduced prior to this chapter, have diagrams in the plane, $\R^{2}$, but really they have an extra dimension of `thickness', encoded in the diagram by the under- and over- crossings. Hence we think of knots as embeddings in $\R^{3}$. However we didn't really need a whole $\R$'s worth of extra space. We could easily think of classical knots as living in $\R^{2} \times I$ where $I$ is the unit interval $[0, 1]$. Thinking of knots as embeddings in $\R^{2} \times I$, it becomes natural to ask: what if we replace the plane by another surface; can we have diagrams on other surfaces $\Sigma$ that thicken into knots in $\Sigma \times I$? The answer to these questions is yes, and virtual knots are one such generalisation.
+
+In the context of virtual knots, all surfaces of relevance are closed and orientable. \notered{Except the plane which we identify with the sphere? How do we justify this?} (Note that as we are thinking of surfaces as $2$-manifolds embedded in $\R^{3}$, closed is equivalent to compact.) The classification theorem for compact, orientable surfaces is the following.
+
+\begin{theorem}[Classification of compact, orientable surfaces]
+Each connected component of a compact, orientable surface is homeomorphic to:
+\begin{itemize}
+\item the sphere, or
+\item a connected sum of $g$ tori, for $g \geq 1$.
+\end{itemize}
+\end{theorem}
+Hence there is a bijection between connected components of compact, orientable surfaces given by the \textit{genus}, $g$ of the surface, the number of handles.
+
+We now follow the work of Kuperberg \cite{what-is-a-virtual-link} and Carter-Kamada-Saito \cite{stable-equivalence-virtual-cobordisms} and give the geometric definition of virtual knots. A \textit{virtual knot diagram} is the analogue of a classical knot diagram, but drawn on a general closed, oriented, connected surface, $\Sigma$ no longer necessarily the plane. To represent diagrams in this section we use the letter $P$, for `projection', another common word for `diagram', as $D$ will be reserved for disks. The equivalence relation on virtual knot diagrams is broader than for classical knots. We consider two virtual knot diagrams equivalent if they are related by Reidemeister moves on the surface of $\Sigma$, but furthermore if they are related by the notion of \textit{stable equivalence}.
+
+[\notegreen{Stabilisation in Kuperberg is just presented as `adding a handle' -- get Zsuzsi to check that this is equivalent.} \notered{Is this related to a cobordism and is there a better way to present this?}] The operation of \textit{stabilisation} consists of finding two disks $D_{1}$ and $D_{2}$ in $\Sigma$ that do not intersect $P$. We then remove $D_{1}$ and $D_{2}$ from $\Sigma$ and glue a handle whose boundary is $D_{1} \cup D_{2}$. Intuitively, stabilisation is `adding a handle' to $\Sigma$, and any newly added handle does not interact with $P$. The reverse operation \textit{destabilisation} removes a handle. Performing this operation, we take a cylinder $Y$ that does not intersect $P$, and such that the circle that $Y$ deformation-retracts to is not null-homologous, removes it, and cap both resulting boundary circles.
+
+The point of stable equivalence is to identify two knot diagrams $P_{1}$ and $P_{2}$ that would otherwise be identical, except for living on surfaces $\Sigma_{1}$ and $\Sigma_{2}$ of different genus $g_{1}$ and $g_{2}$; for one surface must have a greater genus than the other $g_{1} < g_{2}$. But since the diagrams are identical, there must be at least $g_{2} - g_{1}$ handles in the diagram on $\Sigma_{2}$ that are unnecessary and don't interact in any way with the diagram $P_{2}$. Stable equivalence does indeed identify these diagrams. Hence we define a \textit{virtual knot} as an equivalence class of virtual knot diagrams under Reidemeister moves on $\Sigma$ and stable equivalence. It follows that each virtual knot has a minimum genus surface, in which all of the handles interact with the the knot, and this is known as its virtual genus. This definition is equivalent to defining virtual knots as embeddings $S^{1} \lhook\joinrel\longrightarrow \Sigma \times I$ up to ambient isotopy in $\Sigma \times I$ and a version of stable equivalence taking into account the extra factors of $I$.
+
+The virtual knots with virtual genus $g_{v} = 0$ correspond to the classical knots, and the virtual knots with virtual genus $v_{g} < 0$ are \textit{strictly} virtual. An example of a strictly virtual knot is given in [figure].
+
+\notered{Talk about how easy/hard is it to compute virtual genus. Is there some fact along the lines of alternating virtual knots' reduced diagrams having minimum virtual genus?}
+
+\notegreen{Have some neat diagrams showing how projecting onto the plane introduces fake (virtual) crossings.}
 
 \chapter{Gordon-Litherland Linking Form}
 
@@ -292,12 +365,6 @@ For a knot $K$, the pair $\Lambda(G_{1}), \Lambda(G_{2})$ of lattices of integer
 
 
 \chapter{Computing Mock Seifert Matrices}
-
-
-\chapter*{Acknowledgements}
-\addcontentsline{toc}{chapter}{Acknowledgements}
-
-Thanks to ...
 
 \newpage
 \printbibliography[title=References]
