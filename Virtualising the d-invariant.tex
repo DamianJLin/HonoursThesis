@@ -46,10 +46,24 @@
 \geometry{bottom = 2.5cm}
 
 %%% Section and Chapter Titling Options
-\titleformat{\chapter}[block]
-  {\normalfont\Large\bfseries}{Chapter \thechapter}{1em}{\Large}
-\titlespacing*{\chapter}{0pt}{40pt}{30pt}
-\titleformat*{\section}{\large\bfseries}
+
+\titleformat{\chapter}[display]
+	{\normalfont\bfseries\LARGE}
+	{\chaptertitlename~\thechapter}
+	{0pc}
+	{{\color{black!30!white}\titlerule[2pt]}\vspace{0.8pc}\normalfont\Large}
+  
+\titleformat{name=\chapter, numberless}[display]
+	{\normalfont\bfseries\LARGE}{}{1pc}
+	{\normalfont\Large}
+  
+\titlespacing*{\chapter}{0pt}{30pt}{40pt}
+
+\titleformat{\section}
+	{\normalfont\bfseries\large}
+	{\normalfont\bfseries\large{\thesection}}
+	{1em}
+	{}
 
 %%% Hyperlink Formatting Options
 \hypersetup{
@@ -182,8 +196,8 @@ We begin with a swift introduction to the rich and marvellous study of tangled-u
 	\begin{subfigure}[b]{0.3 \textwidth}
 		\centering
 		\def\svgscale{0.2}
-		\input{graphics/trefoil.pdf_tex}
-		\caption{\notered{a different knot}}
+		\input{graphics/6-3_knot.pdf_tex}
+		\caption{The knot $6_{3}$.}
 	\end{subfigure}
 	\caption{Some examples of knots, presented through knot diagrams.}
 	\label{fig:knot-examples}
@@ -194,8 +208,9 @@ The natural question that arises as soon as we see something such as in Fig. \re
 
 \begin{figure}[hbt]
 	\centering
-	\includegraphics[width=0.25\linewidth]{graphics/unknot_twisted}
-	\caption{Also the unknot}
+	\def\svgscale{0.2}
+	\input{graphics/unknot_twisted.pdf_tex}
+	\caption{Another diagram for the unknot.}
 	\label{fig:unknot_twisted}
 \end{figure}
 
@@ -213,21 +228,24 @@ Two knot diagrams $D_{1}$ and $D_{2}$ represent equivalent knots if and only if 
 \begin{figure}[H]
 	\centering
 	\hfill
-	\begin{subfigure}[b]{0.3 \textwidth}
+	\begin{subfigure}[b]{0.31 \textwidth}
 		\centering
-		\includegraphics[width=0.7\linewidth]{graphics/reidemeister_1}
+		\def\svgscale{0.19}
+		\input{graphics/reidemeister_1.pdf_tex}
 		\caption{RI}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[b]{0.3 \textwidth}
+	\begin{subfigure}[b]{0.31 \textwidth}
 		\centering
-		\includegraphics[width=0.7\linewidth]{graphics/reidemeister_2}
+		\def\svgscale{0.19}
+		\input{graphics/reidemeister_2.pdf_tex}
 		\caption{RII}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[b]{0.3 \textwidth}
+	\begin{subfigure}[b]{0.31 \textwidth}
 		\centering
-		\includegraphics[width=0.7\linewidth]{graphics/reidemeister_3}
+		\def\svgscale{0.19}
+		\input{graphics/reidemeister_3.pdf_tex}
 		\caption{RIII}
 	\end{subfigure}
 	\caption{The Reidemeister moves.}
@@ -235,17 +253,11 @@ Two knot diagrams $D_{1}$ and $D_{2}$ represent equivalent knots if and only if 
 	\hfill \phantom{1}
 \end{figure}
 
+
 The early study of knot theory by pioneers such as P.G. Tait, C.N. Little and T. Kirkman involved trying to find, by hand, some way to show two knots were equivalent. But Tait himself noted that is was impossible by these means alone to ever prove that two knots were distinct. The modern way that we deal with knots is through invariants. If we define some map from knots to some other class of objects, perhaps a truth value, an polynomial, or a group, and can show that none of the Reidemeister moves, not planar isotopy changes the value of this map, then we have a \textit{knot invariant}. Finally we have a way to prove that two knots are different, for if they take on different invariants there can't be a way to get between them with the invariant-preserving Reidemeister moves, so by Reidemeister's theorem, they must be distinct. However invariants are one-sided in nature -- having different invariants can tell us that two knots are different, but two knots talking on the same value of some invariant doesn't necessitate that they be equivalent knots. Such an invariant would be called a \textit{complete} invariant, and while we now know of a whole zoo of different invariants, we have yet to find what is perhaps the Holy Grail of knot theory: a complete invariant that is also easy to compute.
 
 \section{Alternating Knots, Knot Mutation and the Tait Graphs}
-We call a knot diagram \textit{alternating} if, traversing the diagram, the crossings alternate under and over. Clearly, for every diagram that is alternating, it is possible to construct a non-alternating diagram of an equivalent knot, one simply needs to apply one instance of RI appropriately to any strand of the knot. Hence we define an \textit{alternating knot} as a knot that \textit{has} as alternating diagram. Alternating knots are a particularly interesting class of knots. For low crossing-number, many of the knots are alternating, but this trend quickly reverses as crossing number is increased. Alternating knots have a special connection with a series of conjectures made by Tait in his early attempts to tabulate knots. The most important of these conjectures, in the sense that is implies the others, is known as the flyping conjecture and relates alternating diagrams by moves known as flype moves. A \textit{tangle} in a knot diagram is a region of the plane that is homeomorphic to a disc, such that the knot crosses the boundary of the disc exactly four times, as in Fig. \ref{fig:tangle}. A \textit{flype} move is a diagrammatic move that flips a tangle but does not change the knot presented, as in Fig. \ref{fig:flype}.
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.4\linewidth]{graphics/tangle}
-	\caption{A tangle.}
-	\label{fig:tangle}
-\end{figure}
+We call a knot diagram \textit{alternating} if, traversing the diagram, the crossings alternate under and over. Clearly, for every diagram that is alternating, it is possible to construct a non-alternating diagram of an equivalent knot, one simply needs to apply one instance of RI appropriately to any strand of the knot. Hence we define an \textit{alternating knot} as a knot that \textit{has} as alternating diagram. Alternating knots are a particularly interesting class of knots. For low crossing-number, many of the knots are alternating, but this trend quickly reverses as crossing number is increased. Alternating knots have a special connection with a series of conjectures made by Tait in his early attempts to tabulate knots. The most important of these conjectures, in the sense that is implies the others, is known as the flyping conjecture and relates alternating diagrams by moves known as flype moves. A \textit{tangle} in a knot diagram is a region of the plane that is homeomorphic to a disc, such that the knot crosses the boundary of the disc exactly four times, as in Fig. \ref{fig:kinoshita-terasaka-knot} and \ref{fig:conway-knot}. A \textit{flype} move is a diagrammatic move that flips a tangle but does not change the knot presented, as in Fig. \ref{fig:flype}.
 
 We present the conjecture, which was proven by Menasco and Thistlethwaite in \cite{classification-alternating-links} as the following theorem.
 \begin{theorem}(Tait Flyping Conjecture)
@@ -261,10 +273,26 @@ We present the conjecture, which was proven by Menasco and Thistlethwaite in \ci
 
 We also have ways of constructing new knots from existing ones. If we take a diagram, choose a tangle, and then perform some reflection (up to planar isotopy) of that tangle, either reflecting it left-right or up-down, or across one of the diagonals, the corresponding operation on the knot is known as \textit{mutation}, and the two knots known as \textit{mutants}. Mutants are some of the hardest knots to distinguish, as a number of the key invariants are the same. An example of this is the Conway Knot and the Kinoshita-Terasaka knot (Fig. \ref{fig:kinoshita-terasaka-mutants}).
 
-\begin{figure}[h]
+\begin{figure}[hbt]
 	\centering
-	\includegraphics[width=0.95\linewidth]{graphics/Kinoshita_Terasaka_mutants}
-	\caption{The Kinoshita-Terasaka knot and the Conway knot, an example of two mutants. \notered{Check which one is which!}}
+	\hfill
+	\begin{subfigure}[b]{0.4 \textwidth}
+		\centering
+		\def\svgscale{0.25}
+		\input{graphics/kinoshita-terasaka.pdf_tex}
+		\caption{The Kinoshita-Terasaka Knot}
+		\label{fig:kinoshita-terasaka-knot}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.4 \textwidth}
+		\centering
+		\def\svgscale{0.25}
+		\input{graphics/conway.pdf_tex}
+		\caption{The Conway Knot}
+		\label{fig:conway-knot}
+	\end{subfigure}
+	\hfill \phantom{1}
+	\caption{A famous pair of mutant knots known as the Kinoshita-Terasaka mutants. These knots are the two knots of lowest crossing number that have trivial Alexander polynomial, other than the unknot. The disk of mutation is marked. Diagrams have been recreated from \cite{the-knot-book}.}
 	\label{fig:kinoshita-terasaka-mutants}
 \end{figure}
 
@@ -333,7 +361,14 @@ For a knot $K$, the pair $\Lambda(G_{1}), \Lambda(G_{2})$ of lattices of integer
 \notegreen{Show that can be compressed into the $d$-invariant, and nothing is lost.}
 
 \chapter{Virtual Knots}
-We now introduce the exciting and relatively new theory of virtual knots. Virtual knots are a generalisation of knots that have many different equivalent formulations. \textit{Classical} knots, a term which refers specifically to the kind of knots we have introduced prior to this chapter, have diagrams in the plane, $\R^{2}$, but really they have an extra dimension of `thickness', encoded in the diagram by the under- and over- crossings. Hence we think of knots as embeddings in $\R^{3}$. However we didn't really need a whole $\R$'s worth of extra space. We could easily think of classical knots as living in $\R^{2} \times I$ where $I$ is the unit interval $[0, 1]$. Thinking of knots as embeddings in $\R^{2} \times I$, it becomes natural to ask: what if we replace the plane by another surface; can we have diagrams on other surfaces $\Sigma$ that thicken into knots in $\Sigma \times I$? The answer to these questions is yes, and virtual knots are one such generalisation.
+
+
+We now introduce the exciting and relatively new theory of virtual knots. Virtual knots are a generalisation of knots, and there are many different equivalent formulations of them. We start with the most geometric of the formulations, but we also present a combinatorial and computational definition later.
+
+
+\section{Knots on Closed, Orientable Surfaces}
+
+\textit{Classical} knots, a term which refers specifically to the kind of knots we have introduced prior to this chapter, have diagrams in the plane, $\R^{2}$, but really they have an extra dimension of `thickness', encoded in the diagram by the under- and over- crossings. Hence we think of knots as embeddings in $\R^{3}$. However we didn't really need a whole $\R$'s worth of extra space. We could easily think of classical knots as living in $\R^{2} \times I$ where $I$ is the unit interval $[0, 1]$. Thinking of knots as embeddings in $\R^{2} \times I$, it becomes natural to ask: what if we replace the plane by another surface; can we have diagrams on other surfaces $\Sigma$ that thicken into knots in $\Sigma \times I$? The answer to these questions is yes, and virtual knots are one such generalisation.
 
 In the context of virtual knots, all surfaces of relevance are closed and orientable. \notered{Except the plane which we identify with the sphere? How do we justify this?} (Note that as we are thinking of surfaces as $2$-manifolds embedded in $\R^{3}$, closed is equivalent to compact.) The classification theorem for compact, orientable surfaces is the following.
 
@@ -356,7 +391,9 @@ The virtual knots with virtual genus $g_{v} = 0$ correspond to the classical kno
 
 \notered{Talk about how easy/hard is it to compute virtual genus. Is there some fact along the lines of alternating virtual knots' reduced diagrams having minimum virtual genus?}
 
-\notegreen{Have some neat diagrams showing how projecting onto the plane introduces fake (virtual) crossings.}
+\notegreen{Have some neat diagrams showing how projecting onto the plane introduces fake (virtual) crossings, leading into...}
+
+\section{Knots with Virtual Crossings}
 
 \chapter{Gordon-Litherland Linking Form}
 
