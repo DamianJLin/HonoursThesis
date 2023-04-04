@@ -28,15 +28,15 @@
      inkscape:document-units="mm"
      showgrid="false"
      showguides="true"
-     inkscape:zoom="5.4235129"
-     inkscape:cx="489.53511"
-     inkscape:cy="311.69835"
+     inkscape:zoom="1.9175014"
+     inkscape:cx="404.43257"
+     inkscape:cy="286.57085"
      inkscape:window-width="1920"
      inkscape:window-height="1006"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g1775" />
+     inkscape:current-layer="layer1" />
   <defs
      id="defs2">
     <marker
@@ -46,8 +46,8 @@
        refY="0"
        orient="auto-start-reverse"
        inkscape:stockid="Arrow2"
-       markerWidth="4.6999998"
-       markerHeight="3.4181819"
+       markerWidth="6"
+       markerHeight="4.36363665"
        viewBox="0 0 7.7 5.6"
        inkscape:isstock="true"
        inkscape:collect="always"
@@ -65,8 +65,8 @@
        refY="0"
        orient="auto-start-reverse"
        inkscape:stockid="Arrow2"
-       markerWidth="4.7"
-       markerHeight="3.41818185"
+       markerWidth="6"
+       markerHeight="4.36363666"
        viewBox="0 0 7.7 5.6"
        inkscape:isstock="true"
        inkscape:collect="always"
@@ -495,7 +495,7 @@
       </g>
     </g>
     <path
-       style="fill:none;stroke:#000000;stroke-width:1.381;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow2);marker-end:url(#marker1205)"
+       style="fill:none;stroke:#000000;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow2);marker-end:url(#marker1205)"
        d="m 114.78836,84.460216 h 43.09467"
        id="path3444" />
     <text
@@ -554,12 +554,12 @@
        id="text4027"><tspan
          x="269.61954"
          y="135.49973"
-         id="tspan4579">$</tspan><tspan
+         id="tspan5874">$</tspan><tspan
          x="269.61954"
          y="100009.63"
-         id="tspan4583"><tspan
+         id="tspan5878"><tspan
            dx="0 3.9369848 7.704649 5.9372387 9.89538 9.89538 5.9372368 4.6989899 4.0216446 6.0536537 4.0216446"
-           id="tspan4581">\Gamma_{2}$</tspan></tspan></text>
+           id="tspan5876">\Gamma_{2}$</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
