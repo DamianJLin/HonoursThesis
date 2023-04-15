@@ -28,6 +28,10 @@
 \usepackage{subcaption}
 
 
+%%% Epigraph
+\usepackage{epigraph}
+
+
 %%% Listings
 \usepackage{listings}
 \usepackage{lstfiracode}
@@ -72,6 +76,11 @@
     citecolor={blue!60!black},
     urlcolor={blue!80!black}
 }
+
+%%% Epigraph Options and Setup
+\setlength\epigraphwidth{0.6\textwidth}
+\setlength{\epigraphrule}{0pt}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -172,14 +181,15 @@ In order to keep this text relatively self-contained, we begin in Chapter 1 with
 
 Thanks to ...
 
-We would like to thank Hans Boden for an insight into the slick proof of the proposition in Chapter 5.
+We would like to thank Hans Boden for an insight into the proof of the proposition in Chapter 5.
 
 
 \chapter{Knots and the Lattice of Integer Flows}
+\epigraph{\itshape ``A knot!'' said Alice, ``oh, do let me help to undo it!''\\``I shall do nothing of the sort!'' said the mouse.}{--- Lewis Carroll, \textit{Alice's Adventures in Wonderland}}
 
 \section{Knots and Knot Invariants}
 
-We begin with a swift introduction to the rich and marvellous study of tangled-up pieces of string: the theory of knots. Despite being a complex and intricate field, any child can intuitively grasp the concept of a knot as a closed loop of string sitting in space. To formalise this and remove any pathological examples that are inconsistent with the intuition of our inner child, we define a \textit{knot} to be an injective embedding of the circle into $3$-space, $K: \S^{1} \lhook\joinrel\longrightarrow \R^{3}$. The requirement that the embedding be injective ensures that the string does not intersect itself.
+We begin with a swift introduction to the rich and marvellous study of tangled-up pieces of string: the theory of knots. Despite being a complex and intricate field, any child can intuitively grasp the concept of a knot as a closed loop of string sitting in space. To formalise this and remove any pathological examples that are inconsistent with this intuition, we define a \textit{knot} to be an injective embedding of the circle into $3$-space, $K: \S^{1} \lhook\joinrel\longrightarrow \R^{3}$. The requirement that the embedding be injective ensures that the string does not intersect itself.
 
 \begin{figure}[hbt!]
 	\centering
@@ -210,17 +220,32 @@ We begin with a swift introduction to the rich and marvellous study of tangled-u
 	\hspace*{\fill} 
 \end{figure}
 
-The example in Fig.~\ref{fig:unknot_twisted} shows a knot that can be `untwisted' to look like the example in Fig.~\ref{fig:unknot}. In general, we do not distinguish between knots if there is some way to deform one, without breaking the circle or passing it through itself, into the other. Hence we say two knots $K_{1}$ and $K_{2}$ are \textit{equivalent} or equal if there is some homeomorphism of the ambient space $\R^{3}$ that restricts to a homeomorphism of the knots. We call this notion of equivalence \textit{ambient isotopy}.
+The example in Fig.~\ref{fig:unknot-twisted} shows a knot that can be `untwisted' to look like the example in Fig.~\ref{fig:unknot}. In general, we do not distinguish between knots if there is some way to deform one, without breaking the circle or passing it through itself, into the other. Hence we say two knots $K_{1}$ and $K_{2}$ are \textit{equivalent} or equal if there is some homeomorphism of the ambient space $\R^{3}$ that restricts to a homeomorphism of the knots. We call this notion of equivalence \textit{ambient isotopy}.
 
 \begin{figure}[hbt]
 	\centering
-	\def\svgscale{0.2}
-	\input{graphics/unknot_twisted.pdf_tex}
-	\caption{Another diagram for the unknot.}
-	\label{fig:unknot_twisted}
+	\hspace*{\fill}
+	\begin{subfigure}[b]{0.35 \textwidth}
+		\centering
+		\def\svgscale{0.2}
+		\input{graphics/unknot_twisted.pdf_tex}
+		\caption{A less complicated diagram for the unknot.}
+		\label{fig:unknot-twisted}
+	\end{subfigure}
+	\hspace*{\fill}
+	\begin{subfigure}[b]{0.35 \textwidth}
+		\centering
+		\def\svgscale{0.2}
+		\input{graphics/unknot_goeritz.pdf_tex}
+		\caption{A more complicated diagram for the unknot.}
+		\label{fig:unknot-goertiz}
+	\end{subfigure}
+	\hspace*{\fill}
+	\caption{It can be easy or difficult to tell directly from a diagram what knot it represents. The diagram in (b) is from \cite{notes-on-knot-theory}.}
+	\label{fig:more-unknots}
 \end{figure}
 
-Though a central objective of knot theory it to classify knots up to ambient isotopy, as one might imagine, it can be very hard to write down explicit ambient isotopies directly. In practice we find ourselves using other tools to get the job done. Though we claimed that the objects in Fig.~\ref{fig:knot-examples} were knots, they are really projections of knots onto the plane with markings we call \textit{crossings} to make clear that some \textit{strand} of the knot passes over another strand. We refer to these objects as \textit{knot diagrams} which gives us the terminology we need when we have multiple knot diagrams that represent the same knot such as in  Fig.~\ref{fig:unknot_twisted}. We consider diagrams equivalent under \textit{planar isotopy}: \notered{define}. \notered{It is not obvious when diagrams are equivalent; there are many not-easy-to-tell-are-simple unknot diagrams.} The unknot is not special here -- every knot has many diagrams, in fact infinitely many. For brevity we may say `knot' when we should more strictly have said `knot diagram'. When we wish to emphasise that we are talking about the knot rather than any specific diagram we refer to the `knot type'.
+Though a central objective of knot theory it to classify knots up to ambient isotopy, as one might imagine, it can be very hard to write down explicit ambient isotopies directly. In practice we find ourselves using other tools to get the job done. Though we claimed that the objects in Fig.~\ref{fig:knot-examples} were knots, they are really projections of knots onto the plane with markings we call \textit{crossings} to make clear that some \textit{strand} of the knot passes over another strand. We refer to these objects as \textit{knot diagrams} which gives us the terminology we need when we have multiple knot diagrams that represent the same knot such as in  Fig.~\ref{fig:more-unknots}. We consider diagrams equivalent under \textit{planar isotopy}: \notered{define}. \notered{It is not obvious when diagrams are equivalent; there are many not-easy-to-tell-are-simple unknot diagrams.} The unknot is not special here -- every knot has many diagrams, in fact infinitely many. For brevity we may say `knot' when we should more strictly have said `knot diagram'. When we wish to emphasise that we are talking about the knot rather than any specific diagram we refer to the `knot type'.
 
 Diagrams are much easier to work with than embeddings, and we have the following foundational theorem due to Alexander-Briggs  \cite{types-of-knotted-curves} and independently Kurt Reidemeister \cite{elementary-justification-knot-theory}.
 \begin{theorem}(The Reidemeister Theorem)
@@ -374,6 +399,9 @@ For a knot $K$, the pair $\Lambda(G_{1}), \Lambda(G_{2})$ of lattices of integer
 
 \chapter{Virtual Knots}
 
+\epigraph{\itshape I thought this was the end\\But no my friends, this is when\\We get to do it all again...}{--- The Muppets}
+\epigraph{\itshape ...and now it's virtual...}{--- Jamiroquai}
+
 
 We now introduce the exciting and relatively new theory of virtual knots. Virtual knots are a generalisation of knots, and there are many different equivalent formulations of them. We start with the most geometric of the formulations, but we also present a combinatorial and computational definition later.
 
@@ -412,9 +440,9 @@ The virtual knots with virtual genus $g_{v} = 0$ correspond to the classical kno
 	\label{fig:not-checkerboard-colourable}
 \end{figure}
 
-Instead of drawing virtual knots directly on compact orientable surfaces, for genus $g_{v} \geq 1$, we often draw them on the gluing diagrams of those surfaces. From a textbook theorem of algebraic topology \parencite{algebraic-topology}, the compact orientable surface of genus $g$ is obtained from the $4g$-gon by gluing around the polygon with the pattern $aba^{-1}b^{-1}$,~$cdc^{-1}d^{-1}$,~$\cdots$ continuing on for $g$ iterations, or until all edges have been glued. Figures~\ref{fig:not-checkerboard-colourable}~and~\ref{fig:counterexamples} are examples of this, with the surfaces being the torus, $\T^{2}$ and the compact orientable surface of genus 2, $2\T^{2}$, respectively.
+Instead of drawing virtual knots directly on compact orientable surfaces, for genus $g \geq 1$, we often draw them on the gluing diagrams of those surfaces. From a textbook theorem of algebraic topology \parencite{algebraic-topology}, the compact orientable surface of genus $g$ is obtained from the $4g$-gon by gluing around the polygon with the pattern $aba^{-1}b^{-1}$,~$cdc^{-1}d^{-1}$,~$\cdots$ continuing on for $g$ iterations, or until all edges have been glued. Figures~\ref{fig:not-checkerboard-colourable}~and~\ref{fig:counterexamples} are examples of this, with the surfaces being the torus, $\T^{2}$ and the compact orientable surface of genus 2, $2\T^{2}$, respectively.
 
-There is no fast algorithm to compute the virtual genus of a virtual knot, the following theorem from \cite{parity-and-projection} is useful:
+There is no fast algorithm to compute the virtual genus of a virtual knot, however the following theorem from \cite{parity-and-projection} does get us somewhere:
 \begin{theorem}
 	If a diagram of a knot $K$ in a thickened surface $\Sigma \times I$ contains the minimal number of crossings across all diagrams in thickened surfaces, then $\Sigma$ is the minimal genus surface that can support $K$. That is, the genus of $\Sigma$ is the knot's virtual genus.
 \end{theorem}
@@ -536,6 +564,12 @@ Hence for all alternating surface knot diagrams we can define the Tait graph.
 
 \chapter{Gordon-Litherland Linking Form}
 
+\epigraph{\itshape God created the knots. All else in topology is the work of man.}{--- Leopold Kronecker, modified by Dror Bar-Natan}
+
+In particular, we turn our attention to the work of two men: Cameron McA. Gordon and Richard A. Litherland who did \notered{something} \cite{signature-of-a-link}.
+
+Then Hans et. al. made it virtual. It has this interpretation something something double branched covers \cite{gordon-litherland-pairing-thickened-surfaces}.
+
 \chapter{Gauss Codes and Knot Algorithms}
 \notered{Work in pages already written about the algorithm to find the Tait graph.}
 
@@ -577,7 +611,7 @@ where $a_{i}$ is the $i$th coefficient of the Alexander polynomial $\Delta_{A}(t
 \begin{proof}
 The matrix $A$, being a mock Seifert matrix, has odd determinant \cite{mock-seifert-matrices} and is therefore invertible. Hence by the multiplicity of determinants,
 \[\det(tA - A^{\top}) = \det(A)\det(tI - A^{\top}A^{-1})\,.\]
-The last factor here is the characteristic polynomial of $A^{\top}A^{-1}$. It is a well known fact that the 0th and 1st coefficients of the characteristic polynomial of $M$, are $\det(M)$ and $-\operatorname{tr}(M)$ respectively. Hence,
+The last factor here is the characteristic polynomial of $A^{\top}A^{-1}$. It is a well known fact that the zeroth and first coefficients of the characteristic polynomial of $M$, are $\det(M)$ and $-\operatorname{tr}(M)$ respectively. Hence,
 \begin{align*}
 -\dfrac{a_{1}}{a_{0}}	& = \dfrac{\operatorname{tr}(A^{\top}A^{-1})}{\det(A^{\top}A^{-1})}\,,
 \end{align*}
