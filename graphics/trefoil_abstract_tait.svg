@@ -9,7 +9,7 @@
    id="svg5"
    inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
    sodipodi:docname="trefoil_abstract_tait.svg"
-   inkscape:export-filename="trefoil_abtract_tait.pdf"
+   inkscape:export-filename="trefoil_abstract_tait.pdf"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -27,9 +27,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="236.88077"
-     inkscape:cy="405.17219"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="757.66492"
+     inkscape:cy="377.59502"
      inkscape:window-width="1920"
      inkscape:window-height="1006"
      inkscape:window-x="0"
@@ -256,9 +256,7 @@
          id="tspan2610"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Neo Euler';-inkscape-font-specification:'Neo Euler';stroke-width:0.264583"
          x="50.94873"
-         y="93.416969">e<tspan
-   style="font-size:65%;baseline-shift:sub"
-   id="tspan2664">1</tspan></tspan></text>
+         y="93.416969">$e_{1}$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:1.25;font-family:sans-serif;baseline-shift:baseline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -269,9 +267,7 @@
          id="tspan2610-28"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Neo Euler';-inkscape-font-specification:'Neo Euler';baseline-shift:baseline;stroke-width:0.264583"
          x="168.52127"
-         y="95.97493">f<tspan
-   style="font-size:65%;baseline-shift:sub"
-   id="tspan2941">1</tspan></tspan></text>
+         y="95.97493">$f_{1}$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -282,9 +278,7 @@
          id="tspan2610-28-3"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Neo Euler';-inkscape-font-specification:'Neo Euler';stroke-width:0.264583"
          x="199.01425"
-         y="95.888512">f<tspan
-   style="font-size:65%;baseline-shift:sub"
-   id="tspan2944">2</tspan></tspan></text>
+         y="95.888512">$f_{2}$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -295,9 +289,7 @@
          id="tspan2610-28-3-2"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Neo Euler';-inkscape-font-specification:'Neo Euler';stroke-width:0.264583"
          x="229.38248"
-         y="95.389412">f<tspan
-   style="font-size:65%;baseline-shift:sub"
-   id="tspan2946">3</tspan></tspan></text>
+         y="95.389412">$f_{3}$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -308,9 +300,7 @@
          id="tspan2610-2"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Neo Euler';-inkscape-font-specification:'Neo Euler';stroke-width:0.264583"
          x="80.65036"
-         y="142.65256">e<tspan
-   style="font-size:65%;baseline-shift:sub"
-   id="tspan2719">2</tspan></tspan></text>
+         y="142.65256">$e_{2}$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -321,8 +311,6 @@
          id="tspan2610-2-5"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Neo Euler';-inkscape-font-specification:'Neo Euler';stroke-width:0.264583"
          x="110.68368"
-         y="93.687004">e<tspan
-   style="font-size:65%;baseline-shift:sub"
-   id="tspan2774">3</tspan></tspan></text>
+         y="93.687004">$e_{3}$</tspan></text>
   </g>
 </svg>

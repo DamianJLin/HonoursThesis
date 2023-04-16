@@ -1,6 +1,6 @@
 %% Creator: Inkscape 1.2.2 (b0a8486541, 2022-12-01), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'trefoil_abtract_tait.pdf' (pdf, eps, ps)
+%% Accompanies image file 'trefoil_abstract_tait.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{588.33768109bp}%
+    \setlength{\unitlength}{639.72056471bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,15 +50,15 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.45344231)%
+  \begin{picture}(1,0.41605067)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{trefoil_abtract_tait.pdf}}%
-    \put(0.07236385,0.2473519){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}e1\end{tabular}}}}%
-    \put(0.63883529,0.23502749){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}f1\end{tabular}}}}%
-    \put(0.78575227,0.23544386){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}f2\end{tabular}}}}%
-    \put(0.93206817,0.23784855){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}f3\end{tabular}}}}%
-    \put(0.21546806,0.01013193){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}e2\end{tabular}}}}%
-    \put(0.36017035,0.24605085){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}e3\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{trefoil_abstract_tait.pdf}}%
+    \put(0.06655153,0.2265136){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$e_{1}$\end{tabular}}}}%
+    \put(0.58752351,0.21517911){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f_{1}$\end{tabular}}}}%
+    \put(0.72264,0.21556203){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f_{2}$\end{tabular}}}}%
+    \put(0.85720369,0.21777357){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f_{3}$\end{tabular}}}}%
+    \put(0.19816148,0.00834734){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$e_{2}$\end{tabular}}}}%
+    \put(0.33124117,0.22531706){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$e_{3}$\end{tabular}}}}%
   \end{picture}%
 \endgroup%
