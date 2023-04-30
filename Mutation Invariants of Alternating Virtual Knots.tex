@@ -130,6 +130,8 @@
 \newtheorem*{theorem}{Theorem}
 \newtheorem*{proposition}{Proposition}
 \newtheorem*{conjecture}{Conjecture}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{corollary}{Corollary}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -251,9 +253,9 @@ Though a central objective of knot theory it to classify knots up to ambient iso
 	\label{fig:more-unknots}
 \end{figure}
 
-Though we claimed that the objects in Fig.~\ref{fig:knot-examples} were knots, they are really projections of knots onto the plane with markings we call \textit{crossings} to make clear that some \textit{strand} of the knot passes over another strand. We refer to these objects as \textit{knot diagrams}. We consider diagrams equivalent up to planar isotopy as $4$-valent graphs, In other words, diagrams can just as well be thought of as combinatorial objects consisting of a list of crossings with labelled ends, and a pairing (\notered{perfect matching}) describing how the ends connect. So long as the ends are connected in a planar way, the exact path that connects them is unimportant.
+Though we claimed that the objects in Fig.~\ref{fig:knot-examples} were knots, they are really projections of knots onto the plane with markings we call \textit{crossings} to make clear that some \textit{strand} of the knot passes over another strand. We refer to these objects as \textit{knot diagrams}. We consider diagrams equivalent up to planar isotopy as $4$-valent graphs, In other words, diagrams can just as well be thought of as combinatorial objects consisting of a list of crossings with labelled ends, and a pairing \notered{[this seems different from the google definition of perfect matching]} describing how the ends connect. So long as the ends are connected in a planar way, the exact path that connects them is unimportant.
 
-Different diagrams can represent the same knot: for example, the diagrams in Fig.~\ref{fig:unknot} and Fig.~\ref{fig:unknot-twisted}, as the latter could be `untwisted' into the former. It is not always obvious when two diagrams represent the same knot. An example is Fig.~\ref{fig:unknot-goertiz}, yet another diagram for the unknot, but it may not be immediately obvious how this knot can be untangled. The unknot is not special here -- every knot has many diagrams, in fact infinitely many.
+Different diagrams can represent the same knot: for example, the diagrams in Fig.~\ref{fig:unknot} and Fig.~\ref{fig:unknot-twisted}, as the latter could be `untwisted' into the former. It is not always obvious when two diagrams represent the same knot. An example is Fig.~\ref{fig:unknot-goertiz}, yet another diagram for the unknot, but it may not be immediately obvious how this knot can be untangled. The unknot is not special here -- every knot has many diagrams, and there is no upper bound on the number of crossings, as we could continually apply the $R\textit{I}$ Reidemeister move to create diagrams with arbitrarily many crossings for any knot. However, each knot does have a lower bound on the number of crossings any diagram representing it can have, which we call its \textit{crossing number}. For example, the crossing number of the unknot is $0$, and the crossing number of the Trefoil knot is $3$.
 
 Diagrams are easier to work with than embeddings, thanks to the following foundational theorem due to Alexander-Briggs  \cite{types-of-knotted-curves} and independently Kurt Reidemeister \cite{elementary-justification-knot-theory}.
 \begin{theorem}(The Reidemeister Theorem)
@@ -296,20 +298,38 @@ The early study of knot theory by pioneers such as P.G. Tait, C.N. Little and T.
 \section{Alternating Knots, Knot Mutation and the Tait Graph}
 We call a knot diagram \textit{alternating} if, traversing the diagram, the crossings alternate under and over. For every diagram that is alternating, it is possible to construct a non-alternating diagram of an equivalent knot: one simply needs to apply a type \textit{R}I Reidemeister move appropriately to any strand of the knot: for example the alternating diagram of the Trefoil knot in Fig.~\ref{fig:trefoil} transforms into the non-alternating diagram in Fig.~\ref{fig:trefoil-nonalternating}. Hence we define an \textit{alternating knot} as a knot for which can be represented by an alternating diagram. For low crossing-number, that is for knots that can be represented by diagrams with few crossings, many of the knots are alternating, but this trend quickly reverses as crossing number is increased.
 
-\begin{figure}[hbt]
+An alternating knot diagram is \textit{reduced} if there are no crossings that can be immediately removed by an application of the $R\textit{I}$ Reidemeister move. The diagram in Fig.~\ref{fig:trefoil} is a reduced alternating diagram, while the diagram in Fig.~\ref{fig:trefoil-nugatory} is alternating but not reduced.
+
+
+\begin{figure}[hbt!]
 	\centering
-	\def\svgscale{0.23}
-	\input{graphics/trefoil_nonalternating.pdf_tex}
-	\caption{A non-alternating diagram of the Trefoil knot, an alternating knot.}
-	\label{fig:trefoil-nonalternating}
+	\hspace*{\fill}
+	\begin{subfigure}[b]{0.4 \textwidth}
+		\centering
+		\def\svgscale{0.23}
+		\input{graphics/trefoil_nonalternating.pdf_tex}
+		\caption{A non-alternating diagram of the Trefoil knot.}
+		\label{fig:trefoil-nonalternating}
+	\end{subfigure}
+	\hspace*{\fill} \hspace*{\fill}	\hspace*{\fill}
+	\begin{subfigure}[b]{0.4 \textwidth}
+		\centering
+		\def\svgscale{0.23}
+		\input{graphics/trefoil_nugatory.pdf_tex}
+		\caption{An alternating but not-reduced diagram of the Trefoil knot.}
+		\label{fig:trefoil-nugatory}
+	\end{subfigure}
+	\hspace*{\fill} 
+	\caption{Diagrams of the Trefoil knot.}
+	\label{fig:trefoil-diagrams}
 \end{figure}
 
-Tait made a series of conjectures about alternating knots in his early attempts to tabulate knots. The most important of these conjectures, in the sense that is implies the others, is known as the flyping conjecture, and it relates alternating diagrams of the same alternating knot by moves known as flype moves.
+Tait made a series of conjectures about alternating knots in his early attempts to tabulate knots. The most important of these conjectures, in the sense that is implies the others, is known as the flyping conjecture, and it relates reduced alternating diagrams of the same alternating knot by moves known as flype moves.
 
 A \textit{tangle} in a knot diagram is a region of the plane that is homeomorphic to a disc, such that the knot crosses the boundary of the disc exactly four times, as in Fig.~\ref{fig:kinoshita-terasaka-knot} and Fig.~\ref{fig:conway-knot}. A \textit{flype} move is a diagrammatic move that flips a tangle but does not alter the knot type, as in Fig.~\ref{fig:flype}. Tait's Flyping conjecture was proven by Menasco and Thistlethwaite in \cite[p. 166]{classification-alternating-links}:
 
 \begin{theorem}[Flyping Theorem]
-	Any two reduced alternating diagrams which represent the same knot are related by a sequence of finitely many flypes, as seen in Fig.~\ref{fig:flype}.
+	Any two minimal crossing (and therefore reduced) alternating diagrams which represent the same knot are related by a sequence of finitely many flypes, as seen in Fig.~\ref{fig:flype}. \notered{I realised in Greene this applies for minimal crossing (not just reduced) which makes sense thinking about flypes. How then do we prove later on that lattice of integer flows is a truly an invariant of alternating knots (why are the lattices the same for diagrams if, say, one is reduced and one is not)?}
 \end{theorem}
 
 \begin{figure}[hbt]
@@ -378,7 +398,7 @@ To construct the black Tait graph $G_{B}(K)$, we place a vertex in every black r
 
 Either of these graphs retains enough information to construct the other, as they are \textit{planar duals}: that is, if every face in a planar diagram for $G_{B}(K)$ is replaced by a vertex, and edges between vertices in $G_{B}(K)$ replaced by edges between the faces they separate, then $G_{W}(K)$ has been constructed from $G_{B}(K)$ and vice-versa. Hence, we sometimes refer the \textit{the} Tait graph of a knot, as only one is necessary. Later we will examine the more general class of knots in thickened surfaces, for which this duality breaks down.
 
-\begin{figure}[hbt]
+\begin{figure}[h]
 	\centering
 	\hspace*{\fill}
 	\begin{subfigure}[b]{0.3 \textwidth}
@@ -411,7 +431,7 @@ Either of these graphs retains enough information to construct the other, as the
 
 If we have the Tait graph of an alternating diagram of a knot, we can reconstruct the knot diagram by placing a crossing on every edge of the Tait graph, as seen in Fig.~\ref{fig:trefoil-tait-with-crossings}. Connecting up the crossings by strands along the Tait graph, as in Fig.~\ref{fig:trefoil-resconstructed},	 reconstructs the knot diagram, up to planar isotopy.
 
-\begin{figure}[hbt]
+\begin{figure}[h]
 	\centering
 	\hspace*{\fill}
 	\begin{subfigure}[b]{0.3 \textwidth}
@@ -458,20 +478,20 @@ Let $G = (E, V)$ be a finite, connected graph (in which loops and multiple edges
 
 The \textit{lattice of integer flows} of $G$ is the free abelian group $\Lambda(G) = \ker \partial$, along with the inner product induced by the Euclidean inner product on $\Z^{E}$. Equivalently, $\Lambda(G)$ is the first homology group of $G$, with inner products taken in $C_{1}(G)$. While the lattice $\Lambda(G)$ may depend on the orientation of the edges in $G$, its isomorphism class does not, as the isomorphism class of the homology group is independent of orientation, and the Euclidean inner product is preserved by sending an edge to its negation: $\ip{e_{i}}{e_{i}} =  \ip{-e_{i}}{-e_{i}} = 1$, and $\ip{e_{i}}{e_{j}} = \ip{-e_{i}}{e_{j}} = 0$ for $i \neq j$.
 
-As an example,the Tait graphs of the trefoil knot ($3_{1}$ in Rolfsen notation) are shown in Fig.~\ref{fig:trefoil-abstract-tait}. We compute the lattice of integer flows of each of these graphs, $\Lambda(G_{B}(3_{1}))$ and $\Lambda(G_W(3_{1}))$. Rather than use this cumbersome notation, we shorten this to $\Lambda_{W}(K)$ or $\Lambda_{B}(K)$ for the lattice of integer flows of the Tait graph corresponding to the white/black regions, respectively. We orient the graphs arbitrarily to compute the lattice of integer flows, but as we will see the invariant produced is independent of this choice. We start with the more typical lattice of integer flows: that of the Tait graph corresponding to the white region (red in Fig.~\ref{fig:trefoil-abstract-tait}). There are two independent cycles, $-f_{1} + f_{2}$ and $-f_{2} + f_{3}$, so $\Lambda_{B}(3_{1})$ is generated as
-\[\Lambda_{B}(3_{1}) = \langle -f_{1} + f_{2}, -f_{2} + f_{3} \rangle\,.\]
-We are taking inner products in $\Z^{E}$ (that is, in the basis $(f_{1}, f_{2}, f_{3})$), so if $x$ and $y$ are coordinate vectors for $u$, and $v$, of two elements of $\Lambda_{B}(3_{1})$ expressed in the basis $(-f_{1} + f_{2}, -f_{2} + f_{3})$, then
+As an example, let $D$ be the diagram of the Trefoil knot given in Fig.~\ref{fig:tait-example} the Tait graphs of the trefoil knot   are shown in Fig.~\ref{fig:trefoil-abstract-tait}. We compute the lattice of integer flows of each of these graphs, $\Lambda(G_{B}(D))$ and $\Lambda(G_W(D))$. Rather than use this cumbersome notation, we shorten this to $\Lambda_{W}(D)$ or $\Lambda_{B}(D)$ for the lattice of integer flows of the Tait graph corresponding to the white/black regions, respectively. We orient the graphs arbitrarily to compute the lattice of integer flows, but as we will see the invariant produced is independent of this choice. We start with the more typical lattice of integer flows: that of the Tait graph corresponding to the white region (red in Fig.~\ref{fig:trefoil-abstract-tait}). There are two independent cycles, $-f_{1} + f_{2}$ and $-f_{2} + f_{3}$, so $\Lambda_{B}(3_{1})$ is generated as
+\[\Lambda_{B}(D) = \langle -f_{1} + f_{2}, -f_{2} + f_{3} \rangle\,.\]
+We are taking inner products in $\Z^{E}$ (that is, in the basis $(f_{1}, f_{2}, f_{3})$), so if $x$ and $y$ are coordinate vectors for $u$, and $v$, of two elements of $\Lambda_{B}(D)$ expressed in the basis $(-f_{1} + f_{2}, -f_{2} + f_{3})$, then
 \[\langle u, v \rangle = x^{\top}\begin{bmatrix}
 	2  & -1 \\
 	-1 & 2
 \end{bmatrix}y\,.\]
-We call this matrix the \textit{pairing matrix} of the lattice $\Lambda_{B}(3_{1})$ with respect to the basis ${(-f_{1} + f_{2}, -f_{2} + f_{3})}$.
+We call this matrix the \textit{pairing matrix} of the lattice $\Lambda_{B}(D)$ with respect to the basis ${(-f_{1} + f_{2}, -f_{2} + f_{3})}$.
 
 \begin{figure}[hbt]
 	\centering
 	\def\svgscale{0.4}
 	\input{graphics/trefoil_abstract_tait.pdf_tex}
-	\caption{The Tait graphs $G_{B}(3_{1})$ and $G_{W}(3_{1})$.}
+	\caption{The Tait graphs $G_{B}(D)$ and $G_{W}(D)$.}
 	\label{fig:trefoil-abstract-tait}
 \end{figure}
 
@@ -486,20 +506,20 @@ The pairing matrix of a lattice completely describes the lattice, however the pa
 so $P'$ is also a pairing matrix of the lattice with respect to the basis whose basis matrix is $AB$. \notered{Zsuzsi - please check this is correct and an inverse is not missing. It has clearly been a while since 2922.}
 
 
-Continuing with our example, there is a single independent cycle in $G_{W}(3_{1})$, it being $e_{1} + e_{2} + e_{3}$. Hence the pairing matrix of $\Lambda_{W}(3_{1})$ with respect to $( e_{1} + e_{2} + e_{3})$ is $P = [3]$.
+Continuing with our example, there is a single independent cycle in $G_{W}(D)$, it being $e_{1} + e_{2} + e_{3}$. Hence the pairing matrix of $\Lambda_{W}(D)$ with respect to $( e_{1} + e_{2} + e_{3})$ is $P = [3]$.
 
-Since the 1970's, many graph theorists have studied exactly how much information about the graph $G$ is retained by $\Lambda(G)$ \parencite{lattice-of-flows-cuts, torelli-for-graphs-tropical-curves, lattice-of-flows-regular-matroid}. In the next paragraph we see that some information about $G$ is lost.
+We now investigate some properties of the lattice of integer flows. Since the 1970's, many graph theorists have studied exactly how much information about the graph $G$ is retained by $\Lambda(G)$ \parencite{lattice-of-flows-cuts, torelli-for-graphs-tropical-curves, lattice-of-flows-regular-matroid}. In the next paragraph we see that some information about $G$ is lost.
 
-We call and edge $e$ of a graph $G$ a \textit{bridge} if the removal of $G$ from $e$ disconnects $G$, and we say a graph $G$ is \textit{$2$-edge-connected} if $G$ has no bridges. The lattice of integer flows of $G$ is blind to its bridges. If we define $G_{\bullet}$ as $G$ with its bridges contracted: that is, for each bridge $e$, we remove $e$ and identify the adjacent vertices, then $\Lambda(G_{\bullet}) = \Lambda(G)$. This is because the cycles of $G$, and therefore the homology of $G$, do not see bridges.
+We call and edge $e$ of a graph $G$ a \textit{bridge} if the removal of $G$ from $e$ disconnects $G$, and we say a graph $G$ is \textit{$2$-edge-connected} if $G$ has no bridges. The lattice of integer flows of $G$ is blind to its bridges. We define $G_{\bullet}$ as $G$ with its bridges contracted: that is, for each bridge $e$, we remove $e$ and identify the adjacent vertices, then $\Lambda(G_{\bullet}) = \Lambda(G)$. This is because the cycles of $G$, and therefore the homology of $G$, do not see bridges.
 
 A \textit{$2$-isomorphism} between two graphs $G = (E, V)$ and $G' = (E', V')$ is a bijection \({\psi: E \longrightarrow E'}\) which preserves cycles, i.e. $\partial(e_{i} + \cdots + e_{j}) = 0$ if and only if $\partial\left(\psi(e_{i}) + \cdots + \psi(e_{j})\right) = 0$. It is well established that $\Lambda(G)$ is a $2$-isomorphism invariant \parencite{lattice-of-flows-cuts}. Recent work by Su-Wagner and Caporaso-Viviani have also shown that for $2$-edge-connected graphs, $\Lambda(G)$ is a complete $2$-isomorphism invariant \cites[Theorem 3.1.1]{torelli-for-graphs-tropical-curves}[Theorem 1]{lattice-of-flows-regular-matroid}. This is stated in the following theorem.
 
 
-\begin{theorem}
-For two $2$-edge-connected graphs $G$ and $G'$, $\Lambda(G) \cong \Lambda(G')$ if and only if $G$ and $G'$ are $2$-isomorphic. That is, $\Lambda(G)$ is a complete $2$-isomorphism invariant of $2$-edge-connected graphs.
+\begin{theorem}[Torelli Theorem for Graphs \notered{Why this name?}]
+For two $2$-edge-connected graphs $G$ and $G'$, $\Lambda(G) \cong \Lambda(G')$ if and only if $G$ and $G'$ are $2$-isomorphic.
 \end{theorem}
 
-Two graphs $G$ and $G'$ are related by a \textit{Whitney flip} if it is possible to find two disjoint graphs $\Gamma_{1}$, with distinguished vertices $u_{1}$ and $v_{1}$ and $\Gamma_{2}$ with distinguished vertices $u_{2}$ and $v_{2}$, such that the identifications $u_{1} = u_{2} = u$ and $v_{1} = v_{2} = v$ form $G$, and the identifications $u_{1} = v_{2} = u'$ and $v_{1} = u_{2} = v'$ form $G'$. An example of graphs related by a Whitney flip is given in Fig.~\ref{fig:whitney_flip}. \notered{Is this only for planar graphs? Don't think so but check.}
+Two graphs $G$ and $G'$ are related by a \textit{Whitney flip} if it is possible to find two disjoint graphs $\Gamma_{1}$, with distinguished vertices $u_{1}$ and $v_{1}$ and $\Gamma_{2}$ with distinguished vertices $u_{2}$ and $v_{2}$, such that the identifications $u_{1} = u_{2} = u$ and $v_{1} = v_{2} = v$ form $G$, and the identifications $u_{1} = v_{2} = u'$ and $v_{1} = u_{2} = v'$ form $G'$. An example of graphs related by a Whitney flip is given in Fig.~\ref{fig:whitney_flip}.
 
 \begin{figure}[hbt!]
 	\centering
@@ -510,31 +530,46 @@ Two graphs $G$ and $G'$ are related by a \textit{Whitney flip} if it is possible
 	\label{fig:whitney_flip}
 \end{figure}
 
-Greene shows that Whitney flips of It is clear that sequences of Whitney flips only ever transform graphs within their $2$-isomorphism class, as cycles map to cycles. From \cite{2-isomorphic-graphs}, we have the important converse; a Reidemeister-like theorem for $2$-isomorphic graphs.
+It is clear that sequences of Whitney flips only ever transform graphs within their $2$-isomorphism class, as cycles map to cycles. From \cite{2-isomorphic-graphs}, we have the important converse; a Reidemeister-like theorem for $2$-isomorphic graphs.
 
 \begin{theorem}[Whitney's Theorem]
 Two graphs $G$ and $G'$ are $2$-isomorphic if-and-only-if there is a sequence of Whitney flips relating $G$ to $G'$.
 \end{theorem}
 
-It can be easily shown that flype moves correspond to Whitney flips of the Tait graphs of the knot. Since all Tait graphs of reduced \notered{define earlier} alternating knots are $2$-edge-connected, it is an immediate consequence of Whitney's theorem is that the pair $\Lambda(G_{1}), \Lambda(G_{2})$, where $G_{1}$ and $G_{2}$ are the Tait graphs of the knot is an invariant of alternating knots.
+It can be easily shown that flype moves correspond to Whitney flips of the Tait graphs of the knot. From this we obtain the corollary:
 
-Greene examines the effect of both flype moves and mutation on the Tait graph \cite[Proposition 4.5]{lattices-graphs-mutation}:
+\begin{corollary}
+Let $D$ be a knot diagram. The pair $(\Lambda_{B}(D), \Lambda_{W}(D))$ is an invariant of alternating knots.
+\end{corollary}
+
+\begin{proof}
+Let $D_{1}$ and $D_{2}$ be diagrams for the same alternating knot $K$. We may assume they are reduced, as this does not change the lattice of integer flows of the Tait graph. As the flyping theorem is a Reidemeister-like theorem for minimal crossing diagrams \notered{[See flyping theorem not above.]}, $(\Lambda_{B}(D), \Lambda_{W}(D))$ is an invariant of alternating knots.
+\end{proof}
+
+This shows that $\Lambda_{B}(D)$ and $\Lambda_{B}(D)$ is a well-defined function on alternating knots, and henceforth we may write $\Lambda_{B}(K)$ and $\Lambda_{W}(K)$, so long as $K$ is alternating.
+
+Greene examines the effect of both flype moves and mutation on the Tait graph \cite[Lemma 4.5]{lattices-graphs-mutation}:
+
+\begin{lemma}[Greene]
+Depending on the tangle to be mutated, a mutation of $D$ either:
+\begin{itemize}
+\item affects only the planar embedding of the Tait graph, leaving its graph structure unchanged, or
+\item induces a Whitney flip in the Tait graph.
+\end{itemize}
+Conversely, a Whitney flip in the Tait graph induces a mutation in $D$.
+\end{lemma}
+
+This lemma is useful in proving one of Greene's key results: that the lattice of integer flows of the Tait graph is a complete mutation invariant of alternating knots \cite[Proposition 4.4]{lattices-graphs-mutation}.
 
 \begin{theorem}[Greene]
-	Flype moves and mutation of the knot diagram $D$ induce at worst a Whitney flip on the Tait graph. Conversely, a Whitney flip on the Tait graph induces a mutation on $D$.
+Let $K_{1}$ and $K_{2}$ be alternating knots. Then, $\Lambda_{B}(K_{1}) \cong \Lambda_{B}(K_{2})$ and $\Lambda_{W}(K_{1}) \cong \Lambda_{W}(K_{2})$ if an only if $K_{1}$ and $K_{2}$ are mutants.
 \end{theorem}
 
-Greene proves that a mutation of alternating knot diagrams induces at worst a Whitney flip on the the Tait graph, and and a Whitney flip on the Tait graph induces a mutation on the diagram. This completes the proof that the pair of lattices of integer flows of the Tait graph is a complete mutation invariant of alternating knots (Proposition 4.4 in \cite{lattices-graphs-mutation}).
+\begin{proof}
+Let $K_{1}$ and $K_{2}$ be alternating virtual knots. For the forward implication, suppose that $K_{1}$ and $K_{2}$ are mutants, so there is a sequence of mutations from a diagram of $K_{1}$ to a diagram of $K_{2}$. By the lemma above, their Tait graphs $G_{B}(K_{1})$ and $G_{B}(K_{2})$  are related by Whitney flips (as are their respective white Tait graphs). By Whitney's theorem, each of these pairs of graphs are $2$-isomorphic. Hence $\Lambda_{B}(K_{1}) \cong \Lambda_{B}(K_{2})$ and $\Lambda_{W}(K_{1}) \cong \Lambda_{W}(K_{2})$.
 
-\begin{theorem}[Greene]
-We write $\Lambda_{2}(K) \coloneq \left( \Lambda(G_{1}), \Lambda(G_{2}) \right)$ for the pair of the lattices of integer flows of the Tait graphs of a knot. Then
-$\Lambda^{2}(K_{1}) \cong \Lambda^{2}(K_{2})$ if and only if $K_{1}$ and $K_{2}$ are mutants.
-\end{theorem}
-
-Here by $\Lambda^{2}(K_{1}) \cong \Lambda^{2}(K_{2})$, we mean $\Lambda(G_{1,1}) = \Lambda(G_{2, 1})$ and $\Lambda(G_{2,1}) = \Lambda(G_{2, 2})$ where the first index represents the knot and the second represents which Tait graph.
-
-\notegreen{I think this is actually correct as long as we define properly which Tait graph is which and allows us to distinguish the left trefoil from the right. Or perhaps it's better to sidestep this entirely by considering up to mirror image.} \notered{A question remains: Is it good notation?}
-
+For the reverse implication, take two alternating virtual knots such that $\Lambda_{B}(K_{1}) \cong \Lambda_{B}(K_{2})$ and $\Lambda_{W}(K_{1}) \cong \Lambda_{W}(K_{2})$. We may assume them to be reduced, as reduction of a knot does not alter the lattice of integer flows of its Tait graphs. As they are reduced, they are now $2$-edge-connected. So, $G_{B}(K_{1})$ and $G_{B}(K_{2})$ are $2$-isomorphic, and likewise for the Tait graphs corresponding to the white regions of the checkerboard colouring. By Whitney's theorem, there is a sequence of Whitney flips between each of these pairs, which by the lemma above corresponds to a sequence of mutations between $K_{1}$ and $K_{2}$, so they are mutants. \notered{For the reverse implication is it necessary to consider both Tait graphs? What happens if only one pair is isomorphic? Is this possible: i.e. for duals does $\Lambda(G) \cong \Lambda(H) \implies \Lambda(G^{*})$ $\cong$ $\Lambda(H^{*})$?}
+\end{proof}
 
 \section{\notegreen{The $d$-invariant and Heegard-Floer Homology}}
 \notegreen{Show that can be compressed into the $d$-invariant, and nothing is lost.}
@@ -634,7 +669,7 @@ The relevant equivalence relation on diagrams with virtual crossings are not har
 
 There is yet another interpretation of virtual knots that we explore in this paper, a computational definition that is integral to computing invariants of virtual knots. We will explore this later a later chapter.
 
-\section{Mutation and Tait Graph(s) of Virtual Knots}
+\section{Mutation and the Tait Graph for Virtual Knots}
 Having introduced virtual knots, the rest of this chapter will be focussed on constructing a generalisation of the $d$-invariant of \cite{lattices-graphs-mutation}, or rather, the equivalent lattices of integer flows of the Tait graphs of the knot. First we must introduce the tools we used to define this invariant in Chapter 1 into this new virtual setting. We focus on the definition of virtual knots as knots on thickened surfaces under stable equivalence.
 
 There are two types of mutation of virtual knots: disk mutation and surface mutation. \textit{Disk mutation} is directly analogous to mutation of classical knots. We take a disk $D \subseteq \Sigma$ that contains a tangle and flip or rotate it, and the resulting knot is a disk mutant of the original. This is in contrast to \textit{surface mutation}, in which the chosen subset need only have circular boundary, but could contain handles. Surface mutation is a more invasive operation and we do not consider it in the present text. However, future work may lie in investigating the equivalence classes generated by surface mutation. For the rest of this text, mutation, in the virtual context, refers to disk mutation.
@@ -767,4 +802,3 @@ This means that the Kobayashi invariant is weaker than the Alexander polynomial.
 
 
 \end{document}
-
