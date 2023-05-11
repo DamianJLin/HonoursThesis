@@ -118,10 +118,11 @@
 \newcommand{\T}{\mathbb{T}}
 \renewcommand{\S}{\mathbb{S}}
 \newcommand{\ip}[2]{\langle #1, #2 \rangle}
+\newcommand{\inject}{\lhook\joinrel\longrightarrow}
 
 \newcommand{\kob}{\operatorname{kob}}
 
-\DeclareMathOperator{\hash}{\#}
+\newcommand{\hash}{\ensuremath{\mathbin{\#}}}
 
 %%% Drafting Macros
 \newcommand{\notered}[1]{{\color{Red} \textbf{#1}}}
@@ -193,7 +194,7 @@ We would like to thank Hans Boden for an insight into the proof of the propositi
 
 \section{Knots and Knot Invariants}
 
-We begin with a swift introduction to the rich and marvellous study of tangled-up pieces of string: the theory of knots. Despite being a complex and intricate field, any child can intuitively grasp the concept of a knot as a closed loop of string in space. To formalise this and remove any pathological examples that are inconsistent with this intuition, we define a \textit{knot} to be an injective embedding of the circle into $3$-space, $K: \S^{1} \lhook\joinrel\longrightarrow \R^{3}$. The requirement that the embedding be injective ensures that the string does not intersect itself. Fig.~\ref{fig:knot-examples} gives a few example knots.
+We begin with a swift introduction to the rich and marvellous study of tangled-up pieces of string: the theory of knots. Despite being a complex and intricate field, any child can intuitively grasp the concept of a knot as a closed loop of string in space. To formalise this and remove any pathological examples that are inconsistent with this intuition, we define a \textit{knot} to be an injective embedding of the circle into $3$-space, $K: \S^{1} \inject \R^{3}$. The requirement that the embedding be injective ensures that the string does not intersect itself. Fig.~\ref{fig:knot-examples} gives a few example knots.
 
 \begin{figure}[hbt!]
 	\centering
@@ -425,7 +426,7 @@ To a knot diagram, we associate two graphs known as the \textit{Tait graphs}, sh
 		\label{fig:trefoil-checker-tait}
 	\end{subfigure}
 	\hspace*{\fill}
-	\caption{Producing the Tait graph(s) of the trefoil knot.}
+	\caption{Producing the Tait graph(s) of the trefoil knot. \notered{Swap crossings!}}
 	\label{fig:tait-example}
 \end{figure}
 
@@ -513,7 +514,7 @@ The \textit{lattice of integer flows} of $G$ is the free abelian group $\Lambda(
 
 As an example, let $D$ be the diagram of the Trefoil knot given in Fig.~\ref{fig:tait-example} the Tait graphs of the trefoil knot   are shown in Fig.~\ref{fig:trefoil-abstract-tait}. We compute the lattice of integer flows of each of these graphs, $\Lambda(G_{B}(D))$ and $\Lambda(G_W(D))$. Rather than use this cumbersome notation, we shorten this to $\Lambda_{W}(D)$ or $\Lambda_{B}(D)$ for the lattice of integer flows of the Tait graph corresponding to the white/black regions, respectively. We orient the graphs arbitrarily to compute the lattice of integer flows, but as we will see the invariant produced is independent of this choice. We start with the more typical lattice of integer flows: that of the Tait graph corresponding to the white region (red in Fig.~\ref{fig:trefoil-abstract-tait}). There are two independent cycles, $-f_{1} + f_{2}$ and $-f_{2} + f_{3}$, so $\Lambda_{B}(3_{1})$ is generated as
 \[\Lambda_{B}(D) = \langle -f_{1} + f_{2}, -f_{2} + f_{3} \rangle\,.\]
-We are taking inner products in $\Z^{E}$ (that is, in the basis $(f_{1}, f_{2}, f_{3})$), so if $x$ and $y$ are coordinate vectors for $u$, and $v$, of two elements of $\Lambda_{B}(D)$ expressed in the basis $(-f_{1} + f_{2}, -f_{2} + f_{3})$, then
+We are taking inner products in $\Z^{E}$ (that is, in the basis {$(f_{1}, f_{2}, f_{3})$}, so if $x$ and $y$ are coordinate vectors for $u$, and $v$, of two elements of $\Lambda_{B}(D)$ expressed in the basis $(-f_{1} + f_{2}, -f_{2} + f_{3})$, then
 \[\langle u, v \rangle = x^{\top}\begin{bmatrix}
 	2  & -1 \\
 	-1 & 2
@@ -571,7 +572,7 @@ Two graphs $G$ and $G'$ are $2$-isomorphic if-and-only-if there is a sequence of
 
 Our aim now is to show that $\Lambda_{B}(D)$ and $\Lambda_{W}(D)$ are invariants of alternating knots.  In particular, we draw attention to the author's original geometric proof of this fact, in contrast with the topological arguments given in \cite{lattices-graphs-mutation}.
 
-The plan is to use the flyping theorem to relate alternating diagrams of the same knot by sequences of flypes.  We will discover that these translate into sequences of Whitney flips on the Tait graph. Whitney's theorem and the Torelli theorem for graphs will then relate the lattices of integer flows of the Tait graph of each diagram. The main complication will be that the flyping theorem only relates alternating diagrams of prime knots. We begin with some lemmas that help us remedy this situation.
+The plan is to use the flyping theorem to relate alternating diagrams of the same knot by sequences of flypes.  We will discover that these translate into sequences of Whitney flips on the Tait graph \notered{[should probably make this a lemma right?]}. Whitney's theorem and the Torelli theorem for graphs will then relate the lattices of integer flows of the Tait graph of each diagram. The main complication will be that the flyping theorem only relates alternating diagrams of prime knots. We begin with some lemmas that help us remedy this situation.
 
 
 The first lemma is a theorem due to Menasco \cite{closed-incompressible-surfaces}, which has also been aptly paraphrased as ``an alternating knot is prime if and only if it looks prime'' \cite{the-first-two-million-knots}:
@@ -661,16 +662,14 @@ Conversely, a Whitney flip in the Tait graph induces a mutation in $D$.
 A single case in the proof of this lemma can be found in Fig.~\ref{fig:mutation-whitney-flip}. For the full proof including remaining cases consult \cite[Fig. 2-4]{lattices-graphs-mutation}. Greene uses this lemma to prove that the lattice of integer flows of the Tait graph is a complete mutation invariant of alternating knots \cite[Proposition 4.4]{lattices-graphs-mutation}.
 
 \begin{theorem}[Greene]
-Let $K_{1}$ and $K_{2}$ be alternating knots. Then, $\Lambda_{B}(K_{1}) \cong \Lambda_{B}(K_{2})$ if an only if $K_{1}$ and $K_{2}$ are mutants.
+Let $K_{1}$ and $K_{2}$ be alternating knots. Then $K_{1}$ and $K_{2}$ are mutants if and only if  $\Lambda_{B}(K_{1}) \cong \Lambda_{B}(K_{2})$.
 \end{theorem}
 
 \begin{proof}
 Let $K_{1}$ and $K_{2}$ be alternating virtual knots. For the forward implication, suppose that $K_{1}$ and $K_{2}$ are mutants, so there is a sequence of mutations from a diagram of $K_{1}$ to a diagram of $K_{2}$. By the lemma above, their Tait graphs $G_{B}(K_{1})$ and $G_{B}(K_{2})$  are related by Whitney flips. By Whitney's theorem, each of these pairs of graphs are $2$-isomorphic. Since $\Lambda_{B}(G)$ is a $2$-isomorphism invariant, $\Lambda_{B}(K_{1}) \cong \Lambda_{B}(K_{2})$.
 
-For the reverse implication, take two alternating virtual knots such that $\Lambda_{B}(K_{1}) \cong \Lambda_{B}(K_{2})$. We may assume them to be reduced, as reduction of a knot does not alter the lattice of integer flows of its Tait graphs. As they are reduced, they are now $2$-edge-connected. So, by the Torelli theorem for graphs, $G_{B}(K_{1})$ and $G_{B}(K_{2})$ are $2$-isomorphic. By Whitney's theorem, there is a sequence of Whitney flips between each of these pairs, which by the lemma above corresponds to a sequence of mutations between $K_{1}$ and $K_{2}$, so they are mutants.
+For the reverse implication, take two alternating knots such that $\Lambda_{B}(K_{1}) \cong \Lambda_{B}(K_{2})$. We may assume them to be reduced, as reduction of a knot does not alter the lattice of integer flows of its Tait graphs. As the knots are reduced, their Tait graphs $2$-edge-connected. So, by the Torelli theorem for graphs, $G_{B}(K_{1})$ and $G_{B}(K_{2})$ are $2$-isomorphic. By Whitney's theorem, there is a sequence of Whitney flips between each of these pairs, which by the lemma above corresponds to a sequence of mutations between $K_{1}$ and $K_{2}$, so they are mutants.
 \end{proof}
-
-This justifies the use of notation $\Lambda(K)$ in the next section. However, since this duality breaks down in the context of knots in thickened surfaces, we retire this notation after this chapter.
 
 \section{\notegreen{Heegaard-Floer Homology and the $d$-invariant}}
 \notegreen{Show that can be compressed into the $d$-invariant, and nothing is lost.}
@@ -683,7 +682,8 @@ This justifies the use of notation $\Lambda(K)$ in the next section. However, si
 
 Heegaard-Floer homology is a homology theory introduced in a series of papers by Peter Ozsv\'ath and Zoltan Sz\'abo at the turn of the 21st century. The theory consists of a powerful set of topological invariants that fit within a topological quantum field theory. It has proven to be incredibly useful in low-dimensional topology.
 
-The lattice of integer flows of the Tait graph of a knot can be reduced into an equivalent, more compact invariant. This so-called the $d$-invariant of the lattice of integer flows of its Tait graph (which we will refer to as the `lattice-theoretic' $d$-invariant) is constructed in \cite{lattices-graphs-mutation}, and shown to be equivalent to a construction from Heegaard-Floer' homology: the $d$-invariant of the of the double branched-cover of of the knot (which we will refer to as the `Heegaard-Floer' $d$-invariant).
+The lattice of integer flows of the Tait graph of a knot can be reduced into an equivalent, more compact invariant. This so-called the $d$-invariant of the lattice of integer flows of its Tait graph (which we will refer to as the `lattice-theoretic' $d$-invariant) is constructed in \cite{lattices-graphs-mutation}, and shown to be equivalent to a construction from Heegaard-Floer' homology: the $d$-invariant of the of the double branched-cover of of the knot (which we will refer to as the `Heegaard-Floer' $d$-invariant). 
+\notered{Below we briefly review the construction of the $d$-onvariant from the l.oif. Thheconnect with HF homology. We will stick to the lattice of loif.}
 
 In particular, Greene shows that instead of considering the whole lattice $\Lambda_{B}(K)$, it suffices to look at a particular coset of the dual lattice called the \textit{characteristic coset}:
 \[\operatorname{Char} \Lambda = \left\{ \chi \in \Lambda^{*} \ \Big|\  \langle\chi,\lambda\rangle \equiv \langle\lambda,\lambda\rangle \pmod 2\  \forall \lambda \in \Lambda \right\}\,.\]
@@ -700,52 +700,94 @@ The $d$-invariant is a scaled function that takes an element of the quotient $(\
 We now introduce the exciting and relatively new theory of virtual knots. Virtual knots are a generalisation of knots, and there are many different equivalent formulations of them. We start with the most geometric of the formulations, but we also present a combinatorial and computational definition later.
 
 
-\section{Knots in Thickened Surfaces}
+\section{Knots in Thickened Surfaces under Stable Equivalence}
+
+In this section we will largely follow the work of Kuperberg \cite{what-is-a-virtual-link} and Carter-Kamada-Saito \cite{stable-equivalence-virtual-cobordisms} and give the geometric definition of virtual knots as knots in thickened surfaces.
 
 \textit{Classical} knots, a term which refers specifically to the kind of knots we have introduced prior to this chapter, have diagrams in the plane, $\R^{2}$, but really they have an extra dimension of `thickness', encoded in the diagram by the under- and over- crossings. Hence we think of knots as embeddings in $\R^{3}$. However we didn't really need a whole $\R$'s worth of extra space. We could easily think of classical knots as living in a thickened plane, $\R^{2} \times I$ where $I$ is the unit interval $[0, 1]$. Thinking of knots as embeddings in $\R^{2} \times I$, it becomes natural to ask: what if we replace the plane by another surface; can we have diagrams on other surfaces $\Sigma$ and therefore knots in \textit{thickened surfaces} $\Sigma \times I$? The answer to these questions is yes, and virtual knots are one such generalisation.
 
-In the context of virtual knots, all surfaces of relevance are closed and orientable, with the exception of the plane. However, knots diagrams on the plane are equivalent to knot diagrams on the sphere. The only extra move allowed by this compactification is that a strand on one side of a knot diagram can be taken over to the other \notered{[figure]} by isotopy of moving it around the back side of the sphere. However this was already allowed on the plane by a sequence of R\textit{III} moves.  The classification theorem for compact, orientable surfaces is the following.
+In the context of virtual knots, all surfaces of relevance are closed and orientable, with the exception of the plane. However, knots diagrams on the plane are equivalent to knot diagrams on the sphere. The only extra move allowed by this one-point compactification is that a strand on one side of a knot diagram can be taken over to the other \notered{[figure]} by isotopy of moving it around the back side of the sphere. However this was already allowed on the plane by a sequence of R\textit{III} moves.  The classification theorem for compact, orientable surfaces is the following.
 
 \begin{theorem}[Classification of compact, orientable surfaces]
 Each connected component of a compact, orientable surface is homeomorphic to:
 \begin{itemize}
-	\item the sphere, or
-	\item a connected sum of $g$ tori, for $g \geq 1$.
+	\item the sphere, $\S^{2}$, (which we identify with the plane by the discussion above), or
+	\item a connected sum of $g$ tori, $g\T^{2}$, for $g \geq 1$.
 \end{itemize}
 \end{theorem}
 Hence there is a bijection between connected components of compact, orientable surfaces given by the \textit{genus}, $g$ of the surface, the number of handles.
 
-We now follow the work of Kuperberg \cite{what-is-a-virtual-link} and Carter-Kamada-Saito \cite{stable-equivalence-virtual-cobordisms} and give the geometric definition of virtual knots. A \textit{surface knot diagram} on $\Sigma$ is the analogue of a classical knot diagram, but drawn on a general closed, oriented, connected surface, $\Sigma$ no longer necessarily the plane. To represent diagrams in this section we use the letter $P$, for `projection', another common word for `diagram', as $D$ will be reserved for disks. The equivalence relation on surface knot diagrams is given by the Reidemeister moves and surface isotopy (the surface-analogue of planar isotopy) on $\Sigma$.
+A \textit{surface knot diagram} on $\Sigma$ is the analogue of a classical knot diagram, but drawn on a general closed, oriented, connected surface, $\Sigma$ no longer necessarily the plane. To represent diagrams in this section we use the letter $P$, for `projection', another common word for `diagram', as $D$ will be reserved for disks. The equivalence relation on surface knot diagrams is given by the Reidemeister moves and surface isotopy (the surface-analogue of planar isotopy) on $\Sigma$.
 
-We can define knots on thickened surfaces so that they relate to surface knot diagrams, in the same way knots and knot diagrams are related in the classical context. A \textit{knot in a thickened surface} $\Sigma \times I$ is an embedding $K:S^{1} \lhook\joinrel\longrightarrow \Sigma \times I$ up to ambient isotopy in $\Sigma \times I$.
-
-To define virtual knots in thickened surfaces of any genus under another equivalence relation: stable equivalence, defined based on the following two operations. We give the definitions on the level of surface knot diagrams, but note that they generalise to knots in thickened surfaces accounting for the extra factor of $I$. The operation of \textit{stabilisation} consists of finding two disks $D_{1}$ and $D_{2}$ in $\Sigma$ that do not intersect $P$. We then remove $D_{1}$ and $D_{2}$ from $\Sigma$ and glue a handle whose boundary is $D_{1} \cup D_{2}$. Intuitively, stabilisation is `adding a handle' to $\Sigma$, and any newly added handle does not interact with $P$. The reverse operation \textit{destabilisation} removes a handle. Performing this operation, we take a cylinder $Y$ that does not intersect $P$, and such that the circle that $Y$ deformation-retracts to is not null-homologous, removes it, and cap both resulting boundary circles. The point of stable equivalence is to identify two knot diagrams $P_{1}$ and $P_{2}$ that would otherwise be identical, except for living on surfaces $\Sigma_{1}$ and $\Sigma_{2}$ of different genus $g_{1}$ and $g_{2}$; for one surface must have a greater genus than the other $g_{1} < g_{2}$. But since the diagrams are identical, there must be at least $g_{2} - g_{1}$ handles in the diagram on $\Sigma_{2}$ that are unnecessary and don't interact in any way with the diagram $P_{2}$.
-
-Hence we define a \textit{virtual knot} as an equivalence class of knots on thickened surfaces under stable equivalence. Each virtual knot has a minimum genus surface, in which all of the handles interact with the the knot, and this is known as its virtual genus.
-
-The virtual knots with virtual genus $g_{v} = 0$ correspond to the classical knots, and the virtual knots with virtual genus $g_{v} < 0$ are \textit{strictly} virtual. An example of a strictly virtual knot is given in Fig.~\ref{fig:not-checkerboard-colourable}.
-
-\begin{figure}[hbt]
+Instead of drawing surface knot diagrams directly on compact orientable surfaces, for genus $g \geq 1$, we often draw on the gluing diagrams of those surfaces. From a textbook theorem of algebraic topology \parencite{algebraic-topology}, the compact orientable surface of genus $g$ is obtained from the $4g$-gon by gluing around the polygon with the pattern $aba^{-1}b^{-1}$,~$cdc^{-1}d^{-1}$,~$\cdots$ continuing on for $g$ iterations, or until all edges have been glued. Fig.~\ref{fig:surface-knot-diagram-examples} contains examples of this.
+\begin{figure}[hbt!]
 	\centering
-	\def\svgscale{0.35}
-	\input{graphics/2-1_vknot.pdf_tex}
-	\caption{Virtual knot $2_{1}$, a strictly virtual knot that is not checkerboard colourable. This knot is drawn on the gluing diagram of the torus, $\T^{2}$, its thickened surface of minimal genus.}
-	\label{fig:not-checkerboard-colourable}
+	\hspace*{\fill}
+	\begin{subfigure}[b]{0.3 \textwidth}
+		\centering
+		\def\svgscale{0.26}
+		\input{graphics/unknot_on_surface.pdf_tex}
+		\caption{A surface knot diagram on $\Sigma = \T^{2}$}
+		\label{fig:torus-unknot}
+	\end{subfigure}
+	\hspace*{\fill}
+	\begin{subfigure}[b]{0.3 \textwidth}
+		\centering
+		\def\svgscale{0.26}
+		\input{graphics/3-7_vknot.pdf_tex}
+		\caption{A more complicated surface knot diagram on $\Sigma = \T^{2}$}
+		\label{fig:torus-vknot}
+	\end{subfigure}
+	\hspace*{\fill}
+	\begin{subfigure}[b]{0.3 \textwidth}
+		\centering
+		\def\svgscale{0.24}
+		\input{graphics/6-90101_vknot_small.pdf_tex}
+		\caption{A surface knot diagram on $\Sigma = 2\T^{2}$}
+		\label{fig:2torus-vknot}
+	\end{subfigure}
+	\caption{Some examples of surface knot diagrams. Note that classical knot diagrams would also be examples with $\Sigma = S^{2}$.}
+	\label{fig:surface-knot-diagram-examples}
+	\hspace*{\fill} 
 \end{figure}
 
-Instead of drawing virtual knots directly on compact orientable surfaces, for genus $g \geq 1$, we often draw them on the gluing diagrams of those surfaces. From a textbook theorem of algebraic topology \parencite{algebraic-topology}, the compact orientable surface of genus $g$ is obtained from the $4g$-gon by gluing around the polygon with the pattern $aba^{-1}b^{-1}$,~$cdc^{-1}d^{-1}$,~$\cdots$ continuing on for $g$ iterations, or until all edges have been glued. Figures~\ref{fig:not-checkerboard-colourable}~and~\ref{fig:counterexamples} are examples of this, with the surfaces being the torus, $\T^{2}$ and the compact orientable surface of genus 2, $2\T^{2}$, respectively.
+We can define knots on thickened surfaces so that they relate to surface knot diagrams, in the same way knots and knot diagrams are related in the classical context. A \textit{knot in a thickened surface} $\Sigma \times I$ is an embedding $K:S^{1} \inject \Sigma \times I$ up to ambient isotopy in $\Sigma \times I$. We denote a knot $K$ in thickened surface $\Sigma \times I$ as $(K, \Sigma)$.
 
-There is no fast algorithm to compute the virtual genus of a virtual knot, however the following theorem from \cite{parity-and-projection} does allow some progress:
-\begin{theorem}
+We say a surface knot diagram is \textit{cellularly embedded} if $\Sigma \smallsetminus P$ is a union of disks. Being cellularly embedded is a way to check that a knot `fully utilises' the surface it is drawn on, in the following sense. Observe that in the surface knot diagrams in Fig.~\ref{fig:torus-vknot} and Fig.~\ref{fig:2torus-vknot} are cellularly embedded, and they surface knot diagrams could not be drawn on a surface of lower genus. If, for example, one was to try draw the surface knot diagram in Fig.~\ref{fig:torus-vknot} on the plane, connecting the two pairs of loose ends on the left and right side of the diagram would block the pairs of loose ends on the top and bottom from being connected without introducing extra crossings and changing the knot. In contrast, the surface knot diagram in Fig.\ref{fig:torus-unknot} could be drawn on the plane/sphere, however we don't yet have a notion of equivalence for surface knot diagrams (or knots in thickened surfaces) that live on surfaces of different genus. This example motivates the definition of virtual knots to come. Note that while a knot having a non-cellularly-embedded diagram could be drawn on a surface of lower genus, the converse does not hold: a knot that is cellularly embedded might still be able to be drawn on a diagram of lower genus, such as in Fig.~\ref{fig:cellular-embedding-tricky} \notered{make this clearer}.
+
+\begin{figure}[hbt!]
+	\centering
+	\def\svgscale{0.56}
+	\input{graphics/torus_unknot_tricky.pdf_tex}
+	
+	\caption{An example of surface knot diagram which transforms to a not-cellularly-embedded diagram only after some Reidemeister moves. The single face in the final diagram contains a non-homologically-trivial cycle, marked in red, and hence is not contractible (a disk).}
+	\label{fig:cellular-embedding-tricky}
+\end{figure}
+
+To define virtual knots we take knots in thickened surfaces of any genus and quotient by the equivalence relation of stable equivalence, defined based on the following two operations. We give these definitions on the level of surface knot diagrams, but note that they generalise to knots in thickened surfaces by accounting for the extra factor of $I$. The operation of \textit{stabilisation} consists of finding two disks $D_{1}$ and $D_{2}$ in $\Sigma$ that do not intersect $P$. We then remove $D_{1}$ and $D_{2}$ from $\Sigma$ and glue a handle whose boundary is $D_{1} \cup D_{2}$. Intuitively, stabilisation is `adding a handle' to $\Sigma$, and any newly added handle does not interact with $P$. The reverse operation \textit{destabilisation} removes a handle. Performing this operation, we take a cylinder $Y$ that does not intersect $P$, and such that the circle that $Y$ deformation-retracts to is not null-homologous, removes it, and cap both resulting boundary circles. The point of stable equivalence is to identify two knot diagrams $P_{1}$ and $P_{2}$ that would otherwise be identical, except for living on surfaces $\Sigma_{1}$ and $\Sigma_{2}$ of different genus as in the example above.
+
+Hence we define a \textit{virtual knot} as an equivalence class of knots on thickened surfaces under stable equivalence. Two surface knot diagrams represent the same virtual knot if there is some sequence of Reidemeister moves and stabilisation/destabilisation moves from one diagram to the other.
+
+The \textit{virtual genus} $g_{v}$ of a virtual knot is defined as the minimum genus of all surface knot diagrams for that virtual knot. The virtual knots with virtual genus $g_{v} = 0$ correspond to the classical knots, and the virtual knots with virtual genus $g_{v} < 0$ are \textit{strictly} virtual. The virtual knots in Fig.~\ref{fig:torus-vknot}~and~\ref{fig:2torus-vknot} are examples of strictly virtual knots.
+
+An important question to ask is whether classical knot theory embeds faithfully into virtual knot theory: are there distinct classical knots which, when considered as virtual knots are rendered equivalent by stable equivalence? A uniqueness result of Kuperberg dispels this possibility and gives the even stronger result that we \textit{never} need to go `up' in genus to check whether virtual knots are equivalent.
+
+\begin{theorem}[Kuperberg's Theorem]
+If $K$ and $J$ are two minimal genus representatives of the same virtual knot of virtual genus $v_{g}$, then they are equivalent as knots in thickened surfaces of genus $v_{g}$.
+\end{theorem}
+
+However, as was illustrated in Fig.~\ref{fig:cellular-embedding-tricky}, the virtual genus of a virtual knot is not necessarily obvious, and furthermore, there is no known algorithm to compute the it. However the following theorem from \cite{parity-and-projection}, does allow some progress for low crossing number:
+\begin{theorem}[Manturov]
 	If a diagram of a knot $K$ in a thickened surface $\Sigma \times I$ contains the minimal number of crossings across all diagrams in thickened surfaces, then $\Sigma$ is the minimal genus surface that can support $K$. That is, the genus of $\Sigma$ is the knot's virtual genus.
 \end{theorem}
-Applying this theorem to the classification of virtual knot diagrams up to $6$ crossings by Jeremy Green \cite{virtual-knot-table} we can determine the virtual genus of virtual knots up to $6$ crossings. \noteblue{More about this computation will be explained in Chapters 4 and 5.}
+In combination with Kuperberg's theorem, this says we also never need to go `up' in genus to reduce crossing number. It suffices to reduce the genus as much as possible, and then perform Reidemeister moves.
+
 
 \section{Knots with Virtual Crossings}
 
-The original formulation of virtual knots (and their discovery) is due to Kauffman in 1996 \cite{virtual-knot-theory}. This formulation can be related to the formulation of equivalence classes of diagrams on $\Sigma$ by projecting the surface $\Sigma$ the onto the plane. Doing this creates two types of crossings. Those that did actually come from a crossing on $\Sigma$, we call \textit{classical crossings}, and they have the usual over- and under- strands as determined by the projection. Those that did not exist on $\Sigma$ but rather are an artefact of the projection we call \textit{virtual crossings}. For strictly virtual knots these virtual crossings will be necessary, as the $4$-valent graph that the knot represents is not planar.
+We take a quick detour to relate knots in thickened surfaces modulo stabilisation to an equivalent definition of virtual knots. The original formulation of virtual knots (and their discovery) is due to Kauffman in 1996 \cite{virtual-knot-theory}. This formulation can be related to the formulation of equivalence classes of diagrams on $\Sigma$ by projecting the surface $\Sigma$ the onto the plane. Doing this creates two types of crossings. Those that did actually come from a crossing on $\Sigma$, we call \textit{classical crossings}, and they have the usual over- and under- strands as determined by the projection. Those that did not exist on $\Sigma$ but rather are an artefact of the projection we call \textit{virtual crossings}. For strictly virtual knots these virtual crossings will be necessary, as the $4$-valent graph that the knot represents is not planar.
 
-\begin{figure}[hbt]
+\begin{figure}[h!]
 	\centering
 	\hspace*{\fill}
 	\begin{subfigure}[b]{0.35 \textwidth}
@@ -784,16 +826,64 @@ The original formulation of virtual knots (and their discovery) is due to Kauffm
 
 The relevant equivalence relation on diagrams with virtual crossings are not hard to deduce. We have the three Reidemeister moves which still hold between classical crossings, three corresponding moves similar to the Reidemeister moves but with all classical crossings replaced by virtual crossings, and finally a `triangle move' that moves a `virtual strand' through a crossing.
 
-There is yet another interpretation of virtual knots that we explore in this paper, a computational definition that is integral to computing invariants of virtual knots. We will explore this later a later chapter.
+Invariants can be defined for virtual knots as well. This allows for the tabulation of virtual knots, such as the table by Jeremy Greene \cite{virtual-knot-table}. Green achieved this by computing all possible virtual knot diagrams up to $6$ crossings, determining which are equivalent via virtual Reidemeister moves, and then computing enough invariants distinguish all of these knots. 
 
-\section{Mutation and the Tait Graph for Virtual Knots}
-Having introduced virtual knots, the rest of this chapter will be focussed on constructing a generalisation of the $d$-invariant of \cite{lattices-graphs-mutation}, or rather, the equivalent lattices of integer flows of the Tait graphs of the knot. First we must introduce the tools we used to define this invariant in Chapter 1 into this new virtual setting. We focus on the definition of virtual knots as knots on thickened surfaces under stable equivalence.
+Applying this Manturov's theorem to the classification of virtual knot diagrams up to $6$ crossings by Jeremy Green \cite{virtual-knot-table} we can determine the virtual genus of virtual knots up to $6$ crossings. We use the notation for virtual knots given in this tabulation. More about how virtual knots can be encoded for computation, leading to yet another definition of virtual knots will be given in Chapters 4 and 5.
+
+
+\section{Annular Connected Sums and Prime Virtual Knots}
+Having introduced virtual knots, the rest of this chapter will be focussed on constructing a generalisation of the alternating knot invariant examined in the first chapter. We will do this from the perspective of the lattices of integer flows of the Tait graphs of the virtual knot rather than equivalent $d$-invariant formulation of \cite{lattices-graphs-mutation}. First we must introduce the tools we used in Chapter 1 into this new virtual setting. We focus on the definition of virtual knots as knots on thickened surfaces under stable equivalence.
+
+We define connected sums for knots in thickened surfaces. Since the definition we give plays well with stable equivalence (connected sums of stabilised knots on thickened surfaces remain stabilised), this gives a well-defined definition for virtual knots.
+
+First, we must define connected sums for close orientable surfaces. The \textit{connected sum} of $\Sigma_{1}$ and $\Sigma_{2}$ is the surface $\Sigma_{1} \hash \Sigma_{2}$, obtained by removing a disk each from $\Sigma_{1}$ and $\Sigma_{2}$, then gluing together the resulting boundary circles. As this does not introduce or remove handles, $g(\Sigma_{1} \hash \Sigma_{2}) = g(\Sigma_{1}) + g(\Sigma_{2})$.
+
+The \textit{annular connected sum} of knots $K_{1}$ in thickened $\Sigma_{1}$ and $K_{2}$ in thickened $\Sigma_{2}$, is defined as illustrated in Fig.~\ref{fig:annular-connected-sum}. It is a knot in a thickened surface $\Sigma$ of genus $g(\Sigma_{1}) + g(\Sigma_{2})$. To find the $K$ such that $(K_{1}, \Sigma_{1}) \hash (K_{2}, \Sigma_{2}) = (K, \Sigma)$, we take a disk $D_{1}$ in $\Sigma_{1}$ whose boundary transversely intersects $K_{1}$ at exactly two points, and such that the $K_{1} \cap D$ is unknotted, and a similar disk $D_{2}$ in $\Sigma_{2}$. We then produce $\Sigma$ and $K$ by the connect sum of $\Sigma_{1}$ and $\Sigma_{2}$, gluing together $D_{1}$ and $D_{2}$, such that each point in the two element set $\partial D_{1} \cap K_{1}$ is glued to an element of $\partial D_{2} \cap K_{2}$.
+
+\begin{figure}[hbt!]
+	\centering
+	\def\svgscale{0.6}
+	\input{graphics/annular_connect_sum.pdf_tex}
+	
+	\caption{An example of an annular connected sum of $(K_{1}, \Sigma_{1})$ and $(K_{2}, \Sigma_{2})$ with respect to the gluing disks shown. The knots in thickened surfaces are representatives of virtual knots $3_{7}$ and $2_{1}$.}
+	\label{fig:annular-connected-sum}
+\end{figure}
+
+\notered{Check the rest of this section with Hans and Zsuzsi.} 
+
+Unlike in the classical case, this is not in general well-defined \cite{virtual-knots-and-links} as there is no way to move $(K_{2}, \Sigma_{2})$ around $(K_{1}, \Sigma_{1})$. Hence, this definition depends on the choice of gluing disks $D_{1}$ and $D_{2}$. However, if $\Sigma_{1} = \Sigma_{2} = \S^{2}$, then this definition is equivalent to the connected sum of classical knots, and well-defined. In general, we write $(K_{1}, \Sigma_{1}) \hash (K_{2}, \Sigma_{2})$ for any of the annular connected sums of $(K_{1}, \Sigma_{1})$ and $(K_{2}, \Sigma_{2})$.
+
+An annular connected sum $(K_{1}, \Sigma_{1}) \hash (K_{2}, \Sigma_{2})$ where one of the summands is the unknot in $\S^{2} \times I$ the sum is said to be \textit{trivial}. A knot in a thickened surface is \textit{prime} if it is not the non-trivial annular connected sum of any two knots in thickened surfaces.
+
+Using these definitions, we extend the connected sum to virtual knots. The \textit{connected sum} of two virtual knots as the annular connected sum of their thickened surface representatives. This is a multivalued operation, as it depends both on the representatives chosen, as well as disks chosen in the annular connected sum.
+
+A connected sum of virtual knots $K = K_{1} \hash K_{2}$ \notered{[change notation $K$ to $V$?]} is \textit{trivial} if one of the summands is the stable equivalence class of the unknot in $S^{2} \times I$ and the other is $K$. A virtual knot (other than the trivial knot) is \textit{prime} if there is no way to write it as a non-trivial connected sum.
+
+Despite the ill-defined nature of the annular connected sum, the decomposition of knots in thickened surfaces into their constituent primes behaves in a nice way on a certain subset of all knots on thickened surfaces. The theorem analogous to Schubert's theorem in the virtual setting is a result of Matveev \cite[Theorem 13]{roots-and-decompositions}.
+
+\begin{theorem}[Matveev's Theorem]
+Any virtual knot can be decomposed into a connected sum of prime and trivial virtual knots. The prime summands in this decomposition are determined uniquely, that is, depend only on the initial virtual knot.
+\end{theorem}
+
+There is also a weaker version of primality for knots, given by Howie-Purcell \cite{geometry-of-alternating-links-on-surfaces}. \notered{Give definition.}
+
+
+\section{Alternating Virtual Knots and Virtual Knot Mutation}
+In a similar vein to classical knots, we call a surface knot diagram \textit{alternating} if the crossings alternate over and under as the knot is traversed. A knot in a thickened surface is \textit{alternating} if it has an alternating surface knot diagram. An alternating surface knot diagram implies that the thickened surface knot it represents is alternating, but not every surface knot diagram of a thickened surface knot is alternating, for the same reason as in the classical case.
+
+Alternating virtual knots are also something of significance and there are many results specific to them. \notered{Such as? Perhaps ask Hans? The result about their spanning surfaces being positive-definite and negative-definite should wait till Chapter 3.}
+
+\begin{theorem}[Virtual Flyping Theorem]
+Let $(K, \Sigma)$ be a knot in a thickened surface. Let $D$ and $E$ be weakly prime, alternating, cellularly embedded surface knot diagrams of $K$. Then $D$ and $E$ are related by a sequence of flypes on $\Sigma$. \notered{Weakly prime diagrams have not been defined.}
+\end{theorem}
 
 There are two types of mutation of virtual knots: disk mutation and surface mutation. \textit{Disk mutation} is directly analogous to mutation of classical knots. We take a disk $D \subseteq \Sigma$ that contains a tangle and flip or rotate it, and the resulting knot is a disk mutant of the original. This is in contrast to \textit{surface mutation}, in which the chosen subset need only have circular boundary, but could contain handles. Surface mutation is a more invasive operation and we do not consider it in the present text. However, future work may lie in investigating the equivalence classes generated by surface mutation. For the rest of this text, mutation, in the virtual context, refers to disk mutation.
 
-In the classical case, all knots were checkerboard colourable, so the Tait graph could always be produced. Furthermore, only one Tait graph was necessary to encode an alternating knot, as Tait the two graphs were always planar duals to each other. In the virtual case, neither of these facts hold.
+\section{Checkerboard Colourings and Tait Graphs of Virtual Knots}
 
-If we take a knot in a thickened surface $\Sigma$ that is checkerboard colourable, such as that in Fig.~\ref{fig:4-105-vknot}, it is always possible to put it on a new surface $\Sigma'$ on which it will not be checkerboard colourable. We do this in Fig.~\ref{fig:4-105-vknot-with-handle} by adding a handle between a black region and a white one, unifying them. The resulting region now needs to be both black and white, so the knot on $\Sigma'$ is not checkerboard colourable. Hence when trying to checkerboard colour virtual knots, the surface needs to be taken into account.
+In the classical case, all knots were checkerboard colourable, so the Tait graph could always be produced. Furthermore, only one Tait graph was necessary to encode an alternating knot, as the two Tait graphs were always planar duals to each other. We will see that there are some subtleties in the virtual case.
+
+Not all surface knot diagrams are checkerboard colourable: if we take a knot in a thickened surface $\Sigma$ that is checkerboard colourable, such as that in Fig.~\ref{fig:4-105-vknot}, it is always possible to put it on a new surface $\Sigma'$ on which it will not be checkerboard colourable. We do this in Fig.~\ref{fig:4-105-vknot-with-handle} by adding a handle between a black region and a white one, unifying them. The resulting region now needs to be both black and white, so the knot on $\Sigma'$ is not checkerboard colourable. Hence when trying to checkerboard colour virtual knots, the surface needs to be taken into account.
 
 \begin{figure}[hbt]
 	\centering
@@ -814,7 +904,7 @@ If we take a knot in a thickened surface $\Sigma$ that is checkerboard colourabl
 		\label{fig:4-105-vknot-with-handle}
 	\end{subfigure}
 	\hspace*{\fill} 
-	\caption{Adding a handle can disrupt checkerboard colourability.}
+	\caption{Adding a handle can disrupt checkerboard colourability. \notered{Swap crossings!}}
 	\label{fig:adding-handle-to-4-105}
 \end{figure}
 
@@ -829,20 +919,142 @@ Given a knot in a thickened surface, $K \subset \Sigma \times I$, the following 
 	\end{enumerate} 
 \end{theorem}
 
-Likewise, we say a virtual knot is \textit{checkerboard colourable} if there is a representative that is checkerboard colourable (as a knot in a thickened surface). Note that while Fig.~\ref{fig:4-105-vknot-with-handle} is indeed checkerboard colourable as a virtual knot, it is not checkerboard colourable as a knot in a thickened surface.
+Likewise, we say a virtual knot is \textit{checkerboard colourable} if there is a representative that is checkerboard colourable (as a knot in a thickened surface). Note that while the knot in a Fig.~\ref{fig:4-105-vknot-with-handle} isn't checkerboard colourable as a knot in a thickened $2\T^{2}$, it is indeed checkerboard colourable as a virtual knot, as after destabilisation we have the knot in Fig.~\ref{fig:4-105-vknot}. Not every virtual knot is checkerboard colourable, even on its surface of minimal genus, for example 
 
-For the purposes of generalising the $d$-invariant, we need only concern ourselves with alternating virtual knots -- those virtual knots that can be represented by alternating virtual knot diagrams. Fortunately the following theorem tells us that we will not run into any trouble \cite{jones-polynomial-checkerboard-colourable}.
+\begin{figure}[hbt!]
+	\hspace*{\fill}
+	\begin{subfigure}[b]{0.45 \textwidth}
+		\centering
+		\def\svgscale{0.35}
+		\input{graphics/2-1_vknot.pdf_tex}
+		\caption{Virtual knot $2_{1}$.}
+		\label{fig:non-cc-vknot}
+	\end{subfigure}
+	\hspace*{\fill}
+	\begin{subfigure}[b]{0.45 \textwidth}
+		\centering
+		\def\svgscale{0.35}
+		\input{graphics/3-7_vknot.pdf_tex}
+		\caption{Virtual knot $3_{7}$.}
+		\label{fig:cc-vknot}
+	\end{subfigure}
+	\hspace*{\fill}
+	\caption{Two virtual knots on their surfaces of minimal genus. The left is not checkerboard colourable in the given diagram, as $[K] \neq 0$ in $H_{1}(\Sigma \times I; \Z_{2})$, but the right is. Note the difference between (a) and the knot in Fig.~\ref{fig:cellular-embedding-tricky}.}
+	\label{fig:cc-of-vknots}
+\end{figure}
+
+For the purposes of generalising the lattice of integer flows of the Tait graph, we need only concern ourselves with alternating virtual knots -- those virtual knots that can be represented by alternating virtual knot diagrams. Fortunately the following theorem tells us that we will not run into any trouble \cite{jones-polynomial-checkerboard-colourable}.
 
 \begin{theorem}[Kamada's Lemma]
 	Every alternating virtual knot is checkerboard colourable.
 \end{theorem}
 
-\notered{Do we want to put the virtual flyping theorem here? Because without it we don't have flype moves so we don't have invariants of alternating virtual knots.}
+For those surface knot diagrams that are checkerboard colourable, we can define the Tait graphs of the knot. In the classical case, these were planar graphs, or planar embeddings of a graph. In the virtual context, they are surface embeddings.
 
-Hence for all alternating surface knot diagrams we can define the Tait graph. 
+Let $G$ be a connected graph. A \textit{surface embedding} of $G$ is a map $i: G \inject \Sigma$, considered up to orientation-preserving diffeomorphism. Notationally, we use $G$ and $i(G)$ interchangeably. This extra information is equivalent to a cyclic orientation of the edges incident to each vertex $v \in G$, which we call a \textit{rotation system}. A graph with a rotation system is also called a \textit{ribbon graph} or \textit{fat graph}.
 
-\section{The Virtual $d$-invariant}
-\notegreen{Invariant due to Virtual Flyping (Kindred). Mutation invariant comes in a similar way. Complete mutation invariant? we conjecture not.}
+The \textit{surface dual} of the cellularly embedded surface embedding $i: G \inject \Sigma$ is another surface embedding $i^{*}: G^{*} \inject \Sigma$, where $G^{*}$ is the graph that has a vertex for every connected component of  $\Sigma \smallsetminus G$, and for each edge $e$ of $G$, a dual edge $e^{\ast}$ connecting the vertices lying on either side of $e$. The map $J$ then assigns vertices and edges of $G^{*}$ to the correct place in $\Sigma$. The requirement that $G$ be cellularly embedded is necessary for the surface dual to be well-defined. \notered{example}
+
+We have a few elementary results about surface duals.
+
+\begin{lemma}
+Let $G$ be cellularly embedded, so that $G^{*}$ is defined. Then $G^{*}$ is cellularly embedded.
+\end{lemma}
+
+\begin{proof}
+Since $G$ is cellularly embedded in $\Sigma$, the Euler characteristic $\chi(\Sigma) = |V(G)| - |E(G)| + |F(G)|$. From the definition of the surface dual, $|V(G^{*})| = |F(G)|$ and $|E(G^{*})| = |E(G)|$. Now let $v$ denote an arbitrary vertex of $G$. Consider the set of edges dual to the edges incident to $v$. This forms a cycle in $G^{*}$ which separates $v$ from all other vertices. Since there are no other edges inside this cycle, it is a face containing only the vertex $v$. Hence, $|F(G^{*})| \leq |V(G)|$. Conversely each connected component of $\Sigma \smallsetminus G^{*}$ is bounded by a cycle of at least one edge, $e^{*}$. The edge $e$ dual to $e^{*}$ terminated within the connected component $\Sigma \smallsetminus G^{*}$, so this component or `face' must contain a vertex, so $|F(G^{*})| \geq |V(G)|$. Hence, the Euler characteristic $\chi(G^{*}) = \chi(G)$, so $G^{*}$ is also cellularly embedded.
+\end{proof}
+
+\begin{corollary}
+Let $G$ be cellularly embedded, so that $G^{*}$ is defined. Then $G^{**} = G$.
+\end{corollary}
+
+\notered{Show that we can reconstruct the knot from the Tait graphs, like in the classical case.}
+
+\section{The Lattice of Integer Flows for Virtual Knots}
+
+This section will be dedicated to asking whether the results about the lattice of integer flows in the classical case generalise to the virtual setting. Like the classical case, we will find that the lattice of integer flows of either Tait graph of a virtual knot is an invariant of alternating virtual knots. However, we will not be able to show that this is a \textit{complete} invariant of alternating virtual knots. In fact, in Chapter 5, we will produce a counterexample to this statement.
+
+As the lattice of integer flows is defined graph-theoretically, the same definition applies in the virtual setting. The difference is that the graph embeddings are no longer planar duals, but surface duals. As a result, the lattice of integer flows of the white Tait graph is no longer isomorphic to the lattice of integer cuts of the black Tait graph, so both $\Lambda_{B}(D)$ and $\Lambda_{W}(D)$ are needed not to unnecessarily lose information about the knot. We present the following example to show this.
+
+Let $K = 5_{2429}$, and $D$ the surface knot diagram given in Fig.~\ref{fig:5-2429-vknot}. The Tait graphs are given abstractly in Fig.~\ref{fig:5-2429-taits-abstract}.
+
+\begin{figure}[hbt]
+	\hspace*{\fill}
+	\begin{subfigure}[b]{0.45 \textwidth}
+		\centering
+		\def\svgscale{0.35}
+		\input{graphics/5-2429_cc.pdf_tex}
+		\caption{Virtual knot $5_{2429}$\ldots}
+		\label{fig:5-2429-vknot}
+	\end{subfigure}
+	\hspace*{\fill}
+	\begin{subfigure}[b]{0.45 \textwidth}
+		\centering
+		\def\svgscale{0.35}
+		\input{graphics/5-2429_taits.pdf_tex}
+		\caption{\ldots with Tait graphs.}
+		\label{fig:5-2429-taits}
+	\end{subfigure}
+	\hspace*{\fill}
+	\caption{}
+	\label{fig:5-2429-example}
+\end{figure}
+
+\begin{figure}[hbt]
+	\centering
+	\def\svgscale{0.4}
+	\input{graphics/5-2429_taits_abstract.pdf_tex}
+	\caption{The Tait graphs $G_{B}(D)$ and $G_{W}(D)$.}
+	\label{fig:5-2429-taits-abstract}
+\end{figure}
+
+With respect to the basis $(e_{1} + e_{2} + e_{3}, e_{4} + e_{5})$, the inner product on $\Lambda_{B}(K)$ has Gram matrix
+\[\begin{bmatrix}
+3 & 0 \\
+0 & 3
+\end{bmatrix}\,.\]
+Likewise with respect to the basis $(f_{1}, f_{2}, f_{3}, f_{4}, f_{5})$, $\Lambda_{W}(K)$ has Gram matrix
+\[\begin{bmatrix}
+1 & 0 & 0 & 0 & 0\\
+0 & 1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0 & 0\\
+0 & 0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0 & 1\\
+\end{bmatrix}\,.\]
+
+Again, these are only determined by the lattices up to unimodular congruence.
+
+In the classical case, we proved that $\Lambda_{B}(D)$ and $\Lambda_{W}(D)$ were invariants of alternating knots as follows. We used the flyping theorem to relate any prime alternating diagrams via a sequence of flypes. Then, by the lemma that flypes correspond to Whitney flips of the Tait graph, any two prime alternating diagrams of the same knot have isomorphic lattices. Finally we use a series of results to extend this from prime alternating knots to arbitrary alternating knots, including Menasco's theorem and the unique decomposition theorem (Schubert's theorem) for knots.
+
+The virtual case is more complicated. Kindred's virtual flyping theorem applies only to weakly prime alternating knots, and the annular connected sum of virtual knots is a multivalued operation. However there are virtual analogues of each of the results used in the classical proof \notered{[check with Hans]}. An analogous, diagrammatic proof of this statement is the work of the author along with collaborators Hans Boden, Zsuzsanna Dancso and Tilda Wilkinson-Finch will appear in a paper which is currently in draft form.
+
+However in the current text, we give a topological proof by showing that the lattice of integer flows of the Tait graph is equivalent to the topologically defined Gordon-Litherland linking form of Chapter 3. We state this now, but delay the proof until then.
+
+\begin{theorem}
+Let $V$ be an alternating virtual knot, and let $D$, $E$ be alternating surface knot diagrams for $V$. Then $\Lambda_{B}(D) \cong \Lambda_{B}(E)$ and $\Lambda_{B}(D) \cong \Lambda_{W}(E)$.
+\end{theorem}
+
+Unlike the classical case, $\Lambda_{B}(K)$ and $\Lambda_{W}(K)$ are not equivalent, as this came from the fact that in the plane, the lattice of integer flows of a graph $G$ was isomorphic to the lattice of integer cuts of $G$. This is only true on the plane.
+
+Two statements from the classical case remain to be examined: that $\Lambda_{B}(K)$ (resp. $\Lambda_{W}(K)$) is a mutation invariant, and that $\Lambda_{B}(K)$ (resp. $\Lambda_{W}(K)$) is complete up to mutation.
+
+The first statement holds in the general setting.
+\begin{theorem}
+Let $V_{1}$ and $V_{2}$ be alternating knots that are mutants. Then $\Lambda_{B}(V_{1}) \cong \Lambda_{B}(V_{2})$ and $\Lambda_{W}(V_{1}) \cong \Lambda_{W}(V_{2})$.
+\end{theorem}
+\begin{proof}
+The proof follows the proof in the classical case exactly. Let $V_{1}$ and $V_{2}$ be mutants. There is a sequence of mutations from $V_{1}$ to $V_{2}$. The lemma from Chapter 1 that a flype move induces a Whitney flip of the Tait graph \notered{[to be made into a lemma]} generalises directly to disk mutation. Thus, their Tait graphs are related by Whitney flips. By Whitney's theorem, the graphs are $2$-isomorphic, and since $\Lambda_{B}(K)$ (resp. $\Lambda_{W}(K)$) is a $2$-isomorphism invariant, we have $\Lambda_{B}(V_{1}) \cong \Lambda_{B}(V_{2})$ (resp. $\Lambda_{W}(V_{1}) \cong \Lambda_{W}(V_{2})$).
+\end{proof}
+
+Unlike in the the above proof, the proof that $\Lambda_{B}(K)$ and $\Lambda_{W}(K)$ are complete up to mutation does not generalise. \notered{Is this because one of the results does not generalise, or because the graphs are no longer surface dual, so there is two sequences of Whitney flips, one for $G_{B}(D)$ and one for $G_{W}(D)$, but in general these two sequences do not correspond to the same mutations (or something like that)?} In fact, on the class of virtual knots, even the pair or $\Lambda_{B}(K)$ and $\Lambda_{W}(K)$ is incomplete.
+
+\begin{theorem}
+The pair of lattices of integer flows of the Tait graphs of virtual knots, $(\Lambda_{B}(V), \Lambda_{W}(V))$ is not a complete invariant of alternating virtual knots.
+\end{theorem}
+\begin{proof}
+In Chapter $3$, we examine another mutation invariant of virtual knots known as the Gordon-Litherland linking form. In Chapters $4$ and $5$, we present algorithms to compute the Gordon-Litherland linking form and lattice of integer flows of the Tait graphs. Finally, we present two alternating virtual knots, $6_{90101}$ and $6_{90124}$, with different Gordon-Litherland linking forms, but the same lattice of integer flows. Hence $6_{90101}$ and $6_{90124}$ are not mutants, but have the same lattices of integer flows of their Tait graphs, completing the proof.
+\end{proof}
 
 \chapter{Gordon-Litherland Linking Form}
 
@@ -851,6 +1063,20 @@ Hence for all alternating surface knot diagrams we can define the Tait graph.
 In particular, we turn our attention to the work of two men: Cameron McA. Gordon and Richard A. Litherland who did \notered{something} \cite{signature-of-a-link}.
 
 Then Hans et. al. made it virtual. It has this interpretation something something double branched covers \cite{gordon-litherland-pairing-thickened-surfaces}.
+
+
+\notegreen{
+Scaffold:
+\begin{itemize}
+\item Defined for classical knots by Gordon and Litherland.
+\item Defined for virtual knots by Hans, Chrisman, Karimi.
+\item Also a lattice structure on the Tait graph homology.
+\item It's symmetrisation is (equivalent to) the lattice of integer flows.
+\item Spanning surfaces. Positive definite and negative definite spanning surfaces characterise alternating links.
+\item Unimodular congruence is hard - how can we put it in a nice basis?
+\end{itemize}
+}
+
 
 \chapter{Gauss Codes and Knot Algorithms}
 \notered{Work in pages already written about the algorithm to find the Tait graph.}
