@@ -8,8 +8,8 @@
    version="1.1"
    id="svg1177"
    inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
-   sodipodi:docname="checkerboard_type_b.svg"
-   inkscape:export-filename="checkerboard_type_b.pdf"
+   sodipodi:docname="checkerboard_type_a.svg"
+   inkscape:export-filename="checkerboard_type_a.pdf"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -28,8 +28,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="0.67793911"
-     inkscape:cx="248.5474"
-     inkscape:cy="562.7349"
+     inkscape:cx="254.44763"
+     inkscape:cy="543.55914"
      inkscape:window-width="1920"
      inkscape:window-height="1006"
      inkscape:window-x="0"
@@ -50,7 +50,7 @@
        both="false"
        inverse_width="false"
        add_other_stroke_width="inkscape_1.0_and_up"
-       crossing_points_vector="148.5 | 105 | 0 | 1 | 0 | 0 | 0.5 | 0.5 | -1" />
+       crossing_points_vector="" />
   </defs>
   <g
      inkscape:label="Layer 1"
@@ -65,7 +65,7 @@
     <path
        id="path1001"
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
-       d="M 206.92991,46.570087 90.070089,163.42991 m 0,-116.859823 52.773061,52.773057 m 11.3137,11.313706 52.77306,52.77306"
+       d="m 206.92991,46.570087 -52.77306,52.773057 m -11.3137,11.313706 -52.773061,52.77306 m 0,-116.859823 116.859821,116.859823"
        inkscape:path-effect="#path-effect1152"
        inkscape:original-d="M 206.92991,46.570087 90.070089,163.42991 m 0,-116.859823 116.859821,116.859823"
        inkscape:label="a" />
