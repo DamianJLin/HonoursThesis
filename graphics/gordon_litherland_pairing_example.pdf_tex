@@ -1,6 +1,6 @@
 %% Creator: Inkscape 1.2.2 (b0a8486541, 2022-12-01), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'annular_connect_sum.pdf' (pdf, eps, ps)
+%% Accompanies image file 'gordon_litherland_pairing_example.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{1379.60806779bp}%
+    \setlength{\unitlength}{841.88976378bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,14 +50,17 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.39028713)%
+  \begin{picture}(1,0.29434453)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{annular_connect_sum.pdf}}%
-    \put(0.20021808,0.37378249){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(D_{1}, \Sigma_{1})$\end{tabular}}}}%
-    \put(0.50116351,0.37378249){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(D_{2}, \Sigma_{2})$\end{tabular}}}}%
-    \put(0.38591485,0.17393725){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(D_{1}, \Sigma_{1}) \hash_{B_{1}, B_{2}} (D_{2}, \Sigma_{2})$\end{tabular}}}}%
-    \put(0.22122868,0.3195695){\color[rgb]{0.50196078,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B_{1}$\end{tabular}}}}%
-    \put(0.34900604,0.33618968){\color[rgb]{0.50196078,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B_{2}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{gordon_litherland_pairing_example.pdf}}%
+    \put(0.06413686,0.00150138){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a$\end{tabular}}}}%
+    \put(0.79853713,0.00150138){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a$\end{tabular}}}}%
+    \put(0.19384635,0.00150138){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$b$\end{tabular}}}}%
+    \put(0.56104651,0.00150138){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$b$\end{tabular}}}}%
+    \put(0.38398512,0.00150138){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$t^{-}a$\end{tabular}}}}%
+    \put(0.88033257,0.00150138){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$t^{-}b$\end{tabular}}}}%
+    \put(0.94726553,0.00150138){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$t^{+}b$\end{tabular}}}}%
+    \put(0.45053091,0.00150138){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$t^{+}a$\end{tabular}}}}%
   \end{picture}%
 \endgroup%
