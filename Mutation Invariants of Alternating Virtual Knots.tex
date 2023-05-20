@@ -34,6 +34,10 @@
 \usepackage{subcaption}
 
 
+%%% Table Packages
+\usepackage{longtable}
+
+
 %%% Epigraph
 \usepackage{epigraph}
 
@@ -131,6 +135,8 @@
 \newcommand{\lk}{\operatorname{\ell\textit{k}}}
 
 \newcommand{\hash}{\ensuremath{\mathbin{\#}}}
+\renewcommand{\over}{\text{O}}
+\newcommand{\under}{\text{U}}
 
 %%% Drafting Macros
 \newcommand{\notered}[1]{{\color{Red} \textbf{#1}}}
@@ -143,6 +149,10 @@
 \newtheorem*{conjecture}{Conjecture}
 \newtheorem*{lemma}{Lemma}
 \newtheorem*{corollary}{Corollary}
+
+\newtheoremstyle{upright}{3pt}{3pt}{}{}{\bfseries}{.}{.5em}{}
+\theoremstyle{upright}
+\newtheorem*{algorithm}{Algorithm}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -185,6 +195,18 @@
 \addcontentsline{toc}{chapter}{Introduction}
 
 \notered{Write the introduction.}
+
+\notegreen{Scaffold:
+\begin{itemize}
+\item Alternating knots and Tait conjectures. Tait set out the Tait conjectures, summarize them and who proved them and when.
+\item include Greene's characterisation Geom vs Topology. Very famous. Say something about the proof. One of the novel features is that he uses knot theory and lattice theory.
+\item Then talk more about  Josh's mutation invariant result. Say something vague about lattices, graphs tait, heegaard floer.
+\item This text is devoted to telling the analagous stroy for knots in a more general setting: knots in thickened surfaces.
+\item What's true/false, what was used to prove this.
+\item Chapter by chapter summary.
+\item I have contributed significantly to the theoretical results which will be submitted with Zsuzsi Hans Tilda.
+\item The computational results are the work of the author and will be the subject of a single-author paper later.
+\end{itemize}}
 
 \chapter*{Acknowledgements}
 \addcontentsline{toc}{chapter}{Acknowledgements}
@@ -653,25 +675,21 @@ This shows that $\Lambda_{B}(D)$ and $\Lambda_{B}(D)$ is a well-defined function
 By the same argument $\Lambda_{W}(D)$ is also an invariant of alternating knots. However combining these two invariants retains no information: they are equivalent invariants to each other.
 
 \begin{theorem}
-For an alternating knots $K_{1}$ and $K_{2}$, $\Lambda_{B}(K_{1}) \cong \Lambda_{B}(K_{2})$ if and only if $\Lambda_{W}(K_{1}) \cong \Lambda_{W}(K_{2})$.
+For alternating knots $K_{1}$ and $K_{2}$, $\Lambda_{B}(K_{1}) \cong \Lambda_{B}(K_{2})$ if and only if $\Lambda_{W}(K_{1}) \cong \Lambda_{W}(K_{2})$.
 \end{theorem}
 
-% TODO: Zsuzsi should check this. What are some good references?
 \begin{proof}
-There is another lattice associated to a graph called the \textit{lattice of integer cuts}. This is defined as $\operatorname{im} \partial^{*}$, where $\partial^{*}: \Z^{V} \longrightarrow \Z^{E}$ is the map adjoint to the boundary map $\partial$, expressible as
-\[\partial^{*}(v) = v \longmapsto \sum_{e \in E} \langle \partial(e), v \rangle e\,.\]
+There is another lattice associated to a graph called the \textit{lattice of integer cuts} \cite{lattice-of-flows-cuts}. This is defined as $\operatorname{im} \partial^{*}$, where $\partial^{*}: \Z^{V} \longrightarrow \Z^{E}$ is the map adjoint to the boundary map $\partial$, expressed as
+\[\partial^{*}(v) = \sum_{e \in E} \langle \partial(e), v \rangle e\,.\]
 
-The lattice of integer cuts is the lattice dual to the lattice of integer flows hence we denote it $\Lambda^{*}(G)$. We will not go into depth about lattice theory, but it suffices to say that there are purely lattice-theoretic means to construct $\Lambda^{*}(G)$ from $\Lambda(G)$.
+The lattice of integer cuts is another integral lattice associated to $G$, denoted $\mathcal{C}(G)$. We have seen already that $\Lambda(G)$ is a complete $2$-isomorphism invariant, and the same is true for $\mathcal{C}(G)$. Hence, $\Lambda(G)$ and $\mathcal{C}(G)$ determine each other up to isomorphism.
 
-We have seen already that $\Lambda(G)$ is a complete $2$-isomorphism invariant, and the same is true for $\Lambda^{*}(G)$. Hence, $\Lambda(G)$ and $\Lambda^{*}(G)$ determine each other up to $2$-isomorphism.
+A useful property of planar graphs $G$ is that the lattice of integer flows of $G$ is isomorphic to the lattice of integer cuts of $G^{*}$, that is, $\Lambda(G) \cong \mathcal{C}(G^{*})$.
 
-A useful property of planar graphs $G$ is that the lattice of integer flows of $G$ is isomorphic to the lattice of integer cuts of $G^{*}$. In our conveniently chosen notation, $\Lambda(G) \cong \Lambda^{*}(G^{*})$. Taking the dual of both sides we see $\Lambda^{*}(G) \cong \Lambda(G^{*})$.
-
-Applying this to $\Lambda_{B}(K_{1})$ and $\Lambda_{B}(K_{2})$, we get
-$\Lambda_{W}^{*}(K_{1}) \cong \Lambda_{W}^{*}(K_{1})$ and so $\Lambda_{W}(K_{1}) \cong \Lambda_{W}(K_{1})$
+Since $\Lambda_{B}(K_{1}) \cong \Lambda_{B}(K_{2})$, we know that $\mathcal{C}_{B}(K_{1}) \cong C_{B}(K_{2})$. But $C_{B}(K_{i}) \cong \Lambda_{W}(K_{i})$, for $i \in \{1, 2\}$, and the result follows.
 \end{proof}
 
-The statement that $\Lambda(G) \cong \Lambda^{*}(G^{*})$ is true only for planar graphs, and when we later consider a non-planar version of this theory, we will not find a similar result.
+The statement that $\Lambda(G) \cong \mathcal{C}(G^{*})$ is true only for planar graphs, and when we later consider a surface-dual version of this theory, the first homology of the surface will play a role.
 
 It only remains to show that $\Lambda_{B}(K)$ is a complete invariant up to mutation. The following lemma examines the effect of mutation on the Tait graph \cite[Lemma 4.5]{lattices-graphs-mutation}:
 
@@ -1011,10 +1029,9 @@ Furthermore, just as in the classical case, alternating surface knot diagrams ha
 
 For those surface knot diagrams that are checkerboard colourable, we can define the Tait graphs of the knot. In the classical case, these were planar graphs, or more specifically planar embedded graphs. In the virtual context, they are surface embeddings.
 
-% TODO: Zsuzsi check.
 Let $G$ be a connected graph. A \textit{surface embedding} of $G$ is a map $i: G \inject \Sigma$, considered up to orientation-preserving diffeomorphism. To simplify notation, we use $G$ and $i(G)$ interchangeably.
 
-One way to uniquely determine a surface embedding for $G$ is to specify around each vertex of $G$, a cyclic order for the incident edges \cite[Theorem 3.2.4]{graphs-on-surfaces}. This extra information is called a \textit{rotation system}; a graph with a rotation system is also called a \textit{ribbon graph} or \textit{fat graph}.
+Given a embedding of a graph $G$ in an orientable surface, we can read off a cyclic ordering of incident edges around each vertex. In fact, a textbook result in topological graph theory is that a cyclic ordering of incident edges around each vertex uniquely determines a cellular surface embedding for $G$\cite[Theorem 3.2.4]{graphs-on-surfaces}. This extra information is called a \textit{rotation system}; a graph with a rotation system is also called a \textit{ribbon graph} or \textit{fat graph}.
 
 \notered{example and figures?}
 
@@ -1084,12 +1101,12 @@ Let $K = 5_{2429}$, and $D$ the surface knot diagram given in Fig.~\ref{fig:5-24
 	\label{fig:5-2429-taits-abstract}
 \end{figure}
 
-With respect to the basis $(e_{1} + e_{2} + e_{3}, e_{4} + e_{5})$, the inner product on $\Lambda_{B}(K)$ has Gram matrix
+With respect to the basis $(e_{1} + e_{2} + e_{3}, e_{4} + e_{5})$, the inner product on $\Lambda_{B}(K)$ has pairing matrix
 \[\begin{bmatrix}
 3 & 0 \\
 0 & 3
 \end{bmatrix}\,.\]
-Likewise with respect to the basis $(f_{1}, f_{2}, f_{3}, f_{4}, f_{5})$, $\Lambda_{W}(K)$ has Gram matrix
+Likewise with respect to the basis $(f_{1}, f_{2}, f_{3}, f_{4}, f_{5})$, $\Lambda_{W}(K)$ has pairing matrix
 \[\begin{bmatrix}
 1 & 0 & 0 & 0 & 0\\
 0 & 1 & 0 & 0 & 0\\
@@ -1135,7 +1152,6 @@ The rest of this text will work up to the proof of this theorem. Chapter 3 will 
 
 \epigraph{\itshape God created the knots. All else in topology is the work of mortals.}{--- Leopold Kronecker, modified by Dror Bar-Natan}
 
-% TODO: This is funny right?
 We turn our attention to the work of Cameron Gordon and Richard Litherland, and quietly note that Gordon (1945 -- present) may yet disprove the conjecture in this Chapter's epigraph. This duo assigned a symmetric quadratic form to a knot, based on an unoriented spanning surface of the knot \cite{signature-of-a-link}. Recent work by Boden-Chrisman-Karmimi extends this to the virtual setting by generalising this to a quadratic form for knots in thickened surfaces, called the Gordon-Litherland linking form \cite{gordon-litherland-pairing-thickened-surfaces}. In this chapter, we will define this linking form, prove that it is a mutation invariant of alternating virtual knots, and relate it with the lattice of integer flows of the previous chapter.
 
 The first three sections closely follow \cite{gordon-litherland-pairing-thickened-surfaces, alternating-links-thickened-surfaces, mock-seifert-matrices} to describe the Gordon-Litherland form.
@@ -1194,7 +1210,7 @@ Let $V$ be an alternating virtual knot, and let $D$ and $E$ be reduced, alternat
 \end{theorem}
 
 \begin{proof}
-	content...
+	\notered{Add this.}
 \end{proof}
 
 The Gordon-Litherland pairing is also a mutation invariant.
@@ -1256,90 +1272,169 @@ The same argument applies for the white checkerboard surface, but since the cros
 
 \epigraph{Better to reign in Hell than to serve in Heaven.}{--- John Milton, \textit{Paradise Lost}}
 
-In this Chapter, we present an algorithm to compute a pair of mock Seifert matrices for a virtual knot from its Gauss code. This algorithm has been implemented to compare the linking forms of many alternating virtual knots. The result of these computations is a pair of virtual knots which are not mutants, but have isomorphic Gordon-Litherland pairings. This provides a counterexample to the completeness of the lattice of integer flows of the Tait graph in the virtual setting. Finally, we present a note on some invariants of unimodular congruence that was observed by the author.
+Finally, we provide an algorithmic way to compute mock Seifert matrices of a virtual knot.
 
-\section{Gauss Codes}
+\section{Gauss Codes and Gauss Diagrams}
 
-Knot diagrams, being geometrical objects are difficult to make computations with directly. The \textit{Gauss code} of an oriented knot diagram encodes combinatorial information about the order in which the crossings are visited, as the knot diagram is traversed. It is a sequence of crossings (usually given by labels $\{1, \cdots, n\}$), along with a sign or symbol determining whether a crossing is traversed via the over-strand or the under-strand. This is, of course, only unique up to cyclic permutation. For example, the diagram of the figure-8 knot in Figure \ref{fig:figure_8} has Gauss code
-\[\text{\ttfamily 1O,\ 2U,\ 4O,\ 3U,\ 2O,\ 1U,\ 3O,\ 4U}\,.\]
-Every knot has a Gauss code, but not every Gauss code corresponds to a knot, as a Gauss code may give rise to a graph that is non-planar and hence could only be realised as a knot with the addition of words to the Gauss code.
+Knot diagrams, being geometrical objects are difficult to directly handle with computers. The \textit{Gauss code} of an oriented knot diagram encodes combinatorial information about the order in which the crossings are visited, as the knot diagram is traversed. It is a sequence of crossings (usually given by labels $\{1, \cdots, n\}$), along with a symbol describing whether a crossing is traversed via the over-strand or the under-strand. This is, of course, only unique up to cyclic permutation. For example, the diagram of the figure eight knot in Fig.~\ref{fig:figure_8} has Gauss code
+\[1\over\ 2\under\ 3\over\ 4\under\ 2\over\ 1\under\ 4\over\ 3\under.\]
 
-The Gauss code can be extended to incorporate the writhe, also known as the sign, of each crossing, and in doing so, each element of the sequence also incorporates a sign of $+1$ for a positive crossing, or $-1$ for a negative crossing. From henceforth we only refer to the extended Gauss code simply as the Gauss code. In the example given in Figure \ref{fig:figure_8}, the extended Gauss code is 
-\[\text{\ttfamily-1O,\ -2U,\ +4O,\ +3U,\ -2O,\ -1U,\ +3O,\ +4U}\,,\]
-since crossings $1$ and $2$ are negative, and crossings $3$ and $4$ are positive.
-
-The Gauss code is particularly convenient to extend to virtual knots, as it takes into account only combinatorial information about the crossings, and is oblivious to the diagram's planarity (or lack thereof). In the Gauss code of a virtual knot, virtual crossings make no contribution. By this generalisation, every Gauss code corresponds to a virtual knot, as we can always resolve non-planarity in the diagram by adding virtual crossings, or equivalently moving to a surface of greater genus.
-
-\section{Reconstructing the Tait Graph}
-
-\notered{Add figures to this section.}
-
-It is always possible to construct the Tait graphs of a checkerboard colourable virtual knot from its Gauss code, and since the $d$-invariant is computable from the Tait graphs, this gives a method of computing the $d$-invariant directly from the Gauss code. We now outline an algorithm by which the Gauss code of a knot can be used to compute its $d$-invariant. The algorithm has two main steps; we first compute the Tait graph of the knot from its Gauss code, then compute the $d$-invariant from the Tait graph.
-
-We begin with the Gauss code for some checker-board colourable knot diagram, which induces an orientation on the knot diagram. Though we do not have the diagram itself, it is possible to reconstruct its Tait graph.
+\begin{figure}[hbt!]
+	\centering
+	\def\svgscale{0.3}
+	\input{graphics/figure_8_knot.pdf_tex}
 	
-	The idea of the algorithm is as follows. Edges in the Tait graph, are given by faces in the diagram. To find these faces, we traverse the knot, but each time we encounter a crossing, we `jump' to the other strand and continue our traversal, always making sure to turn in the same direction (left or right). We then complete the Tait graph by inserting edges between vertices where the corresponding faces touch diagonally at a crossing.
+	\caption{The figure eight knot, oriented, with crossings numbered. \notered{Fix width.}}
+	\label{fig:figure_8}
+\end{figure}
+
+
+The Gauss code can be extended to incorporate the writhe, also known as the sign, of each crossing, and in doing so, each element of the sequence also incorporates a sign of $+1$ for a positive crossing, or $-1$ for a negative crossing. The extended Gauss code from Fig.~\ref{fig:figure_8}, is
+\[-1\over\ -2\under\ +4\over\ +3\under\ -2\over\ -1\under\ +3\over\ +4\under.\]
+since crossings $1$ and $2$ are negative, and crossings $3$ and $4$ are positive. Henceforth we refer to the extended Gauss Code as simply the Gauss code.
+
+The Gauss code is particularly convenient to extend to virtual knots, as it takes into account only combinatorial information about the crossings, and is oblivious to the diagram's planarity (or lack thereof). In the Gauss code of a virtual knot, virtual crossings make no contribution. 
+
+Indeed, modulo cyclic permutation of the code, the set of Gauss codes exactly corresponds to the set of virtual knot diagrams. This gives another completely combinatorial definition of virtual knots as equivalence classes of Gauss codes, modulo cyclic permutation and the effect of Reidemeister moves on Gauss codes.
+
+The \textit{Gauss diagram} of a knot diagram consists of a cyclic ordering of the $2n$ words of the Gauss code around the circle, with $n$ directed edges (chords) from the word $i\over$ to the word $i\under$ for each $i \in \{0, \dots, n\}$. These chords represent crossings, and are labelled according to the crossing's sign. Arcs on the diagram between words represent arcs on the knot diagram between crossings.
+
+\begin{figure}[hbt!]
+	\centering
+	\def\svgscale{1.5}
+	\input{graphics/gauss_diagram_figure_eight.pdf_tex}
 	
-	To illustrate the algorithm, we present it alongside an example Gauss code of a virtual knot,
-	\[-1o,\ -2u,\ -3o,\ -1u,\ +4o,\ -3u,\ -2o,\ +4u\,.\]
-	For illustrative purposes, we provide the diagram of the knot from which the above Gauss code was taken in Figure \ref{fig:knot_and_cd_v_4-106}, though it is important to note we will not have this information when computing the knot from the Gauss code. By an arc, we mean a path in the knot diagram between exactly two adjacent crossings (crossings with no intermediate crossings in the traversal).
+	\caption{The Gauss diagram of the figure eight knot.}
+	\label{fig:gauss_diagram_figure_eight}
+\end{figure}
+
+
+\section{Reconstructing the Tait Graph and Rotation System}
+
+Recall that a knot has a Tait graph if and only if it is checkerboard colourable. For these knots, the Tait graph can always be reconstructed from the Gauss Code, and we provide the following algorithm.
 	
-	\notered{Virtual Knot Diagram $4_{106}$}
-		
-	The Gauss diagram of a knot (with $n$ crossings) consists of a cyclic ordering of the $2n$ words of the Gauss code around the circle, with directed edges (chords) connecting two words of the same crossing, oriented from the over word to the under word. These chords which represent crossings, are labelled according to the crossing's sign. Arcs on the diagram between words represent arcs on the knot diagram.
-	
-	This algorithm iterates over the faces in the knot diagram, so we maintain a counter, $f$, of the face presently being examined and start by setting $f = 0$. We wish to explore this face by always turning the same direction at the end of each arc. However the natural variable to control when traversing the Gauss diagram is the alignment of the traversal direction with the orientation on the knot, defined as
-	\[a = \begin{cases}
-		-1 & \text{iff traversing clockwise (aligned with orientation)} \\
-		+1 & \text{iff traversing anti-clockwise (anti-aligned with orientation)}\,.
-	\end{cases}\] Hence we choose an arbitrary  turn-direction of left or right and control the alignment such that this turn-direction is fixed. The turn-direction is represented by the variable $t$ with
+The idea of the algorithm is as follows. Vertices in the Tait graph, correspond to faces in the knot diagram, and edges in the Tait graph to crossings in the knot diagram. To find the faces, we traverse the knot diagram, but each time we encounter a crossing, we `hop' to the other strand at that crossing and continue our traversal.
+
+There is a choice of which direction to traverse the new strand, and for each face, we always choose to turn in the same direction (always left or always right). However we have no notion of `left' or `right' just from the Gauss code. But we can ensure that we choose the correct turn direction by choosing whether to continue traversing with or against the orientation after we `hop'. To make this decision, we need information about sign of the crossing and whether the hop was from an over-crossing to an under-crossing or vice-versa.
+
+This tells us how to traverse a face, so we traverse all faces corresponding to the black checkerboard colouring. As we do this, we keep track of which crossings we encountered when traversing each face and the order in which we encountered them. When we terminate our algorithm we will have an association of two faces to each crossing. Producing a graph with faces as vertices and an edge for each crossing between the two associated faces reconstructs our Tait graph. We then complete the Tait graph by inserting edges between vertices where the corresponding faces touch diagonally at a crossing.
+
+This can be done completely combinatorially from the Gauss Code, but we present it here as a graph algorithm on the Gauss diagram.
+
+By an arc, we mean a path in the knot diagram between exactly two adjacent crossings (crossings with no intermediate crossings in the traversal).
+
+{\def\arraystretch{1.8}
+\begin{longtable}{p{0.04\textwidth}p{0.40\textwidth}p{0.49\textwidth}}
+	\textbf{\#} & \textbf{Step}
+	& \textbf{Explanation}\\
+	1.
+	& For each $i \in \{1, \dots, n\}$, initialise a two-element array $F_{i}$.
+	& The list $F_{i}$ will keep track of which two checkerboard coloured faces are incident to each vertex.\\
+	2.
+	& Initialise a counter $f= 0$.
+	& This algorithm iterates over the faces in the knot diagram, so we maintain a counter, $f$, of the face presently being examined.\\
+	3.
+	& Initialise variable $t = 1$.
+	& As we traverse each face, we must maintain a constant turning direction to pick out faces of the knot diagram. We use the convention
 	\[t = \begin{cases}
-		-1	& \text{for left turn}\\
-		+1	& \text{for right turn} \,.
+		-1 & \text{for left turn},  \\
+		+1 & \text{for right turn},
 	\end{cases}\]
-	We start at the first word on the Gauss diagram with $t = 1$, and traverse anti-clockwise (set $a = 1$). Each time we encounter another word, we jump via the attached chord, to the other word with the same label. Once we arrive there, we traverse the the Gauss diagram again, with the new alignment given by the update rule
-	\[a \leftarrow t \cdot j \cdot w \cdot a\,,\]
-	where $t$ is the sign of the turn-direction, the sign of the jump $j$ is given by
+	and we ensure that this variable is constant over each face.\\
+	4.
+	& Until we have visited every chord, we do the following:
+	& We loop over the faces.\\
+	4.1. 
+	& Initialise variable $a = 1$.
+	& Since we do not have the knot diagram, we cannot choose to turn left or right directly. Instead, when we `hop' strands, we will have to choose to align or anti-align with the orientation of the new strand. We keep track of this with the convention:
+	\[a = \begin{cases}
+		-1 & \text{if aligned with orientation}, \\
+		+1 & \text{if anti-aligned with orientation},
+	\end{cases}\]
+	and whenever we hop strands we will update $a$ in a way that ensures we always turn left or right.\\
+	4.2. 
+	& Initialise a list $R_{f}$.
+	& The arrays $R_{f}$ keep track of the cyclic order that crossings were visited around face $f$, which translates into the cyclic order of edges around some vertex the Tait graph. \\
+	4.2.
+	& Until we reach the same chord and have $a = 1$, do the following:
+	& \\
+	4.2.1
+	& Traverse an arc of the Gauss diagram anti-clockwise if $a = 1$, clockwise if $a = -1$.
+	& This corresponds to travelling from the current over-/under-crossing to the next crossing along a strand of the diagram, with or against the orientation depending on the value of $a$.\\
+	4.2.2
+	& Traverse the chord of the Gauss diagram at the current word. Append $f$ to the list $F_{i}$ and append $i$ to $R_{f}$ where $i$ is the crossing number that the chord corresponds to.
+	& This corresponds to the `hop' between under- and over-strands at a crossing.\\
+	4.2.3
+	& Update the value of $a$:
+	\[a \leftarrow t \cdot j \cdot w \cdot a\]
+	where $w$ is the writhe (sign) of the current crossing and $j$ based on the `hop' we completed in the previous step:
 	\[j = \begin{cases}
-		-1	& \text{if jump $o \to u$}\\
-		+1	& \text{if jump $u \to o$}\,,
+		-1	& \text{for hops $\text{O} \to \text{U}$},\\
+		+1	& \text{for hops $\text{U} \to \text{O}$}.
 	\end{cases}\]
-	$w$ is the writhe, or sign of the associated crossing.
+	& This ensures that we are consistent turning left (or consistently turning right) within a face, see the explanation of Step 4.1.\\
+	4.2.4
+	& Loop back to Step 4.\\
+	4.3
+	& Continue from Step 4.1 starting at the next chord yet to be traversed (in order anti-clockwise around the Gauss diagram), and updating $t$:
+	\[t \leftarrow (-1)^{k} t\]
+	where $k$ is the index of this chord around the chord diagram, with counting starting from $0$.
+	& This update rule ensures that we are only visiting faces in the black (or white) checkerboard colouring.\\
+	5.
+	& Once all chords have been traversed, construct the graph $G$ with vertex list $\{1, \dots, n\}$ and an edge between each pair of vertices in some $F_{i}$, $i \in \{1, \dots, n\}$. The set $\{R_{v} \mid v \in \{1, \dots, n\}\}$ is a rotation system for $G$.
+\end{longtable}
+}
+
+
+
+To illustrate the algorithm, we give an example reconstruction of the Tait graph of the diagram of virtual knot $4_{106}$ seen in Fig.~\ref{fig:4_106-vknot} with Gauss code
+\[-1\over\ -2\under\ -3\over\ -1\under\ +4\over\ -3\under\ -2\over\ +4\under.\]
+
+\begin{figure}[hbt!]
+	\centering
+	\def\svgscale{0.4}
+	\input{graphics/4-106_vknot.pdf_tex}
 	
-	This continues until we return to the initial word with a direction $a = +1$, as we started with, at which point we increment $f$. For each chord in the Gauss diagram, we maintain a list of the faces, $F_{c}$ that we traversed to visit that chord. We also maintain an array to track which arcs in the Gauss diagram have been visited so far. We continue the process by starting at the next arc yet to be traversed, with the sign of the new turn-direction given by update rule
-	\[t \leftarrow -t\,.\]
-	Figure \ref{fig:cd_4-106} illustrates the traversal path for $f = 0$ (red) and $f = 1$ (blue).
+	\caption{The virtual knot $4_{106}$, oriented, with crossings numbered.}
+	\label{fig:4_106-vknot}
+\end{figure}
+
+We have provided the knot diagram for illustrative purposes only, and it is important to note that the diagram is not necessary for the algorithm.
+
+Figure \ref{fig:cd_4-106} illustrates the traversal path for $f = 0$ (red) and $f = 1$ (blue).
+
+When the iteration above terminates, each $F_{c}$ will have exactly $2$ elements. We construct the Tait graph with vertex set $V = \{v_{0}, \dots, v_{f}\}$, and edge set $E = \{F_{c} : \text{$c$ a chord}\}$. It is easy to read the Tait graph off Figure \ref{fig:cd_4-106} [Right]; there are two vertices, $v_{0}$ and $v_{1}$, with $2$ loops at $v_{0}$ and two edges $(v_{0}, v_{1})$.
+
+
+\notered{Gauss Diagrams}
+
+\notegreen{Insert figure of the Tait graph.}
+
+To find the other Tait graph, we use the same algorithm, but with the opposite initial turn direction ($t = -1$).
+
+
+\begin{proposition}
+	The algorithm given above for finding the Tait graphs from the Gauss code of a knot or virtual knot is correct.
+\end{proposition}
+\begin{proof}
+	The first claim is that the inner loop of the algorithm finds the faces in the knot diagram. From the definition of the alignment $a$, we have the association
+	\[a = \begin{cases}
+		-1 & \text{iff traversing clockwise} \\
+		+1 & \text{iff traversing anti-clockwise}\,.
+	\end{cases}\]
+	Since the direction on the Gauss diagram was induced by the orientation of the knot, $a$ corresponds to whether a traversal of the knot diagram agrees with the orientation. Hence to prove that choosing direction after a crossing jump based on the rule
+	\[a \leftarrow t \cdot j \cdot w \cdot a\,,\]
+	does in fact lead to the correct choice of $a$ to make a turn in direction $t$ on the knot diagram is simply checking cases. There are $2^{4} = 16$ cases which can easily be checked by drawing all four ways to make a left (resp. right) turn at a negative (resp. positive) crossing. Since we always turn the same direction in our traversal we will indeed find a face of the knot diagram. \notegreen{Insert diagram for one of these cases.}
 	
-	When the iteration above terminates, each $F_{c}$ will have exactly $2$ elements. We construct the Tait graph with vertex set $V = \{v_{0}, \dots, v_{f}\}$, and edge set $E = \{F_{c} : \text{$c$ a chord}\}$. It is easy to read the Tait graph off Figure \ref{fig:cd_4-106} [Right]; there are two vertices, $v_{0}$ and $v_{1}$, with $2$ loops at $v_{0}$ and two edges $(v_{0}, v_{1})$. 
+	\notegreen{The second claim is that we will find a face in the knot diagram if and only if it is the same colour as the $f = 0$ face, in the checker-board colouring of the knot diagram.}
 	
-	\notered{Gauss Diagrams}
+	\notegreen{The third claim is that the face-finding section of the algorithm terminates and that $|F_{c}| = 2$ at this stage.}
 	
-	\notegreen{Insert figure of the Tait graph.}
+	\notegreen{The fourth claim is that the crossings are in bijection with the edges in each Tait graph and that this bijection is given by $c \mapsto F_{c}$.}
 	
-	To find the other Tait graph, we use the same algorithm, but with the opposite initial turn direction ($t = -1$).
+	This completes the proof. \qedhere
 	
-	\begin{proposition}
-		The algorithm given above for finding the Tait graphs from the Gauss code of a knot or virtual knot is correct.
-	\end{proposition}
-	\begin{proof}
-		The first claim is that the inner loop of the algorithm finds the faces in the knot diagram. From the definition of the alignment $a$, we have the association
-		\[a = \begin{cases}
-			-1 & \text{iff traversing clockwise} \\
-			+1 & \text{iff traversing anti-clockwise}\,.
-		\end{cases}\]
-		Since the direction on the Gauss diagram was induced by the orientation of the knot, $a$ corresponds to whether a traversal of the knot diagram agrees with the orientation. Hence to prove that choosing direction after a crossing jump based on the rule
-		\[a \leftarrow t \cdot j \cdot w \cdot a\,,\]
-		does in fact lead to the correct choice of $a$ to make a turn in direction $t$ on the knot diagram is simply checking cases. There are $2^{4} = 16$ cases which can easily be checked by drawing all four ways to make a left (resp. right) turn at a negative (resp. positive) crossing. Since we always turn the same direction in our traversal we will indeed find a face of the knot diagram. \notegreen{Insert diagram for one of these cases.}
-		
-		\notegreen{The second claim is that we will find a face in the knot diagram if and only if it is the same colour as the $f = 0$ face, in the checker-board colouring of the knot diagram.}
-		
-		\notegreen{The third claim is that the face-finding section of the algorithm terminates and that $|F_{c}| = 2$ at this stage.}
-		
-		\notegreen{The fourth claim is that the crossings are in bijection with the edges in each Tait graph and that this bijection is given by $c \mapsto F_{c}$.}
-		
-		This completes the proof. \qedhere
-		
-	\end{proof}
+\end{proof}
 
 \section{Mock Seifert Matrix Algorithm}
 
@@ -1361,7 +1456,7 @@ The linking form is related to the Gordon-Litherland linking form by
 
 This gives us an easy way to compute the linking form of a given spanning surface. We simply compute the lattice of integer flows of the corresponding Tait graph, then add the intersection numbers of the curve projections.
 
-The following observation of Boden-Karimi \cite[Remark 3.2]{mock-seifert-matrices} makes this computation even easier, and gives us a nice canonical block symmetric form for the computed Mock Seifert matrices -- useful as unimodular congruences are in general a hard task to compute.
+The following observation of Boden-Karimi \cite[Remark 3.2]{mock-seifert-matrices} further simplifies this computation.
 
 \begin{proposition}
 	Let $i: F \longrightarrow \Sigma \times I$ be the inclusion map. The restriction of $\mathcal{L}_{F}$ to the subspace $\ker i_{*}$ is symmetric. In fact, if $\alpha \in \ker i_{*}$ or $\beta \in \ker i_{*}$, then $\mathcal{L}_{F}(\alpha, \beta) = \mathcal{L}_{F}(\beta, \alpha)$.
@@ -1371,7 +1466,14 @@ The following observation of Boden-Karimi \cite[Remark 3.2]{mock-seifert-matrice
 	Let $a, b$ be representative curves for $\alpha$, $\beta$. Without loss of generality assume $\alpha \in \ker i_{*}$. Then $a$ is null-homotopic in $\Sigma \times I$, so $p(a)$ is null-homotopic in $\Sigma$. Applying the Jordan Curve Theorem on $\Sigma$  shows that $p_{*}(\alpha) \cdot p_{*}(\beta) = 0$. The formula above and the fact that $\mathcal{G}_{F}(\alpha, \beta)$ is symmetric completes the proof.
 \end{proof}
 
-This gives us an efficient algorithm to compute the mock Seifert matrix of a knot.
+A corollary of this proposition is that there is a particularly nice way to present mock Seifert matrices. If we choose a basis for $H_{1}(X)$ of the form $\{\gamma_{1}, \dots, \gamma_{k} \dots, \gamma_{n}\}$ with ${\gamma_{1}, \dots, \gamma_{k}}$ a basis for $\ker i_{*}$, then the resulting mock Seifert matrix $M$ will be of the block form
+\[M = \begin{bmatrix}
+	A & B^{T} \\
+	B & S
+\end{bmatrix}\]
+where $A$ is an asymmetric $k \times k$ matrix, $B$ is a $k \times (n - k)$ matrix and $S$ is a symmetric $(n - k) \times (n - k)$ matrix.
+
+This is not particularly useful if we only wish to compute other invariants of the knot from $M$. However determining from mock Seifert matrices if two linking forms representing them are equivalent involves solving unimodular congruence, and the author knows of no algorithm for this. With mock Seifert matrices in this form, these unimodular congruences can sometimes be observed.
 
 \section{Incompleteness of the Virtual Gordon-Litherland Pairing}
 
