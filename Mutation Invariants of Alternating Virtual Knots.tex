@@ -194,19 +194,23 @@
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
-\notered{Write the introduction.}
+Since the very beginnings of knot theory, a particular class of knots - alternating knots - have stood out. An alternating knot is a knot can be presented in a diagram in which crossings alternate over and under as the knot is traversed. Such a diagram is called an alternating diagram for the knot. Alternating knots were the subject of three famous conjectures made by P.G. Tait in the 19th century in his attempt to tabulate knots. The first Tait conjecture states that any reduced alternating knot diagram has the fewest possible crossings across all diagrams of that knot. Tait's second conjecture asserts that knots which are their own mirror images have an even number of positive and negative crossings. Finally, Tait conjectured that all alternating diagrams of a knot are related by a sequence of certain moves known as flypes.
 
-\notegreen{Scaffold:
-\begin{itemize}
-\item Alternating knots and Tait conjectures. Tait set out the Tait conjectures, summarize them and who proved them and when.
-\item include Greene's characterisation Geom vs Topology. Very famous. Say something about the proof. One of the novel features is that he uses knot theory and lattice theory.
-\item Then talk more about  Josh's mutation invariant result. Say something vague about lattices, graphs tait, heegaard floer.
-\item This text is devoted to telling the analagous stroy for knots in a more general setting: knots in thickened surfaces.
-\item What's true/false, what was used to prove this.
-\item Chapter by chapter summary.
-\item I have contributed significantly to the theoretical results which will be submitted with Zsuzsi Hans Tilda.
-\item The computational results are the work of the author and will be the subject of a single-author paper later.
-\end{itemize}}
+Much to Tait's credit, all three of these conjectures - and even more of his conjectures about alternating knots - turned out to be true! With the advent of the Jones polynomial, the first two were proven in 1987 by Kauffman \cite{state-models-jones-polynomial}, Murasugi \cite{jones-polynomials-classical-conjectures} and Thistlethwaite \cite{spanning-tree-expansion-jones-polynomial}, each working independently. The final conjecture would remain unsolved until 1991 when it was proved by Thistlethwaite and Menasco \cite{classification-alternating-links}.
+
+Despite this progress, a geometric characterisation of alternating knots (one not based purely on knot diagrams) remained elusive, prompting the quote `\textit{What is an alternating knot?}' from Ralph Fox. This question was answered by Greene in 2017 \cite{alternating-links-definite-surfaces}, who resolves that alternating knots are precisely those knots that bound both positive definite and negative definite spanning surfaces with respect to the Gordon-Litherland pairing, with a similar result by Howie at the same time \cite{characterisation-alternating-knot-exteriors}. Greene then uses this characterisation, combined with the \textit{discrete Torelli theorem} - a graphical analogue of a result in algebraic geometry - to give the first geometric proofs of some of Tait's conjectures.
+
+The relationship between knots and graphs is a classical construction of Tait's, known as the Tait graph. In a separate breakthrough result \cite{lattices-graphs-mutation}, green manifests this correspondence to completely characterise alternating knots up to \textit{Conway mutation}. He uses the discrete Torelli theorem to show that a lattice-theoretic construction - the $d$-invariant of the Tait graph - completely captures the information of the alternating knot, modulo mutation. Greene also proves that this lattice-theoretic $d$-invariant coincides with a topological construction: the \textit{$d$-invariant of the Heegaard-Floer homology of the double branched-cover} of the knot.
+
+Another result by Greene relates also concerns alternating knots \cite{lattices-graphs-mutation}. This result combines topology and algebra, equating a completely lattice-theoretic construction: the lattice of integer flows of the Tait graph of an alternating knot, to something completely topological: the $d$-invariant of the Heegaard-Floer homology of the double branched-cover of the knot. Green also uses an analogue of a result from algebraic geometry to prove that this forms a complete invariant of alternating knots up to Conway mutation.
+
+This essay is devoted to an analogue of this story in a more general setting: that of knots in thickened surface, known as virtual knots. By equating Greene's $d$-invariant with the Gordon-Litherland pairing, we find that the $d$-invariant does generalise to a mutation invariant of alternating virtual knots By constructing a counterexample using computational methods, we will that this generalisation is not complete up to mutation.
+
+In Chapter 1, we review the necessary notions of classical knot theory, and associate a pair of lattices to each knot, equivalent to Green's $d$-invariant construction. In Chapter 2, we introduce knots in thickened surfaces, allowing for a geometric definition of virtual knots as equivalence classes of these. We then follow a similar path as in Chapter 1, observing that the Greene's invariant does extend to the virtual setting, but finding that the classical proof of its completeness breaks down. In Chapter 3, we examine the Gordon-Litherland linking form, another mutation invariant of alternating classical knots, and review its extension to the virtual setting by Boden-Chrisman-Karimi. In Chapter 4, we find computer algorithms to to compute the Gordon-Litherland linking form from of tables of virtual knots, and present a counterexample to the completeness of the virtual $d$-invariant, found using these algorithms.
+
+I have contributed significantly to the theoretical results presented in this essay, along with Hans Boden and Zsuzsanna Dancso. The algorithm given in Section 4.2 is joint work with Tilda Wilkinson-Finch. The later computational results in this text are my sole work.
+
+I plan to submit two journal publications based on the results of this thesis: one - mostly theoretical - joint with Boden, Dancso, and Wilkinson-Finch, which is currently in draft form; and one - mostly computational - as a sole author.
 
 \chapter*{Acknowledgements}
 \addcontentsline{toc}{chapter}{Acknowledgements}
@@ -353,9 +357,9 @@ With this, we have a way of expressing more complicated knots in terms of less c
 \end{theorem}
 
 \section{Alternating Knots, Knot Mutation and the Tait Graph}
-We call a knot diagram \textit{alternating} if, traversing the diagram, the crossings alternate under and over. For every diagram that is alternating, it is possible to construct a non-alternating diagram of an equivalent knot: one simply needs to apply a type \textit{R}I Reidemeister move appropriately to any strand of the knot: for example the alternating diagram of the Trefoil knot in Fig.~\ref{fig:trefoil} transforms into the non-alternating diagram in Fig.~\ref{fig:trefoil-nonalternating}. Hence we define an \textit{alternating knot} as a knot which can be represented by an alternating diagram. For low crossing-number, that is for knots that can be represented by diagrams with few crossings, many of the knots are alternating, but this trend quickly reverses as crossing number is increased.
+Alternating knots are of particular interest in knot theory, and they possess a number of interesting properties. Tait made a series of conjectures about alternating knots in his early attempts to tabulate knots. The first conjecture is about the crossing number of alternating knots and was proven in 1987 by Kaufmann, Murasugi and Thistlethwaite, all independently \cite{state-models-jones-polynomial, jones-polynomials-classical-conjectures, spanning-tree-expansion-jones-polynomial}. Nonetheless it remains known as the first Tait conjecture. \notered{Add short history about green ralph fox}.
 
-An alternating knot diagram is \textit{reduced} if there are no nugatory crossings. A \textit{nugatory crossing} is a crossing for which there is a circle in the projection plane of the knot diagram which intersects the diagram transversely at that crossing, but nowhere else. Nugatory crossings are those which could be immediately undone to simplify the knot diagram. The diagram in Fig.~\ref{fig:trefoil} is a reduced alternating diagram, while the diagram in Fig.~\ref{fig:trefoil-nugatory} is alternating but not reduced.
+We call a knot diagram \textit{alternating} if, traversing the diagram, the crossings alternate under and over. For every diagram that is alternating, it is possible to construct a non-alternating diagram of an equivalent knot: one simply needs to apply a type \textit{R}I Reidemeister move appropriately to any strand of the knot: for example the alternating diagram of the Trefoil knot in Fig.~\ref{fig:trefoil} transforms into the non-alternating diagram in Fig.~\ref{fig:trefoil-nonalternating}. Hence we define an \textit{alternating knot} as a knot which can be represented by an alternating diagram. For low crossing-number, that is for knots that can be represented by diagrams with few crossings, many of the knots are alternating, but this trend quickly reverses as crossing number is increased.
 
 
 \begin{figure}[hbt!]
@@ -381,7 +385,7 @@ An alternating knot diagram is \textit{reduced} if there are no nugatory crossin
 	\label{fig:trefoil-diagrams}
 \end{figure}
 
-Alternating knots are of particular interest in knot theory, and they possess a number of interesting properties. Tait made a series of conjectures about alternating knots in his early attempts to tabulate knots. The first conjecture is about the crossing number of alternating knots and was proven in 1987 by Kaufmann, Murasugi and Thistlethwaite, all independently \cite{state-models-jones-polynomial, jones-polynomials-classical-conjectures, spanning-tree-expansion-jones-polynomial}. Nonetheless it remains known as the first Tait conjecture.
+An alternating knot diagram is \textit{reduced} if there are no nugatory crossings. A \textit{nugatory crossing} is a crossing for which there is a circle in the projection plane of the knot diagram which intersects the diagram transversely at that crossing, but nowhere else. Nugatory crossings are those which could be immediately undone to simplify the knot diagram. The diagram in Fig.~\ref{fig:trefoil} is a reduced alternating diagram, while the diagram in Fig.~\ref{fig:trefoil-nugatory} is alternating but not reduced.
 
 \begin{theorem}[First Tait Conjecture]
 Let $D$ be a reduced alternating knot diagram for a virtual knot $V$. Then $D$ has minimal crossing number.
@@ -1035,7 +1039,7 @@ Given a embedding of a graph $G$ in an orientable surface, we can read off a cyc
 
 \notered{example and figures?}
 
-The \textit{surface dual} of the cellularly embedded surface embedding $i: G \inject \Sigma$ is another surface embedding $i^{*}: G^{*} \inject \Sigma$, where $G^{*}$ is the graph that has a vertex for every connected component of  $\Sigma \smallsetminus G$, and for each edge $e$ of $G$, a dual edge $e^{\ast}$ connecting the vertices lying on either side of $e$. The map $J$ then assigns vertices and edges of $G^{*}$ to the correct place in $\Sigma$. The requirement that $G$ be cellularly embedded is necessary for the surface dual to be well-defined. For example, without this requirement, Fig.~\ref{fig:multiple_dual_graphs} contains two distinct surface duals of the same surface embedding.
+The \textit{surface dual} of the cellularly embedded surface graph $i: G \inject \Sigma$ is another surface embedding $i^{*}: G^{*} \inject \Sigma$, where $G^{*}$ is the graph that has a vertex for every connected component of  $\Sigma \smallsetminus G$, and for each edge $e$ of $G$, a dual edge $e^{\ast}$ connecting the vertices lying on either side of $e$. The map $J$ then assigns vertices and edges of $G^{*}$ to the correct place in $\Sigma$. \notered{Sort this out with Zsuzsi on Monday!} The requirement that $G$ be cellularly embedded is necessary for the surface dual to be well-defined. For example, without this requirement, Fig.~\ref{fig:multiple_dual_graphs} contains two distinct surface duals of the same surface embedding.
 
 \begin{figure}[hbt!]
 	\centering
@@ -1050,7 +1054,7 @@ The \textit{surface dual} of the cellularly embedded surface embedding $i: G \in
 We present here a few elementary results about surface duals.
 
 \begin{lemma}
-Let $G$ be cellularly embedded, so that $G^{*}$ is defined. Then $G^{*}$ is cellularly embedded.
+Let $G$ be cellularly embedded. Then $G^{*}$ is cellularly embedded.
 \end{lemma}
 
 \begin{proof}
@@ -1058,16 +1062,16 @@ Since $G$ is cellularly embedded in $\Sigma$, the Euler characteristic $\chi(\Si
 \end{proof}
 
 \begin{corollary}
-Let $G$ be cellularly embedded, so that $G^{*}$ is defined. Then $G^{**} = G$.
+If $G$ is cellularly embedded, then $G^{**} = G$.
 \end{corollary}
 
-\notered{Show that we can reconstruct the knot from the Tait graphs, like in the classical case. This is no longer unique. Mention here and give example.}
+\notered{Show that we can reconstruct the knot from the Tait graphs, like in the classical case. Mention here and give example.}
 
 \section{The Lattice of Integer Flows for Virtual Knots}
 
-This section will be dedicated to asking whether the results about the lattice of integer flows in the classical case generalise to the virtual setting. Like the classical case, we will find that the lattice of integer flows of either Tait graph of a virtual knot is an invariant of alternating virtual knots. However, we will not be able to show that this is a \textit{complete} invariant of alternating virtual knots. In fact, in Chapter 5, we will produce a counterexample to this statement.
+This section will be dedicated to determining whether the results about the lattice of integer flows in the classical case generalise to the virtual setting. Like the classical case, we find that the lattice of integer flows of either Tait graph of a virtual knot is an invariant of alternating virtual knots. However, the proof that this is a \textit{complete} invariant fails for alternating virtual knots. In fact, in Chapter 4, we will produce a counterexample.
 
-As the lattice of integer flows is defined graph-theoretically, the same definition applies in the virtual setting. The difference is that the graph embeddings are no longer planar duals, but surface duals. As a result, the lattice of integer flows of the white Tait graph is no longer isomorphic to the lattice of integer cuts of the black Tait graph, so both $\Lambda_{B}(D)$ and $\Lambda_{W}(D)$ are needed not to unnecessarily lose information about the knot. We present the following example to show this.
+As the lattice of integer flows is defined graph-theoretically, the same definition applies in the virtual setting. The difference is that embedded black and white Tait graphs are no longer planar duals, but surface duals. As a result, the lattice of integer flows of the white Tait graph is no longer isomorphic to the lattice of integer cuts of the black Tait graph, so both $\Lambda_{B}(D)$ and $\Lambda_{W}(D)$ are needed to retain as much information as possible. We present the following example to illustrate this.
 
 Let $K = 5_{2429}$, and $D$ the surface knot diagram given in Fig.~\ref{fig:5-2429-vknot}. The Tait graphs are given abstractly in Fig.~\ref{fig:5-2429-taits-abstract}.
 
@@ -1101,12 +1105,12 @@ Let $K = 5_{2429}$, and $D$ the surface knot diagram given in Fig.~\ref{fig:5-24
 	\label{fig:5-2429-taits-abstract}
 \end{figure}
 
-With respect to the basis $(e_{1} + e_{2} + e_{3}, e_{4} + e_{5})$, the inner product on $\Lambda_{B}(K)$ has pairing matrix
+With respect to the basis $(e_{1} + e_{2} + e_{3}, e_{4} + e_{5})$, the inner product on $\Lambda_{B}(D)$ has pairing matrix
 \[\begin{bmatrix}
 3 & 0 \\
 0 & 3
 \end{bmatrix}\,.\]
-Likewise with respect to the basis $(f_{1}, f_{2}, f_{3}, f_{4}, f_{5})$, $\Lambda_{W}(K)$ has pairing matrix
+Likewise with respect to the basis $(f_{1}, f_{2}, f_{3}, f_{4}, f_{5})$, $\Lambda_{W}(D)$ has pairing matrix
 \[\begin{bmatrix}
 1 & 0 & 0 & 0 & 0\\
 0 & 1 & 0 & 0 & 0\\
@@ -1114,61 +1118,64 @@ Likewise with respect to the basis $(f_{1}, f_{2}, f_{3}, f_{4}, f_{5})$, $\Lamb
 0 & 0 & 0 & 1 & 0\\
 0 & 0 & 0 & 0 & 1\\
 \end{bmatrix}\,.\]
+Again, these pairing matrices are only determined by the lattices up to unimodular congruence.
+To contrast the classical case, we also look at the lattice of integer flows of $G_{W}(D)$ and $G_{B}(D)$: the lattice $\mathcal{C}_{B}(D)$ with respect to the basis $(e_{1} - e_{2}, e_{2} - e_{3}, e_{4} - e_{5})$ has pairing matrix
+with pairing matrix
+\[\begin{bmatrix}
+	2  & -1 & 0 \\
+	-1 & 2  & 0 \\
+	0  & 0  & 2
+\end{bmatrix},\]
+and the lattice $\mathcal{C}_{W}(D)$ is the lattice $\{ 0 \}$.
 
-Again, these are only determined by the lattices up to unimodular congruence.
+In the classical case, the lattice of integer cuts of $G_{W}$ is isomorphic to the lattice of integer flows of $G_{B}$: $\Lambda_{B}(G) \cong \mathcal{C}_{W}(G)$, and vice-versa. In the virtual case, we see that this is no longer true - their pairing matrices are not even the same dimension.
 
-In the classical case, we proved that $\Lambda_{B}(D)$ and $\Lambda_{W}(D)$ were invariants of alternating knots as follows. We used the flyping theorem to relate any prime alternating diagrams via a sequence of flypes. Then, by the lemma that flypes correspond to Whitney flips of the Tait graph, any two prime alternating diagrams of the same knot have isomorphic lattices. Finally we use a series of results to extend this from prime alternating knots to arbitrary alternating knots, including Menasco's theorem and the unique decomposition theorem (Schubert's theorem) for knots.
+In the classical setting, to prove that $\Lambda_{B}(D)$ and $\Lambda_{W}(D)$ are invariants of alternating knots, we used the flyping theorem to relate any prime alternating diagrams via a sequence of flypes. Then, by the lemma that flypes correspond to Whitney flips of the Tait graph, any two prime alternating diagrams of the same knot have isomorphic lattices. Finally we use a series of results to extend this from prime alternating knots to arbitrary alternating knots, including Menasco's theorem and the unique decomposition theorem (Schubert's theorem) for knots.
 
-The virtual case is more complicated. Kindred's virtual flyping theorem applies only to weakly prime alternating knots, and the annular connected sum of virtual knots is a multivalued operation. However there are virtual analogues of each of the results used in the classical proof. An analogous, diagrammatic proof of this statement is the work of the author along with collaborators Hans Boden, Zsuzsanna Dancso and Tilda Wilkinson-Finch will appear in a paper which is currently in draft form.
+The virtual case is more complicated. Kindred's virtual flyping theorem applies to weakly prime alternating knots, and virtual analogues of  results used in the classical proof are weaker and more subtle.
 
-However in the current text, we give a topological proof by showing that the lattice of integer flows of the Tait graph is equivalent to the topologically defined Gordon-Litherland linking form of Chapter 3. We state this now, but delay the proof until then.
+However, for virtual knots, we give a different topological proof for the invariance of $\Lambda_{B}(D)$ and $\Lambda_{W}(D)$ by showing that the lattice of integer flows of the Tait graph is equivalent to the topologically defined Gordon-Litherland pairing. We state this now, but delay the proof to Chapter 3, where we introduce the Gordon-Litherland pairing.
 
 \begin{theorem}
 Let $V$ be an alternating virtual knot, and let $D$, $E$ be alternating surface knot diagrams for $V$. Then $\Lambda_{B}(D) \cong \Lambda_{B}(E)$ and $\Lambda_{B}(D) \cong \Lambda_{W}(E)$.
 \end{theorem}
 
-Unlike the classical case, $\Lambda_{B}(V)$ and $\Lambda_{W}(V)$ are not equivalent, as this came from the fact that in the plane, the lattice of integer flows of a graph $G$ was isomorphic to the lattice of integer cuts of $G$. This is only true on the plane.
-
-Two statements from the classical case remain to be examined: that $\Lambda_{B}(V)$ (resp. $\Lambda_{W}(V)$) is a mutation invariant, and that $\Lambda_{B}(V)$ (resp. $\Lambda_{W}(V)$) is complete up to mutation.
-
-The first statement holds in the general setting.
+Two statements from the classical case remain to be examined: that $\Lambda_{B}(V)$ (resp. $\Lambda_{W}(V)$) is a mutation invariant, and that $\Lambda_{B}(V)$ (resp. $\Lambda_{W}(V)$) is complete up to mutation. The first statement holds in the general setting.
 \begin{theorem}
-Let $V_{1}$ and $V_{2}$ be alternating knots that are mutants. Then $\Lambda_{B}(V_{1}) \cong \Lambda_{B}(V_{2})$ and $\Lambda_{W}(V_{1}) \cong \Lambda_{W}(V_{2})$.
+Let $V_{1}$ and $V_{2}$ be mutant alternating knots that are mutants. Then $\Lambda_{B}(V_{1}) \cong \Lambda_{B}(V_{2})$ and $\Lambda_{W}(V_{1}) \cong \Lambda_{W}(V_{2})$.
 \end{theorem}
 \begin{proof}
-The proof follows the proof in the classical case exactly. Let $V_{1}$ and $V_{2}$ be mutants. There is a sequence of mutations from $V_{1}$ to $V_{2}$. The lemma from Chapter 1 that a flype move induces a Whitney flip of the Tait graph generalises directly to disk mutation. Thus, their Tait graphs are related by Whitney flips. By Whitney's theorem, the graphs are $2$-isomorphic, and since $\Lambda_{B}(K)$ (resp. $\Lambda_{W}(K)$) is a $2$-isomorphism invariant, we have $\Lambda_{B}(V_{1}) \cong \Lambda_{B}(V_{2})$ (resp. $\Lambda_{W}(V_{1}) \cong \Lambda_{W}(V_{2})$).
+The proof follows the proof in the classical case exactly. Let $V_{1}$ and $V_{2}$ be mutants. There is a sequence of mutations from $V_{1}$ to $V_{2}$. The lemma from Chapter 1 that a flype move induces a Whitney flip of the Tait graph generalises directly to disk mutation. Thus, $G_{B}(V_{1})$ and $G_{W}(V_{1})$ (resp. $G_{B}(V_{2})$ and $G_{W}(V_{2})$) are related by Whitney flips. By Whitney's theorem, the graphs are $2$-isomorphic, and since $\Lambda_{B}(K)$ (resp. $\Lambda_{W}(K)$) is a $2$-isomorphism invariant, we have $\Lambda_{B}(V_{1}) \cong \Lambda_{B}(V_{2})$ (resp. $\Lambda_{W}(V_{1}) \cong \Lambda_{W}(V_{2})$).
 \end{proof}
 
-Unlike in the the above proof, the proof that $\Lambda_{B}(K)$ and $\Lambda_{W}(K)$ are complete up to mutation does not generalise. \notered{Insert Zsuzsi's argument as to why.} In fact, on the class of virtual knots, even the pair of $\Lambda_{B}(K)$ and $\Lambda_{W}(K)$ is incomplete.
+Unlike in the the above proof, the proof that $\Lambda_{B}(K)$ and $\Lambda_{W}(K)$ are complete up to mutation does not generalise. \notered{Insert Zsuzsi's argument as to why.} In fact, on the class of virtual knots, even the pair the pair $\left(\Lambda_{B}(K), \Lambda_{W}(K)\right)$ fails to be a complete mutation invariant:
 
 \begin{theorem}
 The pair of lattices of integer flows of the Tait graphs of virtual knots, $(\Lambda_{B}(V), \Lambda_{W}(V))$ is not a complete invariant of alternating virtual knots.
 \end{theorem}
 
-The rest of this text will work up to the proof of this theorem. Chapter 3 will introduce the Gordon-Litherland linking form, another mutation invariant of virtual knots whose symmetrisation is equivalent to the lattice of integer flows. Chapters 4 and 5 will present algorithms which we use to compute these invariants, which will produce the necessary counterexample.
+The rest of this text will work up to the proof of this theorem. Chapter 3 will introduce the Gordon-Litherland linking form, another mutation invariant of virtual knots whose symmetrisation is equivalent to the lattice of integer flows. Chapter 4 will present algorithms which we use to compute these invariants, to produce the necessary counterexample for the incompleteness theorem.
 
 
 \chapter{Gordon-Litherland Linking Forms}
 
 \epigraph{\itshape God created the knots. All else in topology is the work of mortals.}{--- Leopold Kronecker, modified by Dror Bar-Natan}
 
-We turn our attention to the work of Cameron Gordon and Richard Litherland, and quietly note that Gordon (1945 -- present) may yet disprove the conjecture in this Chapter's epigraph. This duo assigned a symmetric quadratic form to a knot, based on an unoriented spanning surface of the knot \cite{signature-of-a-link}. Recent work by Boden-Chrisman-Karmimi extends this to the virtual setting by generalising this to a quadratic form for knots in thickened surfaces, called the Gordon-Litherland linking form \cite{gordon-litherland-pairing-thickened-surfaces}. In this chapter, we will define this linking form, prove that it is a mutation invariant of alternating virtual knots, and relate it with the lattice of integer flows of the previous chapter.
+We turn our attention to the work of Cameron Gordon and Richard Litherland, and quietly note that Gordon (1945 -- present) may yet disprove this Chapter's epigraph. This duo assigned a symmetric quadratic form to a knot, based on an unoriented spanning surface of the knot \cite{signature-of-a-link}. Recent work by Boden-Chrisman-Karmimi extends this to a form in the virtual setting, called the Gordon-Litherland linking form \cite{gordon-litherland-pairing-thickened-surfaces}. In this chapter, we define this linking form, prove that it is a mutation invariant of alternating virtual knots, and relate it with the lattice of integer flows of the previous chapter.
 
-The first three sections closely follow \cite{gordon-litherland-pairing-thickened-surfaces, alternating-links-thickened-surfaces, mock-seifert-matrices} to describe the Gordon-Litherland form.
+Except for the last theorem of this chapter, which is original work, we follow \cite{gordon-litherland-pairing-thickened-surfaces, alternating-links-thickened-surfaces, mock-seifert-matrices, virtual-knot-groups-almost-classical-knots} to describe the Gordon-Litherland form.
 
 \section{Spanning Surfaces and Linking Numbers}
 
-A \textit{spanning surface} of a knot (in a thickened surface) $K$ is an unoriented surface $S \subset \R^{3}$ ($S \subset \Sigma \times I$) with boundary $\partial S = K$. The definition of the Gordon-Litherland linking form is based on the spanning surface of a knot. Recall the theorem in Chapter 2 that equates a knot in a thickened surface being checkerboard colourable with the existence of a spanning surface. Hence, while all classical knots have spanning surfaces, the same is not true in thickened surfaces.
+A \textit{spanning surface} of a knot $K \subseteq \Sigma \times I$ is an unoriented surface $S \subset \Sigma \times I$ with boundary $\partial S = K$. The definition of the Gordon-Litherland linking form is based on a choice of spanning surface for the knot.
 
-From the checkerboard colouring of a knot in $\Sigma \times I$, it is easy to construct a spanning surface. For each coloured region of the surface knot diagram $D$, we place a corresponding disk in $\Sigma \times \{1/2\}$. For each crossing in $D$, we place a half-twisted band connecting the two adjacent coloured regions, such that the half-twist in the band agrees with the type of the crossing. Fig.~\ref{fig:crossing-type} illustrates this well. We denote this spanning surface $F$, and the surface obtained by swapping the colourings as $F^{*}$. Observe that $F \cup F^{*} = \Sigma$.
+Recall from Chapter 2 that a knot in a thickened surface is checkerboard colourable if and only if a spanning surface exists. While all classical knots have spanning surfaces, the same is not true in thickened surfaces. From the checkerboard colouring of a knot in $\Sigma \times I$, it is easy to construct a spanning surface. For each coloured region of the surface knot diagram $D$, we place a corresponding disk in $\Sigma \times \{1/2\}$. For each crossing in $D$, we place a half-twisted band connecting the two adjacent coloured regions, such that the half-twist in the band agrees with the type of the crossing, as in Fig.~\ref{fig:crossing-type}. We denote this spanning surface $F$, and the surface obtained by swapping the colourings as $F^{*}$. Observe that $F \cup F^{*} = \Sigma$.
 
-Let $J$ and $K$ be two oriented disjoint simple closed curves in the interior of $\Sigma \times I$. Consider the relative homology group $H_{1}(\Sigma \times I \smallsetminus J, \Sigma \times \{1\})$. This group is isomorphic to $\Z$, and generated by a meridian $\mu$ of $J$ \cite{virtual-knot-groups-almost-classical-knots}. The \textit{linking number} of $J$ with $K$, $\lk(J, K)$ is defined as the unique integer $n$ such that $[K] = n\mu$. This serves to define $\lk(J, K)$ as the signed number of times that $J$ passes above $K$, with `above' defined to be with respect to $t$, the parameter of the interval $I$. A positive (resp. negative) contribution being made to $\lk(J, K)$ when $J$ passes over $K$ such that the coordinate system $\hat{j}, \hat{k}, \hat{t}$ has a positive (negative) orientation.
+A crucial ingredient in the Gordon-Litherland linking form is the notion of linking numbers. Let $J$ and $K$ be two oriented disjoint simple closed curves in the interior of $\Sigma \times I$. Consider the relative homology group $H_{1}(\Sigma \times I \smallsetminus J, \Sigma \times \{1\})$. This group is isomorphic to $\Z$, and generated by a meridian $\mu$ of $J$ . The \textit{linking number} of $J$ with $K$, $\lk(J, K)$ is defined as the unique integer $n$ such that $[K] = n\mu$. Equivalently, $\lk(J, K)$ is the signed number of times that $J$ passes above $K$, with `above' defined to be with respect to $t$, the parameter of the interval $I$. A positive (resp. negative) contribution is made to $\lk(J, K)$ when $J$ passes over $K$ such that the coordinate system $\hat{j}, \hat{k}, \hat{t}$ \notered{think about this notation if time at end} has a positive (resp. negative) orientation.
 
-Note that $\lk(J, K)$ is independent of the number of times that $J$ passes under $K$: this is instead captured by $\lk(K, J)$.
-
-The linking numbers of curves in $\R^{2} \times I$ are symmetric:
-\[\lk(J, K) - \lk(K, J) = 0\]
-this can be shown by examining the following table of linking numbers and noticing that when $K$ passes over or under $J$ going `up' (with respect to the page) there is a positive contribution to $\lk(J, K) - \lk(K, J)$, and likewise a negative contribution when $K$ passes over or under $J$ going `down'. An application of the Jordan curve theorem proves this.
+Note that $\lk(J, K)$ is independent of the number of times that $J$ passes under $K$: this is instead captured by $\lk(K, J)$. In general, these two notions are different, except in the classical setting, where linking numbers of curves in $\R^{2} \times I$ are symmetric:
+\[\lk(J, K) - \lk(K, J) = 0.\]
+This can be shown by examining the following table of contributions and noticing that when $K$ passes over or under $J$ going `up' (with respect to the page) there is a positive contribution to $\lk(J, K) - \lk(K, J)$, and likewise a negative contribution when $K$ passes over or under $J$ going `down'. An application of the Jordan curve theorem implies that the crossings come in cancelling pairs.
 
 \begin{table}[h]
 \centering
@@ -1177,33 +1184,34 @@ this can be shown by examining the following table of linking numbers and notici
 	\def\svgscale{0.18}\input{graphics/linking_diagram_1.pdf_tex} & +1 & 0 & \def\svgscale{0.18}\input{graphics/linking_diagram_3.pdf_tex} & 0 & +1 \\ \hline
 	\def\svgscale{0.18}\input{graphics/linking_diagram_2.pdf_tex} & -1 & 0 & \def\svgscale{0.18}\input{graphics/linking_diagram_4.pdf_tex} & 0 & -1 \\
 \end{tabular}
-	\caption{Possibilities for how $J$ may pass over $K$ or vice versa and their contribution to $\lk(J, K) - \lk(K, J)$. In each diagram, $J$ is red, and $K$ is blue.}
+	\caption{Crossings between $J$ (red) and $K$ (blue) and their contribution to $\lk(J, K) - \lk(K, J)$.}
 	\label{tab:linking-number-crossings}
 \end{table}
 
-The \textit{algebraic intersection number} of two homology classes $\alpha$ and $\beta$ is the number of times any two elements of those classes intersect, counted with sign (specifically, the sign of the coordinate system $\hat{a}, \hat{b}$ where $a$ and $b$ are two $1$-chains). This is well-defined, as if $a$ and $a'$ are such that $[a] = [a']$, then $[a - a'] = 0$, so there is a $2$-chain $A$ such that $\partial A = a - a'$. But the intersection number of a closed curve with any $2$-chain is $0$, so $A \cdot b = 0$, hence $(a - a') \cdot b = 0$, and finally $a \cdot b = a' \cdot b$.
+A related notion is the intersection pairing on the first homology $H_{1}(\Sigma)$. The \textit{algebraic intersection number} of two homology classes $\alpha$ and $\beta$ is the number of times any two representatives of those classes $\alpha$ and $\beta$ intersect, counted with sign (specifically, the sign of the coordinate system $\hat{a}, \hat{b}$ where $a$ and $b$ are two $1$-chains). This is well-defined, as if $a$ and $a'$ are such that $[a] = [a']$, then $[a - a'] = 0$, so there is a $2$-chain $A$ such that $\partial A = a - a'$. The intersection number of a closed curve with any $2$-chain is $0$, so $A \cdot b = 0$, hence $(a - a') \cdot b = 0$, and finally $a \cdot b = a' \cdot b$.
 
 In general in $\Sigma \times I$, linking numbers are not symmetric. Rather, they satisfy the following relationship:
 \[\lk(J, K) - \lk(K, J) = p_{*}(J) \cdot p_{*}(K)\,,\]
-where $p: \Sigma \times I \longrightarrow \Sigma$ is the projection map which induces $p_{*}: H_{1}(\Sigma \times I) \to H_{1}(\Sigma)$. The product $\cdot$ here is 
-The proof of this fact is an easy modification of the argument above.
-
-Consider the spanning surface of a knot, $F$. We consider this unoriented, but depending on the knot, this may or may not be orientable. Either way, we can construct an oriented double-cover like so. Take the normal bundle $N(F)$. We set $\widetilde{F}$ as the boundary of $N(F)$, a $\{0, 1\}$-bundle of $F$. This $\widetilde{F}$ is a double cover of $F$, and we take $\pi: \widetilde{F} \longrightarrow F$ to be the covering map. If $F$ was orientable, then this double cover is the trivial $2$-sheeted double cover (and hence orientable), and if $F$ was non-orientable, then this is the orientable double cover of $F$. Either way, $\widetilde{F}$ is orientable, and by our definition oriented.
-
-The \textit{pushoff} of a closed loop $\gamma$ in $F$ is $\pi^{-1}(\gamma)$. If $F$ was orientable, this is a union of two closed curves, one above $\gamma$ and one below, whereas if $F$ was non-orientable, this is a single closed curve that passes both above and below $\gamma$. We define the \textit{transfer map} $\tau: H_{1}(F) \longrightarrow H_{1}(\widetilde{F})$ by $\tau([a]) = [\pi^{-1}(a)]$. Locally, we can also define $t^{+}$ and $t^{-}$ as the two maps $t^{\pm}: F \longrightarrow \widetilde{F}$. This way, locally composing a curve $\gamma$ with $t^{+}$ or $t^{-}$ produces a lift of $\gamma$. We define $t(\gamma) = t^{+}(\gamma) \cup t^{-}(\gamma)$.
+where $p: \Sigma \times I \longrightarrow \Sigma$ is the projection map which induces $p_{*}: H_{1}(\Sigma \times I) \to H_{1}(\Sigma)$, and the product $\cdot$ denotes algebraic intersection number. The proof of this fact is an easy modification of the argument above.
 
 \section{The Linking Form}
-The \textit{Gordon-Litherland linking form} (which we shorten to the \textit{linking form}) on a compact, unoriented spanning surface $F$ of a knot in $\Sigma_{1} \times I$ is the bilinear form
+
+Consider a (not necessarily orientable) spanning surface $F$ for a knot $K$. The normal bundle $N(F)$ is a ${0, 1}$-bundle of $F$. Let $F$ denote the boundary of $N(F)$, this is an orientable double cover of $F$. Let $\pi: \widetilde{F} \longrightarrow F$ denote the covering map. If $F$ was orientable, then this is the trivial $2$-sheeted double cover (and hence orientable), and if $F$ was non-orientable, then this is the unique orientable double cover of $F$. Either way, $\widetilde{F}$ is orientable, and by definition oriented.
+
+The \textit{pushoff} of a closed loop $\gamma$ in $F$ is $\pi^{-1}(\gamma)$. If $F$ was orientable, this is a union of two closed curves, one above $\gamma$ and one below, whereas if $F$ was non-orientable, this is a single closed curve that passes both above and below $\gamma$. We define the \textit{transfer map} $\tau: H_{1}(F) \longrightarrow H_{1}(\widetilde{F})$ by setting $\tau([a]) = [\pi^{-1}(a)]$. Locally, we can also define $t^{+}$ and $t^{-}$ as the two maps $t^{\pm}: F \longrightarrow \widetilde{F}$. This way, locally composing a curve $\gamma$ with $t^{+}$ or $t^{-}$ produces a lift of $\gamma$. We define $t(\gamma) = t^{+}(\gamma) \cup t^{-}(\gamma)$.
+
+
+The \textit{Gordon-Litherland linking form} (which we shorten to the \textit{linking form}) on a compact, unoriented spanning surface $F$ of a knot in $\Sigma \times I$ is the bilinear form
 \[\mathcal{L}_{F}: H_{1}(F) \times H_{1}(F) \longrightarrow \Z\]
 defined by
 \[\mathcal{L}_{F}(\alpha, \beta) = \lk(\tau\alpha, \beta)\]
-for $\alpha, \beta \in H_{1}(F)$. That this is well-defined is an easy exercise and shown in \cite[Chapter 2]{alternating-links-thickened-surfaces}. 
+for $\alpha, \beta \in H_{1}(F)$. By basic algebraic topology, this does not depend on the choice of representatives \cite[Chapter 2]{alternating-links-thickened-surfaces}. 
 
-With respect to a basis of $H_{1}(F)$, we can write this as a matrix. An integral matrix is said to be a \textit{mock Seifert matrix} if its $ij$ entry is $\lk(\tau \alpha_{i}, \alpha_{j})$ for some basis $\{\alpha_{1}, \dots, \alpha_{n}\}$ of $H_{1}(F)$. The word \textit{mock} here refers to the fact that unlike a usual Seifert matrix, the surface $F$ is not a necessarily orientable. Such a spanning surface would be called a Seifert surface. As this matrix represents the bilinear form $\mathcal{L}_{F}$ with respect to some basis, any other unimodular congruent matrix represents the same $\mathcal{L}_{F}$ with respect to a different basis, and conversely any change of basis induces a unimodular congruence in a mock Seifert matrix.
+Given a choice of basis for $H_{1}(X)$, a pairing matrix for this form is called a \textit{mock Seifert matrix} if its $ij$ entry is $\lk(\tau \alpha_{i}, \alpha_{j})$ for some basis $\{\alpha_{1}, \dots, \alpha_{n}\}$ of $H_{1}(F)$. The word \textit{mock} here refers to the fact that unlike a classical Seifert matrix, the surface $F$ is not a necessarily orientable; an orientable spanning surface would be called a Seifert surface. As any other unimodular congruent matrix represents the same form $\mathcal{L}_{F}$ with respect to a different basis, and conversely any change of basis induces a unimodular congruence in the corresponding mock Seifert matrices.
 
 We wait until Chapter $4$ to give examples of computations of this form, as that will be the primary focus of the chapter.
 
-As observed in \cite[Section 3]{gordon-litherland-pairing-thickened-surfaces}, the linking forms corresponding to the black and white checkerboard surfaces of the knot defines an invariant of checkerboard colourable knots, so long as computations are done on a minimal genus representative. As reduced, cellularly embedded alternating diagrams of alternating knots are always minimal genus, we have the following special case.
+As observed in \cite[Section 3]{gordon-litherland-pairing-thickened-surfaces}, the linking forms corresponding to the black and white checkerboard surfaces define an invariant of checkerboard colourable virtual knots, using a minimal genus representative of the knot. Reduced, cellularly embedded alternating diagrams of alternating knots are always minimal genus, hence we have the following special case:
 
 \begin{theorem}
 Let $V$ be an alternating virtual knot, and let $D$ and $E$ be reduced, alternating cellularly embedded diagrams of $V$. Let $F(D)$ and $F(E)$ be the spanning surfaces corresponding to the black regions of $D$ and $E$ respectively. Similarly, let $F^{*}(D)$ and $F^{*}(E)$ be those corresponding to the white regions. Then $\mathcal{L}_{F(D)} \cong \mathcal{L}_{F(E)}$ and $\mathcal{L}_{F^{*}(D)} \cong \mathcal{L}_{F^{*}(E)}$.
@@ -1213,7 +1221,7 @@ Let $V$ be an alternating virtual knot, and let $D$ and $E$ be reduced, alternat
 	\notered{Add this.}
 \end{proof}
 
-The Gordon-Litherland pairing is also a mutation invariant.
+The linking form is also a mutation invariant of alternating virtual knots:
 
 \begin{theorem}
 Let $D$ and $E$ be surface knot diagrams related by a sequence of disk mutations. Then with the notation above $\mathcal{L}_{F(D)} \cong \mathcal{L}_{F(E)}$ and $\mathcal{L}_{F^{*}(D)} \cong \mathcal{L}_{F^{*}(E)}$.
@@ -1225,28 +1233,29 @@ Let $D$ and $E$ be surface knot diagrams related by a sequence of disk mutations
 
 \section{The Gordon-Litherland Pairing}
 
-The \textit{Gordon-Litherland pairing} on a compact, unoriented spanning surface $F$ of a knot in $\Sigma \times I$ is the symmetric bilinear form
-\[\mathcal{G}_{F}: H_{1}(F) \times H_{1}(F) \longrightarrow \Z\]
-given by the symmetrisation of the linking form:
+\notered{Define positive definite and negative definite spanning surfaces somewhere!}
+
+The \textit{Gordon-Litherland pairing} is the symmetrisation of the linking form. Namely, given a compact, unoriented spanning surface $F$ of a knot in $\Sigma \times I$ is the symmetric bilinear form
+\[\mathcal{G}_{F}: H_{1}(F) \times H_{1}(F) \longrightarrow \Z,\]
 \[\mathcal{G}_{F}(\alpha, \beta) = \dfrac{1}{2}(\lk(\tau \alpha, \beta) + \lk(\tau\beta, \alpha))\,.\]
 
 If a mock Seifert matrix $A$ represents $\mathcal{L}_{F}$ with respect to some basis of $H_{1}(F)$, then its symmetrisation $\frac{1}{2}(A + A^{T})$ represents the pairing $\mathcal{G}_{F}$ with respect to the same basis.
 
-Gordon-Litherland and Boden-Karimi-Chrisman use the Gordon-Litherland pairing to define a set of link invariants based on this form, including the signature, determinant, nullity of a link.
+Gordon-Litherland \cite{signature-of-a-link} use the Gordon-Litherland pairing to define a set of link invariants based on this form, including the signature, determinant and nullity of a link. Boden-Chrisman-Karimi \cite{gordon-litherland-pairing-thickened-surfaces} define and study the analogous invariants for virtual knots using the virtual Gordon-Litherland pairing.
 
-From the fact that linking forms $\mathcal{L}_{F}$ and $\mathcal{L}_{F^{*}}$ are mutation invariants of alternating knots, it follows that the pairing is as well. In fact, the Gordon-Litherland pairing is exactly the lattice of integer flows.
+From the fact that the linking forms $\mathcal{L}_{F}$ and $\mathcal{L}_{F^{*}}$ are mutation invariants of alternating knots, it follows that the pairings are as well. In fact, we show the Gordon-Litherland pairing is exactly the lattice of integer flows of the Tait graph of a knot:
 
 \begin{theorem}
-Let $K$ be an alternating virtual knot. The Gordon-Litherland pairing on the black surface  is equal to the lattice of integer flows of the Tait graph corresponding to the black surface: $\mathcal{G}_{F}(K) \cong \Lambda_{B}(K)$. Similarly, $\mathcal{G}_{F^{*}}(K) \cong -\Lambda_{W}(K)$.
+Let $K$ be an alternating virtual knot. The Gordon-Litherland pairing on the black surface  is equal to the lattice of integer flows of the Tait graph corresponding to the black surface: $\mathcal{G}_{F}(K) \cong \Lambda_{B}(K)$. On the other hand, $\mathcal{G}_{F^{*}}(K) \cong -\Lambda_{W}(K)$.
 \end{theorem}
 
 \begin{proof}
-First note that the black spanning surface $F$ deformation-retracts to the Tait graph corresponding to the black region, $G_{B}$ so $H_{1}(F) \cong H_{1}(G_{B})$. Hence all that we need is to check that the pairing is the same.
+First note that the black spanning surface $F$ deformation-retracts to the Tait graph corresponding to the black region, $G_{B}$, so $H_{1}(F) \cong H_{1}(G_{B})$. We need to prove that the pairing is the same.
 
 Let $\alpha, \beta$ be basis elements of $H_{1}(F)$, and choose representative curves $a$ and $b$ for $\alpha$ and $\beta$ respectively. The curves can be deformed by homotopy such that when projected onto $\Sigma$, they only touch at crossings, so we only need to look at the local contribution at the crossings:
-\[\dfrac{1}{2} \left( \lk(t a, b) + \lk(t b, a) \right)\,.\]
+\[\dfrac{1}{2} \left( \lk(t a, b) + \lk(t b, a) \right).\]
 
-We see that the local contribution at a crossing is $1$ if $a$ and $b$ pass through the crossing in the same direction. By symmetry, the order of the curves doesn't matters, so there are only two cases to examine: where the curves intersect tangentially in the projection, and the other where they intersect transversely. The tangential case is shown in Fig.~\ref{fig:gordon-litherland-pairing-example}. A similar argument shows that when $a$ and $b$ intersect transversely in the projection, the local contribution to $\mathcal{G}_{F}(\alpha, \beta)$ is also $1$. Obviously if $\alpha$ and $\beta$ don't both pass through a crossing, then the local contribution from that crossing is 0.
+We show that the local contribution at a crossing is $1$ if $a$ and $b$ pass through the crossing in the same direction. By symmetry, the order of the curves doesn't matter, so there are two cases to examine: where the curves intersect tangentially in the projection, and where they intersect transversely. The tangential case is shown in Fig.~\ref{fig:gordon-litherland-pairing-example} and explained in the caption. The transverse case is similar. Finally, if $\alpha$ and $\beta$ don't both pass through a crossing, then the local contribution from that crossing is clearly 0.
 
 By linearity, when the curves pass through the crossing in opposite directions, the local contribution to $\mathcal{G}_{F}(\alpha, \beta)$ is $-1$.
 
@@ -1259,33 +1268,55 @@ By linearity, when the curves pass through the crossing in opposite directions, 
 	\label{fig:gordon-litherland-pairing-example}
 \end{figure}
 
-Via the identification $H_{1}(F) \cong H_{1}(G_{B})$, the curves correspond to cycles in the Tait graph whose edges are identified with the crossings. Therefore, this inner product counts with sign, the common edges between cycles of $G_{B}$. This is by definition the inner product on the lattice of integer flows of $G_{B}$.
+Via the identification $H_{1}(F) \cong H_{1}(G_{B})$, the curves correspond to cycles in the Tait graph, whose edges are identified with the crossings. Therefore, $\mathcal{G}_{F}$ counts with sign, the common edges between cycles of $G_{B}$. This is by definition the inner product on the lattice of integer flows of $G_{B}$.
 
 The same argument applies for the white checkerboard surface, but since the crossings are now of opposite type, we get opposite sign local contributions to $\mathcal{G}_{F^{*}}(\alpha, \beta)$ in each case. Hence, $\mathcal{G}_{F^{*}}(K) \cong -\Lambda_{W}(K)$.
-
-
 \end{proof}
+
+We obtain as a corollary the theorem we left unproven in Chapter $2$:
+
+\begin{corollary}
+Let $V$ be an alternating virtual knot, and let $D$, $E$ be alternating surface knot diagrams for $V$. Then $\Lambda_{B}(D) \cong \Lambda_{B}(E)$ and $\Lambda_{B}(D) \cong \Lambda_{W}(E)$.
+\end{corollary}
 
 \chapter{Computing Mock Seifert Matrices}
 
-\epigraph{\itshape In these days the angel of topology and the devil of algebra fight for the soul of each individual mathematical domain.}{--- Hermann Weyl, \textit{Invariants}}
+\epigraph{\itshape In these days the angel of topology and the devil of abstract algebra fight for the soul of each individual mathematical domain.}{--- Hermann Weyl, \textit{Invariants}}
 
 \epigraph{\itshape Better to reign in Hell than to serve in Heaven.}{--- John Milton, \textit{Paradise Lost}}
 
-Finally, we provide an algorithmic way to compute mock Seifert matrices of a virtual knot.
+In this chapter, which is my own original work,	provide algorithms for computing the ribbon Tait graphs and mock Seifert matrices of virtual knots. The lattice of integer flows of the Tait graph, the $d$-invariants, and the mock Alexander polynomial are easily computable from the mock Seifert matrices, which I have also implemented. In section 5, I give a counterexample proving that the pair $(\Lambda_{B}(K), \Lambda_{W}(K))$ is not a complete mutation invariant of alternating knots.
+
+Results of the algorithms for tabulated virtual alternating knots (up to 6 crossings), as well as a link to a Python implementation of the algorithms are attached in Appendix A.
 
 \section{Gauss Codes and Gauss Diagrams}
 
-Knot diagrams, being geometrical objects are difficult to directly handle with computers. The \textit{Gauss code} of an oriented knot diagram encodes combinatorial information about the order in which the crossings are visited, as the knot diagram is traversed. It is a sequence of crossings (usually given by labels $\{1, \cdots, n\}$), along with a symbol describing whether a crossing is traversed via the over-strand or the under-strand. This is, of course, only unique up to cyclic permutation. For example, the diagram of the figure eight knot in Fig.~\ref{fig:figure_8} has Gauss code
+Knot diagrams, being geometric objects are difficult for computers to directly handle. However, since knot diagrams are considered up to planar isotopy/surface isotopy, the information contained within them is completely combinatorial. The \textit{Gauss code} of an oriented knot diagram encodes this combinatorial information by recording the order in which the crossings are visited, as the diagram is traversed. In other words, the Gauss code is a sequence of crossings (usually given by labels $\{1, \cdots, n\}$), along with a symbol describing whether a crossing is traversed via the over-strand or the under-strand. This is, of course, only unique up to cyclic permutation. For example, the diagram of the figure eight knot in Fig.~\ref{fig:figure-eight-diagram} has Gauss code
 \[1\over\ 2\under\ 3\over\ 4\under\ 2\over\ 1\under\ 4\over\ 3\under.\]
 
-\begin{figure}[hbt]
+\begin{figure}[ht]
 	\centering
-	\def\svgscale{0.3}
-	\input{graphics/figure_8_knot.pdf_tex}
-	
-	\caption{The figure eight knot, oriented, with crossings numbered. \notered{Fix width.}}
-	\label{fig:figure_8}
+	\hspace*{\fill}
+	\begin{subfigure}[b]{0.4 \textwidth}
+		\centering
+		\def\svgscale{0.25}
+		\input{graphics/figure_8_knot.pdf_tex}
+		
+		\caption{The figure eight knot, oriented, with crossings numbered.}
+		\label{fig:figure-eight-diagram}
+	\end{subfigure}
+	\hspace*{\fill} \hspace*{\fill}	\hspace*{\fill}
+	\begin{subfigure}[b]{0.4 \textwidth}
+		\centering
+		\def\svgscale{1.2}
+		\input{graphics/gauss_diagram_figure_eight.pdf_tex}
+		
+		\caption{The Gauss diagram of the figure eight knot.}
+		\label{fig:gauss_diagram_figure_eight}
+	\end{subfigure}
+	\hspace*{\fill} 
+	\caption{A diagram and its gauss diagram for the knot $4_{1}$.}
+	\label{fig:figure-eight}
 \end{figure}
 
 We call a crossing in an oriented knot diagram \textit{positive} if it can be rotated to look like Fig.~\ref{fig:cross_pos}, and \textit{negative} if it can be rotated to look like Fig.~\ref{fig:cross_neg}. This is referred to as the \textit{sign} or \textit{writhe} of the crossing.
@@ -1313,44 +1344,36 @@ We call a crossing in an oriented knot diagram \textit{positive} if it can be ro
 	\label{fig:crossing-sign}
 \end{figure}
 
-The Gauss code can be extended to incorporate the writhe, also known as the sign, of each crossing, and in doing so, each element of the sequence also incorporates a sign of $+1$ for a positive crossing, or $-1$ for a negative crossing. The extended Gauss code from Fig.~\ref{fig:figure_8}, is
+The Gauss code can be extended to incorporate the writhe, also known as the sign, of each crossing, and in doing so, each element of the sequence also incorporates a sign of $+1$ for a positive crossing, or $-1$ for a negative crossing. The extended Gauss code from Fig.~\ref{fig:figure-eight-diagram}, is
 \[-1\over\ -2\under\ +4\over\ +3\under\ -2\over\ -1\under\ +3\over\ +4\under.\]
 since crossings $1$ and $2$ are negative, and crossings $3$ and $4$ are positive. Henceforth we refer to the extended Gauss Code as simply the Gauss code.
 
-The Gauss code is particularly convenient to extend to virtual knots, as it takes into account only combinatorial information about the crossings, and is oblivious to the diagram's planarity (or lack thereof). In the Gauss code of a virtual knot, virtual crossings make no contribution. 
+The Gauss code extends naturally to virtual knots, as it takes into account only combinatorial information about the crossings, and it is oblivious to the diagram's planarity (or lack thereof). In the Gauss code of a virtual knot, virtual crossings make no contribution. 
 
-Indeed, modulo cyclic permutation of the code, the set of Gauss codes exactly corresponds to the set of virtual knot diagrams. This gives another completely combinatorial definition of virtual knots as equivalence classes of Gauss codes, modulo cyclic permutation and the effect of Reidemeister moves on Gauss codes.
+In fact, modulo cyclic permutation of the code, the set of Gauss codes exactly corresponds to the set of virtual knot diagrams. This gives another completely combinatorial definition of virtual knots as equivalence classes of Gauss codes, modulo cyclic permutation and Gauss code Reidemeister moves.
 
-The \textit{Gauss diagram} of a knot diagram consists of a cyclic ordering of the $2n$ words of the Gauss code around the circle, with $n$ directed edges (chords) from the word $i\over$ to the word $i\under$ for each $i \in \{0, \dots, n\}$. These chords represent crossings, and are labelled according to the crossing's sign. Arcs on the diagram between words represent arcs on the knot diagram between crossings.
+The \textit{Gauss diagram} of a knot diagram consists of a cyclic ordering of the $2n$ words of the Gauss code around the circle, with $n$ directed edges (chords) from the word $i\over$ to the word $i\under$ for each $i \in \{0, \dots, n\}$. These chords represent crossings, and are labelled according to the crossing's sign. Arcs of the Gauss diagram between words represent arcs on the knot diagram between crossings.
 
-\begin{figure}[hbt!]
-	\centering
-	\def\svgscale{1.35}
-	\input{graphics/gauss_diagram_figure_eight.pdf_tex}
+\section{Reconstructing the Ribbon Tait Graph}
+
+Recall that a virtual knot has a Tait graph if and only if it is checkerboard colourable. For these knots, Gauss code uniquely determines the Tait graph, in fact, the ribbon Tait graph. In this section we provide an algorithm for explicitly reconstructing the ribbon Tait graph from Gauss code.
 	
-	\caption{The Gauss diagram of the figure eight knot.}
-	\label{fig:gauss_diagram_figure_eight}
-\end{figure}
+The idea of the algorithm is as follows. Vertices in the Tait graph, correspond to faces in the knot diagram, and edges in the Tait graph correspond to crossings in the diagram. To walk around a given face of the knot diagram, we traverse along the strands, and each time we encounter a crossing, we `hop' to the other strand at that crossing to continue our traversal.
 
+There is a choice regarding which direction to traverse the new strand, and to keep circling, we need to always turn in the same direction (always left or always right). We have no a priori notion of `left' or `right' in the Gauss code, but we can ensure that we choose the correct turn direction by appropriately choosing whether to continue traversing with or against the orientation after each `hop'. To make this decision, we need information about the sign of the crossing and whether the hop was from an over-strand to an under-strand or vice-versa.
 
-\section{Reconstructing the Tait Graph and Rotation System}
+Knowing how to traverse a face, we traverse all faces corresponding to the black checkerboard colouring. In doing so, we keep track of which crossings we encountered when traversing each face, and the order in which we encountered them. When the algorithm terminates, each crossing is associated with two faces. This defines a graph with faces as vertices and an edge for each crossing between the two associated faces -- the Tait graph.
 
-Recall that a knot has a Tait graph if and only if it is checkerboard colourable. For these knots, the Tait graph can always be reconstructed from the Gauss Code, and we provide the following algorithm.
-	
-The idea of the algorithm is as follows. Vertices in the Tait graph, correspond to faces in the knot diagram, and edges in the Tait graph to crossings in the knot diagram. To find the faces, we traverse the knot diagram, but each time we encounter a crossing, we `hop' to the other strand at that crossing and continue our traversal.
+This can be done completely combinatorially from the Gauss Code, but we present it here as a graph algorithm on the Gauss diagram. By an \textit{arc}, we mean a path in the knot diagram between two adjacent crossings (with no intermediate crossings in the traversal).
 
-There is a choice of which direction to traverse the new strand, and for each face, we always choose to turn in the same direction (always left or always right). However we have no notion of `left' or `right' just from the Gauss code. But we can ensure that we choose the correct turn direction by choosing whether to continue traversing with or against the orientation after we `hop'. To make this decision, we need information about sign of the crossing and whether the hop was from an over-crossing to an under-crossing or vice-versa.
+\subsection*{Algorithm}
 
-This tells us how to traverse a face, so we traverse all faces corresponding to the black checkerboard colouring. As we do this, we keep track of which crossings we encountered when traversing each face and the order in which we encountered them. When we terminate our algorithm we will have an association of two faces to each crossing. Producing a graph with faces as vertices and an edge for each crossing between the two associated faces reconstructs our Tait graph. We then complete the Tait graph by inserting edges between vertices where the corresponding faces touch diagonally at a crossing.
-
-This can be done completely combinatorially from the Gauss Code, but we present it here as a graph algorithm on the Gauss diagram.
-
-By an \textit{arc}, we mean a path in the knot diagram between exactly two adjacent crossings (crossings with no intermediate crossings in the traversal).
+Throughout let $n$ be the crossing number of the diagram $D$.
 
 {\def\arraystretch{1.6}
 \begin{longtable}{p{0.04\textwidth}p{0.40\textwidth}p{0.49\textwidth}}
 	\textbf{\#} & \textbf{Step}
-	& \textbf{Explanation}\\
+	& \textbf{Explanation/Notes}\\
 	1.
 	& For each $i \in \{1, \dots, n\}$, initialise a two-element array $F_{i}$.
 	& The list $F_{i}$ will keep track of which two checkerboard coloured faces are incident to each vertex.\\
@@ -1378,7 +1401,7 @@ By an \textit{arc}, we mean a path in the knot diagram between exactly two adjac
 	and whenever we hop strands we will update $a$ in a way that ensures we always turn left or right.\\
 	4.2. 
 	& Initialise a list $R_{f}$.
-	& The arrays $R_{f}$ keep track of the cyclic order that crossings were visited around face $f$, which translates into the cyclic order of edges around some vertex the Tait graph. \\
+	& The arrays $R_{f}$ keep track of the cyclic order that crossings were visited around face $f$, which translates into the cyclic order of edges around each vertex of the Tait graph. \\
 	4.2.
 	& Until we reach the same chord and have $a = 1$, perform the following loop:
 	& \\
@@ -1391,19 +1414,19 @@ By an \textit{arc}, we mean a path in the knot diagram between exactly two adjac
 	4.2.3
 	& Update the value of $a$:
 	\[a \leftarrow t \cdot j \cdot w \cdot a\]
-	where $w$ is the writhe (sign) of the current crossing and $j$ based on the `hop' we completed in the previous step.
-	& This ensures that we are consistent turning left (or consistently turning right) within a face, see the explanation of Step 4.1. \newline \newline We use the convention \[j = \begin{cases}
-			-1	& \text{for hops $\text{O} \to \text{U}$},\\
-			+1	& \text{for hops $\text{U} \to \text{O}$}.
+	where $w$ is the writhe (sign) of the current crossing and $j$ is $+1$ or $-1$ based on the `hop' we completed in the previous step.
+	& This ensures that we are consistently turning left (or consistently turning right) within a face, see Step 4.1. \newline \newline We use the convention \[j = \begin{cases}
+			-1	& \text{for hops $\text{over} \to \text{under}$},\\
+			+1	& \text{for hops $\text{under} \to \text{over}$}.
 		\end{cases}\]\\
 	4.3
-	& Continue the loop in Step 4.2.
-	& Or move on if loop condition satisfied.\\
+	& Continue the loop in Step 4.2, or move on if the condition is satisfied.
+	& \\
 	4.4
 	& If $t = -1$, reverse the cyclic ordering in $R_{f}$.
 	& This ensures that all $R_{f}$ are oriented the same way with respect to the underlying orientable surface.\\
 	4.5
-	& Continue the loop in Step 4. Start at the next chord yet to be traversed (in order anti-clockwise around the Gauss diagram), and update $t$:
+	& Continue the loop in Step 4. Start at the next chord yet to be traversed (in anti-clockwise order around the Gauss diagram), and update $t$:
 	\[t = (-1)^{k}\]
 	where $k$ is the index of this chord around the chord diagram, with counting starting from $0$.
 	& Repeat loop for next face, or move on if there are no more faces. The update rule ensures that we are only visiting faces in the black (or white) checkerboard colouring.\\
@@ -1414,14 +1437,14 @@ By an \textit{arc}, we mean a path in the knot diagram between exactly two adjac
 
 To illustrate the algorithm, we give an example reconstruction of the Tait graph of the diagram of virtual knot $4_{106}$ seen in Fig.~\ref{fig:4_106-vknot} with Gauss code
 \[-1\over\ -2\under\ -3\over\ -1\under\ +4\over\ -3\under\ -2\over\ +4\under.\]
-We have provided the knot diagram for illustrative purposes only, and it is important to note that the diagram is not necessary for the algorithm. The traversal paths in our graph algorithm are shown in Fig.~\ref{fig:gauss-diagram-4_106-traversal}.
+We have provided the knot diagram for illustrative purposes only, and it is important to note that the diagram is not necessary for the algorithm. The traversal paths in the graph algorithm are shown in Fig.~\ref{fig:gauss-diagram-4_106-traversal}.
 
 \begin{figure}[hbt]
 	\centering
 	\hspace*{\fill}
 	\begin{subfigure}[b]{0.4 \textwidth}
 		\centering
-		\def\svgscale{0.4}
+		\def\svgscale{0.35}
 		\input{graphics/4-106_vknot.pdf_tex}
 		\caption{Knot diagram.}
 		\label{fig:4_106-vknot}
@@ -1429,7 +1452,7 @@ We have provided the knot diagram for illustrative purposes only, and it is impo
 	\hspace*{\fill} \hspace*{\fill}	\hspace*{\fill}
 	\begin{subfigure}[b]{0.4 \textwidth}
 		\centering
-		\def\svgscale{1.35}
+		\def\svgscale{1.2}
 		\input{graphics/gauss_diagram_4-106.pdf_tex}
 		\caption{Gauss diagram.}
 		\label{fig:gauss-diagram-4_106}
@@ -1441,30 +1464,27 @@ We have provided the knot diagram for illustrative purposes only, and it is impo
 
 \begin{figure}[hbt!]
 	\centering
-	\def\svgscale{1.35}
+	\def\svgscale{1.2}
 	\input{graphics/gauss_diagram_4-106_traversal.pdf_tex}
 	
 	\caption{The Gauss diagram of the diagram of $4_{106}$ in Fig.~\ref{fig:4_106-vknot} with the traversal paths shown for $f = 1$ (red) and $f = 2$ (blue).}
 	\label{fig:gauss-diagram-4_106-traversal}
 \end{figure}
 
-When our algorithm terminates, we have the ribbon Tait graph given by vertex set $V = \{1, 2\}$, with four edges: $e_{1}$ and $e_{2}$ connecting $v_{1}$ and $v_{2}$, and two $e_{3}$ and $e_{4}$ connecting $v_{1}$ to itself. We have the rotation system $R_{1} = [e_{2}, e_{4}, e_{1}, e_{4}, e_{3}, e_{1}]$, $R_{2} = [e_{2}, e_{3}]$ from which we can see that this Tait graph will not be planar. This is indeed the correct Tait graph and correct rotation system when compared with the black Tait graph obtained from Fig.~\ref{fig:4_106-vknot} by colouring the region left of the orientation arrow black.
+When the algorithm terminates, the ribbon Tait graph is given by vertex set $V = \{1, 2\}$, corresponding to the red and blue loops in Fig.~\ref{fig:gauss-diagram-4_106-traversal}, with four edges: $e_{1}$ and $e_{2}$ connecting $v_{1}$ and $v_{2}$, and two $e_{3}$ and $e_{4}$ connecting $v_{1}$ to itself. We obtain the rotation system $R_{1} = [e_{2}, e_{4}, e_{1}, e_{4}, e_{3}, e_{1}]$, $R_{2} = [e_{2}, e_{3}]$ from which we can see that this Tait graph is not planar. This is indeed the same ribbon Tait graph as the one obtained from the knot diagram in Fig.~\ref{fig:4_106-vknot}.
 
-The algorithm we gave always finds the Tait graph generated in this way. To find the other Tait graph, we use the same algorithm, but with the opposite initial turn direction ($t = -1$), and opposite (negative) update rule in Step 4.5
+To find the white Tait graph, we use the same algorithm, but with the opposite initial turn direction ($t = -1$), and opposite (negative) update rule in Step 4.5.
 
 \begin{proposition}
-	The algorithm given above for finding the Tait graphs from the Gauss code of a knot or virtual knot is correct.
+	The algorithm given above finds the Tait graphs from the Gauss code of a virtual knot.
 \end{proposition}
 
-We sketch a proof.
-
 \begin{proof}
-
-	If the algorithm indeed corresponds to the traversal of the coloured regions of the checkerboard coloured knot diagram turning left at each face, and it eventually traverses every coloured face, it is correct.
+	If the algorithm traverses the black (resp. white) coloured regions of the checkerboard coloured knot diagram turning in a consistent direction at each face, and it eventually traverses every coloured face, then it produces the black (resp. white) Tait graph.
 	
 	The first claim is that the update rule
 	\[a \leftarrow t \cdot j \cdot w \cdot a\]
-	indeed turns consistently left when $t = 1$ or right when $t = -1$. We can see four cases of this in Fig.~\ref{fig:alignment-update-rule}, namely the cases $t = 1$, $j = \pm 1$, $w = 1$, $a = \pm 1$. For example in the case that we are traversing the knot diagram into this crossing from the top-left of the crossing, we have $t = 1$,  $j = -1$, $w = 1$ $a = -1$. Hence we update $a$ to $t \cdot j \cdot w \cdot a = 1$, and therefore hop to the over-strand and continue traversing with the alignment of the over-strand. In fact, it suffices to check this one case, and generate the other 15 by the symmetries $t \mapsto -t$, $j \mapsto -j$, $w \mapsto -w$, $a \mapsto -a$.
+	turns consistently left when $t = 1$ or right when $t = -1$. We show four cases of this in Fig.~\ref{fig:alignment-update-rule}, namely the cases $t = 1$, $j = \pm 1$, $w = 1$, $a = \pm 1$. For example in the case that we are traversing the knot diagram into this crossing from the top-left of the crossing, we have $t = 1$,  $j = -1$, $w = 1$ $a = -1$. Hence we update $a$ to $t \cdot j \cdot w \cdot a = 1$, and therefore hop to the over-strand and continue traversing with the alignment of the over-strand. In fact, it suffices to check this one case, and generate the other 15 by the symmetries $t \mapsto -t$, $j \mapsto -j$, $w \mapsto -w$, $a \mapsto -a$.
 	
 	\begin{figure}[hbt!]
 		\centering
@@ -1475,10 +1495,10 @@ We sketch a proof.
 		\label{fig:alignment-update-rule}
 	\end{figure}
 	
-	The second claim is that the update rule $t = (-1)^{k}$ picks out black checkerboard coloured faces. Consider instead the regular traversal (without jumping at crossings) of the checkerboard coloured knot diagram. Initially, the checkerboard coloured region is on our left, but after the first crossing it swaps to be on the left, and continues swapping at each crossing we encounter. Hence after the $k$th crossing, we choose $t = (-1)^{k}$, and so the algorithm traverses only coloured faces until there are none left. 
+	The second claim is that the update rule $t = (-1)^{k}$ picks out black checkerboard coloured faces. Consider the regular traversal (without jumping at crossings) of the checkerboard coloured knot diagram. Initially, the checkerboard coloured region is on our left, but after the first crossing it swaps to be on the right, and continues swapping at each crossing we encounter. Hence after the $k$th crossing, we choose $t = (-1)^{k}$, and so the algorithm traverses only black faces until there are none left. 
 \end{proof}
 
-\section{Computing Mock Seifert Matrices}
+\section{Mock Seifert Matrices: Preliminaries}
 
 As the Tait graphs $G_{B}(D)$ and $G_{W}(D)$ along with their rotation systems determine an surface embedding of each of these graphs, it is possible to compute mock Seifert matrices corresponding to $\mathcal{G}_{F}(K)$ and $\mathcal{G}_{F^{*}}(K)$.
 
@@ -1487,60 +1507,65 @@ As the Tait graphs $G_{B}(D)$ and $G_{W}(D)$ along with their rotation systems d
 	\[p_{*}(\alpha) \cdot p_{*}(\beta) = \dfrac{1}{2}\left(\lk(\tau \alpha, \beta) - \lk(\tau \beta, \alpha)\right)\]
 \end{proposition}
 
-This implies the following corollary (which is actually the definition of $\mathcal{G}_{F}$ in \cite{gordon-litherland-pairing-thickened-surfaces}).
-
 \begin{proof}
-	We proceed similarly to the proof in Section 3.3, by letting $\alpha$ and $\beta$ be basis elements for $H_{1}(F)$, choosing representative curves $a$ and $b$ so that intersection in the projection only happens at crossings. Then we examine the local contribution to $p_{*}(\alpha) \cdot p_{*}(\beta)$ at each crossing.
+	We proceed similarly to the proof in Section 3.3, by letting $\alpha$ and $\beta$ be basis elements for $H_{1}(F)$, choosing representative curves $a$ and $b$ so that in the projection the only intersect at crossings. Then we examine the local contribution to $p_{*}(\alpha) \cdot p_{*}(\beta)$ at each crossing.
 	
-	There are two cases to prove: curves may intersect in the projection either tangentially or transversely. Fig.~\ref{fig:intersection-number-example} showcases the transverse case. We see that locally $\lk(\tau\alpha, \beta) = 2$ and $\lk(\tau\beta, \alpha) = 0$, hence $\lk(\tau\alpha, \beta) - \lk(\tau\beta, \alpha) = 1 = p_{*}(\alpha) \cdot p_{*}(\beta)$. We omit the tangential case which follows suit.
+	There are two cases: curves may intersect in the projection either tangentially or transversely. Fig.~\ref{fig:intersection-number-example} showcases the transverse case. We see that locally $\lk(\tau\alpha, \beta) = 2$ and $\lk(\tau\beta, \alpha) = 0$, hence $\frac{1}{2}(\lk(\tau\alpha, \beta) - \lk(\tau\beta, \alpha)) = 1 = p_{*}(\alpha) \cdot p_{*}(\beta)$. The tangential case is similar.
 	
-	We have proven this for basis elements $\alpha$ and $\beta$, so linearity and anti-symmetry of both $p_{*}(\alpha) \cdot p_{*}(\beta)$ and $\lk(\tau\alpha, \beta) - \lk(\tau\beta, \alpha)$ completes the proof.
+	Since both $\cdot$ and $\lk$ are bilinear, this completes the proof.
 \end{proof}
 
-	\begin{figure}[hbt!]
-		\centering
-		\def\svgscale{0.54}
-		\input{graphics/intersection_number_example.pdf_tex}
-		
-		\caption{Some cases of the alignment update rule.}
-		\label{fig:intersection-number-example}
-	\end{figure}
+\begin{figure}[hbt!]
+	\centering
+	\def\svgscale{0.54}
+	\input{graphics/intersection_number_example.pdf_tex}
+	
+	\caption{Some cases of the alignment update rule.}
+	\label{fig:intersection-number-example}
+\end{figure}
+
+This implies the following corollary (which is actually the definition of $\mathcal{G}_{F}$ in \cite{gordon-litherland-pairing-thickened-surfaces}).
 
 \begin{corollary}
-The linking form is related to the Gordon-Litherland linking form by
+The linking form is related to the Gordon-Litherland pairing by
 \[\mathcal{L}_{F}(\alpha, \beta) = \mathcal{G}_{F}(\alpha, \beta) + p_{*}(\alpha) \cdot p_{*}(\beta)\]
 \end{corollary}
 
 \begin{proof}
 \begin{align*}
-\mathcal{L}_{F}(\alpha, \beta) & = \dfrac{1}{2}\lk(\tau \alpha, \beta) + \dfrac{1}{2}\lk(\tau \alpha, \beta)\\
+\mathcal{L}_{F}(\alpha, \beta) & = \lk(\tau \alpha, \beta) \\
+& = \dfrac{1}{2}\lk(\tau \alpha, \beta) + \dfrac{1}{2}\lk(\tau \alpha, \beta)\\
 & = \dfrac{1}{2}\lk(\tau \alpha, \beta) + \dfrac{1}{2}(\tau \beta, \alpha) + \dfrac{1}{2}\lk(\tau \alpha, \beta) - \dfrac{1}{2}(\tau \beta, \alpha)\\
 & = \mathcal{G}_{F}(\alpha, \beta) + p_{*}(\alpha) \cdot p_{*}(\beta). \qedhere
 \end{align*}
 \end{proof}
 
-This gives us an easy way to compute the linking form of a given spanning surface. We simply compute the lattice of integer flows of the corresponding Tait graph, then add the intersection numbers of the curve projections.
+This gives us a way to compute the linking form of a given spanning surface: we simply compute the lattice of integer flows of the corresponding Tait graph, which is easy, then add the intersection numbers of the curve projections, which is more involved.
 
-The following proposition of Boden-Karimi \cite[Remark 3.2]{mock-seifert-matrices} further simplifies this computation.
+The following proposition of Boden-Karimi \cite[Remark 3.2]{mock-seifert-matrices} simplifies this computation.
 
 \begin{proposition}
-	Let $i: F \longrightarrow \Sigma \times I$ be the inclusion map. The restriction of $\mathcal{L}_{F}$ to the subspace $\ker i_{*}$ is symmetric. In fact, if $\alpha \in \ker i_{*}$ or $\beta \in \ker i_{*}$, then $\mathcal{L}_{F}(\alpha, \beta) = \mathcal{L}_{F}(\beta, \alpha)$.
+	Let $i: F \longrightarrow \Sigma \times I$ be the inclusion map. The restriction of $\mathcal{L}_{F}$ to the kernel of ${i_{*}: H_{1}(F) \longrightarrow H_{1}(\Sigma \times I)}$ is symmetric. In fact, if $\alpha \in \ker i_{*}$ or $\beta \in \ker i_{*}$, then ${\mathcal{L}_{F}(\alpha, \beta) = \mathcal{L}_{F}(\beta, \alpha)}$.
 \end{proposition}
 
 \begin{proof}
 	Let $a, b$ be representative curves for $\alpha$, $\beta$. Without loss of generality assume $\alpha \in \ker i_{*}$. Then $a$ is null-homotopic in $\Sigma \times I$, so $p(a)$ is null-homotopic in $\Sigma$. Applying the Jordan Curve Theorem on $\Sigma$  shows that $p_{*}(\alpha) \cdot p_{*}(\beta) = 0$. The formula above and the fact that $\mathcal{G}_{F}(\alpha, \beta)$ is symmetric completes the proof.
 \end{proof}
 
-A corollary of this proposition is that there is a particularly nice way to present mock Seifert matrices. If we choose a basis for $H_{1}(X)$ of the form $\{\gamma_{1}, \dots, \gamma_{k} \dots, \gamma_{n}\}$ with ${\gamma_{1}, \dots, \gamma_{k}}$ a basis for $\ker i_{*}$, then the resulting mock Seifert matrix $M$ will be of the block form
+A corollary of this proposition is that there is a particularly nice way to present mock Seifert matrices. If we choose a basis for $H_{1}(X)$ of the form $\{\gamma_{1}, \dots, \gamma_{k}, \gamma_{k + 1} \dots, \gamma_{n}\}$ where $\{\gamma_{1}, \dots, \gamma_{k}\}$ forms a basis for $\ker i_{*}$, then the resulting mock Seifert matrix $M$ will be of block form
 \[M = \begin{bmatrix}
 	A & B^{\top} \\
 	B & S
 \end{bmatrix}\]
 where $A$ is an asymmetric $k \times k$ matrix, $B$ is a $k \times (n - k)$ matrix and $S$ is a symmetric $(n - k) \times (n - k)$ matrix.
 
-This is not particularly useful if we only wish to compute other invariants of the knot from $M$. However determining from mock Seifert matrices if two linking forms representing them are equivalent involves solving unimodular congruence, and the author knows of no algorithm for this. With mock Seifert matrices in this form, these unimodular congruences can sometimes be observed.
+Having mock Seifert matrices in this form, it is also easier, in special cases, to detect unimodular congruences, which is a complicated problem.
 
-We now sketch an algorithm for computing a mock Seifert matrix of a knot diagram.
+\section{Computing Mock Seifert Matrices}
+
+We now present the algorithm for computing a mock Seifert matrix of a knot diagram. We fist compute a basis so that the mock Seifert matrix is as in the proposition above. The idea of the algorithm is as follows. We can compute the lattice of integer flows easily by writing basis elements as $1$-cycles in the Tait graph, as discussed in Chapter 3.
+
+The idea for computing the algebraic intersection form is to compute local contributions at each face of the knot diagram. This corresponds to looking at each vertex of the Tait graph, and asking  Computing the linking form is more difficult. Once curves are written as $1$-cycles in the Tait graph, information is lost at each face about the behaviour of curves $\alpha$ and $\beta$ at other faces. That is, we may know that $\alpha$ and $\beta$ both come into face $f$ from crossing $c$, and their relative positions, but we do not know what happened on the other side of $c$, so we do not know whether they intersected at $c$ transversely or tangentially. As it turns out, we can fix this by averaging the transverse and tangential cases' local contributions and get the correct answer.
 
 
 {\def\arraystretch{1.6}
@@ -1551,15 +1576,45 @@ We now sketch an algorithm for computing a mock Seifert matrix of a knot diagram
 	& Compute a basis for \[\ker i_{*}: H_{1}(F) \to H_{1}(\Sigma \times I).\]
 	& A face in $G_{B}(D)$ can be written as a cycle of edges $G_{W}(D)$. The rotation system $R_{f}$ of $G_{B}(D)$ contains this information.
 	
-	There are technical implementation details involved here. But an implementation can be found at \notered{insert here}.\\
+	There are technical implementation details involved here. An implementation can be found in Appendix A.\\
 	2.
 	& Extend the basis of $\ker i_{*}$ to a basis of ${H_{1}(F) \cong H_{1}(G_{B})}$.
 	& We choose our basis of $H_{1}(F)$ to be ordered as a basis for $(\ker i_{*})^{\perp}$, then a basis for $\ker i_{*}$.\\
 	3.
-	& Compute the pairing matrix for the $\Lambda_{B}(G)$ with respect to this basis.
+	& Compute the pairing matrix for the $\Lambda_{B}(G) \cong \mathcal{G}_{F}$ with respect to this basis.
 	& If $A$ is the basis matrix in which each basis element is a column vector of edges of $G_{B}$, then this is $A^{\top}A$.\\
 	4.
-	& Compute the pairing matrix for the algebraic intersection number $p_{\alpha} \cdot p_{\beta}$ in this basis.
+	& For each $\alpha, \beta \in \{\gamma_{1}, \dots, \gamma_{k}\}$, compute the pairing matrix element $p_{*}(\alpha) \cdot p_{*}(\beta)$ of the algebraic intersection form as follows:
+	& \\
+	4.1. 
+	& For each $\alpha$ and $\beta$ in the basis, write them as $1$-cycles of edges.
+	& \\
+	4.2.
+	& From the cyclic ordering of edges around each vertex, determine a cyclic ordering of local directed strands of $\alpha$ and $\beta$.
+	& \\
+	4.3.
+	& Remove whiskers from the cyclic ordering that belong to neither $\alpha$ nor $\beta$.
+	& \\
+	4.4. 
+	& For $\eta \in \{\alpha, \beta\}$, resolve degeneracies by putting $\eta$ first. With degeneracies resolved we can compute the local contribution to the algebraic intersection number as follows:
+	& \\
+	4.4.1.
+	& Turn the cyclic ordering into a list by picking an initial item.
+	& \\
+	4.4.2.
+	& Initialise a variable $S = 0$.
+	& \\
+	4.4.3.
+	& Initialise a variable $i = 0$.
+	& \\
+	4.4.4.
+	& Iterate through the list, and when encountering a whisker belonging to $\alpha$, increment $i$ by $1$ if $\alpha$ is oriented out of $v$ through that whisker, and increment $i$ by $-1$ if $\alpha$ is oriented into $v$ through that whisker. When encountering a whisker belonging to $\beta$, increment $S$ by $i$ if $\beta$ is oriented out of $v$ through that whisker, and $-i$ if $\beta$ is oriented into $v$ through that whisker.
+	& \\
+	4.5.
+	& Average the two local contributions computed in Steps $4.4.1$ to $4.4.5$.
+	& \\
+	5.
+	& Add the pairing matrix for $\mathcal{G}_{F}$ and the pairing matrix for the algebraic intersection form. The result is a mock Seifert matrix for $\mathcal{L}_{F}$.
 \end{longtable}
 }
 \section{Incompleteness of the Virtual Gordon-Litherland Pairing}

@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{163.75924418bp}%
+    \setlength{\unitlength}{165.25924562bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,22 +50,22 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.88460351)%
+  \begin{picture}(1,0.87657427)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{gauss_diagram_figure_eight.pdf}}%
-    \put(0.41846099,0.00354176){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$1$O\end{tabular}}}}%
-    \put(0.72547022,0.12692981){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$2$U\end{tabular}}}}%
-    \put(0.85124492,0.42379055){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$4$O\end{tabular}}}}%
-    \put(0.72313118,0.72519696){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$3$U\end{tabular}}}}%
-    \put(0.42183633,0.83825496){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$2$O\end{tabular}}}}%
-    \put(0.12157492,0.72502574){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$1$U\end{tabular}}}}%
-    \put(-0.00378604,0.4271659){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$3$O\end{tabular}}}}%
-    \put(0.11960205,0.12931653){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$4$U\end{tabular}}}}%
+    \put(0.42373938,0.00350961){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$1$O\end{tabular}}}}%
+    \put(0.727962,0.12577771){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$2$U\end{tabular}}}}%
+    \put(0.85259508,0.41994395){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$4$O\end{tabular}}}}%
+    \put(0.72564418,0.71861459){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$3$U\end{tabular}}}}%
+    \put(0.42708409,0.8306464){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$2$O\end{tabular}}}}%
+    \put(0.12614435,0.72071409){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$1$U\end{tabular}}}}%
+    \put(-0.0037517,0.42328866){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$3$O\end{tabular}}}}%
+    \put(0.11851643,0.11906611){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$4$U\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{gauss_diagram_figure_eight.pdf}}%
-    \put(0.41143336,0.54312441){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$+$\end{tabular}}}}%
-    \put(0.47204733,0.33043626){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$+$\end{tabular}}}}%
-    \put(0.33629573,0.40478221){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$-$\end{tabular}}}}%
-    \put(0.52973385,0.47269918){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$-$\end{tabular}}}}%
+    \put(0.41677554,0.53819466){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$+$\end{tabular}}}}%
+    \put(0.47683934,0.327437){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$+$\end{tabular}}}}%
+    \put(0.34231991,0.40110814){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$-$\end{tabular}}}}%
+    \put(0.53400225,0.46840865){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$-$\end{tabular}}}}%
   \end{picture}%
 \endgroup%
