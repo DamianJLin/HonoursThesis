@@ -1,6 +1,6 @@
 %% Creator: Inkscape 1.2.2 (b0a8486541, 2022-12-01), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file '6-90101_vknot_small.pdf' (pdf, eps, ps)
+%% Accompanies image file 'intersection_number_graph.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{552.52259743bp}%
+    \setlength{\unitlength}{238.71310016bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,17 +50,20 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.97416332)%
+  \begin{picture}(1,1.13300182)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{6-90101_vknot_small.pdf}}%
-    \put(0.51155881,0.0025193){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$a$\end{tabular}}}}%
-    \put(0.96540222,0.47965573){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a$\end{tabular}}}}%
-    \put(0.83772327,0.13882259){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$b$\end{tabular}}}}%
-    \put(0.8322937,0.80190068){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$b$\end{tabular}}}}%
-    \put(0.49953066,0.94119452){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$c$\end{tabular}}}}%
-    \put(0.03257787,0.46830094){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$c$\end{tabular}}}}%
-    \put(0.16698165,0.80190068){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$d$\end{tabular}}}}%
-    \put(0.14464458,0.13067824){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$d$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{intersection_number_graph.pdf}}%
+    \put(0.35626947,0.6022586){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$e_{1}$\end{tabular}}}}%
+    \put(0.14018036,0.80574342){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$e_{2}$\end{tabular}}}}%
+    \put(0.55754949,0.8194016){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$e_{3}$\end{tabular}}}}%
+    \put(0.67278637,1.09802673){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$e_{7}$\end{tabular}}}}%
+    \put(0.82710335,0.79065317){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$e_{8}$\end{tabular}}}}%
+    \put(0.159969,0.29195858){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$e_{4}$\end{tabular}}}}%
+    \put(0.63617523,0.00728077){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$e_{5}$\end{tabular}}}}%
+    \put(0.84203632,0.32208272){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$e_{6}$\end{tabular}}}}%
+    \put(0.70435381,0.56415614){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v_{1}$\end{tabular}}}}%
+    \put(-0.00285698,0.55956796){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v_{2}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{intersection_number_graph.pdf}}%
   \end{picture}%
 \endgroup%

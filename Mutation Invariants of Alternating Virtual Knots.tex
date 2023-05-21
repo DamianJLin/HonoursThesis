@@ -204,7 +204,9 @@ The relationship between knots and graphs is a classical construction of Tait's,
 
 Another result by Greene relates also concerns alternating knots \cite{lattices-graphs-mutation}. This result combines topology and algebra, equating a completely lattice-theoretic construction: the lattice of integer flows of the Tait graph of an alternating knot, to something completely topological: the $d$-invariant of the Heegaard-Floer homology of the double branched-cover of the knot. Green also uses an analogue of a result from algebraic geometry to prove that this forms a complete invariant of alternating knots up to Conway mutation.
 
-This essay is devoted to an analogue of this story in a more general setting: that of knots in thickened surface, known as virtual knots. By equating Greene's $d$-invariant with the Gordon-Litherland pairing, we find that the $d$-invariant does generalise to a mutation invariant of alternating virtual knots By constructing a counterexample using computational methods, we will that this generalisation is not complete up to mutation.
+This essay is devoted to an analogue of this story in a more general setting: that of knots in thickened surface, also known as virtual knots. Virtual knots are the subject of a rich, modern branch of knot theory. They have several definitions of independent interest: combinatorial \cite{virtual-knot-theory}, geometric \cite{what-is-a-virtual-link, stable-equivalence-virtual-cobordisms}, algebraic \cite{w-knotted-i, w-knotted-ii} and computational \cite{virtual-knot-theory}. In recent work Boden-Chrisman-Karimi have extended the Gordon-Litherland pairing to virtual knots \cite{gordon-litherland-pairing-thickened-surfaces}.
+
+By equating Greene's $d$-invariant with the virtual Gordon-Litherland pairing, we find that the $d$-invariant does generalise to a mutation invariant of alternating virtual knots. By constructing a counterexample using computational methods, we will that this generalisation is not complete up to mutation.
 
 In Chapter 1, we review the necessary notions of classical knot theory, and associate a pair of lattices to each knot, equivalent to Green's $d$-invariant construction. In Chapter 2, we introduce knots in thickened surfaces, allowing for a geometric definition of virtual knots as equivalence classes of these. We then follow a similar path as in Chapter 1, observing that the Greene's invariant does extend to the virtual setting, but finding that the classical proof of its completeness breaks down. In Chapter 3, we examine the Gordon-Litherland linking form, another mutation invariant of alternating classical knots, and review its extension to the virtual setting by Boden-Chrisman-Karimi. In Chapter 4, we find computer algorithms to to compute the Gordon-Litherland linking form from of tables of virtual knots, and present a counterexample to the completeness of the virtual $d$-invariant, found using these algorithms.
 
@@ -215,10 +217,13 @@ I plan to submit two journal publications based on the results of this thesis: o
 \chapter*{Acknowledgements}
 \addcontentsline{toc}{chapter}{Acknowledgements}
 
-\notered{Acknowledge everyone!}
+Firstly, I would like to express my gratitude to my supervisor, Zsuzsanna Dancso, for all of the time, effort and faith she has poured into me over the last year. Thank you, Zsuzsi for your encouragement to persevere at times when I was stuck, your sage advice on things mathematical and practical, and your ability to give everything a personal touch. I do not think I could have chosen a better supervisor for my honours year.
 
-We would like to thank Hans Boden for an insight into the proof of the proposition in Chapter 5.
+I am also very thankful to my collaborators: Hans Boden and Tilda Wilkinson-Finch, for many delightful and insightful conversations. Thanks especially to Hans for his mathematical encouragement and guidance, in particular, insights into the proofs of \notered{which numbers}.
 
+My thanks also goes to the knot at lunch group for creating a cosy environment and making me look forward to the ritual of Monday lunch.
+
+Finally I would like to thank my family and friends for their support, their encouragement, and their love.
 
 \chapter{Knots and the Lattice of Integer Flows}
 \epigraph{\itshape ``A knot!'' said Alice, ``oh, do let me help to undo it!''\\``I shall do nothing of the sort!'' said the mouse.}{--- Lewis Carroll, \textit{Alice's Adventures in Wonderland}}
@@ -357,10 +362,10 @@ With this, we have a way of expressing more complicated knots in terms of less c
 \end{theorem}
 
 \section{Alternating Knots, Knot Mutation and the Tait Graph}
-Alternating knots are of particular interest in knot theory, and they possess a number of interesting properties. Tait made a series of conjectures about alternating knots in his early attempts to tabulate knots. The first conjecture is about the crossing number of alternating knots and was proven in 1987 by Kaufmann, Murasugi and Thistlethwaite, all independently \cite{state-models-jones-polynomial, jones-polynomials-classical-conjectures, spanning-tree-expansion-jones-polynomial}. Nonetheless it remains known as the first Tait conjecture. \notered{Add short history about green ralph fox}.
+Alternating knots are of particular interest in knot theory, and they possess a number of interesting properties. We call a knot diagram \textit{alternating} if, traversing the diagram, the crossings alternate under and over. For every diagram that is alternating, it is possible to construct a non-alternating diagram of an equivalent knot: one simply needs to apply a type \textit{R}I Reidemeister move appropriately to any strand of the knot: for example the alternating diagram of the Trefoil knot in Fig.~\ref{fig:trefoil} transforms into the non-alternating diagram in Fig.~\ref{fig:trefoil-nonalternating}. Hence we define an \textit{alternating knot} as a knot which can be represented by an alternating diagram. For low crossing-number, that is for knots that can be represented by diagrams with few crossings, many of the knots are alternating, but this trend quickly reverses as crossing number is increased.
 
-We call a knot diagram \textit{alternating} if, traversing the diagram, the crossings alternate under and over. For every diagram that is alternating, it is possible to construct a non-alternating diagram of an equivalent knot: one simply needs to apply a type \textit{R}I Reidemeister move appropriately to any strand of the knot: for example the alternating diagram of the Trefoil knot in Fig.~\ref{fig:trefoil} transforms into the non-alternating diagram in Fig.~\ref{fig:trefoil-nonalternating}. Hence we define an \textit{alternating knot} as a knot which can be represented by an alternating diagram. For low crossing-number, that is for knots that can be represented by diagrams with few crossings, many of the knots are alternating, but this trend quickly reverses as crossing number is increased.
-
+% TODO: Zsuzsi read over flow.
+Alternating knots also have a purely geometrical characterisation, based on the knot itself rather than its diagrams. The result by Greene \cite{alternating-links-definite-surfaces} asserts that alternating knots are exactly those knots that simultaneously bound positive definite and negative definite surfaces with respect to the Gordon-Litherland linking form. This will be examined in Chapter 3.
 
 \begin{figure}[hbt!]
 	\centering
@@ -384,6 +389,8 @@ We call a knot diagram \textit{alternating} if, traversing the diagram, the cros
 	\caption{Diagrams of the Trefoil knot.}
 	\label{fig:trefoil-diagrams}
 \end{figure}
+
+Tait made a series of conjectures about alternating knots in his early attempts to tabulate knots. The first conjecture is about the crossing number of alternating knots and was proven in 1987 by Kaufmann, Murasugi and Thistlethwaite, all independently \cite{state-models-jones-polynomial, jones-polynomials-classical-conjectures, spanning-tree-expansion-jones-polynomial}. Nonetheless it remains known as the first Tait conjecture.
 
 An alternating knot diagram is \textit{reduced} if there are no nugatory crossings. A \textit{nugatory crossing} is a crossing for which there is a circle in the projection plane of the knot diagram which intersects the diagram transversely at that crossing, but nowhere else. Nugatory crossings are those which could be immediately undone to simplify the knot diagram. The diagram in Fig.~\ref{fig:trefoil} is a reduced alternating diagram, while the diagram in Fig.~\ref{fig:trefoil-nugatory} is alternating but not reduced.
 
@@ -943,7 +950,9 @@ There is also a notion of \textit{weakly prime} virtual knots which cannot be de
 \section{Alternating Virtual Knots and Virtual Knot Mutation}
 A famous theorem Seifert in classical knot theory states that It is always possible to find some orientable surface $S \subseteq \R^{3}$ called the Seifert surface, such that $\partial S = K$.There is a vast amount of theory that springs from this fact, and Chapters 3 and 4 will examine a generalisation of a small amount of this. Virtual knots which do possess Seifert surfaces behave so classically that they are called \textit{almost classical}, but only a small fraction of strictly virtual knots have this property.
 
-For virtual knots, is is not usually possible to find such a surface inside $\Sigma \times I$. Indeed typically it is not even possible to find a non-orientable surface with boundary $V$. Those virtual knots for which this is possible are exactly those that are $\Z_{2}$-null-homologous, and we will look at these in the next section. A further subset of these knots are \textit{alternating}, where alternating has the same definition as in the classical case. In fact, in Chapter $3$, we will give a completely geometric characterisation of alternating virtual knots in terms of positive and negative definite spanning surfaces.
+For virtual knots, is is not usually possible to find such a surface inside $\Sigma \times I$. Indeed typically it is not even possible to find a non-orientable surface with boundary $V$. Those virtual knots for which this is possible are exactly those that are $\Z_{2}$-null-homologous, and we will look at these in the next section. A further subset of these knots are \textit{alternating}, where alternating has the same definition as in the classical case.
+
+Alternating virtual knots maintain many of the properties of alternating classical knots. For example, Greene's characterisation as knots with positive definite and negative definite spanning surfaces generalises to the virtual setting \cite{alternating-links-thickened-surfaces}.
 
 Alternating knots are also important because virtual analogues of the Tait conjectures hold. The first Tait conjecture was recently proven for virtual knots by Karimi \cite[Theorem 1.6]{alternating-virtual-knots}:
 
@@ -1035,9 +1044,7 @@ For those surface knot diagrams that are checkerboard colourable, we can define 
 
 Let $G$ be a connected graph. A \textit{surface embedding} of $G$ is a map $i: G \inject \Sigma$, considered up to orientation-preserving diffeomorphism. To simplify notation, we use $G$ and $i(G)$ interchangeably.
 
-Given a embedding of a graph $G$ in an orientable surface, we can read off a cyclic ordering of incident edges around each vertex. In fact, a textbook result in topological graph theory is that a cyclic ordering of incident edges around each vertex uniquely determines a cellular surface embedding for $G$\cite[Theorem 3.2.4]{graphs-on-surfaces}. This extra information is called a \textit{rotation system}; a graph with a rotation system is also called a \textit{ribbon graph} or \textit{fat graph}.
-
-\notered{example and figures?}
+Given a embedding of a graph $G$ in an orientable surface, we can read off a cyclic ordering of incident edges around each vertex. In fact, a textbook result in topological graph theory is that a cyclic ordering of incident edges around each vertex uniquely determines a cellular surface embedding for $G$ \cite[Theorem 3.2.4]{graphs-on-surfaces}. This extra information is called a \textit{rotation system}; a graph with a rotation system is also called a \textit{ribbon graph} or \textit{fat graph}.
 
 The \textit{surface dual} of the cellularly embedded surface graph $i: G \inject \Sigma$ is another surface embedding $i^{*}: G^{*} \inject \Sigma$, where $G^{*}$ is the graph that has a vertex for every connected component of  $\Sigma \smallsetminus G$, and for each edge $e$ of $G$, a dual edge $e^{\ast}$ connecting the vertices lying on either side of $e$. The map $J$ then assigns vertices and edges of $G^{*}$ to the correct place in $\Sigma$. \notered{Sort this out with Zsuzsi on Monday!} The requirement that $G$ be cellularly embedded is necessary for the surface dual to be well-defined. For example, without this requirement, Fig.~\ref{fig:multiple_dual_graphs} contains two distinct surface duals of the same surface embedding.
 
@@ -1233,13 +1240,11 @@ Let $D$ and $E$ be surface knot diagrams related by a sequence of disk mutations
 
 \section{The Gordon-Litherland Pairing}
 
-\notered{Define positive definite and negative definite spanning surfaces somewhere!}
-
 The \textit{Gordon-Litherland pairing} is the symmetrisation of the linking form. Namely, given a compact, unoriented spanning surface $F$ of a knot in $\Sigma \times I$ is the symmetric bilinear form
 \[\mathcal{G}_{F}: H_{1}(F) \times H_{1}(F) \longrightarrow \Z,\]
 \[\mathcal{G}_{F}(\alpha, \beta) = \dfrac{1}{2}(\lk(\tau \alpha, \beta) + \lk(\tau\beta, \alpha))\,.\]
 
-If a mock Seifert matrix $A$ represents $\mathcal{L}_{F}$ with respect to some basis of $H_{1}(F)$, then its symmetrisation $\frac{1}{2}(A + A^{T})$ represents the pairing $\mathcal{G}_{F}$ with respect to the same basis.
+If a mock Seifert matrix $A$ represents $\mathcal{L}_{F}$ with respect to some basis of $H_{1}(F)$, then its symmetrisation $\frac{1}{2}(A + A^{T})$ represents the pairing $\mathcal{G}_{F}$ with respect to the same basis. We say that $F$ is a \textit{positive} (resp. \textit{negative}) \textit{definite surface} if the form $\mathcal{G}_{F}$ is positive (resp. negative) definite.
 
 Gordon-Litherland \cite{signature-of-a-link} use the Gordon-Litherland pairing to define a set of link invariants based on this form, including the signature, determinant and nullity of a link. Boden-Chrisman-Karimi \cite{gordon-litherland-pairing-thickened-surfaces} define and study the analogous invariants for virtual knots using the virtual Gordon-Litherland pairing.
 
@@ -1563,11 +1568,52 @@ Having mock Seifert matrices in this form, it is also easier, in special cases, 
 
 \section{Computing Mock Seifert Matrices}
 
-We now present the algorithm for computing a mock Seifert matrix of a knot diagram. We fist compute a basis so that the mock Seifert matrix is as in the proposition above. The idea of the algorithm is as follows. We can compute the lattice of integer flows easily by writing basis elements as $1$-cycles in the Tait graph, as discussed in Chapter 3.
+We now present the algorithm for computing a mock Seifert matrix of a knot diagram. We fist compute a basis so that the mock Seifert matrix is as in the proposition above. The idea of the algorithm is as follows.
 
-The idea for computing the algebraic intersection form is to compute local contributions at each face of the knot diagram. This corresponds to looking at each vertex of the Tait graph, and asking  Computing the linking form is more difficult. Once curves are written as $1$-cycles in the Tait graph, information is lost at each face about the behaviour of curves $\alpha$ and $\beta$ at other faces. That is, we may know that $\alpha$ and $\beta$ both come into face $f$ from crossing $c$, and their relative positions, but we do not know what happened on the other side of $c$, so we do not know whether they intersected at $c$ transversely or tangentially. As it turns out, we can fix this by averaging the transverse and tangential cases' local contributions and get the correct answer.
+Representative curves as cycles in the Tait graph are chosen for basis elements of the first homology $H_{1}(F)$. In this way, we can compute the lattice of integer flows easily as discussed in Chapter 3.
 
+To compute the algebraic intersection form, it suffices to compute local contributions at each vertex of the Tait graph. Consider the information about the Tait graph available locally at each vertex: there are several edges with a cyclic ordering from the rotation system, and for each pair $\alpha$ and $\beta$ in the basis for $H_{1}(F)$, some of these edges have non-zero coefficients in the cycle $\alpha$ (resp. $\beta$). If this is the case, we say an edge belongs to $\alpha$ (resp. $\beta$).
 
+If the edges that belong to $\alpha$ are distinct from the edges that belong to $\beta$, the algebraic intersection number $p_{*}(\alpha) \cdot p_{*}(\beta)$ is easy to compute. We call it a \textit{degeneracy} when the edges that belong to $\alpha$ and the edges that belong to $\beta$ have non-empty intersection, say at edge $e$. In this case, there is not locally enough information to know whether at edge $e$, whether $\alpha$ or $\beta$ should come first when computing the algebraic intersection number: this information is too far away to be seen by the vertex.
+
+For example, on the graph in Fig.~\ref{fig:int-num-graph}, consider $\alpha = [e_{1} + e_{8} + e_{7} + e_{2}]$ and $\beta = [e_{3} + e_{2} + e_{4} + e_{5} + e_{6}]$. At $v_{1}$, there is no degeneracy, and the local contribution to the algebraic intersection number $p_{*}(\alpha) \cdot p_{*}(\beta) = 1$. However at $v_{2}$, there is a degeneracy along $e_{2}$.
+
+We say we resolve a degeneracy \textit{prioritising} $\alpha$ (resp. $\beta$) if relative to the cyclic order, we put $\alpha$ (resp. $\beta$) first. Fig.~\ref{fig:res-int-num-red} (resp. Fig.~\ref{fig:res-int-num-blue}) shows this. Note the differences in local contributions.
+
+\begin{figure}[h]
+	\centering
+	\hspace*{\fill}
+	\begin{subfigure}[b]{0.4 \textwidth}
+	\centering
+	\def\svgscale{0.7}
+	\input{graphics/intersection_number_graph.pdf_tex}
+	\caption{An example graph.}
+	\label{fig:int-num-graph}
+	\end{subfigure}
+	\hspace*{\fill}
+	\begin{subfigure}[b]{0.25 \textwidth}
+		\centering
+		\def\svgscale{0.6}
+		\input{graphics/resolve_intersection_number_red.pdf_tex}
+		\caption{Choosing to resolve the degeneracy prioritising $\alpha$.}
+		\label{fig:res-int-num-red}
+	\end{subfigure}
+	\hspace*{\fill}
+	\begin{subfigure}[b]{0.25 \textwidth}
+		\centering
+		\def\svgscale{0.6}
+		\input{graphics/resolve_intersection_number_blue.pdf_tex}
+		\caption{Choosing to resolve the degeneracy prioritising $\beta$.}
+		\label{fig:res-int-num-blue}
+	\end{subfigure}
+	\hspace*{\fill} 
+	\caption{An example of a degeneracy between $\alpha$ (red) and $\beta$ (blue) and the two ways to resolve it. In (b) there is a local contribution of $0$, while in (c) there is a local contribution of $-1$.}
+	\label{fig:intersection-number-graph}
+\end{figure}
+
+When we have degeneracies, there is no way to resolve them locally. The algorithm resolves dependencies both ways, averaging out the local contributions from each possibility.
+
+\subsection*{Algorithm}
 {\def\arraystretch{1.6}
 \begin{longtable}{p{0.04\textwidth}p{0.40\textwidth}p{0.49\textwidth}}
 	\textbf{\#} & \textbf{Step}
@@ -1587,37 +1633,48 @@ The idea for computing the algebraic intersection form is to compute local contr
 	& For each $\alpha, \beta \in \{\gamma_{1}, \dots, \gamma_{k}\}$, compute the pairing matrix element $p_{*}(\alpha) \cdot p_{*}(\beta)$ of the algebraic intersection form as follows:
 	& \\
 	4.1. 
-	& For each $\alpha$ and $\beta$ in the basis, write them as $1$-cycles of edges.
+	& For each $\alpha$ and $\beta$ in the basis, write them as cycles of edges.
 	& \\
-	4.2.
-	& From the cyclic ordering of edges around each vertex, determine a cyclic ordering of local directed strands of $\alpha$ and $\beta$.
-	& \\
-	4.3.
-	& Remove whiskers from the cyclic ordering that belong to neither $\alpha$ nor $\beta$.
-	& \\
-	4.4. 
-	& For $\eta \in \{\alpha, \beta\}$, resolve degeneracies by putting $\eta$ first. With degeneracies resolved we can compute the local contribution to the algebraic intersection number as follows:
-	& \\
-	4.4.1.
+	4.2. 
+	& For $\eta \in \{\alpha, \beta\}$, resolve degeneracies by prioritising $\eta$. With degeneracies resolved we can compute the local contribution to the algebraic intersection number as follows:
+	& Steps $4.2.1$ to $4.2.4$ algorithmically compute local contributions to intersection numbers.\\
+	4.2.1.
 	& Turn the cyclic ordering into a list by picking an initial item.
 	& \\
-	4.4.2.
+	4.2.2.
 	& Initialise a variable $S = 0$.
-	& \\
-	4.4.3.
+	& $S$ for sum.\\
+	4.2.3.
 	& Initialise a variable $i = 0$.
 	& \\
-	4.4.4.
+	4.2.4.
 	& Iterate through the list, and when encountering a whisker belonging to $\alpha$, increment $i$ by $1$ if $\alpha$ is oriented out of $v$ through that whisker, and increment $i$ by $-1$ if $\alpha$ is oriented into $v$ through that whisker. When encountering a whisker belonging to $\beta$, increment $S$ by $i$ if $\beta$ is oriented out of $v$ through that whisker, and $-i$ if $\beta$ is oriented into $v$ through that whisker.
 	& \\
-	4.5.
-	& Average the two local contributions computed in Steps $4.4.1$ to $4.4.5$.
+	4.3.
+	& Average the two local contributions computed in Steps $4.2.1$ to $4.2.4$.
 	& \\
 	5.
 	& Add the pairing matrix for $\mathcal{G}_{F}$ and the pairing matrix for the algebraic intersection form. The result is a mock Seifert matrix for $\mathcal{L}_{F}$.
 \end{longtable}
 }
+
+\begin{proposition}
+The algorithm given above computes a mock Seifert matrix for $F$.
+\end{proposition}
+
+\begin{proof}
+The that the algorithm correctly computes $\mathcal{G}_{F}$ by instead computing the lattice of integer flows in was proven in Chapter 3. It remains to check that the algorithm computes algebraic intersection numbers correctly.
+
+That steps $4.2.1$ through $4.2.4$ correctly compute local contributions once degeneracies are removed comes from cases and bi-linearity of the algorithm and the intersection pairing.
+
+We claim that the averaging of degeneracies always computes the correct local contribution. Note that degeneracies are always in pairs: a degeneracy at a vertex in an edge implies a degeneracy at the other vertex incident to that edge. When averaging over the two degeneracies, the resolutions match up in pairs to form the correct contributions. There are two such contributions, and a half was introduced in the average, so the contributions are correct.
+\end{proof}
+
 \section{Incompleteness of the Virtual Gordon-Litherland Pairing}
+
+The algorithm above lets us search for counterexamples to the completeness of the Gordon-Litherland pairing: any two virtual knots that have non-isomorphic linking forms are not mutants, as the linking form is a mutation invariant.
+
+Of the 92800 virtual knots up to 6 crossings tabulated by Green \cite{virtual-knot-table}, 1674 are alternating. This refinement was provided to us by Hans Boden, and was created by Lindsay White. A python implementation of the above algorithms, provided in Appendix A, found following.
 
 Our counterexamples are given in Fig.~\ref{fig:counterexamples}.
 
