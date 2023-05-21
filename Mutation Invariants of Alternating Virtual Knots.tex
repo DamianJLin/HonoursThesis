@@ -1268,9 +1268,9 @@ The same argument applies for the white checkerboard surface, but since the cros
 
 \chapter{Computing Mock Seifert Matrices}
 
-\epigraph{In these days the angel of topology and the devil of algebra fight for the soul of each individual mathematical domain.}{--- Hermann Weyl, \textit{Invariants}}
+\epigraph{\itshape In these days the angel of topology and the devil of algebra fight for the soul of each individual mathematical domain.}{--- Hermann Weyl, \textit{Invariants}}
 
-\epigraph{Better to reign in Hell than to serve in Heaven.}{--- John Milton, \textit{Paradise Lost}}
+\epigraph{\itshape Better to reign in Hell than to serve in Heaven.}{--- John Milton, \textit{Paradise Lost}}
 
 Finally, we provide an algorithmic way to compute mock Seifert matrices of a virtual knot.
 
@@ -1279,7 +1279,7 @@ Finally, we provide an algorithmic way to compute mock Seifert matrices of a vir
 Knot diagrams, being geometrical objects are difficult to directly handle with computers. The \textit{Gauss code} of an oriented knot diagram encodes combinatorial information about the order in which the crossings are visited, as the knot diagram is traversed. It is a sequence of crossings (usually given by labels $\{1, \cdots, n\}$), along with a symbol describing whether a crossing is traversed via the over-strand or the under-strand. This is, of course, only unique up to cyclic permutation. For example, the diagram of the figure eight knot in Fig.~\ref{fig:figure_8} has Gauss code
 \[1\over\ 2\under\ 3\over\ 4\under\ 2\over\ 1\under\ 4\over\ 3\under.\]
 
-\begin{figure}[hbt!]
+\begin{figure}[hbt]
 	\centering
 	\def\svgscale{0.3}
 	\input{graphics/figure_8_knot.pdf_tex}
@@ -1288,6 +1288,30 @@ Knot diagrams, being geometrical objects are difficult to directly handle with c
 	\label{fig:figure_8}
 \end{figure}
 
+We call a crossing in an oriented knot diagram \textit{positive} if it can be rotated to look like Fig.~\ref{fig:cross_pos}, and \textit{negative} if it can be rotated to look like Fig.~\ref{fig:cross_neg}. This is referred to as the \textit{sign} or \textit{writhe} of the crossing.
+
+\begin{figure}[hbt]
+	\centering
+	\hspace*{\fill}
+	\begin{subfigure}[b]{0.4 \textwidth}
+		\centering
+		\def\svgscale{0.28}
+		\input{graphics/crossing_positive.pdf_tex}
+		\caption{Sign $+1$ crossing.}
+		\label{fig:cross_pos}
+	\end{subfigure}
+	\hspace*{\fill} \hspace*{\fill}	\hspace*{\fill}
+	\begin{subfigure}[b]{0.4 \textwidth}
+		\centering
+		\def\svgscale{0.28}
+		\input{graphics/crossing_negative.pdf_tex}
+		\caption{Sign $-1$ crossing.}
+		\label{fig:cross_neg}
+	\end{subfigure}
+	\hspace*{\fill} 
+	\caption{Crossing sign or writhe.}
+	\label{fig:crossing-sign}
+\end{figure}
 
 The Gauss code can be extended to incorporate the writhe, also known as the sign, of each crossing, and in doing so, each element of the sequence also incorporates a sign of $+1$ for a positive crossing, or $-1$ for a negative crossing. The extended Gauss code from Fig.~\ref{fig:figure_8}, is
 \[-1\over\ -2\under\ +4\over\ +3\under\ -2\over\ -1\under\ +3\over\ +4\under.\]
@@ -1301,7 +1325,7 @@ The \textit{Gauss diagram} of a knot diagram consists of a cyclic ordering of th
 
 \begin{figure}[hbt!]
 	\centering
-	\def\svgscale{1.5}
+	\def\svgscale{1.35}
 	\input{graphics/gauss_diagram_figure_eight.pdf_tex}
 	
 	\caption{The Gauss diagram of the figure eight knot.}
@@ -1321,9 +1345,9 @@ This tells us how to traverse a face, so we traverse all faces corresponding to 
 
 This can be done completely combinatorially from the Gauss Code, but we present it here as a graph algorithm on the Gauss diagram.
 
-By an arc, we mean a path in the knot diagram between exactly two adjacent crossings (crossings with no intermediate crossings in the traversal).
+By an \textit{arc}, we mean a path in the knot diagram between exactly two adjacent crossings (crossings with no intermediate crossings in the traversal).
 
-{\def\arraystretch{1.8}
+{\def\arraystretch{1.6}
 \begin{longtable}{p{0.04\textwidth}p{0.40\textwidth}p{0.49\textwidth}}
 	\textbf{\#} & \textbf{Step}
 	& \textbf{Explanation}\\
@@ -1331,7 +1355,7 @@ By an arc, we mean a path in the knot diagram between exactly two adjacent cross
 	& For each $i \in \{1, \dots, n\}$, initialise a two-element array $F_{i}$.
 	& The list $F_{i}$ will keep track of which two checkerboard coloured faces are incident to each vertex.\\
 	2.
-	& Initialise a counter $f= 0$.
+	& Initialise a counter $f = 1$.
 	& This algorithm iterates over the faces in the knot diagram, so we maintain a counter, $f$, of the face presently being examined.\\
 	3.
 	& Initialise variable $t = 1$.
@@ -1342,7 +1366,7 @@ By an arc, we mean a path in the knot diagram between exactly two adjacent cross
 	\end{cases}\]
 	and we ensure that this variable is constant over each face.\\
 	4.
-	& Until we have visited every chord, we do the following:
+	& Until we have visited every chord, do the following loop:
 	& We loop over the faces.\\
 	4.1. 
 	& Initialise variable $a = 1$.
@@ -1356,7 +1380,7 @@ By an arc, we mean a path in the knot diagram between exactly two adjacent cross
 	& Initialise a list $R_{f}$.
 	& The arrays $R_{f}$ keep track of the cyclic order that crossings were visited around face $f$, which translates into the cyclic order of edges around some vertex the Tait graph. \\
 	4.2.
-	& Until we reach the same chord and have $a = 1$, do the following:
+	& Until we reach the same chord and have $a = 1$, perform the following loop:
 	& \\
 	4.2.1
 	& Traverse an arc of the Gauss diagram anti-clockwise if $a = 1$, clockwise if $a = -1$.
@@ -1367,76 +1391,96 @@ By an arc, we mean a path in the knot diagram between exactly two adjacent cross
 	4.2.3
 	& Update the value of $a$:
 	\[a \leftarrow t \cdot j \cdot w \cdot a\]
-	where $w$ is the writhe (sign) of the current crossing and $j$ based on the `hop' we completed in the previous step:
-	\[j = \begin{cases}
-		-1	& \text{for hops $\text{O} \to \text{U}$},\\
-		+1	& \text{for hops $\text{U} \to \text{O}$}.
-	\end{cases}\]
-	& This ensures that we are consistent turning left (or consistently turning right) within a face, see the explanation of Step 4.1.\\
-	4.2.4
-	& Loop back to Step 4.\\
+	where $w$ is the writhe (sign) of the current crossing and $j$ based on the `hop' we completed in the previous step.
+	& This ensures that we are consistent turning left (or consistently turning right) within a face, see the explanation of Step 4.1. \newline \newline We use the convention \[j = \begin{cases}
+			-1	& \text{for hops $\text{O} \to \text{U}$},\\
+			+1	& \text{for hops $\text{U} \to \text{O}$}.
+		\end{cases}\]\\
 	4.3
-	& Continue from Step 4.1 starting at the next chord yet to be traversed (in order anti-clockwise around the Gauss diagram), and updating $t$:
-	\[t \leftarrow (-1)^{k} t\]
+	& Continue the loop in Step 4.2.
+	& Or move on if loop condition satisfied.\\
+	4.4
+	& If $t = -1$, reverse the cyclic ordering in $R_{f}$.
+	& This ensures that all $R_{f}$ are oriented the same way with respect to the underlying orientable surface.\\
+	4.5
+	& Continue the loop in Step 4. Start at the next chord yet to be traversed (in order anti-clockwise around the Gauss diagram), and update $t$:
+	\[t = (-1)^{k}\]
 	where $k$ is the index of this chord around the chord diagram, with counting starting from $0$.
-	& This update rule ensures that we are only visiting faces in the black (or white) checkerboard colouring.\\
+	& Repeat loop for next face, or move on if there are no more faces. The update rule ensures that we are only visiting faces in the black (or white) checkerboard colouring.\\
 	5.
 	& Once all chords have been traversed, construct the graph $G$ with vertex list $\{1, \dots, n\}$ and an edge between each pair of vertices in some $F_{i}$, $i \in \{1, \dots, n\}$. The set $\{R_{v} \mid v \in \{1, \dots, n\}\}$ is a rotation system for $G$.
 \end{longtable}
 }
 
-
-
 To illustrate the algorithm, we give an example reconstruction of the Tait graph of the diagram of virtual knot $4_{106}$ seen in Fig.~\ref{fig:4_106-vknot} with Gauss code
 \[-1\over\ -2\under\ -3\over\ -1\under\ +4\over\ -3\under\ -2\over\ +4\under.\]
+We have provided the knot diagram for illustrative purposes only, and it is important to note that the diagram is not necessary for the algorithm. The traversal paths in our graph algorithm are shown in Fig.~\ref{fig:gauss-diagram-4_106-traversal}.
+
+\begin{figure}[hbt]
+	\centering
+	\hspace*{\fill}
+	\begin{subfigure}[b]{0.4 \textwidth}
+		\centering
+		\def\svgscale{0.4}
+		\input{graphics/4-106_vknot.pdf_tex}
+		\caption{Knot diagram.}
+		\label{fig:4_106-vknot}
+	\end{subfigure}
+	\hspace*{\fill} \hspace*{\fill}	\hspace*{\fill}
+	\begin{subfigure}[b]{0.4 \textwidth}
+		\centering
+		\def\svgscale{1.35}
+		\input{graphics/gauss_diagram_4-106.pdf_tex}
+		\caption{Gauss diagram.}
+		\label{fig:gauss-diagram-4_106}
+	\end{subfigure}
+	\hspace*{\fill} 
+	\caption{A knot diagram of $4_{106}$ and its Gauss diagram.}
+	\label{fig:knot-gauss-4_106}
+\end{figure}
 
 \begin{figure}[hbt!]
 	\centering
-	\def\svgscale{0.4}
-	\input{graphics/4-106_vknot.pdf_tex}
+	\def\svgscale{1.35}
+	\input{graphics/gauss_diagram_4-106_traversal.pdf_tex}
 	
-	\caption{The virtual knot $4_{106}$, oriented, with crossings numbered.}
-	\label{fig:4_106-vknot}
+	\caption{The Gauss diagram of the diagram of $4_{106}$ in Fig.~\ref{fig:4_106-vknot} with the traversal paths shown for $f = 1$ (red) and $f = 2$ (blue).}
+	\label{fig:gauss-diagram-4_106-traversal}
 \end{figure}
 
-We have provided the knot diagram for illustrative purposes only, and it is important to note that the diagram is not necessary for the algorithm.
+When our algorithm terminates, we have the ribbon Tait graph given by vertex set $V = \{1, 2\}$, with four edges: $e_{1}$ and $e_{2}$ connecting $v_{1}$ and $v_{2}$, and two $e_{3}$ and $e_{4}$ connecting $v_{1}$ to itself. We have the rotation system $R_{1} = [e_{2}, e_{4}, e_{1}, e_{4}, e_{3}, e_{1}]$, $R_{2} = [e_{2}, e_{3}]$ from which we can see that this Tait graph will not be planar. This is indeed the correct Tait graph and correct rotation system when compared with the black Tait graph obtained from Fig.~\ref{fig:4_106-vknot} by colouring the region left of the orientation arrow black.
 
-Figure \ref{fig:cd_4-106} illustrates the traversal path for $f = 0$ (red) and $f = 1$ (blue).
-
-When the iteration above terminates, each $F_{c}$ will have exactly $2$ elements. We construct the Tait graph with vertex set $V = \{v_{0}, \dots, v_{f}\}$, and edge set $E = \{F_{c} : \text{$c$ a chord}\}$. It is easy to read the Tait graph off Figure \ref{fig:cd_4-106} [Right]; there are two vertices, $v_{0}$ and $v_{1}$, with $2$ loops at $v_{0}$ and two edges $(v_{0}, v_{1})$.
-
-
-\notered{Gauss Diagrams}
-
-\notegreen{Insert figure of the Tait graph.}
-
-To find the other Tait graph, we use the same algorithm, but with the opposite initial turn direction ($t = -1$).
-
+The algorithm we gave always finds the Tait graph generated in this way. To find the other Tait graph, we use the same algorithm, but with the opposite initial turn direction ($t = -1$), and opposite (negative) update rule in Step 4.5
 
 \begin{proposition}
 	The algorithm given above for finding the Tait graphs from the Gauss code of a knot or virtual knot is correct.
 \end{proposition}
+
+We sketch a proof.
+
 \begin{proof}
-	The first claim is that the inner loop of the algorithm finds the faces in the knot diagram. From the definition of the alignment $a$, we have the association
-	\[a = \begin{cases}
-		-1 & \text{iff traversing clockwise} \\
-		+1 & \text{iff traversing anti-clockwise}\,.
-	\end{cases}\]
-	Since the direction on the Gauss diagram was induced by the orientation of the knot, $a$ corresponds to whether a traversal of the knot diagram agrees with the orientation. Hence to prove that choosing direction after a crossing jump based on the rule
-	\[a \leftarrow t \cdot j \cdot w \cdot a\,,\]
-	does in fact lead to the correct choice of $a$ to make a turn in direction $t$ on the knot diagram is simply checking cases. There are $2^{4} = 16$ cases which can easily be checked by drawing all four ways to make a left (resp. right) turn at a negative (resp. positive) crossing. Since we always turn the same direction in our traversal we will indeed find a face of the knot diagram. \notegreen{Insert diagram for one of these cases.}
+
+	If the algorithm indeed corresponds to the traversal of the coloured regions of the checkerboard coloured knot diagram turning left at each face, and it eventually traverses every coloured face, it is correct.
 	
-	\notegreen{The second claim is that we will find a face in the knot diagram if and only if it is the same colour as the $f = 0$ face, in the checker-board colouring of the knot diagram.}
+	The first claim is that the update rule
+	\[a \leftarrow t \cdot j \cdot w \cdot a\]
+	indeed turns consistently left when $t = 1$ or right when $t = -1$. We can see four cases of this in Fig.~\ref{fig:alignment-update-rule}, namely the cases $t = 1$, $j = \pm 1$, $w = 1$, $a = \pm 1$. For example in the case that we are traversing the knot diagram into this crossing from the top-left of the crossing, we have $t = 1$,  $j = -1$, $w = 1$ $a = -1$. Hence we update $a$ to $t \cdot j \cdot w \cdot a = 1$, and therefore hop to the over-strand and continue traversing with the alignment of the over-strand. In fact, it suffices to check this one case, and generate the other 15 by the symmetries $t \mapsto -t$, $j \mapsto -j$, $w \mapsto -w$, $a \mapsto -a$.
 	
-	\notegreen{The third claim is that the face-finding section of the algorithm terminates and that $|F_{c}| = 2$ at this stage.}
+	\begin{figure}[hbt!]
+		\centering
+		\def\svgscale{0.3}
+		\input{graphics/alignment_update_rule.pdf_tex}
+		
+		\caption{Some cases of the alignment update rule.}
+		\label{fig:alignment-update-rule}
+	\end{figure}
 	
-	\notegreen{The fourth claim is that the crossings are in bijection with the edges in each Tait graph and that this bijection is given by $c \mapsto F_{c}$.}
-	
-	This completes the proof. \qedhere
-	
+	The second claim is that the update rule $t = (-1)^{k}$ picks out black checkerboard coloured faces. Consider instead the regular traversal (without jumping at crossings) of the checkerboard coloured knot diagram. Initially, the checkerboard coloured region is on our left, but after the first crossing it swaps to be on the left, and continues swapping at each crossing we encounter. Hence after the $k$th crossing, we choose $t = (-1)^{k}$, and so the algorithm traverses only coloured faces until there are none left. 
 \end{proof}
 
-\section{Mock Seifert Matrix Algorithm}
+\section{Computing Mock Seifert Matrices}
+
+As the Tait graphs $G_{B}(D)$ and $G_{W}(D)$ along with their rotation systems determine an surface embedding of each of these graphs, it is possible to compute mock Seifert matrices corresponding to $\mathcal{G}_{F}(K)$ and $\mathcal{G}_{F^{*}}(K)$.
 
 \begin{proposition}
 	The algebraic intersection numbers of the projections of curves into $\Sigma$ is expressible in terms of the linking number of the curves,
@@ -1446,17 +1490,38 @@ To find the other Tait graph, we use the same algorithm, but with the opposite i
 This implies the following corollary (which is actually the definition of $\mathcal{G}_{F}$ in \cite{gordon-litherland-pairing-thickened-surfaces}).
 
 \begin{proof}
-	\notered{Consider local contributions. Draw similar diagrams to previous proof.}
+	We proceed similarly to the proof in Section 3.3, by letting $\alpha$ and $\beta$ be basis elements for $H_{1}(F)$, choosing representative curves $a$ and $b$ so that intersection in the projection only happens at crossings. Then we examine the local contribution to $p_{*}(\alpha) \cdot p_{*}(\beta)$ at each crossing.
+	
+	There are two cases to prove: curves may intersect in the projection either tangentially or transversely. Fig.~\ref{fig:intersection-number-example} showcases the transverse case. We see that locally $\lk(\tau\alpha, \beta) = 2$ and $\lk(\tau\beta, \alpha) = 0$, hence $\lk(\tau\alpha, \beta) - \lk(\tau\beta, \alpha) = 1 = p_{*}(\alpha) \cdot p_{*}(\beta)$. We omit the tangential case which follows suit.
+	
+	We have proven this for basis elements $\alpha$ and $\beta$, so linearity and anti-symmetry of both $p_{*}(\alpha) \cdot p_{*}(\beta)$ and $\lk(\tau\alpha, \beta) - \lk(\tau\beta, \alpha)$ completes the proof.
 \end{proof}
+
+	\begin{figure}[hbt!]
+		\centering
+		\def\svgscale{0.54}
+		\input{graphics/intersection_number_example.pdf_tex}
+		
+		\caption{Some cases of the alignment update rule.}
+		\label{fig:intersection-number-example}
+	\end{figure}
 
 \begin{corollary}
 The linking form is related to the Gordon-Litherland linking form by
 \[\mathcal{L}_{F}(\alpha, \beta) = \mathcal{G}_{F}(\alpha, \beta) + p_{*}(\alpha) \cdot p_{*}(\beta)\]
 \end{corollary}
 
+\begin{proof}
+\begin{align*}
+\mathcal{L}_{F}(\alpha, \beta) & = \dfrac{1}{2}\lk(\tau \alpha, \beta) + \dfrac{1}{2}\lk(\tau \alpha, \beta)\\
+& = \dfrac{1}{2}\lk(\tau \alpha, \beta) + \dfrac{1}{2}(\tau \beta, \alpha) + \dfrac{1}{2}\lk(\tau \alpha, \beta) - \dfrac{1}{2}(\tau \beta, \alpha)\\
+& = \mathcal{G}_{F}(\alpha, \beta) + p_{*}(\alpha) \cdot p_{*}(\beta). \qedhere
+\end{align*}
+\end{proof}
+
 This gives us an easy way to compute the linking form of a given spanning surface. We simply compute the lattice of integer flows of the corresponding Tait graph, then add the intersection numbers of the curve projections.
 
-The following observation of Boden-Karimi \cite[Remark 3.2]{mock-seifert-matrices} further simplifies this computation.
+The following proposition of Boden-Karimi \cite[Remark 3.2]{mock-seifert-matrices} further simplifies this computation.
 
 \begin{proposition}
 	Let $i: F \longrightarrow \Sigma \times I$ be the inclusion map. The restriction of $\mathcal{L}_{F}$ to the subspace $\ker i_{*}$ is symmetric. In fact, if $\alpha \in \ker i_{*}$ or $\beta \in \ker i_{*}$, then $\mathcal{L}_{F}(\alpha, \beta) = \mathcal{L}_{F}(\beta, \alpha)$.
@@ -1468,13 +1533,35 @@ The following observation of Boden-Karimi \cite[Remark 3.2]{mock-seifert-matrice
 
 A corollary of this proposition is that there is a particularly nice way to present mock Seifert matrices. If we choose a basis for $H_{1}(X)$ of the form $\{\gamma_{1}, \dots, \gamma_{k} \dots, \gamma_{n}\}$ with ${\gamma_{1}, \dots, \gamma_{k}}$ a basis for $\ker i_{*}$, then the resulting mock Seifert matrix $M$ will be of the block form
 \[M = \begin{bmatrix}
-	A & B^{T} \\
+	A & B^{\top} \\
 	B & S
 \end{bmatrix}\]
 where $A$ is an asymmetric $k \times k$ matrix, $B$ is a $k \times (n - k)$ matrix and $S$ is a symmetric $(n - k) \times (n - k)$ matrix.
 
 This is not particularly useful if we only wish to compute other invariants of the knot from $M$. However determining from mock Seifert matrices if two linking forms representing them are equivalent involves solving unimodular congruence, and the author knows of no algorithm for this. With mock Seifert matrices in this form, these unimodular congruences can sometimes be observed.
 
+We now sketch an algorithm for computing a mock Seifert matrix of a knot diagram.
+
+
+{\def\arraystretch{1.6}
+\begin{longtable}{p{0.04\textwidth}p{0.40\textwidth}p{0.49\textwidth}}
+	\textbf{\#} & \textbf{Step}
+	& \textbf{Explanation/Notes}\\
+	1.
+	& Compute a basis for \[\ker i_{*}: H_{1}(F) \to H_{1}(\Sigma \times I).\]
+	& A face in $G_{B}(D)$ can be written as a cycle of edges $G_{W}(D)$. The rotation system $R_{f}$ of $G_{B}(D)$ contains this information.
+	
+	There are technical implementation details involved here. But an implementation can be found at \notered{insert here}.\\
+	2.
+	& Extend the basis of $\ker i_{*}$ to a basis of ${H_{1}(F) \cong H_{1}(G_{B})}$.
+	& We choose our basis of $H_{1}(F)$ to be ordered as a basis for $(\ker i_{*})^{\perp}$, then a basis for $\ker i_{*}$.\\
+	3.
+	& Compute the pairing matrix for the $\Lambda_{B}(G)$ with respect to this basis.
+	& If $A$ is the basis matrix in which each basis element is a column vector of edges of $G_{B}$, then this is $A^{\top}A$.\\
+	4.
+	& Compute the pairing matrix for the algebraic intersection number $p_{\alpha} \cdot p_{\beta}$ in this basis.
+\end{longtable}
+}
 \section{Incompleteness of the Virtual Gordon-Litherland Pairing}
 
 Our counterexamples are given in Fig.~\ref{fig:counterexamples}.
