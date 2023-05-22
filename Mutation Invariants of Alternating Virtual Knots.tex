@@ -1768,27 +1768,62 @@ Of the 92800 virtual knots up to 6 crossings, 164 are alternating. A list of the
 		0 & 1 & 0 & 0 \\
 		0 & 0 & 2 & 0 \\
 		0 & 0 & 0 & 1
-	\end{bmatrix}&
+	\end{bmatrix}& S_{W}(6_{90101}) &=
+\begin{bmatrix}
+	1  & 0 & 0 & 0 & 1  & -1 \\
+	0  & 1 & 0 & 0 & 0  & 0  \\
+	0  & 0 & 1 & 0 & 0  & 1  \\
+	0  & 0 & 0 & 1 & 0  & 0  \\
+	1  & 0 & 0 & 0 & 2  & -2 \\
+	-1 & 0 & 1 & 0 & -2 & 4
+\end{bmatrix}\\
 	S_{B}(6_{90124}) &= \begin{bmatrix}
 		2 & 0 & 0 & 0\\
 		0 & 1 & 0 & 0\\
 		0 & 0 & 2 & 0\\
 		0 & 0 & 0 & 1\\
-	\end{bmatrix}\\
-	M_{B}(6_{90101}) &= \begin{bmatrix}
+	\end{bmatrix}
+&S_{W}(6_{90101}) &=
+\begin{bmatrix}
+	1  & 0 & 0 & 0 & 1  & -1 \\
+	0  & 1 & 0 & 0 & 0  & 0  \\
+	0  & 0 & 1 & 0 & 0  & 1  \\
+	0  & 0 & 0 & 1 & 0  & 0  \\
+	1  & 0 & 0 & 0 & 2  & -2 \\
+	-1 & 0 & 1 & 0 & -2 & 4
+\end{bmatrix},\\
+\end{align*}
+and the mock Seifert matrices
+\begin{align*}M_{B}(6_{90101})
+	&= \begin{bmatrix}
 	2 & -1 & 0 & 0\\
 	1 & 1 & 0 & 0\\
 	0 & 0 & 2 & -1\\
 	0 & 0 & 1 & 1\\
-\end{bmatrix}&
+\end{bmatrix}& M_{W}(6_{90101}) &= \begin{bmatrix}
+1  & 1 & 0  & 0 & 1   &-1\\
+-1&  1  &0 &  0  &0   &0 \\
+0&   0 & 1   &1&  0   &1 \\
+0   &0  &-1 & 1 & 0   &0 \\
+1  & 0&  0 &  0  &2  & -2\\
+-1&  0 & 1&   0 & -2&  4 
+\end{bmatrix}\\
 M_{B}(6_{90124}) &= \begin{bmatrix}
 	2 & -1 & 0 & -1\\
 	1 & 1 & 0 & 1\\
 	0 & 0 & 2 & -1\\
 	1 & -1 & 1 & 1\\
-\end{bmatrix}\\
-\end{align*}
-
+\end{bmatrix}
+& M_{W}(6_{90124})
+&= \begin{bmatrix}
+	1  & 1  & -1&  0  &1 &  -1\\	                     
+	-1 & 1 &  1  & 0  &0  & 0 \\
+	1  & -1  &1   &1  &0   &1 \\
+	0  & 0  & -1&  1  &0   &0 \\
+	1  & 0 &  0  & 0 & 2   &-2\\
+	-1 & 0&   1   &0&  -2  &4 \\
+\end{bmatrix}.
+\\\end{align*}
 \begin{figure}[H]
 	\centering
 	\hspace*{\fill}
@@ -1817,6 +1852,23 @@ The pair's Gordon-Litherland pairing matrices are unimodular congruent, by virtu
 \begin{proposition}
 	The determinant, $\det A$, the Kobayashi invariant, $\kob A \coloneq \operatorname{tr}(A^{\top}A^{-1})$ \cite{new-invariant-under-congruence} and the matrix Alexander polynomial $\Delta_{A}(t) \coloneq \det(tA - A^{\top})$ \cite{mock-seifert-matrices} are invariants of unimodular congruence.
 \end{proposition}
+
+The implementation in Appendix A also computed these invariants of all matrices. We have
+\begin{align*}
+	\det M_{B}(6_{90101}) & = 9  \\
+	\det M_{B}(6_{90124}) & = 15
+\end{align*}
+and
+\begin{align*}
+	\det M_{W}(6_{90101}) & = 9  \\
+	\det M_{W}(6_{90124}) & = 15 \,.
+\end{align*}
+This completes the proof of the following corollary.
+
+\begin{corollary}
+	The pair of lattices of integer flows of the Tait graphs of virtual knots, $(\Lambda_{B}(V), \Lambda_{W}(V))$ is not a complete invariant of alternating virtual knots.
+\end{corollary}
+
 
 
 \section{A Note on Invariants of Unimodular Congruence}
