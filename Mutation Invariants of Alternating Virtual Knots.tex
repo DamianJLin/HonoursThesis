@@ -400,11 +400,8 @@ Let $D$ be a reduced alternating knot diagram for a virtual knot $V$. Then $D$ h
 
 The third of these conjectures is known as the flyping conjecture, and it relates reduced alternating diagrams of the same alternating knot by moves known as flype moves.
 
-A \textit{tangle} in a knot diagram is a region of the plane that is homeomorphic to a disc, such that the knot crosses the boundary of the disc exactly four times, as in Fig.~\ref{fig:kinoshita-terasaka-knot} and Fig.~\ref{fig:conway-knot}. A \textit{flype} move is a diagrammatic move that flips a tangle but does not alter the knot type, as in Fig.~\ref{fig:flype}. \notered{True by case analysis - add as proposition.} Tait's Flyping conjecture was proven by Menasco and Thistlethwaite in \cite[p. 166]{classification-alternating-links}:
-
-\begin{theorem}[Flyping Theorem]
-Any two reduced alternating diagrams, $D$ and $E$ of the same prime knot, are related by a sequence of flypes.
-\end{theorem}
+% TODO: Zsuzsi read this.
+A \textit{tangle} in a knot diagram is a region of the plane that is homeomorphic to a disc, such that the knot crosses the boundary of the disc exactly four times, as in Fig.~\ref{fig:kinoshita-terasaka-knot} and Fig.~\ref{fig:conway-knot}. A \textit{flype} move is a diagrammatic move that flips a tangle but does not alter the knot type, as in Fig.~\ref{fig:flype}.
 
 \begin{figure}[hbt]
 	\centering
@@ -414,7 +411,72 @@ Any two reduced alternating diagrams, $D$ and $E$ of the same prime knot, are re
 	\label{fig:flype}
 \end{figure}
 
-This is a Reidemeister-like theorem for alternating knots in that is relates equivalence of diagrams to the existence of a sequence of moves between them.
+Flype moves preserve whether diagrams alternate:
+
+\begin{proposition}
+Let $D$ be an alternating diagram. Then any flype of $D$ is an alternating diagram.
+\end{proposition}
+
+\begin{proof}
+Assume that $D$ is an alternating diagram. There are three cases for the connectivity of the tangle $T$ in $D$, given in Fig.~\ref{fig:flype-connect}.
+
+\begin{figure}[H]
+	\centering
+	\hspace*{\fill}
+	\begin{subfigure}[b]{0.3 \textwidth}
+		\centering
+		\def\svgscale{0.55}
+		\input{graphics/flype_connectivity_horizontal.pdf_tex}
+		\caption{Strands connect horizontally inside $T$.}
+		\label{fig:flype-connect-horizon}
+	\end{subfigure}
+	\hspace*{\fill}
+	\begin{subfigure}[b]{0.3 \textwidth}
+		\centering
+		\def\svgscale{0.55}
+		\input{graphics/flype_connectivity_vertical.pdf_tex}
+		\caption{Strands connect vertically inside $T$.}
+		\label{fig:flype-connect-vert}
+	\end{subfigure}
+	\hspace*{\fill}
+	\begin{subfigure}[b]{0.3 \textwidth}
+		\centering
+		\def\svgscale{0.55}
+		\input{graphics/flype_connectivity_diagonal.pdf_tex}
+		\caption{Strands connect diagonally inside $T$.}
+		\label{fig:flype-connect-diag}
+	\end{subfigure}
+	\hspace*{\fill}
+	\caption{Three cases for the connectivity inside a tangle.}
+	\label{fig:flype-connect}
+\end{figure}
+
+In the first case, the strands connect horizontally. Consider the strand that enters the tangle at the top right. In the tangle it intersects itself some number of times before exiting the tangle at the top left. Since it goes over and under itself once at each self-crossing, this contributes an even number of encounters.  By the Jordan curve theorem, it also encounters the bottom strand an even number of times. So both strands have an even number of crossing encounters along them.
+
+We must prove the alternating property is preserved by the flype at the boundaries of the tangle. The flype affects the diagram in two ways. Firstly, it performs a horizontal flip on the tangle. This swaps the two strands inside the tangle, but also sends over-crossings to under-crossings. Hence in this case, whether there is an over- or under-strand just inside the boundary of $T$ is unaffected. Secondly, it moves the crossing outside the tangle to the other side. The illustration in Fig.~\ref{fig:flype-preservation} shows that these two effects preserve the alternating property at the boundaries of $T$.
+
+\begin{figure}[hbt]
+	\centering
+	\def\svgscale{0.7}
+	{ \scriptsize
+	\input{graphics/flype_preservation.pdf_tex}
+	}
+	\caption{A general flype move.}
+	\label{fig:flype-preservation}
+\end{figure}
+
+This proves the case in Fig.~\ref{fig:flype-connect-horizon}, and the cases in Fig.~\ref{fig:flype-connect-vert} and Fig.~\ref{fig:flype-connect-diag} are similar.
+
+
+\end{proof}
+
+The flyping theorem was proven by Menasco and Thistlethwaite in \cite[p. 166]{classification-alternating-links}:
+
+\begin{theorem}[Flyping Theorem]
+Any two reduced alternating diagrams, $D$ and $E$ of the same prime knot, are related by a sequence of flypes.
+\end{theorem}
+
+This is a Reidemeister-like theorem for alternating knots in that is relates equivalence of diagrams to the existence of a sequence of moves between them, only going via alternating diagrams.
 
 Knot mutation is another way of constructing new knots from existing ones, preserving the alternating property. If we take a diagram, choose a tangle, and then perform a reflection (up to planar isotopy) of that tangle, either reflecting it left-right or up-down, or across one of the diagonals, the corresponding operation on the knot is known as \textit{mutation}, and the two knots are called \textit{mutants}. Mutants are some of the hardest knots to distinguish, as many of their invariants are the same. An example of this is the Conway the Kinoshita-Terasaka knots, given in Fig.~\ref{fig:kinoshita-terasaka-mutants}.
 
@@ -1225,7 +1287,7 @@ Let $V$ be an alternating virtual knot, and let $D$ and $E$ be reduced, alternat
 \end{theorem}
 
 \begin{proof}
-	\notered{Add this.}
+	\notered{Don't need this?}
 \end{proof}
 
 The linking form is also a mutation invariant of alternating virtual knots:
@@ -1235,7 +1297,7 @@ Let $D$ and $E$ be surface knot diagrams related by a sequence of disk mutations
 \end{theorem}
 
 \begin{proof}
-\notered{I know how to prove this now.}
+By Greene's Lemma, mutation induces at worst a Whitney flip in the Tait graph. A Whitney flip is an cycle-preserving bijection of edges, so \notered{Still unsure...}
 \end{proof}
 
 \section{The Gordon-Litherland Pairing}
@@ -1705,10 +1767,10 @@ Our counterexamples are given in Fig.~\ref{fig:counterexamples}.
 
 \section{A Note on Invariants of Unimodular Congruence}
 
-From the tables produced, it was noticed that the Kobayashi invariant \cite{new-invariant-under-congruence}, defined as
+From the tables I produced, I noticed that the Kobayashi invariant \cite{new-invariant-under-congruence}, defined as
 \[\kob A = \operatorname{tr}(A^{\top}A^{-1})\]
-always satisfied a relation involving the coefficients of the Alexander polynomial
-\[\Delta_{A}(t) \coloneq \det(tA - A^{\top})\] \cite{mock-seifert-matrices}.
+always satisfied a relation involving the coefficients of the mock Alexander polynomial \cite{mock-seifert-matrices}
+\[\Delta_{A}(t) \coloneq \det(tA - A^{\top}).\]
 
 
 \begin{proposition}
@@ -1721,14 +1783,14 @@ The matrix $A$, being a mock Seifert matrix, has odd determinant \cite{mock-seif
 \[\det(tA - A^{\top}) = \det(A)\det(tI - A^{\top}A^{-1})\,.\]
 The last factor here is the characteristic polynomial of $A^{\top}A^{-1}$. It is a well known fact that the zeroth and first coefficients of the characteristic polynomial of $M$, are $\det(M)$ and $-\operatorname{tr}(M)$ respectively. Hence,
 \begin{align*}
--\dfrac{a_{1}}{a_{0}}	& = \dfrac{\operatorname{tr}(A^{\top}A^{-1})}{\det(A^{\top}A^{-1})}\,,
+-\dfrac{a_{1}}{a_{0}}	& = \dfrac{\operatorname{tr}(A^{\top}A^{-1})}{\det(A^{\top}A^{-1})}.
 \end{align*}
-but as $\det(A^{\top}A^{-1}) = \det(A^{\top})\det(A^{-1}) = \det(A)\det(A^{-1}) = 1$, we have
+Since $\det(A^{\top}A^{-1}) = \det(A^{\top})\det(A^{-1}) = \det(A)\det(A^{-1}) = 1$, we have
 \[-\dfrac{a_{1}}{a_{0}} = \operatorname{tr}(A^{\top}A^{-1})\]
 as required.
 \end{proof}
 
-This means that the Kobayashi invariant is weaker than the Alexander polynomial.
+This means in particular that the Kobayashi invariant is weaker than the Alexander polynomial.
 
 
 \newpage
