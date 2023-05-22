@@ -453,7 +453,7 @@ Assume that $D$ is an alternating diagram. There are three cases for the connect
 
 In the first case, the strands connect horizontally. Consider the strand that enters the tangle at the top right. In the tangle it intersects itself some number of times before exiting the tangle at the top left. Since it goes over and under itself once at each self-crossing, this contributes an even number of encounters.  By the Jordan curve theorem, it also encounters the bottom strand an even number of times. So both strands have an even number of crossing encounters along them.
 
-We must prove the alternating property is preserved by the flype at the boundaries of the tangle. The flype affects the diagram in two ways. Firstly, it performs a horizontal flip on the tangle. This swaps the two strands inside the tangle, but also sends over-crossings to under-crossings. Hence in this case, whether there is an over- or under-strand just inside the boundary of $T$ is unaffected. Secondly, it moves the crossing outside the tangle to the other side. The illustration in Fig.~\ref{fig:flype-preservation} shows that these two effects preserve the alternating property at the boundaries of $T$.
+We must prove the alternating property is preserved by the flype at the boundaries of the tangle. The flype affects the diagram in two ways. Firstly, it performs a horizontal flip on the tangle. This swaps the two strands inside the tangle, but also sends over-crossings to under-crossings. Hence in this case, whether there is an over- or under-strand just inside the boundary of $T$ is unaffected. Secondly, it moves the crossing outside the tangle to the other side. The illustration in Fig.~\ref{fig:flype-preservation} shows that these two effects preserve the alternating property at the boundaries of $T$. This proves the case in Fig.~\ref{fig:flype-connect-horizon}, and the cases in Fig.~\ref{fig:flype-connect-vert} and Fig.~\ref{fig:flype-connect-diag} are similar.
 
 \begin{figure}[hbt]
 	\centering
@@ -464,9 +464,6 @@ We must prove the alternating property is preserved by the flype at the boundari
 	\caption{A general flype move.}
 	\label{fig:flype-preservation}
 \end{figure}
-
-This proves the case in Fig.~\ref{fig:flype-connect-horizon}, and the cases in Fig.~\ref{fig:flype-connect-vert} and Fig.~\ref{fig:flype-connect-diag} are similar.
-
 
 \end{proof}
 
@@ -793,21 +790,20 @@ Let $K_{1}$ and $K_{2}$ be alternating knots. Then $K_{1}$ and $K_{2}$ are mutan
 \begin{proof}
 Let $K_{1}$ and $K_{2}$ be alternating virtual knots. For the forward implication, suppose that $K_{1}$ and $K_{2}$ are mutants, so there is a sequence of mutations from a diagram of $K_{1}$ to a diagram of $K_{2}$. By the lemma above, their Tait graphs $G_{B}(K_{1})$ and $G_{B}(K_{2})$  are related by Whitney flips. By Whitney's theorem, each of these pairs of graphs are $2$-isomorphic. Since $\Lambda_{B}(G)$ is a $2$-isomorphism invariant, $\Lambda_{B}(K_{1}) \cong \Lambda_{B}(K_{2})$.
 
-For the reverse implication, take two alternating knots such that $\Lambda_{B}(K_{1}) \cong \Lambda_{B}(K_{2})$. We may assume them to be reduced, as reduction of a knot does not alter the lattice of integer flows of its Tait graphs. As the knots are reduced, their Tait graphs $2$-edge-connected. So, by the Torelli theorem for graphs, $G_{B}(K_{1})$ and $G_{B}(K_{2})$ are $2$-isomorphic. By Whitney's theorem, there is a sequence of Whitney flips between each of these pairs, which by the lemma above corresponds to a sequence of mutations between $K_{1}$ and $K_{2}$, so they are mutants.
+For the reverse implication, take two alternating knots such that $\Lambda_{B}(K_{1}) \cong \Lambda_{B}(K_{2})$. We may assume them to be reduced, as reduction of a knot does not alter the lattice of integer flows of its Tait graphs. As the knots are reduced, their Tait graphs are $2$-edge-connected. So, by the Torelli theorem for graphs, $G_{B}(K_{1})$ and $G_{B}(K_{2})$ are $2$-isomorphic. By Whitney's theorem, there is a sequence of Whitney flips between each of these pairs, which by the lemma above corresponds to a sequence of mutations between $K_{1}$ and $K_{2}$, so they are mutants.
 \end{proof}
 
 \section{Heegaard-Floer Homology and the $d$-invariant}
 
-\notered{Alert! I need to edit this section heavily to hide the fact that I don't know the meaning of any of these words!}
+Greene shows that the lattice of integer flows of a graph can be reduced into an equivalent, more concise invariant called the $d$-invariant. When this is applied to the Tait graph of a knot, we refer to it as the `lattice-theoretic' $d$-invariant. Greene shows that this is  equivalent to a construction from Heegaard-Floer homology known as the $d$-invariant of the of the double branched-cover of of the knot (which we refer to as the `Heegaard-Floer' $d$-invariant) \cite{lattices-graphs-mutation}.
 
-Heegaard-Floer homology is a homology theory introduced in a series of papers by Peter Ozsv\'ath and Zoltan Sz\'abo at the turn of the 21st century. The theory consists of a powerful set of topological invariants that fit within a topological quantum field theory. It has proven to be incredibly useful in low-dimensional topology. \notered{Reference original papers and ams thing.}
+Heegaard-Floer homology is a homology theory introduced in a series of papers by Peter Ozsv\'ath and Zoltan Sz\'abo \cite{on-heegaard-floer-of-covers} at the turn of the 21st century. The theory consists of a powerful set of topological invariants that fit within a topological quantum field theory. This framework has proven to be incredibly useful in low-dimensional topology. A good modern reference for Heegaard-Floer homology is \cite{heegaard-floer-homology}.
 
-Greene shows that the lattice of integer flows of a graph can be reduced into an equivalent, more concise invariant called the $d$-invariant. When this is applied to the Tait graph of a knot, we refer to it as the `lattice-theoretic' $d$-invariant. Greene shows that this is  equivalent to a construction from Heegaard-Floer' homology known as the $d$-invariant of the of the double branched-cover of of the knot (which we refer to as the `Heegaard-Floer' $d$-invariant) \cite{lattices-graphs-mutation}.
-\noteblue{Below we briefly review the construction of the lattice-theoretic $d$-invariant. Computationally, this is fairly straightforward to implement.} In Chapter $2$, we define the lattice of integer flows and $d$-invariant for virtual knots \notered{make a note in that chapter} and in \notered{appendix A/B we include a table of $d$-invariants for alternating virtual knots up to 6.} 
 
-In particular, Greene shows that instead of considering the whole lattice $\Lambda_{B}(K)$, it suffices to look at a particular coset of the dual lattice called the \textit{characteristic coset}:
+The \textit{dual lattice} of an arbitrary lattice $\Lambda$ is the set
+\[\Lambda^{*} = \left\{ x \in \Lambda \otimes \mathbb{Q} \ \Big|\  \langle x, \lambda \rangle \in \Z, \forall \lambda \in \Lambda \right\}\]To construct the $d$-invariant, Greene shows that instead of considering the whole lattice $\Lambda_{B}(K)$, it suffices to look at a particular coset of the dual lattice called the \textit{characteristic coset}:
 \[\operatorname{Char} \Lambda = \left\{ \chi \in \Lambda^{*} \ \Big|\  \langle\chi,\lambda\rangle \equiv \langle\lambda,\lambda\rangle \pmod 2\  \forall \lambda \in \Lambda \right\}\,.\]
-The $d$-invariant is a scaled function that takes an element of the quotient $(\operatorname{Char} \Lambda_{B}(K)) / (2 \Lambda_{B}(K))$ to the norm of its minimal-norm representative. Greene shows that this reduction is equivalent to the while lattice of integer flows by lattice-gluing techniques.
+The $d$-invariant is a scaled mapping taking an coset of covectors $[\chi]$ in $\operatorname{Char}(\Lambda) \pmod{2\Lambda}$ to a scaled version of the minimal norm of all $\chi \in [\chi]$.
 
 
 \chapter{Virtual Knots}
@@ -915,7 +911,7 @@ The \textit{virtual genus} $g_{v}$ of a virtual knot $V$ is defined as the minim
 An important question to ask is whether classical knot theory embeds faithfully into virtual knot theory: are there distinct classical knots which, when considered as virtual knots are rendered equivalent by stable equivalence? A uniqueness result of Kuperberg dispels this possibility and in fact gives the even stronger result that we \textit{never} need to go `up' in genus to check whether virtual knots are equivalent.
 
 \begin{theorem}[Kuperberg's Theorem]
-If $(K, \Sigma)$ and $(J, \Sigma)$ are two minimal genus representatives of the same virtual knot of virtual genus $v_{g}$, then they are equivalent as knots $\Sigma \times I$. That is, there is a self-homeomorphism $\varphi$ of $\Sigma \times I$ such that $\varphi(K) = J$.
+If $(K, \Sigma)$ and $(J, \Sigma)$ are two minimal genus representatives of the same virtual knot of virtual genus $v_{g}$, then they are equivalent as knots $\Sigma \times I$. That is, there is a self-diffeomorphism $\varphi$ of $\Sigma \times I$ such that $\varphi(K) = J$.
 \end{theorem}
 
 However, as we illustrated in Fig.~\ref{fig:cellular-embedding-tricky}, the virtual genus of a virtual knot is not necessarily obvious, and furthermore, there is no known algorithm to compute it. The following theorem from \cite{parity-and-projection}, does allow for the computation of $g_{v}$ for low crossing numbers:
@@ -1106,19 +1102,9 @@ For those surface knot diagrams that are checkerboard colourable, we can define 
 
 Let $G$ be a connected graph. A \textit{surface embedding} of $G$ is a map $i: G \inject \Sigma$, considered up to orientation-preserving diffeomorphism. To simplify notation, we use $G$ and $i(G)$ interchangeably.
 
-Given a embedding of a graph $G$ in an orientable surface, we can read off a cyclic ordering of incident edges around each vertex. In fact, a textbook result in topological graph theory is that a cyclic ordering of incident edges around each vertex uniquely determines a cellular surface embedding for $G$ \cite[Theorem 3.2.4]{graphs-on-surfaces}. This extra information is called a \textit{rotation system}; a graph with a rotation system is also called a \textit{ribbon graph} or \textit{fat graph}.
+A \textit{cellular embedding} of a graph is a surface embedding $i: G \longrightarrow \Sigma$ such that $\Sigma \smallsetminus G$ is a union of disks. Given a cellular embedding of a graph $G$ in an orientable surface, we can read off a cyclic ordering of incident edges around each vertex. In fact, a textbook result in topological graph theory is that a cyclic ordering of incident edges around each vertex uniquely determines a cellular surface embedding for $G$ \cite[Theorem 3.2.4]{graphs-on-surfaces}. This extra information is called a \textit{rotation system}; a graph with a rotation system is also called a \textit{ribbon graph} or \textit{fat graph}.
 
-The \textit{surface dual} of the cellularly embedded surface graph $i: G \inject \Sigma$ is another surface embedding $i^{*}: G^{*} \inject \Sigma$, where $G^{*}$ is the graph that has a vertex for every connected component of  $\Sigma \smallsetminus G$, and for each edge $e$ of $G$, a dual edge $e^{\ast}$ connecting the vertices lying on either side of $e$. The map $J$ then assigns vertices and edges of $G^{*}$ to the correct place in $\Sigma$. \notered{Sort this out with Zsuzsi on Monday!} The requirement that $G$ be cellularly embedded is necessary for the surface dual to be well-defined. For example, without this requirement, Fig.~\ref{fig:multiple_dual_graphs} contains two distinct surface duals of the same surface embedding.
-
-\begin{figure}[hbt!]
-	\centering
-	\def\svgscale{0.45}
-	\input{graphics/multiple_dual_graphs.pdf_tex}
-	
-	\caption{These two red graphs are both surface dual to the same non cellularly-embedded black surface embedding. However, they are not equivalent up to diffeomorphism, in fact a Dehn twist is required to go between them.}
-	\label{fig:multiple_dual_graphs}
-\end{figure}
-
+The \textit{surface dual} of the cellularly embedded surface graph $i: G \inject \Sigma$ is another surface embedding $i^{*}: G^{*} \inject \Sigma$, where $G^{*}$ is the graph that has a vertex for every connected component of  $\Sigma \smallsetminus G$, and for each edge $e$ of $G$, a dual edge $e^{\ast}$ connecting the vertices lying on either side of $e$. The map $J$ then assigns vertices and edges of $G^{*}$ to the correct place in $\Sigma$. 
 
 We present here a few elementary results about surface duals.
 
@@ -1134,7 +1120,7 @@ Since $G$ is cellularly embedded in $\Sigma$, the Euler characteristic $\chi(\Si
 If $G$ is cellularly embedded, then $G^{**} = G$.
 \end{corollary}
 
-\notered{Show that we can reconstruct the knot from the Tait graphs, like in the classical case. Mention here and give example.}
+Like in the classical case, we can reconstruct the knot diagram of an alternating virtual knot from a cellular embedding of the Tait graph. This is completely analogous to the surface case that was shown in Fig.~\ref{fig:tait-reconstruction-example}.
 
 \section{The Lattice of Integer Flows for Virtual Knots}
 
@@ -1217,7 +1203,9 @@ Let $V_{1}$ and $V_{2}$ be mutant alternating knots that are mutants. Then $\Lam
 The proof follows the proof in the classical case exactly. Let $V_{1}$ and $V_{2}$ be mutants. There is a sequence of mutations from $V_{1}$ to $V_{2}$. The lemma from Chapter 1 that a flype move induces a Whitney flip of the Tait graph generalises directly to disk mutation. Thus, $G_{B}(V_{1})$ and $G_{W}(V_{1})$ (resp. $G_{B}(V_{2})$ and $G_{W}(V_{2})$) are related by Whitney flips. By Whitney's theorem, the graphs are $2$-isomorphic, and since $\Lambda_{B}(K)$ (resp. $\Lambda_{W}(K)$) is a $2$-isomorphism invariant, we have $\Lambda_{B}(V_{1}) \cong \Lambda_{B}(V_{2})$ (resp. $\Lambda_{W}(V_{1}) \cong \Lambda_{W}(V_{2})$).
 \end{proof}
 
-Unlike in the the above proof, the proof that $\Lambda_{B}(K)$ and $\Lambda_{W}(K)$ are complete up to mutation does not generalise. \notered{Insert Zsuzsi's argument as to why.} In fact, on the class of virtual knots, even the pair the pair $\left(\Lambda_{B}(K), \Lambda_{W}(K)\right)$ fails to be a complete mutation invariant:
+New we see that the proof of completeness fails to generalise: let $(D_{1}, \Sigma_{1})$ and $(D_{2}, \Sigma_{2})$ be alternating diagrams of virtual knots such that $\Lambda_{B}(D_{1}) = \Lambda_{B}(D_{2})$. Like in the classical case, the discrete Torelli theorem applies, so the abstract graphs $G_{B}(D_{1})$ and $G_{B}(D_{2})$ is determined up to $2$-isomorphism by the lattice of integer flows. Unlike in the classical case, due to the variety of different homology classes edges can be embedded in, not all of the ways of embedding $G_{B}(D_{1})$ and $G_{B}(D_{2})$ are reachable by Whitney flip. For example, a Whitney flip can never take a homologically non-trivial cycle to a homologically trivial cycle, or vice-versa.
+
+In fact, on the class of virtual knots, even the pair the pair $\left(\Lambda_{B}(K), \Lambda_{W}(K)\right)$ fails to be a complete mutation invariant:
 
 \begin{theorem}
 The pair of lattices of integer flows of the Tait graphs of virtual knots, $(\Lambda_{B}(V), \Lambda_{W}(V))$ is not a complete invariant of alternating virtual knots.
@@ -1283,11 +1271,11 @@ We wait until Chapter $4$ to give examples of computations of this form, as that
 As observed in \cite[Section 3]{gordon-litherland-pairing-thickened-surfaces}, the linking forms corresponding to the black and white checkerboard surfaces define an invariant of checkerboard colourable virtual knots, using a minimal genus representative of the knot. Reduced, cellularly embedded alternating diagrams of alternating knots are always minimal genus, hence we have the following special case:
 
 \begin{theorem}
-Let $V$ be an alternating virtual knot, and let $D$ and $E$ be reduced, alternating cellularly embedded diagrams of $V$. Let $F(D)$ and $F(E)$ be the spanning surfaces corresponding to the black regions of $D$ and $E$ respectively. Similarly, let $F^{*}(D)$ and $F^{*}(E)$ be those corresponding to the white regions. Then $\mathcal{L}_{F(D)} \cong \mathcal{L}_{F(E)}$ and $\mathcal{L}_{F^{*}(D)} \cong \mathcal{L}_{F^{*}(E)}$.
+Let $V$ be an alternating virtual knot, and let $D$ and $E$ be reduced, alternating cellularly embedded diagrams of $V$. Let $F_{D}$ and $F_{E}$ (resp. $F^{*}_{D}$ and $F^{*}_{E}$) be positive definite (resp. negative definite) spanning surfaces for $D$ and $E$. Then $\mathcal{L}_{F(D)} \cong \mathcal{L}_{F(E)}$ and $\mathcal{L}_{F^{*}(D)} \cong \mathcal{L}_{F^{*}(E)}$.
 \end{theorem}
 
 \begin{proof}
-	\notered{Don't need this?}
+By Greene's characterisation, $F_{D}$ and $F_{E}$ are positive definite surfaces. Kindred \cite[Theorem 2.8]{virtual-flyping-theorem} shows that Boden-Karimi's proof of Theorem 4.8 in \cite{alternating-links-thickened-surfaces} yields the stronger result that both $F_{D}$ and $F_{E}$ are isotopic. Hence we have $\mathcal{L}_{F_{D}} \cong \mathcal{L}_{F_{E}}$ and $\mathcal{L}_{F^{*}_{D}} \cong \mathcal{L}_{F^{*}_{E}}$
 \end{proof}
 
 The linking form is also a mutation invariant of alternating virtual knots:
@@ -1345,6 +1333,18 @@ We obtain as a corollary the theorem we left unproven in Chapter $2$:
 \begin{corollary}
 Let $V$ be an alternating virtual knot, and let $D$, $E$ be alternating surface knot diagrams for $V$. Then $\Lambda_{B}(D) \cong \Lambda_{B}(E)$ and $\Lambda_{B}(D) \cong \Lambda_{W}(E)$.
 \end{corollary}
+
+It also follows that the Gordon-Litherland pairing is a mutation invariant.
+
+\begin{corollary}
+	Let $D$ and $E$ be two surface knot diagrams, possibly for different knots, related by a sequence of disk mutations. Then $\mathcal{G}_{F_{D}} \cong \mathcal{G}_{F_{E}}$ and $\mathcal{G}_{F^{*}_{D}} \cong \mathcal{G}_{F^{*}_{E}}$.
+\end{corollary}
+
+\begin{proof}
+	In Chapter 1, we saw that mutation either changes the embedding of the Tait graph in the plane, or induces a Whitney flip in the Tait graph. The same argument proves that a disk mutation either changes the embedding of the Tait graph in $\Sigma$, or induces a Whitney flip. The lattice of integer flows is independent of the embedding and invariant under Whitney flips, completing the proof.
+\end{proof}
+
+In fact, $\mathcal{L}_{F}$ is also a mutation invariant, which we will prove in Chapter 4 using a formula in terms of $\mathcal{G}_{F}$ and the intersection pairing.
 
 \chapter{Computing Mock Seifert Matrices}
 
@@ -1619,7 +1619,30 @@ The following proposition of Boden-Karimi \cite[Remark 3.2]{mock-seifert-matrice
 	Let $a, b$ be representative curves for $\alpha$, $\beta$. Without loss of generality assume $\alpha \in \ker i_{*}$. Then $a$ is null-homotopic in $\Sigma \times I$, so $p(a)$ is null-homotopic in $\Sigma$. Applying the Jordan Curve Theorem on $\Sigma$  shows that $p_{*}(\alpha) \cdot p_{*}(\beta) = 0$. The formula above and the fact that $\mathcal{G}_{F}(\alpha, \beta)$ is symmetric completes the proof.
 \end{proof}
 
-A corollary of this proposition is that there is a particularly nice way to present mock Seifert matrices. If we choose a basis for $H_{1}(X)$ of the form $\{\gamma_{1}, \dots, \gamma_{k}, \gamma_{k + 1} \dots, \gamma_{n}\}$ where $\{\gamma_{1}, \dots, \gamma_{k}\}$ forms a basis for $\ker i_{*}$, then the resulting mock Seifert matrix $M$ will be of block form
+We obtain as a corollary that $\mathcal{L}_{F}$ is a mutation invariant.
+
+\begin{corollary}
+	Let  $D$ and $E$ be two surface knot diagrams, possibly for different knots, related by a sequence of disk mutations. Then $\mathcal{L}_{F_{D}} \cong \mathcal{L}_{F_{E}}$ and $\mathcal{L}_{F_{D}^{*}} \cong \mathcal{L}_{F_{E}^{*}}$.
+\end{corollary}
+
+\begin{proof}
+	We prove this for a single mutation and the result follows by induction.
+	
+	Since
+	\[\mathcal{L}_{F}(\alpha, \beta) = \mathcal{G}_{F}(\alpha, \beta) + p_{*}(\alpha) \cdot p_{*}(\beta),\]
+	it suffices to prove that the algebraic intersection number $p_{*}(\alpha) \cdot p_{*}(\beta)$ is a mutation invariant.
+	
+	If $i_{*}(\alpha) = 0$ or $i_{*}(\beta) = 0$, then $p_{*}(\alpha) \cdot p_{*}(\beta)$ both before and after mutation. Hence it is only required to check invariance for a set of cycles whose inclusions into $\Sigma$ form a basis for $H_{1}(\Sigma)$.
+	
+	Since the mutation disc $B$ intersects $D$ at four points, if the two connected components of $(\partial D) \cap p(F)$ are not path-connected in $F$, then we may always choose representative curves $\alpha$ and $\beta$ that are disjoint from $B$, so mutation does not affect the intersection pairing.
+	
+	If the two connected components of $(\partial D) \cap p(F)$ are path-connected in $F$, then it is possible that both $\alpha$ and $\beta$ pass through $D$. If this is the case, then choosing replacing $\beta$ with $\beta' = \alpha - \beta$ finds another representative which does not pass though $B$. Since only one of the representatives passes through $B$, mutation does not affect the intersection pairing.
+	
+	This completes the proof.
+\end{proof}
+
+
+Another corollary of this proposition is that there is a particularly nice way to present mock Seifert matrices. If we choose a basis for $H_{1}(X)$ of the form $\{\gamma_{1}, \dots, \gamma_{k}, \gamma_{k + 1} \dots, \gamma_{n}\}$ where $\{\gamma_{1}, \dots, \gamma_{k}\}$ forms a basis for $\ker i_{*}$, then the resulting mock Seifert matrix $M$ will be of block form
 \[M = \begin{bmatrix}
 	A & B^{\top} \\
 	B & S
@@ -1632,7 +1655,7 @@ Having mock Seifert matrices in this form, it is also easier, in special cases, 
 
 We now present the algorithm for computing a mock Seifert matrix of a knot diagram. We fist compute a basis so that the mock Seifert matrix is as in the proposition above. The idea of the algorithm is as follows.
 
-Representative curves as cycles in the Tait graph are chosen for basis elements of the first homology $H_{1}(F)$. In this way, we can compute the lattice of integer flows easily as discussed in Chapter 3.
+Choose representative curves as cycles in the Tait graph  for basis elements of the first homology $H_{1}(F)$. In this way, we can compute the lattice of integer flows easily as discussed in Chapter 3.
 
 To compute the algebraic intersection form, it suffices to compute local contributions at each vertex of the Tait graph. Consider the information about the Tait graph available locally at each vertex: there are several edges with a cyclic ordering from the rotation system, and for each pair $\alpha$ and $\beta$ in the basis for $H_{1}(F)$, some of these edges have non-zero coefficients in the cycle $\alpha$ (resp. $\beta$). If this is the case, we say an edge belongs to $\alpha$ (resp. $\beta$).
 
@@ -1673,7 +1696,7 @@ We say we resolve a degeneracy \textit{prioritising} $\alpha$ (resp. $\beta$) if
 	\label{fig:intersection-number-graph}
 \end{figure}
 
-When we have degeneracies, there is no way to resolve them locally. The algorithm resolves dependencies both ways, averaging out the local contributions from each possibility.
+The key observation for the algorithm is that by resolving degeneracies both ways at every vertex and averaging the local contributions give the correct total contribution.
 
 \subsection*{Algorithm}
 {\def\arraystretch{1.6}
@@ -1687,18 +1710,18 @@ When we have degeneracies, there is no way to resolve them locally. The algorith
 	There are technical implementation details involved here. An implementation can be found in Appendix A.\\
 	2.
 	& Extend the basis of $\ker i_{*}$ to a basis of ${H_{1}(F) \cong H_{1}(G_{B})}$.
-	& We choose our basis of $H_{1}(F)$ to be ordered as a basis for $(\ker i_{*})^{\perp}$, then a basis for $\ker i_{*}$.\\
+	& We choose a basis of $H_{1}(F)$ to be ordered as a basis for $(\ker i_{*})^{\perp}$, then a basis for $\ker i_{*}$.\\
 	3.
-	& Compute the pairing matrix for the $\Lambda_{B}(G) \cong \mathcal{G}_{F}$ with respect to this basis.
+	& Compute the pairing matrix for $\Lambda_{B}(G) \cong \mathcal{G}_{F}$ with respect to this basis.
 	& If $A$ is the basis matrix in which each basis element is a column vector of edges of $G_{B}$, then this is $A^{\top}A$.\\
 	4.
 	& For each $\alpha, \beta \in \{\gamma_{1}, \dots, \gamma_{k}\}$, compute the pairing matrix element $p_{*}(\alpha) \cdot p_{*}(\beta)$ of the algebraic intersection form as follows:
 	& \\
 	4.1. 
-	& For each $\alpha$ and $\beta$ in the basis, write them as cycles of edges.
+	& While each $\alpha$ and $\beta$ in the basis, as cycles of edges.
 	& \\
 	4.2. 
-	& For $\eta \in \{\alpha, \beta\}$, resolve degeneracies by prioritising $\eta$. With degeneracies resolved we can compute the local contribution to the algebraic intersection number as follows:
+	& For $\eta \in \{\alpha, \beta\}$, resolve degeneracies by prioritising $\eta$. With degeneracies resolved, compute the local contribution to the algebraic intersection number as follows:
 	& Steps $4.2.1$ to $4.2.4$ algorithmically compute local contributions to intersection numbers.\\
 	4.2.1.
 	& Turn the cyclic ordering into a list by picking an initial item.
@@ -1710,11 +1733,11 @@ When we have degeneracies, there is no way to resolve them locally. The algorith
 	& Initialise a variable $i = 0$.
 	& \\
 	4.2.4.
-	& Iterate through the list, and when encountering a whisker belonging to $\alpha$, increment $i$ by $1$ if $\alpha$ is oriented out of $v$ through that whisker, and increment $i$ by $-1$ if $\alpha$ is oriented into $v$ through that whisker. When encountering a whisker belonging to $\beta$, increment $S$ by $i$ if $\beta$ is oriented out of $v$ through that whisker, and $-i$ if $\beta$ is oriented into $v$ through that whisker.
+	& Iterate through the list, and when encountering a edge belonging to $\alpha$, increment $i$ by $1$ if $\alpha$ is oriented out of $v$ through that edge, and increment $i$ by $-1$ if $\alpha$ is oriented into $v$ through that edge. When encountering a edge belonging to $\beta$, increment $S$ by $i$ if $\beta$ is oriented out of $v$ through that edge, and $-i$ if $\beta$ is oriented into $v$ through that edge.
 	& \\
 	4.3.
 	& Average the two local contributions computed in Steps $4.2.1$ to $4.2.4$.
-	& \\
+	& If there are no degeneracies, the two contributions will be the same.\\
 	5.
 	& Add the pairing matrix for $\mathcal{G}_{F}$ and the pairing matrix for the algebraic intersection form. The result is a mock Seifert matrix for $\mathcal{L}_{F}$.
 \end{longtable}
@@ -1725,16 +1748,18 @@ The algorithm given above computes a mock Seifert matrix for $F$.
 \end{proposition}
 
 \begin{proof}
-The that the algorithm correctly computes $\mathcal{G}_{F}$ by instead computing the lattice of integer flows in was proven in Chapter 3. It remains to check that the algorithm computes algebraic intersection numbers correctly.
+The fact that $\mathcal{G}_{F}$ coincides with the lattice of integer flows in was proven in Chapter 3. It remains to check that the algorithm computes algebraic intersection numbers correctly.
 
-That steps $4.2.1$ through $4.2.4$ correctly compute local contributions once degeneracies are removed comes from cases and bi-linearity of the algorithm and the intersection pairing.
+That steps $4.2.1$ through $4.2.4$ correctly compute local contributions once degeneracies are removed is a simple case analysis of the order and orientation of the whiskers at $v$ belonging to $\alpha$ and $\beta$.
 
-We claim that the averaging of degeneracies always computes the correct local contribution. Note that degeneracies are always in pairs: a degeneracy at a vertex in an edge implies a degeneracy at the other vertex incident to that edge. When averaging over the two degeneracies, the resolutions match up in pairs to form the correct contributions. There are two such contributions, and a half was introduced in the average, so the contributions are correct.
+We claim that the averaging of degeneracies computes the correct local contribution. Note that degeneracies are along edges, and therefore the same degeneracy always shows up at a pair of vertices (on either end of the edge). When averaging over the two degeneracies, the resolutions match up in pairs to form the correct contributions. There are two such contributions, and a half was introduced in the average, so the contributions are correct.
 \end{proof}
 
 \section{Incompleteness of the Virtual Gordon-Litherland Pairing}
 
-The algorithm above lets us search for counterexamples to the completeness of the Gordon-Litherland pairing: any two virtual knots that have non-isomorphic linking forms are not mutants, as the linking form is a mutation invariant.
+The algorithm above leads to a computational method of searching for a counterexample to the completeness of the Gordon-Litherland pairing: In the appendix, we compute mock Seifert
+
+any two virtual knots that have non-isomorphic linking forms are not mutants, as the linking form is a mutation invariant.
 
 Of the 92800 virtual knots up to 6 crossings tabulated by Green \cite{virtual-knot-table}, 1674 are alternating. This refinement was provided to us by Hans Boden, and was created by Lindsay White. A python implementation of the above algorithms, provided in Appendix A, found following.
 
