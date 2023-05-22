@@ -200,15 +200,13 @@ Much to Tait's credit, all three of these conjectures - and even more of his con
 
 Despite this progress, a geometric characterisation of alternating knots (one not based purely on knot diagrams) remained elusive, prompting the quote `\textit{What is an alternating knot?}' from Ralph Fox. This question was answered by Greene in 2017 \cite{alternating-links-definite-surfaces}, who resolves that alternating knots are precisely those knots that bound both positive definite and negative definite spanning surfaces with respect to the Gordon-Litherland pairing, with a similar result by Howie at the same time \cite{characterisation-alternating-knot-exteriors}. Greene then uses this characterisation, combined with the \textit{discrete Torelli theorem} - a graphical analogue of a result in algebraic geometry - to give the first geometric proofs of some of Tait's conjectures.
 
-The relationship between knots and graphs is a classical construction of Tait's, known as the Tait graph. In a separate breakthrough result \cite{lattices-graphs-mutation}, green manifests this correspondence to completely characterise alternating knots up to \textit{Conway mutation}. He uses the discrete Torelli theorem to show that a lattice-theoretic construction - the $d$-invariant of the Tait graph - completely captures the information of the alternating knot, modulo mutation. Greene also proves that this lattice-theoretic $d$-invariant coincides with a topological construction: the \textit{$d$-invariant of the Heegaard-Floer homology of the double branched-cover} of the knot.
+The relationship between knots and graphs is a classical construction of Tait's, known as the Tait graph. In a separate breakthrough result \cite{lattices-graphs-mutation}, Green manifests this correspondence to completely characterise alternating knots up to \textit{Conway mutation}. He uses the discrete Torelli theorem to show that a lattice-theoretic construction - the $d$-invariant of the Tait graph - completely captures the information of the alternating knot, modulo mutation. Greene also proves that this lattice-theoretic $d$-invariant coincides with a topological construction: the \textit{$d$-invariant of the Heegaard-Floer homology of the double branched-cover} of the knot.
 
-Another result by Greene relates also concerns alternating knots \cite{lattices-graphs-mutation}. This result combines topology and algebra, equating a completely lattice-theoretic construction: the lattice of integer flows of the Tait graph of an alternating knot, to something completely topological: the $d$-invariant of the Heegaard-Floer homology of the double branched-cover of the knot. Green also uses an analogue of a result from algebraic geometry to prove that this forms a complete invariant of alternating knots up to Conway mutation.
+This essay is devoted to an analogue of this story in a more general setting: that of knots in thickened surface, also known as virtual knots. Virtual knots are the subject of a rich, modern branch of knot theory. They have several definitions of independent interest: combinatorial \cite{virtual-knot-theory, finite-type-invariants-classical-virtual}, geometric \cite{what-is-a-virtual-link, stable-equivalence-virtual-cobordisms}, algebraic \cite{w-knotted-i, w-knotted-ii} and computational \cite{virtual-knot-theory}. In recent work Boden-Chrisman-Karimi have extended the Gordon-Litherland pairing to virtual knots \cite{gordon-litherland-pairing-thickened-surfaces}.
 
-This essay is devoted to an analogue of this story in a more general setting: that of knots in thickened surface, also known as virtual knots. Virtual knots are the subject of a rich, modern branch of knot theory. They have several definitions of independent interest: combinatorial \cite{virtual-knot-theory}, geometric \cite{what-is-a-virtual-link, stable-equivalence-virtual-cobordisms}, algebraic \cite{w-knotted-i, w-knotted-ii} and computational \cite{virtual-knot-theory}. In recent work Boden-Chrisman-Karimi have extended the Gordon-Litherland pairing to virtual knots \cite{gordon-litherland-pairing-thickened-surfaces}.
+By equating Greene's $d$-invariant with the virtual Gordon-Litherland pairing, we find that the $d$-invariant does generalise to a mutation invariant of alternating virtual knots. By constructing a counterexample using computational methods, we will show that this generalisation is not a complete invariant up to mutation.
 
-By equating Greene's $d$-invariant with the virtual Gordon-Litherland pairing, we find that the $d$-invariant does generalise to a mutation invariant of alternating virtual knots. By constructing a counterexample using computational methods, we will that this generalisation is not complete up to mutation.
-
-In Chapter 1, we review the necessary notions of classical knot theory, and associate a pair of lattices to each knot, equivalent to Green's $d$-invariant construction. In Chapter 2, we introduce knots in thickened surfaces, allowing for a geometric definition of virtual knots as equivalence classes of these. We then follow a similar path as in Chapter 1, observing that the Greene's invariant does extend to the virtual setting, but finding that the classical proof of its completeness breaks down. In Chapter 3, we examine the Gordon-Litherland linking form, another mutation invariant of alternating classical knots, and review its extension to the virtual setting by Boden-Chrisman-Karimi. In Chapter 4, we find computer algorithms to to compute the Gordon-Litherland linking form from of tables of virtual knots, and present a counterexample to the completeness of the virtual $d$-invariant, found using these algorithms.
+In Chapter 1, we review the necessary notions of classical knot theory, and associate a pair of lattices to each knot, equivalent to Green's $d$-invariant construction. In Chapter 2, we introduce knots in thickened surfaces, allowing for a geometric definition of virtual knots as equivalence classes of these. We then follow a similar path as in Chapter 1, observing that the Greene's invariant does extend to the virtual setting, but finding that the classical proof of its completeness breaks down. In Chapter 3, we examine the Gordon-Litherland linking form, another mutation invariant of alternating classical knots, and review its extension to the virtual setting by Boden-Chrisman-Karimi. In Chapter 4, we describe computer algorithms to compute the Gordon-Litherland linking form from tables of virtual knots, and present a counterexample to the completeness of the virtual $d$-invariant, found using these algorithms.
 
 I have contributed significantly to the theoretical results presented in this essay, along with Hans Boden and Zsuzsanna Dancso. The algorithm given in Section 4.2 is joint work with Tilda Wilkinson-Finch. The later computational results in this text are my sole work.
 
@@ -219,7 +217,7 @@ I plan to submit two journal publications based on the results of this thesis: o
 
 Firstly, I would like to express my gratitude to my supervisor, Zsuzsanna Dancso, for all of the time, effort and faith she has poured into me over the last year. Thank you, Zsuzsi for your encouragement to persevere at times when I was stuck, your sage advice on things mathematical and practical, and your ability to give everything a personal touch. I do not think I could have chosen a better supervisor for my honours year.
 
-I am also very thankful to my collaborators: Hans Boden and Tilda Wilkinson-Finch, for many delightful and insightful conversations. Thanks especially to Hans for his mathematical encouragement and guidance, in particular, insights into the proofs of \notered{which numbers}.
+I am also very thankful to my collaborators: Hans Boden and Tilda Wilkinson-Finch, for many delightful and insightful conversations. Thanks especially to Hans for his mathematical encouragement and guidance, in particular, insights into several proofs.
 
 My thanks also goes to the knot at lunch group for creating a cosy environment and making me look forward to the ritual of Monday lunch.
 
@@ -292,7 +290,7 @@ Though a central objective of knot theory it to classify knots up to ambient iso
 	\label{fig:more-unknots}
 \end{figure}
 
-Though we claimed that the objects in Fig.~\ref{fig:knot-examples} were knots, they are really projections of knots onto the plane with markings we call \textit{crossings} to make clear that some \textit{strand} of the knot passes over another strand. We refer to these objects as \textit{knot diagrams}. We consider diagrams equivalent up to planar isotopy as $4$-valent graphs. In other words, diagrams can just as well be thought of as combinatorial objects consisting of a list of crossings with labelled ends, and a a description of how these ends connect. So long as the ends are connected in a planar way, the exact path that connects them is unimportant.
+Though we claimed that the objects in Fig.~\ref{fig:knot-examples} were knots, they are really projections of knots onto the plane with markings we call \textit{crossings} to make clear that some \textit{strand} of the knot passes over another strand. We refer to these objects as \textit{knot diagrams}. We consider diagrams equivalent up to planar isotopy as $4$-valent graphs. In other words, diagrams can just as well be thought of as combinatorial objects consisting of a list of crossings with labelled ends, and a description of how these ends connect. So long as the ends are connected in a planar way, the exact path that connects them is unimportant.
 
 Different diagrams can represent the same knot: for example, the diagrams in Fig.~\ref{fig:unknot} and Fig.~\ref{fig:unknot-twisted}, as the latter could be `untwisted' into the former. It is not always obvious when two diagrams represent the same knot. An example is Fig.~\ref{fig:unknot-goertiz}, yet another diagram for the unknot, but it may not be immediately obvious how this knot can be untangled. The unknot is not special here -- every knot has many diagrams, and there is no upper bound on the number of crossings, as we could continually add twists to an arc to create diagrams with arbitrarily many crossings for any knot. However, each knot does have a lower bound on the number of crossings any diagram representing it can have, which we call its \textit{crossing number}. For example, the crossing number of the unknot is $0$, and the crossing number of the Trefoil knot is $3$, and this lower bound is realised in the diagram in Fig.~\ref{fig:trefoil}.
 
@@ -338,7 +336,7 @@ However, invariants are one-sided in nature. Taking different values can tell us
 
 
 \section{Connected Sums and Prime Knots}
-In order to classify knots, it is helpful to be able to build large knot out of smaller ones, and vice-versa, decompose complicated knots into their simpler ``atomic'' pieces.
+In order to classify knots, it is helpful to be able to build large knots out of smaller ones, and vice-versa, decompose complicated knots into their simpler ``atomic'' pieces.
 
 Given knots $K_{1}$ and $K_{2}$, we define the connected sum, $K_{1} \hash K_{2}$ as illustrated in Fig.~\ref{fig:connected-sum}. Take $K_{1}$ and $K_{2}$ and remove a small arc from each knot, then reconnect the two cut knots to form $K_{1} \hash K_{2}$.
 
@@ -358,7 +356,7 @@ There is a corresponding definition of connected sum for knot diagrams, where th
 With this, we have a way of expressing more complicated knots in terms of less complicated knots. We call a knot \textit{prime} if there is no way to write it as the connected sum of non-trivial knots. The only exception is the unknot, which we define not to be prime.  Similarly, we call a knot \textit{composite} if there is a way to write it as the connected sum of at least two knots, none of which is the trivial knot. In this way, the prime knots and the connected sum are in analogy with the prime numbers and multiplication. There is even a unique decomposition theorem for knots, just as for prime numbers \cite[Thoerem 7.12]{knots}:
 
 \begin{theorem}[Schubert's Theorem]
-	Each non-trivial knot $K$ is a finite connected sum of prime knots and these factors are uniquely determined, up to permutation of the order of the connected sum. 
+	Each non-trivial knot $K$ is a finite connected sum of prime knots and these factors are uniquely determined, up to permutation. 
 \end{theorem}
 
 \section{Alternating Knots, Knot Mutation and the Tait Graph}
@@ -454,6 +452,7 @@ Assume that $D$ is an alternating diagram. There are three cases for the connect
 In the first case, the strands connect horizontally. Consider the strand that enters the tangle at the top right. In the tangle it intersects itself some number of times before exiting the tangle at the top left. Since it goes over and under itself once at each self-crossing, this contributes an even number of encounters.  By the Jordan curve theorem, it also encounters the bottom strand an even number of times. So both strands have an even number of crossing encounters along them.
 
 We must prove the alternating property is preserved by the flype at the boundaries of the tangle. The flype affects the diagram in two ways. Firstly, it performs a horizontal flip on the tangle. This swaps the two strands inside the tangle, but also sends over-crossings to under-crossings. Hence in this case, whether there is an over- or under-strand just inside the boundary of $T$ is unaffected. Secondly, it moves the crossing outside the tangle to the other side. The illustration in Fig.~\ref{fig:flype-preservation} shows that these two effects preserve the alternating property at the boundaries of $T$. This proves the case in Fig.~\ref{fig:flype-connect-horizon}, and the cases in Fig.~\ref{fig:flype-connect-vert} and Fig.~\ref{fig:flype-connect-diag} are similar.
+\end{proof}
 
 \begin{figure}[hbt]
 	\centering
@@ -461,11 +460,10 @@ We must prove the alternating property is preserved by the flype at the boundari
 	{ \scriptsize
 	\input{graphics/flype_preservation.pdf_tex}
 	}
-	\caption{A general flype move.}
+	\caption{Flypes preserve the alternating property.}
 	\label{fig:flype-preservation}
 \end{figure}
 
-\end{proof}
 
 The flyping theorem was proven by Menasco and Thistlethwaite in \cite[p. 166]{classification-alternating-links}:
 
@@ -473,7 +471,7 @@ The flyping theorem was proven by Menasco and Thistlethwaite in \cite[p. 166]{cl
 Any two reduced alternating diagrams, $D$ and $E$ of the same prime knot, are related by a sequence of flypes.
 \end{theorem}
 
-This is a Reidemeister-like theorem for alternating knots in that is relates equivalence of diagrams to the existence of a sequence of moves between them, only going via alternating diagrams.
+This is a Reidemeister-like theorem for alternating knots in that it relates equivalence of diagrams to the existence of a sequence of moves between them, only going via alternating diagrams, and without increasing crossing number.
 
 Knot mutation is another way of constructing new knots from existing ones, preserving the alternating property. If we take a diagram, choose a tangle, and then perform a reflection (up to planar isotopy) of that tangle, either reflecting it left-right or up-down, or across one of the diagonals, the corresponding operation on the knot is known as \textit{mutation}, and the two knots are called \textit{mutants}. Mutants are some of the hardest knots to distinguish, as many of their invariants are the same. An example of this is the Conway the Kinoshita-Terasaka knots, given in Fig.~\ref{fig:kinoshita-terasaka-mutants}.
 
@@ -560,11 +558,11 @@ In the checkerboard colouring of a diagram, the colouring around each crossing c
 \end{figure}
 
 
-A checkerboard colouring, of a knot diagram specifies two not-necessarily orientable spanning surfaces for the knot: a spanning surface is a surface embedded in $\R^{3}$ whose boundary is the knot. These spanning surfaces are obtained by attaching disks for each coloured region by twisted bands for each crossing, where the twisting direction is specified by the type of the crossing. The convention that all crossings be of type $A$ corresponds with the convention that the black surface be positive definite with respect to the linking form on its first homology. This will be explained further in Chapter 3.
+A checkerboard colouring of a knot diagram specifies two not-necessarily orientable spanning surfaces for the knot: a spanning surface is a surface embedded in $\R^{3}$ whose boundary is the knot. These spanning surfaces are obtained by attaching disks for each coloured region by twisted bands for each crossing, where the twisting direction is specified by the type of the crossing. The convention that all crossings be of type $A$ corresponds with the convention that the black surface be positive definite with respect to the linking form on its first homology. This will be explained further in Chapter 3.
 
 To construct the black Tait graph $G_{B}(D)$, we place a vertex in every black region of the plane. For each crossing we draw an edge between the vertices corresponding to the black region on either side of the crossing, obtaining a planar graph, potentially with multiple edges. The white Tait graph $G_{W}(D)$ is constructed similarly from the vertices corresponding to white regions.
 
-Either of these graphs, along with their plane embeddings retain enough information to construct the other. The \textit{planar dual} of $G$, $G^{*}$, is the graph obtained by replacing every face in the plane embedding of $G$ with a vertex, and every edge in $G$ that separates two faces becoming and edge between the corresponding vertices in $G^{*}$. It can be easily seen from the way Tait graphs are constructed in Fig.~\ref{fig:tait-example} that the two Tait graphs are planar duals: $G_{B}(D)^{*} = G_{W}(D)$ and $G_{W}(D)^{*} = G_{B}(D)$. Because both planar graphs can be constructed from a each other, we sometimes refer to either one as \textit{the} Tait graph of a knot. Later we will examine the more general class of knots in thickened surfaces, for which this duality breaks down, and we will need both Tait graphs.
+Either of these graphs, along with their plane embeddings, retain enough information to construct the other. The \textit{planar dual} of $G$, $G^{*}$, is the graph obtained by replacing every face in the plane embedding of $G$ with a vertex, and every edge in $G$ that separates two faces becoming an edge between the corresponding vertices in $G^{*}$. It can be easily seen from the way Tait graphs are constructed in Fig.~\ref{fig:tait-example} that the two Tait graphs are planar duals: $G_{B}(D)^{*} = G_{W}(D)$ and $G_{W}(D)^{*} = G_{B}(D)$. Because both planar graphs can be constructed from each other, we sometimes refer to either one as \textit{the} Tait graph of a knot. Later we will examine the more general class of knots in thickened surfaces, for which this duality breaks down, and we will need both Tait graphs.
 
 If we have the Tait graph of an alternating diagram of a knot, we can reconstruct the knot diagram by placing a crossing on every edge of the Tait graph, as seen in Fig.~\ref{fig:trefoil-tait-with-crossings}. Connecting up the crossings by strands along the Tait graph, as in Fig.~\ref{fig:trefoil-resconstructed},	 reconstructs the knot diagram, up to planar isotopy.
 
@@ -603,8 +601,8 @@ If we have the Tait graph of an alternating diagram of a knot, we can reconstruc
 
 For the rest of this chapter, we introduce the lattice of integer flows of a graph, then largely following \cite{lattices-graphs-mutation}, we show that the lattice of integer flows of the Tait graph is a complete mutation invariant of alternating knots. This means that it is both an invariant of alternating knots, and takes the same value on alternating knots if and only if they are mutants. We then talk about the equivalent formulation given in \cite{lattices-graphs-mutation} as the $d$-invariant.
 
-A \textit{lattice} is a finitely generated abelian group $L$, equipped with an inner product 
-\({\ip{\cdot}{\cdot}: L \times L \longrightarrow \R}\). All lattices in this text will be \textit{integral lattices}, meaning the inner product's image is contained within $\Z$. An \textit{isomorphism of lattices} is a bijection $\psi: L_{1} \longrightarrow L_{2}$ that preserves the inner product, that is, ${\ip{x}{y} = \ip{\psi(x)}{\psi(y)}}$ for all $x, y \in L$.
+A \textit{lattice} is a finitely generated free abelian group $L$, equipped with an inner product 
+\({\ip{\cdot}{\cdot}: L \times L \longrightarrow \R}\). All lattices in this text will be \textit{integral lattices}, meaning the inner product's image is contained within $\Z$. An \textit{isomorphism of lattices} is a bijection $\psi: L_{1} \longrightarrow L_{2}$ that preserves the inner product, that is, ${\ip{x}{y}_{1} = \ip{\psi(x)}{\psi(y)}_{2}}$ for all $x, y \in L_{1}$.
 
 Let $G = (E, V)$ be a finite, connected graph (in which loops and multiple edges are allowed) with vertex set $V$ and edge set $E$. In particular, $G$ is a 1-dimensional CW-complex with boundary map $\partial: C_{1}(G) \longrightarrow C_{0}(G)$. In the edge basis of $C_{1}(G)$ and vertex basis of $C_{0}(G)$, this is a map $\Z^{E} \longrightarrow \Z^{V}$, and is represented by the $|V|\times|E|$ incidence matrix $D$ with entries given by
 \[D_{ij} = \begin{cases}
@@ -615,9 +613,9 @@ Let $G = (E, V)$ be a finite, connected graph (in which loops and multiple edges
 
 The \textit{lattice of integer flows} of $G$ is the free abelian group $\Lambda(G) = \ker \partial$, along with the inner product induced by the Euclidean inner product on $\Z^{E}$. Equivalently, $\Lambda(G)$ is the first homology group of $G$, with inner products taken in $C_{1}(G)$. While the lattice $\Lambda(G)$ may depend on the orientation of the edges in $G$, its isomorphism class does not, as the isomorphism class of the homology group is independent of orientation, and the Euclidean inner product is preserved by sending an edge to its negation: $\ip{e_{i}}{e_{i}} =  \ip{-e_{i}}{-e_{i}} = 1$, and $\ip{e_{i}}{e_{j}} = \ip{-e_{i}}{e_{j}} = 0$ for $i \neq j$.
 
-As an example, let $D$ be the diagram of the Trefoil knot given in Fig.~\ref{fig:tait-example} the Tait graphs of the trefoil knot   are shown in Fig.~\ref{fig:trefoil-abstract-tait}. We compute the lattice of integer flows of each of these graphs, $\Lambda(G_{B}(D))$ and $\Lambda(G_W(D))$. Rather than use this cumbersome notation, we shorten this to $\Lambda_{W}(D)$ or $\Lambda_{B}(D)$ for the lattice of integer flows of the Tait graph corresponding to the white/black regions, respectively. We orient the graphs arbitrarily to compute the lattice of integer flows, but as we will see the invariant produced is independent of this choice. We start with the more typical lattice of integer flows: that of the Tait graph corresponding to the white region (red in Fig.~\ref{fig:trefoil-abstract-tait}). There are two independent cycles, $-f_{1} + f_{2}$ and $-f_{2} + f_{3}$, so $\Lambda_{B}(3_{1})$ is generated as
+As an example, let $D$ be the diagram of the Trefoil knot given in Fig.~\ref{fig:tait-example}. The Tait graphs of the trefoil knot   are shown in Fig.~\ref{fig:trefoil-abstract-tait}. We compute the lattice of integer flows of each of these graphs, $\Lambda(G_{B}(D))$ and $\Lambda(G_W(D))$. Rather than use this cumbersome notation, we shorten this to $\Lambda_{W}(D)$ or $\Lambda_{B}(D)$ for the lattice of integer flows of the Tait graph corresponding to the white/black regions, respectively. We orient the graphs arbitrarily to compute the lattice of integer flows, but as we will see the invariant produced is independent of this choice. We start with the more typical lattice of integer flows: that of the Tait graph corresponding to the white region (red in Fig.~\ref{fig:trefoil-abstract-tait}). There are two independent cycles, $-f_{1} + f_{2}$ and $-f_{2} + f_{3}$, so $\Lambda_{B}(3_{1})$ is generated as
 \[\Lambda_{B}(D) = \langle -f_{1} + f_{2}, -f_{2} + f_{3} \rangle\,.\]
-We are taking inner products in $\Z^{E}$ (that is, in the basis {$(f_{1}, f_{2}, f_{3})$}, so if $x$ and $y$ are coordinate vectors for $u$, and $v$, of two elements of $\Lambda_{B}(D)$ expressed in the basis $(-f_{1} + f_{2}, -f_{2} + f_{3})$, then
+We are taking inner products in $\Z^{E}$ (that is, in the basis {$(f_{1}, f_{2}, f_{3})$}, so if $x$ and $y$ are coordinate vectors for $u$ and $v$, of two elements of $\Lambda_{B}(D)$ expressed in the basis $(-f_{1} + f_{2}, -f_{2} + f_{3})$, then
 \[\langle u, v \rangle = x^{\top}\begin{bmatrix}
 	2  & -1 \\
 	-1 & 2
@@ -632,22 +630,14 @@ We call this matrix the \textit{pairing matrix} of the lattice $\Lambda_{B}(D)$ 
 	\label{fig:trefoil-abstract-tait}
 \end{figure}
 
-The pairing matrix of a lattice completely describes the lattice, however the pairing matrix is not completely determined by the lattice. Instead, the lattice only determines a pairing matrix up to unimodular congruence: two matrices $P$ and $P'$ are \textit{unimodular congruent} if there exists a matrix $A$ with $\det(A) = 1$, such that $P = A^{\top}P'A$. If $P$ is a pairing matrix of a lattice with respect to the basis $\mathcal{B}$ (with basis matrix $B$), and $P'$ is unimodular congruent to $P$ as above, then:
-\begin{align*}
-	\langle u, v \rangle & = [u]_{\mathcal{B}}^{\top} P [v]_{\mathcal{B}}                    \\
-	                     & = B[u]_{\mathcal{E}}^{\top} P B[v]_{\mathcal{E}}                  \\
-	                     & = B[u]_{\mathcal{E}}^{\top} A^{\top} P' A B[v]_{\mathcal{E}}      \\
-	                     & = \left( AB[u]_{\mathcal{E}} \right)^{\top} P' AB[v]_{\mathcal{E}} \\
-	                     & = \left( [u]_{\mathcal{AB}} \right)^{\top} P' [v]_{\mathcal{AB}}\,,
-\end{align*}
-so $P'$ is also a pairing matrix of the lattice with respect to the basis whose basis matrix is $AB$.
+The pairing matrix of a lattice completely describes the lattice, however the pairing matrix is not completely determined by the lattice. Instead, the lattice only determines a pairing matrix up to unimodular congruence: two matrices $P$ and $P'$ are \textit{unimodular congruent} if there exists a matrix $A$ with $\det(A) = 1$, such that $P = A^{\top}P'A$.
 
 
 Continuing with our example, there is a single independent cycle in $G_{W}(D)$, it being $e_{1} + e_{2} + e_{3}$. Hence the pairing matrix of $\Lambda_{W}(D)$ with respect to $( e_{1} + e_{2} + e_{3})$ is $P = [3]$.
 
 Since the 1970's, many graph theorists have studied exactly how much information about the graph $G$ is retained by $\Lambda(G)$ \parencite{lattice-of-flows-cuts, torelli-for-graphs-tropical-curves, lattice-of-flows-regular-matroid}. In the next paragraph we see that some information about $G$ is lost.
 
-We call and edge $e$ of a graph $G$ a \textit{bridge} if the removal of $G$ from $e$ disconnects $G$, and we say a graph $G$ is \textit{$2$-edge-connected} if $G$ has no bridges. The lattice of integer flows of $G$ is blind to its bridges. We define $G_{\bullet}$ as $G$ with its bridges contracted: that is, for each bridge $e$, we remove $e$ and identify the adjacent vertices, then $\Lambda(G_{\bullet}) = \Lambda(G)$. This is because the cycles of $G$, and therefore the homology of $G$, do not see bridges.
+We call an edge $e$ of a graph $G$ a \textit{bridge} if the removal of $G$ from $e$ disconnects $G$, and we say a graph $G$ is \textit{$2$-edge-connected} if $G$ has no bridges. The lattice of integer flows of $G$ is blind to its bridges. We define $G_{\bullet}$ as $G$ with its bridges contracted: that is, for each bridge $e$, we remove $e$ and identify the adjacent vertices, then $\Lambda(G_{\bullet}) = \Lambda(G)$. This is because the cycles of $G$, and therefore the homology of $G$, do not see bridges.
 
 A \textit{$2$-isomorphism} between two graphs $G = (E, V)$ and $G' = (E', V')$ is a bijection \({\psi: E \longrightarrow E'}\) which preserves cycles, i.e. $\partial(e_{i} + \cdots + e_{j}) = 0$ if and only if $\partial\left(\psi(e_{i}) + \cdots + \psi(e_{j})\right) = 0$. It is well established that $\Lambda(G)$ is a $2$-isomorphism invariant \parencite{lattice-of-flows-cuts}. Recent work by Su-Wagner and Caporaso-Viviani have also shown that for $2$-edge-connected graphs, $\Lambda(G)$ is a complete $2$-isomorphism invariant \cites[Theorem 3.1.1]{torelli-for-graphs-tropical-curves}[Theorem 1]{lattice-of-flows-regular-matroid}. This is stated in the following theorem, which derives its name from a similar result in the context of algebraic geometry.
 
@@ -656,7 +646,7 @@ A \textit{$2$-isomorphism} between two graphs $G = (E, V)$ and $G' = (E', V')$ i
 For two $2$-edge-connected graphs $G$ and $G'$, $\Lambda(G) \cong \Lambda(G')$ if and only if $G$ and $G'$ are $2$-isomorphic.
 \end{theorem}
 
-The notion of $2$-isomorphism is completely characterised in the following way. Two graphs $G$ and $G'$ are related by a \textit{Whitney flip} if it is possible to find two disjoint graphs $\Gamma_{1}$, with distinguished vertices $u_{1}$ and $v_{1}$ and $\Gamma_{2}$ with distinguished vertices $u_{2}$ and $v_{2}$, such that the identifications $u_{1} = u_{2} = u$ and $v_{1} = v_{2} = v$ form $G$, and the identifications $u_{1} = v_{2} = u'$ and $v_{1} = u_{2} = v'$ form $G'$. An example of graphs related by a Whitney flip is given in Fig.~\ref{fig:whitney_flip}.
+The notion of $2$-isomorphism is completely characterised in the following way. Two graphs $G$ and $G'$ are related by a \textit{Whitney flip} if it is possible to find two disjoint graphs $\Gamma_{1}$ (resp. $\Gamma_{2}$), with distinguished vertices $u_{1}$ and $v_{1}$ (respectively $u_{2}$ and $v_{2}$), such that the identifications $u_{1} = u_{2} = u$ and $v_{1} = v_{2} = v$ form $G$, and the identifications $u_{1} = v_{2} = u'$ and $v_{1} = u_{2} = v'$ form $G'$. An example of graphs related by a Whitney flip is given in Fig.~\ref{fig:whitney_flip}.
 
 \begin{figure}[hbt!]
 	\centering
@@ -726,11 +716,11 @@ for some $m > 1$. We may assume that each $D_{i}$ is a prime diagram, otherwise,
 and
 \[K = [D_{1}]  \hash [D_{2}]  \hash \cdots  \hash [D_{m}]\,.\]
 By Schubert's theorem, and by relabelling the $D_{i}$, we have that $m = n$ and $[D_{i}] = K_{i}$
-for each $i \in \{0, \cdots, n\}$. Without loss of generality, \[E = E_{1} \hash E_{2} \hash \cdots \hash E_{n}\,,\] and the same is true for the $E_{i}$, hence
+for each $i \in \{1, \cdots, n\}$. Without loss of generality, \[E = E_{1} \hash E_{2} \hash \cdots \hash E_{n}\,,\] and the same is true for the $E_{i}$, hence
 $[D_{i}] = [E_{i}]$
 for all $i \in \{1, \cdots, n\}$.
 
-We have that each $[D_{i}]$ or $[E_{i}]$ is a prime alternating knot, and each $D_{i}$ or $E_{i}$ is a reduced diagram, as $D$ and $E$ were reduced. So the theorem of Kauffman, Murasugi and Thistlethwaite gives that each $D_{i}$ and $E_{i}$ is an alternating diagram. For each $D_{i}$ and $E_{i}$, we now have the hypothesis of the first case satisfied: we have two alternating, reduced diagrams for the same prime alternating knot, so $\Lambda_{B}(D_{i}) \cong \Lambda_{B}(E_{i})$ for all $i \in \{0, \cdots, n\}$.
+We have that each $[D_{i}]$ or $[E_{i}]$ is a prime alternating knot, and each $D_{i}$ or $E_{i}$ is a reduced diagram, as $D$ and $E$ were reduced. So the theorem of Kauffman, Murasugi and Thistlethwaite gives that each $D_{i}$ and $E_{i}$ is an alternating diagram. For each $D_{i}$ and $E_{i}$, we now have the hypothesis of the first case satisfied: we have two alternating, reduced diagrams for the same prime alternating knot, so $\Lambda_{B}(D_{i}) \cong \Lambda_{B}(E_{i})$ for all $i \in \{1, \cdots, n\}$.
 
 Finally, since the Tait graph of a connected sum of knots is graph formed by identifying a vertex of each Tait graphs of the factor knots,
 \begin{align*}
@@ -740,7 +730,7 @@ Finally, since the Tait graph of a connected sum of knots is graph formed by ide
 \end{align*}
 \end{proof}
 
-This shows that $\Lambda_{B}(D)$ and $\Lambda_{B}(D)$ is a well-defined function on alternating knots, and henceforth we may write $\Lambda_{B}(K)$ so long as $K$ is alternating.
+This shows that $\Lambda_{B}(D)$ is a well-defined function on alternating knots, and henceforth we may write $\Lambda_{B}(K)$ so long as $K$ is alternating.
 
 By the same argument $\Lambda_{W}(D)$ is also an invariant of alternating knots. However combining these two invariants retains no information: they are equivalent invariants to each other.
 
@@ -795,15 +785,17 @@ For the reverse implication, take two alternating knots such that $\Lambda_{B}(K
 
 \section{Heegaard-Floer Homology and the $d$-invariant}
 
-Greene shows that the lattice of integer flows of a graph can be reduced into an equivalent, more concise invariant called the $d$-invariant. When this is applied to the Tait graph of a knot, we refer to it as the `lattice-theoretic' $d$-invariant. Greene shows that this is  equivalent to a construction from Heegaard-Floer homology known as the $d$-invariant of the of the double branched-cover of of the knot (which we refer to as the `Heegaard-Floer' $d$-invariant) \cite{lattices-graphs-mutation}.
+Greene shows that the lattice of integer flows of a graph can be reduced into an equivalent, more concise invariant called the $d$-invariant. When this is applied to the Tait graph of a knot, we refer to it as the `lattice-theoretic' $d$-invariant. Greene shows that this invariant  coincides with a construction from Heegaard-Floer homology, known as the \textit{$d$-invariant of the Heegaard-Floer homology of the double branched-cover of of the knot}, which we refer to as the `Heegaard-Floer' $d$-invariant \cite{lattices-graphs-mutation}.
 
-Heegaard-Floer homology is a homology theory introduced in a series of papers by Peter Ozsv\'ath and Zoltan Sz\'abo \cite{on-heegaard-floer-of-covers} at the turn of the 21st century. The theory consists of a powerful set of topological invariants that fit within a topological quantum field theory. This framework has proven to be incredibly useful in low-dimensional topology. A good modern reference for Heegaard-Floer homology is \cite{heegaard-floer-homology}.
+Heegaard-Floer homology is a homology theory introduced in a series of papers by Peter Ozsv\'ath and Zoltan Sz\'abo \cite{on-heegaard-floer-of-covers, hf-homology-alternating, holomorphic-disks-invariants} at the turn of the 21st century. The theory consists of a powerful set of topological invariants that fit within a topological quantum field theory. This framework has proven to be incredibly useful in low-dimensional topology; a good overview is \cite{heegaard-floer-homology}. In this text we work predominantly with the lattice of integer flows, but we include a brief introduction to the $d$-invariant below.
 
 
-The \textit{dual lattice} of an arbitrary lattice $\Lambda$ is the set
-\[\Lambda^{*} = \left\{ x \in \Lambda \otimes \mathbb{Q} \ \Big|\  \langle x, \lambda \rangle \in \Z, \forall \lambda \in \Lambda \right\}\]To construct the $d$-invariant, Greene shows that instead of considering the whole lattice $\Lambda_{B}(K)$, it suffices to look at a particular coset of the dual lattice called the \textit{characteristic coset}:
-\[\operatorname{Char} \Lambda = \left\{ \chi \in \Lambda^{*} \ \Big|\  \langle\chi,\lambda\rangle \equiv \langle\lambda,\lambda\rangle \pmod 2\  \forall \lambda \in \Lambda \right\}\,.\]
-The $d$-invariant is a scaled mapping taking an coset of covectors $[\chi]$ in $\operatorname{Char}(\Lambda) \pmod{2\Lambda}$ to a scaled version of the minimal norm of all $\chi \in [\chi]$.
+The \textit{dual lattice} of an arbitrary lattice $\Lambda$ is the rational lattice
+\[\Lambda^{*} = \left\{ x \in \Lambda \otimes \mathbb{Q} \ \Big|\  \langle x, \lambda \rangle \in \Z, \forall \lambda \in \Lambda \right\}\]To construct the $d$-invariant, Greene shows that instead of considering the whole lattice $\Lambda_{B}(K)$, it suffices to look at a particular coset in $\Lambda^{*} / 2\Lambda^{*}$ called the \textit{characteristic coset}:
+\[\operatorname{Char} \Lambda = \left\{ \chi \in \Lambda^{*} \ \Big|\  \langle\chi,\lambda\rangle \equiv \langle\lambda,\lambda\rangle \pmod 2\  \forall \lambda \in \Lambda \right\}.\]
+The $d$-invariant is a scaled mapping taking a coset of covectors $[\chi]$ in $\operatorname{Char}(\Lambda) \pmod{2\Lambda}$ to a scaled version of the minimal norm of all $\chi \in [\chi]$.
+
+In my computational work, I implemented code to compute both $\Lambda_{B}(K)$/$\Lambda_{W}(K)$ and the $d$-invariant for all tabulated alternating virtual knots.
 
 
 \chapter{Virtual Knots}
@@ -888,7 +880,7 @@ Note that while a non-cellularly-embedded diagram could be drawn on a surface of
 	\def\svgscale{0.56}
 	\input{graphics/torus_unknot_tricky.pdf_tex}
 	
-	\caption{An example of surface knot diagram which transforms to a not-cellularly-embedded diagram only after some Reidemeister moves. The single face in the final diagram contains a non-homologically-trivial cycle, marked in red, and hence is not contractible (not a disk). \notered{add wiggly arrows}}
+	\caption{An example of surface knot diagram which transforms to a not-cellularly-embedded diagram only after some Reidemeister moves. The single face in the final diagram contains a non-homologically-trivial cycle, marked in red, and hence is not contractible (not a disk).}
 	\label{fig:cellular-embedding-tricky}
 \end{figure}
 
@@ -1104,9 +1096,9 @@ Let $G$ be a connected graph. A \textit{surface embedding} of $G$ is a map $i: G
 
 A \textit{cellular embedding} of a graph is a surface embedding $i: G \longrightarrow \Sigma$ such that $\Sigma \smallsetminus G$ is a union of disks. Given a cellular embedding of a graph $G$ in an orientable surface, we can read off a cyclic ordering of incident edges around each vertex. In fact, a textbook result in topological graph theory is that a cyclic ordering of incident edges around each vertex uniquely determines a cellular surface embedding for $G$ \cite[Theorem 3.2.4]{graphs-on-surfaces}. This extra information is called a \textit{rotation system}; a graph with a rotation system is also called a \textit{ribbon graph} or \textit{fat graph}.
 
-The \textit{surface dual} of the cellularly embedded surface graph $i: G \inject \Sigma$ is another surface embedding $i^{*}: G^{*} \inject \Sigma$, where $G^{*}$ is the graph that has a vertex for every connected component of  $\Sigma \smallsetminus G$, and for each edge $e$ of $G$, a dual edge $e^{\ast}$ connecting the vertices lying on either side of $e$. The map $J$ then assigns vertices and edges of $G^{*}$ to the correct place in $\Sigma$. 
+The \textit{surface dual} of the cellularly embedded surface graph $i: G \inject \Sigma$ is another surface embedding $i^{*}: G^{*} \inject \Sigma$, where $G^{*}$ is the graph that has a vertex for every connected component of  $\Sigma \smallsetminus G$, and for each edge $e$ of $G$, a dual edge $e^{\ast}$ connecting the vertices lying on either side of $e$.
 
-We present here a few elementary results about surface duals.
+The following elementary results justify the definition of surface duals.
 
 \begin{lemma}
 Let $G$ be cellularly embedded. Then $G^{*}$ is cellularly embedded.
@@ -1120,7 +1112,7 @@ Since $G$ is cellularly embedded in $\Sigma$, the Euler characteristic $\chi(\Si
 If $G$ is cellularly embedded, then $G^{**} = G$.
 \end{corollary}
 
-Like in the classical case, we can reconstruct the knot diagram of an alternating virtual knot from a cellular embedding of the Tait graph. This is completely analogous to the classical case that was shown in Fig.~\ref{fig:tait-reconstruction-example}.
+Like in the classical case, we can reconstruct the knot diagram of an alternating virtual knot from a cellular embedding of the Tait graph. Since the faces of the Tait graph are disks in a cellular embedding, the construction is completely analogous to the classical case, as shown in Fig.~\ref{fig:tait-reconstruction-example}.
 
 \section{The Lattice of Integer Flows for Virtual Knots}
 
@@ -1189,13 +1181,13 @@ In the classical setting, to prove that $\Lambda_{B}(D)$ and $\Lambda_{W}(D)$ ar
 
 The virtual case is more complicated. Kindred's virtual flyping theorem applies to weakly prime alternating knots, and virtual analogues of  results used in the classical proof are weaker and more subtle.
 
-However, for virtual knots, we give a different topological proof for the invariance of $\Lambda_{B}(D)$ and $\Lambda_{W}(D)$ by showing that the lattice of integer flows of the Tait graph is equivalent to the topologically defined Gordon-Litherland pairing. We state this now, but delay the proof to Chapter 3, where we introduce the Gordon-Litherland pairing.
+Therefore, for virtual knots, we give a different topological proof for the invariance of $\Lambda_{B}(D)$ and $\Lambda_{W}(D)$ by showing that the lattice of integer flows of the Tait graph is equivalent to the topologically defined Gordon-Litherland pairing. We state this now, but delay the proof to Chapter 3, where we introduce the Gordon-Litherland pairing.
 
 \begin{theorem}
-Let $V$ be an alternating virtual knot, and let $D$, $E$ be alternating surface knot diagrams for $V$. Then $\Lambda_{B}(D) \cong \Lambda_{B}(E)$ and $\Lambda_{B}(D) \cong \Lambda_{W}(E)$.
+Let $V$ be an alternating virtual knot, and let $D$, $E$ be reduced, alternating, cellularly embedded surface knot diagrams for $V$. Then $\Lambda_{B}(D) \cong \Lambda_{B}(E)$ and $\Lambda_{B}(D) \cong \Lambda_{W}(E)$.
 \end{theorem}
 
-Two statements from the classical case remain to be examined: that $\Lambda_{B}(V)$ (resp. $\Lambda_{W}(V)$) is a mutation invariant, and that $\Lambda_{B}(V)$ (resp. $\Lambda_{W}(V)$) is complete up to mutation. The first statement holds in the general setting.
+Two statements from the classical case remain to be examined: that $\Lambda_{B}(V)$ (resp. $\Lambda_{W}(V)$) is a mutation invariant, and that $\Lambda_{B}(V)$ (resp. $\Lambda_{W}(V)$) is complete up to mutation. The first statement holds in the virtual setting.
 \begin{theorem}
 Let $V_{1}$ and $V_{2}$ be mutant alternating knots that are mutants. Then $\Lambda_{B}(V_{1}) \cong \Lambda_{B}(V_{2})$ and $\Lambda_{W}(V_{1}) \cong \Lambda_{W}(V_{2})$.
 \end{theorem}
@@ -1203,7 +1195,7 @@ Let $V_{1}$ and $V_{2}$ be mutant alternating knots that are mutants. Then $\Lam
 The proof follows the proof in the classical case exactly. Let $V_{1}$ and $V_{2}$ be mutants. There is a sequence of mutations from $V_{1}$ to $V_{2}$. The lemma from Chapter 1 that a flype move induces a Whitney flip of the Tait graph generalises directly to disk mutation. Thus, $G_{B}(V_{1})$ and $G_{W}(V_{1})$ (resp. $G_{B}(V_{2})$ and $G_{W}(V_{2})$) are related by Whitney flips. By Whitney's theorem, the graphs are $2$-isomorphic, and since $\Lambda_{B}(K)$ (resp. $\Lambda_{W}(K)$) is a $2$-isomorphism invariant, we have $\Lambda_{B}(V_{1}) \cong \Lambda_{B}(V_{2})$ (resp. $\Lambda_{W}(V_{1}) \cong \Lambda_{W}(V_{2})$).
 \end{proof}
 
-New we see that the proof of completeness fails to generalise: let $(D_{1}, \Sigma_{1})$ and $(D_{2}, \Sigma_{2})$ be alternating diagrams of virtual knots such that $\Lambda_{B}(D_{1}) = \Lambda_{B}(D_{2})$. Like in the classical case, the discrete Torelli theorem applies, so the abstract graphs $G_{B}(D_{1})$ and $G_{B}(D_{2})$ is determined up to $2$-isomorphism by the lattice of integer flows. Unlike in the classical case, due to the variety of different homology classes edges can be embedded in, not all of the ways of embedding $G_{B}(D_{1})$ and $G_{B}(D_{2})$ are reachable by Whitney flip. For example, a Whitney flip can never take a homologically non-trivial cycle to a homologically trivial cycle, or vice-versa.
+However the proof of completeness fails to generalise: let $(D_{1}, \Sigma_{1})$ and $(D_{2}, \Sigma_{2})$ be alternating diagrams of virtual knots such that $\Lambda_{B}(D_{1}) \cong \Lambda_{B}(D_{2})$. Like in the classical case, the discrete Torelli theorem applies, so the abstract graphs $G_{B}(D_{1})$ and $G_{B}(D_{2})$ are determined up to $2$-isomorphism by the lattice of integer flows. Unlike in the classical case, due to the variety of different homology classes edges can be embedded in, not all of the ways of embedding $G_{B}(D_{1})$ and $G_{B}(D_{2})$ are reachable from each other by Whitney flips. For example, a Whitney flip can never take a homologically non-trivial cycle to a homologically trivial cycle, or vice-versa.
 
 In fact, on the class of virtual knots, even the pair the pair $\left(\Lambda_{B}(K), \Lambda_{W}(K)\right)$ fails to be a complete mutation invariant:
 
@@ -1211,7 +1203,7 @@ In fact, on the class of virtual knots, even the pair the pair $\left(\Lambda_{B
 The pair of lattices of integer flows of the Tait graphs of virtual knots, $(\Lambda_{B}(V), \Lambda_{W}(V))$ is not a complete invariant of alternating virtual knots.
 \end{theorem}
 
-The rest of this text will work up to the proof of this theorem. Chapter 3 will introduce the Gordon-Litherland linking form, another mutation invariant of virtual knots whose symmetrisation is equivalent to the lattice of integer flows. Chapter 4 will present algorithms which we use to compute these invariants, to produce the necessary counterexample for the incompleteness theorem.
+The rest of this text will work up to the proof of this theorem. Chapter 3 introduces the Gordon-Litherland linking form, another mutation invariant of virtual knots whose symmetrisation is equivalent to the lattice of integer flows. Chapter 4 presents algorithms which we use to compute these invariants, to produce the necessary counterexample for the incompleteness theorem.
 
 
 \chapter{Gordon-Litherland Linking Forms}
@@ -1228,7 +1220,7 @@ A \textit{spanning surface} of a knot $K \subseteq \Sigma \times I$ is an unorie
 
 Recall from Chapter 2 that a knot in a thickened surface is checkerboard colourable if and only if a spanning surface exists. While all classical knots have spanning surfaces, the same is not true in thickened surfaces. From the checkerboard colouring of a knot in $\Sigma \times I$, it is easy to construct a spanning surface. For each coloured region of the surface knot diagram $D$, we place a corresponding disk in $\Sigma \times \{1/2\}$. For each crossing in $D$, we place a half-twisted band connecting the two adjacent coloured regions, such that the half-twist in the band agrees with the type of the crossing, as in Fig.~\ref{fig:crossing-type}. We denote this spanning surface $F$, and the surface obtained by swapping the colourings as $F^{*}$. Observe that $F \cup F^{*} = \Sigma$.
 
-A crucial ingredient in the Gordon-Litherland linking form is the notion of linking numbers. Let $J$ and $K$ be two oriented disjoint simple closed curves in the interior of $\Sigma \times I$. Consider the relative homology group $H_{1}(\Sigma \times I \smallsetminus J, \Sigma \times \{1\})$. This group is isomorphic to $\Z$, and generated by a meridian $\mu$ of $J$ . The \textit{linking number} of $J$ with $K$, $\lk(J, K)$ is defined as the unique integer $n$ such that $[K] = n\mu$. Equivalently, $\lk(J, K)$ is the signed number of times that $J$ passes above $K$, with `above' defined to be with respect to $t$, the parameter of the interval $I$. A positive (resp. negative) contribution is made to $\lk(J, K)$ when $J$ passes over $K$ such that the coordinate system $\hat{j}, \hat{k}, \hat{t}$ \notered{think about this notation if time at end} has a positive (resp. negative) orientation.
+A crucial ingredient in the Gordon-Litherland linking form is the notion of linking numbers. Let $J$ and $K$ be two oriented disjoint simple closed curves in the interior of $\Sigma \times I$. Consider the relative homology group $H_{1}(\Sigma \times I \smallsetminus J, \Sigma \times \{1\})$. This group is isomorphic to $\Z$, and generated by a meridian $\mu$ of $J$ . The \textit{linking number} of $J$ with $K$, $\lk(J, K)$ is defined as the unique integer $n$ such that $[K] = n\mu$. Equivalently, $\lk(J, K)$ is the signed number of times that $J$ passes above $K$, with `above' defined to be with respect to $t$, the parameter of the interval $I$. A positive (resp. negative) contribution is made to $\lk(J, K)$ when $J$ passes over $K$ such that the coordinate system $\hat{j}, \hat{k}, \hat{t}$ has a positive (resp. negative) orientation.
 
 Note that $\lk(J, K)$ is independent of the number of times that $J$ passes under $K$: this is instead captured by $\lk(K, J)$. In general, these two notions are different, except in the classical setting, where linking numbers of curves in $\R^{2} \times I$ are symmetric:
 \[\lk(J, K) - \lk(K, J) = 0.\]
@@ -1271,21 +1263,11 @@ We wait until Chapter $4$ to give examples of computations of this form, as that
 As observed in \cite[Section 3]{gordon-litherland-pairing-thickened-surfaces}, the linking forms corresponding to the black and white checkerboard surfaces define an invariant of checkerboard colourable virtual knots, using a minimal genus representative of the knot. Reduced, cellularly embedded alternating diagrams of alternating knots are always minimal genus, hence we have the following special case:
 
 \begin{theorem}
-Let $V$ be an alternating virtual knot, and let $D$ and $E$ be reduced, alternating cellularly embedded diagrams of $V$. Let $F_{D}$ and $F_{E}$ (resp. $F^{*}_{D}$ and $F^{*}_{E}$) be positive definite (resp. negative definite) spanning surfaces for $D$ and $E$. Then $\mathcal{L}_{F(D)} \cong \mathcal{L}_{F(E)}$ and $\mathcal{L}_{F^{*}(D)} \cong \mathcal{L}_{F^{*}(E)}$.
+Let $V$ be an alternating virtual knot, and let $D$ and $E$ be reduced, alternating cellularly embedded diagrams of $V$. Let $F_{D}$ and $F_{E}$ (resp. $F^{*}_{D}$ and $F^{*}_{E}$) be positive definite (resp. negative definite) spanning surfaces for $D$ and $E$. Then $\mathcal{L}_{F(D)} \cong \mathcal{L}_{F(E)}$ and $\mathcal{L}_{F_{D}^{*}} \cong \mathcal{L}_{F_{E}^{*}}$.
 \end{theorem}
 
 \begin{proof}
 By Greene's characterisation, $F_{D}$ and $F_{E}$ are positive definite surfaces. Kindred \cite[Theorem 2.8]{virtual-flyping-theorem} shows that Boden-Karimi's proof of Theorem 4.8 in \cite{alternating-links-thickened-surfaces} yields the stronger result that both $F_{D}$ and $F_{E}$ are isotopic. Hence we have $\mathcal{L}_{F_{D}} \cong \mathcal{L}_{F_{E}}$ and $\mathcal{L}_{F^{*}_{D}} \cong \mathcal{L}_{F^{*}_{E}}$
-\end{proof}
-
-The linking form is also a mutation invariant of alternating virtual knots:
-
-\begin{theorem}
-Let $D$ and $E$ be surface knot diagrams related by a sequence of disk mutations. Then with the notation above $\mathcal{L}_{F(D)} \cong \mathcal{L}_{F(E)}$ and $\mathcal{L}_{F^{*}(D)} \cong \mathcal{L}_{F^{*}(E)}$.
-\end{theorem}
-
-\begin{proof}
-By Greene's Lemma, mutation induces at worst a Whitney flip in the Tait graph. A Whitney flip is an cycle-preserving bijection of edges, so \notered{Still unsure...}
 \end{proof}
 
 \section{The Gordon-Litherland Pairing}
@@ -1341,7 +1323,7 @@ It also follows that the Gordon-Litherland pairing is a mutation invariant.
 \end{corollary}
 
 \begin{proof}
-	In Chapter 1, we saw that mutation either changes the embedding of the Tait graph in the plane, or induces a Whitney flip in the Tait graph. The same argument proves that a disk mutation either changes the embedding of the Tait graph in $\Sigma$, or induces a Whitney flip. The lattice of integer flows is independent of the embedding and invariant under Whitney flips, completing the proof.
+	In Chapter 1, we saw that mutation either merely changes the embedding of the Tait graph in the plane, or induces a Whitney flip in the Tait graph. The same argument proves that a disk mutation either changes the embedding of the Tait graph in $\Sigma$, or induces a Whitney flip. The lattice of integer flows is independent of the embedding and invariant under Whitney flips, completing the proof.
 \end{proof}
 
 In fact, $\mathcal{L}_{F}$ is also a mutation invariant, which we will prove in Chapter 4 using a formula in terms of $\mathcal{G}_{F}$ and the intersection pairing.
@@ -1630,15 +1612,15 @@ We obtain as a corollary that $\mathcal{L}_{F}$ is a mutation invariant.
 	
 	Since
 	\[\mathcal{L}_{F}(\alpha, \beta) = \mathcal{G}_{F}(\alpha, \beta) + p_{*}(\alpha) \cdot p_{*}(\beta),\]
-	it suffices to prove that the algebraic intersection number $p_{*}(\alpha) \cdot p_{*}(\beta)$ is a mutation invariant.
+	and we showed at the end of Chapter 2 that $\mathcal{G}_{F}$ is mutation invariant, it suffices to prove that the algebraic intersection number $p_{*}(\alpha) \cdot p_{*}(\beta)$ is a mutation invariant.
 	
-	If $i_{*}(\alpha) = 0$ or $i_{*}(\beta) = 0$, then $p_{*}(\alpha) \cdot p_{*}(\beta)$ both before and after mutation. Hence it is only required to check invariance for a set of cycles whose inclusions into $\Sigma$ form a basis for $H_{1}(\Sigma)$.
+	If $i_{*}(\alpha) = 0$ or $i_{*}(\beta) = 0$, then $p_{*}(\alpha) \cdot p_{*}(\beta) = 0$ both before and after mutation. Hence it is only required to check invariance for a set of cycles whose inclusions into $\Sigma$ form a basis for $H_{1}(\Sigma)$.
 	
-	Since the mutation disc $B$ intersects $D$ at four points, if the two connected components of $(\partial D) \cap p(F)$ are not path-connected in $F$, then we may always choose representative curves $\alpha$ and $\beta$ that are disjoint from $B$, so mutation does not affect the intersection pairing.
+	The mutation disc $B$ intersects $D = \partial F$ at four points. If the two connected components of $(\partial B) \cap p(F)$ are not connected by a path in $B \cap p(F)$, then we may always choose representative curves that are disjoint from $B$, so mutation does not affect the intersection pairing.
 	
-	If the two connected components of $(\partial D) \cap p(F)$ are path-connected in $F$, then it is possible that both $\alpha$ and $\beta$ pass through $D$. If this is the case, then choosing replacing $\beta$ with $\beta' = \alpha - \beta$ finds another representative which does not pass though $B$. Since only one of the representatives passes through $B$, mutation does not affect the intersection pairing.
+	If the two connected components of $(\partial B) \cap p(F)$ connected by a path in $B \cap p(F)$, we show that the set of representatives can be chosen so that at most one of them intersects $B$. For contradiction, assume that there are two representatives $\alpha$ and $\beta$, both of which pass through $B$. We may assume that both $\alpha$ and $\beta$ enter via one component of $\partial B \cap p(F)$ and exit though the other (otherwise their intersection with $B$ can be eliminated). Assume $\alpha$ and $\beta$ both enter and exit $D$ once, and in the same direction. Then replace $\beta$ among the representatives with $\beta' = \beta - \alpha$. This new set of representatives still surjects onto $H_{1}(\Sigma)$, and there is a curve homologous to $\beta'$ which does not pass through $B$. The cases of opposite directions and multiple entries are dealt with similarly.
 	
-	This completes the proof.
+	Since only one of the representatives passes through $B$, mutation does not affect the intersection pairing. his completes the proof.
 \end{proof}
 
 
@@ -1757,11 +1739,11 @@ We claim that the averaging of degeneracies computes the correct local contribut
 
 \section{Incompleteness of the Virtual Gordon-Litherland Pairing}
 
-The algorithm above leads to a computational method to find a counterexample to the completeness of the invariant $(\Lambda_{B}(V), \Lambda_{W}(V))$: compute mock Seifert matrices $(M_{B}(V), M_{W}(V))$ and Gordon-Litherland pairing matrices $(S_{B}(V), S_{W}(V))$.
+The algorithm above leads to a computational method to find a counterexample to the completeness of the invariant $(\Lambda_{B}(V), \Lambda_{W}(V))$ as follows.
 
-Suppose the existence of a pair of knots $V_{1}$ and $V_{2}$ with pairwise unimodular congruent $(S_{B}(V), S_{W}(V))$ but without pairwise unimodular congruent $(M_{B}(V), M_{W}(V))$. Such a pair would have equivalent  invariants $(\Lambda_{B}(V), \Lambda_{W}(V))$, as this is equivalent to the Gordon-Litherland pairing. At the same time, such knots would have linking forms $(\mathcal{L}_{F}(V), \mathcal{L}_{F^{*}}(V))$ that are not pairwise equivalent, implying that they are not mutants -- an incompleteness result.
+Compute mock Seifert matrices $(M_{B}(V), M_{W}(V))$ and Gordon-Litherland pairing matrices $(S_{B}(V), S_{W}(V))$. Suppose the existence of a pair of knots $V_{1}$ and $V_{2}$ with pairwise unimodular congruent $(S_{B}(V_{i}), S_{W}(V_{i}))$ but with pairwise distinct (mot unimodular congruent) $(M_{B}(V_{i}), M_{W}(V_{i}))$. Such a pair has equivalent invariants $(\Lambda_{B}(V_{i}), \Lambda_{W}(V_{i}))$, as this is equivalent to the $(S_{B}(V_{i}), S_{W}(V_{i}))$. At the same time, $V_{1}$ and $V_{2}$ have pairwise non-equivalent linking forms $(\mathcal{L}_{F}(V_{i}), \mathcal{L}_{F^{*}}(V_{i}))$, implying that they are not mutants.
 
-Of the 92800 virtual knots up to 6 crossings, 164 are alternating. A list of these virtual knots was provided by Hans Boden and created by Lindsay White, and is available in Appendix A. For these virtual knots, we computed their invariants and found that such pairs do exist. The full results of the computation are available in Appendix A. One of the simplest pairs is drawn in Fig.~\ref{fig:counterexamples} and they have pairing matrices
+Of the 92800 virtual knots up to 6 crossings, 164 are alternating. A list of these virtual knots was provided by Hans Boden and created by Lindsay White, and is available in Appendix A. For these virtual knots, we computed the above invariants and found multiple counterexample pairs. The full results of the computation are available via the link in Appendix A. One of the simplest pairs is shown in Fig.~\ref{fig:counterexamples} and they have Gordon-Litherland pairing matrices 
 \begin{align*}
 	S_{B}(6_{90101}) &= \begin{bmatrix}
 		2 & 0 & 0 & 0 \\
@@ -1843,7 +1825,7 @@ M_{B}(6_{90124}) &= \begin{bmatrix}
 		\label{fig:6-90124_vknot}
 	\end{subfigure}
 	\hspace*{\fill} 
-	\caption{write}
+	\caption{A pair of genus 2 virtual knots providing a counterexample to the completeness of $(\Lambda_{B}(V), \Lambda_{W}(V))$.}
 	\label{fig:counterexamples}
 \end{figure}
 
@@ -1875,7 +1857,7 @@ This completes the proof of the following corollary.
 
 From the tables I produced, I noticed that the Kobayashi invariant \cite{new-invariant-under-congruence}, defined as
 \[\kob A = \operatorname{tr}(A^{\top}A^{-1})\]
-always satisfied a relation involving the coefficients of the mock Alexander polynomial \cite{mock-seifert-matrices}
+always satisfied a relation involving the coefficients of the matrix Alexander polynomial \cite{mock-seifert-matrices}
 \[\Delta_{A}(t) \coloneq \det(tA - A^{\top}).\]
 
 
