@@ -1120,7 +1120,7 @@ Since $G$ is cellularly embedded in $\Sigma$, the Euler characteristic $\chi(\Si
 If $G$ is cellularly embedded, then $G^{**} = G$.
 \end{corollary}
 
-Like in the classical case, we can reconstruct the knot diagram of an alternating virtual knot from a cellular embedding of the Tait graph. This is completely analogous to the surface case that was shown in Fig.~\ref{fig:tait-reconstruction-example}.
+Like in the classical case, we can reconstruct the knot diagram of an alternating virtual knot from a cellular embedding of the Tait graph. This is completely analogous to the classical case that was shown in Fig.~\ref{fig:tait-reconstruction-example}.
 
 \section{The Lattice of Integer Flows for Virtual Knots}
 
@@ -1757,15 +1757,37 @@ We claim that the averaging of degeneracies computes the correct local contribut
 
 \section{Incompleteness of the Virtual Gordon-Litherland Pairing}
 
-The algorithm above leads to a computational method of searching for a counterexample to the completeness of the Gordon-Litherland pairing: In the appendix, we compute mock Seifert
+The algorithm above leads to a computational method to find a counterexample to the completeness of the invariant $(\Lambda_{B}(V), \Lambda_{W}(V))$: compute mock Seifert matrices $(M_{B}(V), M_{W}(V))$ and Gordon-Litherland pairing matrices $(S_{B}(V), S_{W}(V))$.
 
-any two virtual knots that have non-isomorphic linking forms are not mutants, as the linking form is a mutation invariant.
+Suppose the existence of a pair of knots $V_{1}$ and $V_{2}$ with pairwise unimodular congruent $(S_{B}(V), S_{W}(V))$ but without pairwise unimodular congruent $(M_{B}(V), M_{W}(V))$. Such a pair would have equivalent  invariants $(\Lambda_{B}(V), \Lambda_{W}(V))$, as this is equivalent to the Gordon-Litherland pairing. At the same time, such knots would have linking forms $(\mathcal{L}_{F}(V), \mathcal{L}_{F^{*}}(V))$ that are not pairwise equivalent, implying that they are not mutants -- an incompleteness result.
 
-Of the 92800 virtual knots up to 6 crossings tabulated by Green \cite{virtual-knot-table}, 1674 are alternating. This refinement was provided to us by Hans Boden, and was created by Lindsay White. A python implementation of the above algorithms, provided in Appendix A, found following.
-
-Our counterexamples are given in Fig.~\ref{fig:counterexamples}.
-
-\notered{We use some invariants of unimodular congruence to tell them apart.}
+Of the 92800 virtual knots up to 6 crossings, 164 are alternating. A list of these virtual knots was provided by Hans Boden and created by Lindsay White, and is available in Appendix A. For these virtual knots, we computed their invariants and found that such pairs do exist. The full results of the computation are available in Appendix A. One of the simplest pairs is drawn in Fig.~\ref{fig:counterexamples} and they have pairing matrices
+\begin{align*}
+	S_{B}(6_{90101}) &= \begin{bmatrix}
+		2 & 0 & 0 & 0 \\
+		0 & 1 & 0 & 0 \\
+		0 & 0 & 2 & 0 \\
+		0 & 0 & 0 & 1
+	\end{bmatrix}&
+	S_{B}(6_{90124}) &= \begin{bmatrix}
+		2 & 0 & 0 & 0\\
+		0 & 1 & 0 & 0\\
+		0 & 0 & 2 & 0\\
+		0 & 0 & 0 & 1\\
+	\end{bmatrix}\\
+	M_{B}(6_{90101}) &= \begin{bmatrix}
+	2 & -1 & 0 & 0\\
+	1 & 1 & 0 & 0\\
+	0 & 0 & 2 & -1\\
+	0 & 0 & 1 & 1\\
+\end{bmatrix}&
+M_{B}(6_{90124}) &= \begin{bmatrix}
+	2 & -1 & 0 & -1\\
+	1 & 1 & 0 & 1\\
+	0 & 0 & 2 & -1\\
+	1 & -1 & 1 & 1\\
+\end{bmatrix}\\
+\end{align*}
 
 \begin{figure}[H]
 	\centering
@@ -1789,6 +1811,13 @@ Our counterexamples are given in Fig.~\ref{fig:counterexamples}.
 	\caption{write}
 	\label{fig:counterexamples}
 \end{figure}
+
+The pair's Gordon-Litherland pairing matrices are unimodular congruent, by virtue of being identical. To prove that $M_{B}(6_{90101})$ and $M_{B}(6_{91024})$ are not unimodular congruent, we look at invariants of unimodular congruence.
+
+\begin{proposition}
+	The determinant, $\det A$, the Kobayashi invariant, $\kob A \coloneq \operatorname{tr}(A^{\top}A^{-1})$ \cite{new-invariant-under-congruence} and the matrix Alexander polynomial $\Delta_{A}(t) \coloneq \det(tA - A^{\top})$ \cite{mock-seifert-matrices} are invariants of unimodular congruence.
+\end{proposition}
+
 
 \section{A Note on Invariants of Unimodular Congruence}
 
@@ -1827,9 +1856,18 @@ This means in particular that the Kobayashi invariant is weaker than the Alexand
   {\normalfont\Large\bfseries}{Appendix \thechapter}{1em}{\Large}
 \titlespacing*{\chapter}{0pt}{40pt}{30pt}
 
-\chapter{Table of Alternating Virtual Knots}
+\chapter{Python Implementation of Algorithms}
 
-\notered{And the matrices corresponding to their $\mathcal{L}_{S}$ and $\mathcal{G}_{S}$ for $S = F$ and $S = F^{*}$, and the invariants we derive from these matrices.}
+A Python implementation of the algorithms given in this essay, along with the results of the computations is available at: \\ \url{https://github.com/DamianJLin/msmat}
+
+In particular:
+\begin{itemize}
+	\item The tabulation of alternating virtual knots up to $6$ crossings based on a list provided by Hans Boden and created by Lindsay White from Jeremy Green's tabulation \cite{virtual-knot-table} can be found in the file {\ttfamily data/alternating\_virtual\_6.txt}
+	\item The results of the Gordon-Litherland pairing matrix computations can be found in the file {\ttfamily data/gordonlitherland\_6\_bygenus.txt}
+	\item The results of the mock Seifert matrix computations can be found in the file\\ {\ttfamily data/mockseifert\_6\_bygenus}
+\end{itemize}
+
+Matrix computations of virtual knots are sorted by virtual genus.
 
 
 \end{document}
